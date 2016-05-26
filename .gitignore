@@ -1,0 +1,13 @@
+/app/src/androidTest
+/app/src/test
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/app/build
+/.idea
+/captures
+x

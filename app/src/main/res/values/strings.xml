@@ -1,0 +1,14 @@
+<resources>
+    <!--系统自动生成-->
+    <string name="app_name">eVillage</string>
+    <!--公共模块-->
+    <string name="dialog_loading">请稍后#8230</string>
+    <!--一级页面-->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_news">资讯</string>
+    <string name="tab_detail">详情</string>
+    <string name="tab_account">台账</string>
+    <string name="tab_mine">我的</string>
+
+    <string name="txt_yo_yo">Yo Yo</string>
+</resources>
