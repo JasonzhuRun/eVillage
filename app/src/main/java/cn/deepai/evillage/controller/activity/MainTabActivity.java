@@ -19,6 +19,8 @@ public class MainTabActivity extends BaseActivity {
 
     private FragmentTabHost mTabHost;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
