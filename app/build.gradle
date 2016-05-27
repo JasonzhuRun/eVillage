@@ -3,7 +3,17 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-
+    signingConfigs {
+        debug {
+            storeFile file('tools/debug.keystore')
+        }
+        release {
+            storeFile file('tools/eVillage.keystore')
+            storePassword "shenjingzhineng2016"
+            keyAlias "DeepAI"
+            keyPassword "shenjingzhineng2016"
+        }
+    }
     defaultConfig {
         applicationId "cn.deepai.evillage"
         minSdkVersion 14
@@ -13,8 +23,15 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            debuggable false
+            proguardFiles 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
         }
     }
 }
