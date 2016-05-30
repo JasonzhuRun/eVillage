@@ -14,4 +14,9 @@ public class DetailFragment extends BaseFragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail, container, false);
     }
+
+    @Override
+    protected String getFragmentName() {
+        return "Page_Detail";
+    }
 }

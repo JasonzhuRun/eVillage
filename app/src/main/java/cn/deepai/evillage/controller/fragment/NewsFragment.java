@@ -15,4 +15,9 @@ public class NewsFragment extends BaseFragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_news, container, false);
     }
+
+    @Override
+    protected String getFragmentName() {
+        return "Page_News";
+    }
 }

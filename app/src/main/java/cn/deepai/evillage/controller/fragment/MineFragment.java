@@ -14,4 +14,9 @@ public class MineFragment extends BaseFragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_mine, container, false);
     }
+
+    @Override
+    protected String getFragmentName() {
+        return "Page_Mine";
+    }
 }

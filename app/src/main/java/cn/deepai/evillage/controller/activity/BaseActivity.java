@@ -4,8 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.utils.LogUtil;
 
 /**
  * 基类Activity
@@ -59,31 +61,37 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtil.v(BaseActivity.class,"Lifecycle onCreate");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        LogUtil.v(BaseActivity.class,"Lifecycle onPause");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        LogUtil.v(BaseActivity.class,"Lifecycle onResume");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        LogUtil.v(BaseActivity.class,"Lifecycle onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        LogUtil.v(BaseActivity.class,"Lifecycle onDestroy");
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        LogUtil.v(BaseActivity.class,"onBackPressed");
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.utils.LogUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,10 +17,12 @@ import cn.deepai.evillage.R;
  * {@link BaseFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private View storedView;
+
+
 
     public BaseFragment() {
         // Required empty public constructor
@@ -28,6 +31,31 @@ public class BaseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtil.v(getFragmentName(),"Lifecycle onCreate");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        LogUtil.v(getFragmentName(),"Lifecycle onResume");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        LogUtil.v(getFragmentName(),"Lifecycle onStart");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        LogUtil.v(getFragmentName(),"Lifecycle onPause");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LogUtil.v(getFragmentName(),"Lifecycle onDestroy");
     }
 
     public void onButtonPressed(Uri uri) {
@@ -53,4 +81,6 @@ public class BaseFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
+
+    protected abstract String getFragmentName();
 }

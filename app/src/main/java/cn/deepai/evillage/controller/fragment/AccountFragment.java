@@ -14,4 +14,9 @@ public class AccountFragment extends BaseFragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_account, container, false);
     }
+
+    @Override
+    protected String getFragmentName() {
+        return "Page_Accout";
+    }
 }
