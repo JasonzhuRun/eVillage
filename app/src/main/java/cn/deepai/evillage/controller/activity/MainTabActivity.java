@@ -1,11 +1,17 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -21,118 +27,89 @@ import cn.deepai.evillage.controller.fragment.NewsFragment;
 public class MainTabActivity extends BaseActivity implements
         BaseFragment.OnFragmentInteractionListener {
 
-    private FragmentTabHost mTabHost;
-    View view;
-    TextView textView;
-    boolean flag = false;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initTabHost();
-        mTabHost.setCurrentTab(0);
-        view = findViewById(R.id.test_view);
-        textView = (TextView) findViewById(R.id.test_text);
-//        ((DrawerLayout)findViewById(R.id.main_drawerlayout)).openDrawer(GravityCompat.END);
-//        ((DrawerLayout)findViewById(R.id.main_drawerlayout)).addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
-//            @Override
-//            public void onDrawerClosed(View drawerView) {
-//                super.onDrawerClosed(drawerView);
-//            }
-//
-//            @Override
-//            public void onDrawerStateChanged(int newState) {
-//                super.onDrawerStateChanged(newState);
-//
-//            }
-//
-//            @Override
-//            public void onDrawerSlide(View drawerView, float slideOffset) {
-//                super.onDrawerSlide(drawerView, slideOffset);
-//
-//            }
-//
-//            @Override
-//            public void onDrawerOpened(View drawerView) {
-//                super.onDrawerOpened(drawerView);
-//                if (flag) {
-//
-//                    textView.setText("hello");
-//                    flag = false;
-//                } else {
-//                    textView.setText("world");
-//                    flag = true;
-//                }
-//
-//            }
-//        });
-
-//        OkHttpClient client = new OkHttpClient();
-//        RequestBody body = new FormBody.Builder()
-//                .add("data", "")
-//                .add("token", "")
-//                .add("system", "sample").build();
-//
-//        Request request = new Request.Builder()
-//                .url("http://sample.com/api/v1")
-//                .post(body).build();
-//        Response response = client.newCall(request).execute();
-
-       // EventBus eventBus = new EventBus();
-       // EventBus.getDefault().register(this);
-
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
-//        navigationView.
-//        navigationView.set
-//        NavigationView  Menu menu = new Menu() {
-//        }
-//        setUpDrawer();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        initView();
     }
 
-//    private void setUpDrawer() {
-//        ListView mLvLeftMenu = (ListView) findViewById(R.id.id_lv_left_menu);
-//        LayoutInflater inflater = LayoutInflater.from(this);
-////        mLvLeftMenu.addHeaderView(inflater.inflate(R.layout.header_just_username, mLvLeftMenu, false));
-////        mLvLeftMenu.setAdapter(new MenuItemAdapter(this));
-//    }
+    /**
+     * Open select menu
+     */
+    public void openDrawer() {
 
+        mDrawerLayout.openDrawer(GravityCompat.START);
+    }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        return super.onPrepareOptionsMenu(menu);
+    private void initView() {
+
+        ActionBar actionBar = getSupportActionBar();
+        if (null != actionBar) {
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        initDrawerLayout();
+        initTabHost();
+    }
+
+    private void initDrawerLayout() {
+
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.main_drawerlayout);
+        mDrawerToggle = new ActionBarDrawerToggle(MainTabActivity.this,mDrawerLayout,R.string.app_name,R.string.app_name);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        mDrawerLayout.setActivated(false);
     }
 
     private void initTabHost() {
-        mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
-        mTabHost.setup(this, getSupportFragmentManager(), R.id.tab_content);
+        FragmentTabHost tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+        if (null == tabHost) return;
+        tabHost.setup(this, getSupportFragmentManager(), R.id.tab_content);
 
-        mTabHost.addTab(newTabSpec(mTabHost, "main", getString(R.string.tab_news),
-                R.drawable.ic_action_location_found_dark),
-                NewsFragment.class,
-                null
-        );
-        mTabHost.addTab(newTabSpec(mTabHost, "account", getString(R.string.tab_detail),
+        tabHost.addTab(newTabSpec(tabHost, "0", getString(R.string.tab_detail),
                 R.drawable.ic_action_location_found_dark),
                 DetailFragment.class,
                 null
         );
-        mTabHost.addTab(newTabSpec(mTabHost, "message", getString(R.string.tab_account),
+        tabHost.addTab(newTabSpec(tabHost, "1", getString(R.string.tab_news),
+                R.drawable.ic_action_location_found_dark),
+                NewsFragment.class,
+                null
+        );
+        tabHost.addTab(newTabSpec(tabHost, "2", getString(R.string.tab_account),
                 R.drawable.ic_action_location_found_dark),
                 AccountFragment.class,
                 null
         );
-        mTabHost.addTab(newTabSpec(mTabHost, "mine", getString(R.string.tab_mine),
+        tabHost.addTab(newTabSpec(tabHost, "3", getString(R.string.tab_mine),
                 R.drawable.ic_action_location_found_dark),
                 MineFragment.class,
                 null
         );
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                switch (tabId) {
+                    case "0":
+                        break;
+                    case "1":
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        break;
+                }
+            }
+        });
+
+        tabHost.setCurrentTab(0);
     }
 
-    private TabHost.TabSpec newTabSpec(TabHost tabHost, String tag, CharSequence label,
-                                       int iconRes) {
+    private TabHost.TabSpec newTabSpec(TabHost tabHost, String tag, CharSequence label,int iconRes) {
+
         LayoutInflater inflater = (LayoutInflater) getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         View indicatorView = inflater
@@ -153,5 +130,36 @@ public class MainTabActivity extends BaseActivity implements
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    /**
+     * Activity is running
+     */
+    @Override
+    public void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return mDrawerToggle.onOptionsItemSelected(item)||super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
+        return super.onMenuOpened(featureId, menu);
     }
 }

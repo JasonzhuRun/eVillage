@@ -1,6 +1,6 @@
 <resources>
     <!--系统自动生成-->
-    <string name="app_name">eVillage</string>
+    <string name="app_name">数字农村</string>
     <!--公共模块-->
     <string name="dialog_loading">请稍后&#8230;</string>
     <!--一级页面-->

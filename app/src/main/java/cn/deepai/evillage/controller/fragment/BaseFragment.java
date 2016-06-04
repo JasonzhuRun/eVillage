@@ -1,13 +1,13 @@
 package cn.deepai.evillage.controller.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.utils.LogUtil;
 
@@ -18,6 +18,9 @@ import cn.deepai.evillage.utils.LogUtil;
  * to handle interaction events.
  */
 public abstract class BaseFragment extends Fragment {
+
+
+    private ProgressDialog mProgressDialog;
 
     private OnFragmentInteractionListener mListener;
     private View storedView;
@@ -80,6 +83,25 @@ public abstract class BaseFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
+    }
+
+    protected void tryToHideProcessDialog() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+            mProgressDialog = null;
+        }
+    }
+
+    protected void tryToShowProcessDialog() {
+        tryToShowProcessDialog(R.string.dialog_loading);
+    }
+
+    protected void tryToShowProcessDialog(int strResId) {
+        tryToHideProcessDialog();
+        if (mProgressDialog == null) {
+            String str = getString(strResId);
+            mProgressDialog = ProgressDialog.show(this.getActivity(), null, str, true, true);
+        }
     }
 
     protected abstract String getFragmentName();

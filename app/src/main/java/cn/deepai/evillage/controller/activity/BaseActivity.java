@@ -54,7 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mLock = false;
     }
 
-    public void tryToHideProcessDialog() {
+      public void tryToHideProcessDialog() {
         if (mProgressDialog != null) {
             mProgressDialog.dismiss();
             mProgressDialog = null;

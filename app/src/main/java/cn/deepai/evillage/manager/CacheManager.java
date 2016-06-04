@@ -6,7 +6,7 @@ import cn.deepai.evillage.model.Villager;
 import cn.deepai.evillage.utils.FileUtil;
 
 /**
- * Created by GaoYixuan on 16/5/30.
+ * @author GaoYixuan on 16/5/30.
  */
 public class CacheManager {
 
