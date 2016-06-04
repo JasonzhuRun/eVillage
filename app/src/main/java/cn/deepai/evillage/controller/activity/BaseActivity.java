@@ -1,22 +1,38 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.model.Event;
 import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 
 /**
  * 基类Activity
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog;
 
     private boolean mLock = false;
+    private long lastPressedTime = 0;
+
+
+    @Override
+    public void onBackPressed() {
+        if((System.currentTimeMillis()- lastPressedTime) > 2000){
+            ToastUtil.shortToast("再按一次退出程序");
+            lastPressedTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
+        LogUtil.v(getActivityName(),"onBackPressed");
+    }
 
     /**
      * 尝试loading加锁
@@ -61,37 +77,31 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtil.v(BaseActivity.class,"Lifecycle onCreate");
+        LogUtil.v(getActivityName(),"Lifecycle onCreate");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtil.v(BaseActivity.class,"Lifecycle onPause");
+        LogUtil.v(getActivityName(),"Lifecycle onPause");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtil.v(BaseActivity.class,"Lifecycle onResume");
+        LogUtil.v(getActivityName(),"Lifecycle onResume");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtil.v(BaseActivity.class,"Lifecycle onStop");
+        LogUtil.v(getActivityName(),"Lifecycle onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtil.v(BaseActivity.class,"Lifecycle onDestroy");
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        LogUtil.v(BaseActivity.class,"onBackPressed");
+        LogUtil.v(getActivityName(),"Lifecycle onDestroy");
     }
 
     @Override
@@ -102,4 +112,7 @@ public class BaseActivity extends AppCompatActivity {
     public BaseActivity getActivity() {
         return this;
     }
+
+    protected abstract String getActivityName();
+
 }

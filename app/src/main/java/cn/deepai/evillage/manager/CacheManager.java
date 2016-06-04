@@ -12,8 +12,6 @@ public class CacheManager {
 
     public static final int CACHE_DETAIL = 0x01;   // 贫困户详情缓存
 
-
-
     private static CacheManager instance;
     private CacheManager() {
         cacheFileDir = FileUtil.getPrivateDir();

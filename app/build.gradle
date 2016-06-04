@@ -42,4 +42,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
+    // 消息订阅
+    compile group: 'de.greenrobot', name: 'eventbus', version: '2.4.1'
+    // Json解析
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.12'
+    // 网络请求
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    // RXJava
+//    compile group: 'io.reactivex', name: 'rxjava', version: '1.0.2'
 }
