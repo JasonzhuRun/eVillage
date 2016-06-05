@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 /**
- * Created by xs on 15/3/3.
+ * @author GaoYixuan
  */
 public class EVApplication extends Application {
 
@@ -13,6 +13,7 @@ public class EVApplication extends Application {
 
     @Override
     public void onCreate() {
+
         super.onCreate();
         context = this;
         // 内存检测工具
