@@ -9,7 +9,7 @@ import android.content.Context;
 public class EVApplication extends Application {
 
     private static Application context;
-
+    private static String host = "";
 
     @Override
     public void onCreate() {
@@ -36,5 +36,9 @@ public class EVApplication extends Application {
 
     public static Context getApplication() {
         return context;
+    }
+
+    public static String getHost() {
+        return host;
     }
 }

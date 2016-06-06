@@ -1,14 +1,6 @@
 package cn.deepai.evillage.manager;
 
-import android.os.Handler;
-import android.os.Message;
-
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.RunnableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
-import cn.deepai.evillage.model.EVRequest;
+import cn.deepai.evillage.model.EVNetRequest;
 
 /**
  * @author GaoYixuan
@@ -23,18 +15,11 @@ import cn.deepai.evillage.model.EVRequest;
  */
 public class DataManager {
 
-    private static NetworkHandler networkHandler;
-
     protected DataManager() {
 
     }
 
-    public void addProcess(EVRequest request) {
-        networkHandler.post(request);
-
-    }
-
-    private static class NetworkHandler extends Handler {
+    public void addProcess(EVNetRequest request) {
 
     }
 }
