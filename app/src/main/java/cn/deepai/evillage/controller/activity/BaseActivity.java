@@ -69,7 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         tryToHideProcessDialog();
         if (mProgressDialog == null) {
             String str = getString(strResId);
-            mProgressDialog = ProgressDialog.show(this, null, str, true, false);
+            mProgressDialog = ProgressDialog.show(this, null, str, true, true);
         }
     }
 

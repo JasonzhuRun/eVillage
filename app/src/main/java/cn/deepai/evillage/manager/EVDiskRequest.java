@@ -1,4 +1,4 @@
-package cn.deepai.evillage.model;
+package cn.deepai.evillage.manager;
 
 import cn.deepai.evillage.EVApplication;
 import okhttp3.Callback;
@@ -10,7 +10,7 @@ import okhttp3.RequestBody;
 /**
  * @author GaoYixuan
  */
-public abstract class EVNetRequest {
+public class EVDiskRequest {
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
     private static final String mURL = "http://"+

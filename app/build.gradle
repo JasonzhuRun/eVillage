@@ -49,6 +49,12 @@ dependencies {
 //    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.12'
     // 网络请求
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.squareup.okio:okio:1.6.0'
+//    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+
     // RXJava
 //    compile group: 'io.reactivex', name: 'rxjava', version: '1.0.2'
+    // 缓存
+    compile group: 'com.jakewharton', name: 'disklrucache', version: '2.0.2'
+
 }

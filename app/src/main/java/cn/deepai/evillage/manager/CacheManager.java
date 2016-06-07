@@ -2,7 +2,6 @@ package cn.deepai.evillage.manager;
 
 import java.util.List;
 
-import cn.deepai.evillage.model.Villager;
 import cn.deepai.evillage.utils.FileUtil;
 
 /**
@@ -20,7 +19,6 @@ public class CacheManager {
         instance = new CacheManager();
     }
 
-    private List<Villager> villagers;
     private String cacheFileDir;
 
     public CacheManager getInstance() {

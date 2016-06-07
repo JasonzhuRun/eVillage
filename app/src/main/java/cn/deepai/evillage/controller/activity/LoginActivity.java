@@ -1,29 +1,42 @@
 package cn.deepai.evillage.controller.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
-import java.lang.ref.WeakReference;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.Date;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.manager.LoginManager;
+import cn.deepai.evillage.manager.EVNetRequest;
+import cn.deepai.evillage.model.LoginData;
+import cn.deepai.evillage.model.LoginResult;
+import cn.deepai.evillage.model.ResponseHeader;
+import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.MD5Util;
+import cn.deepai.evillage.model.RequestHeader;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * @author GaoYixuan
  */
 public class LoginActivity extends BaseActivity{
 
-    private LoginHanlder loginHanlder;
+    private EditText username;
+    private EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginHanlder = new LoginHanlder(this);
         initView();
     }
 
@@ -36,39 +49,57 @@ public class LoginActivity extends BaseActivity{
     private void initView() {
 
         Button loginBtn = (Button)findViewById(R.id.login_ensure);
+        username = (EditText)findViewById(R.id.login_username);
+        password = (EditText)findViewById(R.id.login_password);
         if (loginBtn != null) {
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     tryToShowProcessDialog();
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            LoginManager.getInstance().login();
-                            loginHanlder.sendEmptyMessage(0);
-                        }
-                    }.start();
+                    login();
                 }
             });
         }
 
     }
 
-    static class LoginHanlder extends Handler {
-        WeakReference<LoginActivity> loginActivityWeakReference;
+    private void login() {
+        LoginData loginData = new LoginData();
+        loginData.setUserCode("admin");
+        loginData.setPassword(MD5Util.getMD5("12ab!@"));
+        loginData.setVersionCode("1");
+        RequestHeader header = new RequestHeader();
 
-        LoginHanlder(LoginActivity activity) {
-            loginActivityWeakReference = new WeakReference<>(activity);
-        }
-        @Override
-        public void handleMessage(Message msg) {
-            LoginActivity activity = loginActivityWeakReference.get();
-            if (activity != null) {
+        header.setReqCode("zyfp01001");
+        header.setReqTime((new Date()).toString());
+        header.setTokenId("0");
 
-                activity.tryToHideProcessDialog();
-                activity.startActivity(new Intent(activity,MainTabActivity.class));
-                activity.finish();
+        final Gson gson = new Gson();
+        EVNetRequest.request("", gson.toJson(header), gson.toJson(loginData), new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                tryToHideProcessDialog();
             }
-        }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    JSONObject jsonObject = new JSONObject(response.body().string());
+                    String str1 = jsonObject.getString("rspHeader");
+                    String str2 = jsonObject.getString("data");
+
+                    ResponseHeader responseHeader = gson.fromJson(str1, ResponseHeader.class);
+                    LoginResult result = gson.fromJson(str2, LoginResult.class);
+                    LogUtil.v(LoginActivity.class,str1);
+                    LogUtil.v(LoginActivity.class,str2);
+
+                } catch (JSONException e) {
+
+                }
+
+                tryToHideProcessDialog();
+
+            }
+        });
     }
 }
