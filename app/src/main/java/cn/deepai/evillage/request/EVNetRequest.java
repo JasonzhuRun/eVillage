@@ -15,14 +15,14 @@ import okhttp3.RequestBody;
  */
 public class EVNetRequest {
 
-    public static final String ACTION_LOGIN_WITH_PASSWORD = "termLogin.action";
-    public static final String ACTION_LOGIN_WITH_TOKEN = "termLogin.action";
+    protected static final String ACTION_LOGIN_WITH_PASSWORD = "termLogin.action";
+    protected static final String ACTION_LOGIN_WITH_TOKEN = "termLogin.action";
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
     private static final String mURL = "http://10.6.128.10:8080/zyfp/inter/termLogin.action";
     private static OkHttpClient client = new OkHttpClient();
 
-    public static void request(String action,String jsonHeader,String jsonData,Callback callback) {
+    protected static void request(String action,String jsonHeader,String jsonData,Callback callback) {
         JSONObject jsonObject = new JSONObject();
 
         try {

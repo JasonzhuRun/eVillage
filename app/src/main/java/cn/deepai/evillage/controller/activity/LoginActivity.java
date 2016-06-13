@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Date;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.manager.EVNetRequest;
+import cn.deepai.evillage.request.EVNetRequest;
 import cn.deepai.evillage.model.LoginData;
 import cn.deepai.evillage.model.LoginResult;
 import cn.deepai.evillage.model.ResponseHeader;
@@ -75,31 +75,31 @@ public class LoginActivity extends BaseActivity{
         header.setTokenId("0");
 
         final Gson gson = new Gson();
-        EVNetRequest.request("", gson.toJson(header), gson.toJson(loginData), new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                tryToHideProcessDialog();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    JSONObject jsonObject = new JSONObject(response.body().string());
-                    String str1 = jsonObject.getString("rspHeader");
-                    String str2 = jsonObject.getString("data");
-
-                    ResponseHeader responseHeader = gson.fromJson(str1, ResponseHeader.class);
-                    LoginResult result = gson.fromJson(str2, LoginResult.class);
-                    LogUtil.v(LoginActivity.class,str1);
-                    LogUtil.v(LoginActivity.class,str2);
-
-                } catch (JSONException e) {
-
-                }
-
-                tryToHideProcessDialog();
-
-            }
-        });
+//        EVNetRequest.request(EVNetRequest.ACTION_LOGIN_WITH_PASSWORD, gson.toJson(header), gson.toJson(loginData), new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                tryToHideProcessDialog();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                try {
+//                    JSONObject jsonObject = new JSONObject(response.body().string());
+//                    String str1 = jsonObject.getString("rspHeader");
+//                    String str2 = jsonObject.getString("data");
+//
+//                    ResponseHeader responseHeader = gson.fromJson(str1, ResponseHeader.class);
+//                    LoginResult result = gson.fromJson(str2, LoginResult.class);
+//                    LogUtil.v(LoginActivity.class,str1);
+//                    LogUtil.v(LoginActivity.class,str2);
+//
+//                } catch (JSONException e) {
+//
+//                }
+//
+//                tryToHideProcessDialog();
+//
+//            }
+//        });
     }
 }

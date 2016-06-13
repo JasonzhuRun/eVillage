@@ -1,5 +1,7 @@
 package cn.deepai.evillage.manager;
 
+import cn.deepai.evillage.request.EVNetRequest;
+
 /**
  * @author GaoYixuan
  * 数据管理基类

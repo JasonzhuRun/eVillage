@@ -30,19 +30,63 @@ public class MainTabActivity extends BaseActivity implements
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
-    }
-
     /**
      * Open select menu
      */
     public void openDrawer() {
 
         mDrawerLayout.openDrawer(GravityCompat.START);
+    }
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    /**
+     * Activity is running
+     */
+    @Override
+    public void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return mDrawerToggle.onOptionsItemSelected(item)||super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
+        return super.onMenuOpened(featureId, menu);
+    }
+
+
+    @Override
+    protected String getActivityName() {
+        return "MainTabActivity";
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initView();
+
     }
 
     private void initView() {
@@ -121,45 +165,4 @@ public class MainTabActivity extends BaseActivity implements
         return tabHost.newTabSpec(tag).setIndicator(indicatorView);
     }
 
-    @Override
-    protected String getActivityName() {
-        return "MainTabActivity";
-    }
-
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
-
-    /**
-     * Activity is running
-     */
-    @Override
-    public void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        return mDrawerToggle.onOptionsItemSelected(item)||super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            mDrawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            mDrawerLayout.openDrawer(GravityCompat.START);
-        }
-        return super.onMenuOpened(featureId, menu);
-    }
 }

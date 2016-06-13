@@ -22,6 +22,24 @@ public abstract class BaseActivity extends AppCompatActivity {
     private boolean mLock = false;
     private long lastPressedTime = 0;
 
+    public void tryToShowProcessDialog() {
+        tryToShowProcessDialog(R.string.dialog_loading);
+    }
+
+    public void tryToShowProcessDialog(int strResId) {
+        tryToHideProcessDialog();
+        if (mProgressDialog == null) {
+            String str = getString(strResId);
+            mProgressDialog = ProgressDialog.show(this, null, str, true, true);
+        }
+    }
+
+    public void tryToHideProcessDialog() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+            mProgressDialog = null;
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -34,10 +52,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         LogUtil.v(getActivityName(),"onBackPressed");
     }
 
+    public BaseActivity getActivity() {
+        return this;
+    }
+
+    public void onEvent() {
+
+    }
     /**
      * 尝试loading加锁
-     *
-     * @return
      */
     protected boolean tryEntryLoadingLock() {
         if (mLock) {
@@ -53,26 +76,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void unlockLoadingLock() {
         mLock = false;
     }
-
-      public void tryToHideProcessDialog() {
-        if (mProgressDialog != null) {
-            mProgressDialog.dismiss();
-            mProgressDialog = null;
-        }
-    }
-
-    public void tryToShowProcessDialog() {
-        tryToShowProcessDialog(R.string.dialog_loading);
-    }
-
-    protected void tryToShowProcessDialog(int strResId) {
-        tryToHideProcessDialog();
-        if (mProgressDialog == null) {
-            String str = getString(strResId);
-            mProgressDialog = ProgressDialog.show(this, null, str, true, true);
-        }
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,10 +112,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public BaseActivity getActivity() {
-        return this;
-    }
-
     protected abstract String getActivityName();
 
+    protected void tryToLoad() {
+
+    }
 }

@@ -16,9 +16,6 @@
 
 package cn.deepai.evillage.utils;
 
-import android.util.FloatMath;
-
-
 /**
  * Provides Base64 encoding and decoding as defined by RFC 2045.
  *
@@ -249,7 +246,7 @@ public class Base64 {
         if (isChunked) {
 
             nbrChunks =
-                    (CHUNK_SEPARATOR.length == 0 ? 0 : (int) FloatMath.ceil((float) encodedDataLength / CHUNK_SIZE));
+                    (CHUNK_SEPARATOR.length == 0 ? 0 : (int) Math.ceil((float) encodedDataLength / CHUNK_SIZE));
             encodedDataLength += nbrChunks * CHUNK_SEPARATOR.length;
         }
 
