@@ -1,4 +1,4 @@
-package cn.deepai.evillage.manager;
+package cn.deepai.evillage.request;
 
 import cn.deepai.evillage.EVApplication;
 import okhttp3.Callback;
