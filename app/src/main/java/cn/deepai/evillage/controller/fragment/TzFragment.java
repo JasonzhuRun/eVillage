@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.MainTabActivity;
 
-public class AccountFragment extends BaseFragment {
+public class TzFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

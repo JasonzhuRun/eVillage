@@ -30,7 +30,6 @@
             android:text="北京市海淀区中关村南大街5号"/>
     </LinearLayout>
     <ImageView
-        android:id="@+id/item_person_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"

@@ -2,7 +2,6 @@ package cn.deepai.evillage.controller.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -37,7 +36,7 @@ public class PageViewerActivity extends BaseActivity {
         tabStrip.setTextSpacing(200);
 
         View view1 = LayoutInflater.from(this).inflate(R.layout.fragment_account, null);
-        View view2 = LayoutInflater.from(this).inflate(R.layout.fragment_detail, null);
+        View view2 = LayoutInflater.from(this).inflate(R.layout.fragment_pkh, null);
         View view3 = LayoutInflater.from(this).inflate(R.layout.fragment_mine, null);
         View view4 = LayoutInflater.from(this).inflate(R.layout.fragment_news, null);
         //viewpager开始添加view
