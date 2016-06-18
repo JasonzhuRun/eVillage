@@ -1,14 +1,11 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.inputmethod.InputMethodManager;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.Event;
 import cn.deepai.evillage.utils.LogUtil;
 import cn.deepai.evillage.utils.ToastUtil;
 
