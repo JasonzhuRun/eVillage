@@ -4,7 +4,7 @@ package cn.deepai.evillage.model;
  * @author GaoYixuan
  * 资讯内容
  */
-public class NewsInfo {
+public class NewsBean {
 
     private int id;
     private String title;

@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhRecyclerAdapter;
-import cn.deepai.evillage.model.PkhjbxxInfo;
+import cn.deepai.evillage.model.PkhjbxxBean;
 import cn.deepai.evillage.model.RequestFailedEvent;
 import cn.deepai.evillage.model.RequestSucceedEvent;
 import cn.deepai.evillage.request.PkhJbxxListRequest;
@@ -45,8 +44,8 @@ public class PkhFragment extends BaseFragment {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onDestroy() {
+        super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
 
@@ -60,9 +59,9 @@ public class PkhFragment extends BaseFragment {
     public void onEventMainThread(RequestSucceedEvent event) {
         LogUtil.v(PkhFragment.class,event.body);
         Gson gson = new Gson();
-        List<PkhjbxxInfo> mPkhjbxxInfos = gson.fromJson(event.body, new TypeToken<List<PkhjbxxInfo>>(){}.getType());
+        List<PkhjbxxBean> mPkhjbxxBeen = gson.fromJson(event.body, new TypeToken<List<PkhjbxxBean>>(){}.getType());
 
-        mPkhRecyclerAdapter.notifyResult(true,mPkhjbxxInfos);
+        mPkhRecyclerAdapter.notifyResult(true, mPkhjbxxBeen);
         tryToHideProcessDialog();
 
     }

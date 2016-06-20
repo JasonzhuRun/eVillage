@@ -3,7 +3,7 @@ package cn.deepai.evillage.model;
 /**
  * @author GaoYixuan
  */
-public class LoginResult {
+public class LoginResultBean {
 
     private String tokenId;
     private String isUpdate;

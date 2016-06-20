@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.deepai.evillage.model.NewsInfo;
+import cn.deepai.evillage.model.NewsBean;
 import cn.deepai.evillage.viewholder.NewsViewHolder;
 
 /**
@@ -14,13 +14,13 @@ import cn.deepai.evillage.viewholder.NewsViewHolder;
  */
 public class NewsRecyclerAdapter extends RecyclerView.Adapter {
 
-    private List<NewsInfo> mNewsInfos = new ArrayList<>();
+    private List<NewsBean> mNewsBeen = new ArrayList<>();
 
-    public void notifyResult(boolean isFirstPage, List<NewsInfo> newsInfos) {
+    public void notifyResult(boolean isFirstPage, List<NewsBean> newsBeen) {
         if (isFirstPage) {
-            mNewsInfos.clear();
+            mNewsBeen.clear();
         }
-        mNewsInfos.addAll(newsInfos);
+        mNewsBeen.addAll(newsBeen);
     }
 
     @Override
@@ -32,13 +32,13 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof NewsViewHolder) {
-            ((NewsViewHolder) holder).onBindData(mNewsInfos.get(position));
+            ((NewsViewHolder) holder).onBindData(mNewsBeen.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mNewsInfos == null?0:mNewsInfos.size();
+        return mNewsBeen == null?0: mNewsBeen.size();
     }
 
     @Override

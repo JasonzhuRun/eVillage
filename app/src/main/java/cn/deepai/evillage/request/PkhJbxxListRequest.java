@@ -1,25 +1,7 @@
 package cn.deepai.evillage.request;
 
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.Date;
-
-import cn.deepai.evillage.controller.activity.LoginActivity;
-import cn.deepai.evillage.model.LoginData;
-import cn.deepai.evillage.model.LoginResult;
-import cn.deepai.evillage.model.RequestHeader;
 import cn.deepai.evillage.model.RequestSucceedEvent;
-import cn.deepai.evillage.model.ResponseHeader;
-import cn.deepai.evillage.utils.LogUtil;
-import cn.deepai.evillage.utils.MD5Util;
 import de.greenrobot.event.EventBus;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 /**
  * @author GaoYixuan
@@ -50,12 +32,12 @@ public class PkhJbxxListRequest extends EVNetRequest{
                 "            }\n" +
                 "        ]";
         EventBus.getDefault().post(event);
-//        LoginData loginData = new LoginData();
+//        LoginDataBean loginData = new LoginDataBean();
 //        loginData.setUserCode(name);
 //        loginData.setPassword(MD5Util.getMD5(password));
 //        loginData.setVersionCode("1");
 
-//        RequestHeader header = new RequestHeader();
+//        RequestHeaderBean header = new RequestHeaderBean();
 //        header.setReqCode("zyfp01001");
 //        header.setReqTime((new Date()).toString());
 //        header.setTokenId("0");
@@ -74,8 +56,8 @@ public class PkhJbxxListRequest extends EVNetRequest{
 //                    String str1 = jsonObject.getString("rspHeader");
 //                    String str2 = jsonObject.getString("data");
 //
-//                    ResponseHeader responseHeader = gson.fromJson(str1, ResponseHeader.class);
-//                    LoginResult result = gson.fromJson(str2, LoginResult.class);
+//                    ResponseHeaderBean responseHeader = gson.fromJson(str1, ResponseHeaderBean.class);
+//                    LoginResultBean result = gson.fromJson(str2, LoginResultBean.class);
 //                    LogUtil.v(LoginActivity.class,str1);
 //                    LogUtil.v(LoginActivity.class,str2);
 //

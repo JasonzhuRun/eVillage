@@ -9,14 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.NewsInfo;
+import cn.deepai.evillage.model.NewsBean;
 
 /**
  * @author GaoYixuan
  */
 public class NewsViewHolder extends BaseViewHolder {
 
-    private NewsInfo mNewsInfo;
+    private NewsBean mNewsBean;
     public ImageView photo;
     public TextView title;
     public TextView time;
@@ -29,17 +29,17 @@ public class NewsViewHolder extends BaseViewHolder {
         time = (TextView)itemView.findViewById(R.id.item_news_time);
     }
 
-    public void onBindData(NewsInfo newsInfo) {
-        this.mNewsInfo = newsInfo;
-        byte[] temp = Base64.decode(newsInfo.getBz(),Base64.DEFAULT);
+    public void onBindData(NewsBean newsBean) {
+        this.mNewsBean = newsBean;
+        byte[] temp = Base64.decode(newsBean.getBz(),Base64.DEFAULT);
         photo.setImageBitmap(BitmapFactory.decodeByteArray(temp, 0, temp.length));
-        title.setText(newsInfo.getTitle());
-        time.setText(newsInfo.getPolicyDate());
+        title.setText(newsBean.getTitle());
+        time.setText(newsBean.getPolicyDate());
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        mNewsInfo.getId();
+        mNewsBean.getId();
     }
 }

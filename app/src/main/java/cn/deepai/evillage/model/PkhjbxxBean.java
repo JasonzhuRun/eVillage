@@ -3,7 +3,7 @@ package cn.deepai.evillage.model;
 /**
  * @author GaoYixuan
  */
-public class PkhjbxxInfo {
+public class PkhjbxxBean {
 
     private String hzxm;
     private String jzdz;

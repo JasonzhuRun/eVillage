@@ -3,7 +3,7 @@ package cn.deepai.evillage.model;
 /**
  * @author GaoYixuan
  */
-public class LoginData {
+public class LoginDataBean {
 
     private String userCode;
     private String password;

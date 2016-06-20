@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.deepai.evillage.model.PkhjbxxInfo;
+import cn.deepai.evillage.model.PkhjbxxBean;
 import cn.deepai.evillage.viewholder.PkhViewHolder;
 
 /**
@@ -14,13 +14,13 @@ import cn.deepai.evillage.viewholder.PkhViewHolder;
  */
 public class PkhRecyclerAdapter extends RecyclerView.Adapter {
 
-    private List<PkhjbxxInfo> mPkhjbxxInfos = new ArrayList<>();
+    private List<PkhjbxxBean> mPkhjbxxBeen = new ArrayList<>();
 
-    public void notifyResult(boolean isFirstPage, List<PkhjbxxInfo> pkhjbxxInfos) {
+    public void notifyResult(boolean isFirstPage, List<PkhjbxxBean> pkhjbxxBeen) {
         if (isFirstPage) {
-            mPkhjbxxInfos.clear();
+            mPkhjbxxBeen.clear();
         }
-        mPkhjbxxInfos.addAll(pkhjbxxInfos);
+        mPkhjbxxBeen.addAll(pkhjbxxBeen);
     }
 
     @Override
@@ -32,13 +32,13 @@ public class PkhRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof PkhViewHolder) {
-            ((PkhViewHolder) holder).onBindData(mPkhjbxxInfos.get(position));
+            ((PkhViewHolder) holder).onBindData(mPkhjbxxBeen.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mPkhjbxxInfos == null?0:mPkhjbxxInfos.size();
+        return mPkhjbxxBeen == null?0: mPkhjbxxBeen.size();
     }
 
     @Override

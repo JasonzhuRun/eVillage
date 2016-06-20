@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * @author GaoYixuan
  */
-public class ResponseHeader {
+public class ResponseHeaderBean {
 
     private String reqCode;
     private String rspCode;

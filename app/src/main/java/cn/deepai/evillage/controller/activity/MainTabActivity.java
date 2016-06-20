@@ -23,6 +23,8 @@ import cn.deepai.evillage.controller.fragment.BaseFragment;
 import cn.deepai.evillage.controller.fragment.PkhFragment;
 import cn.deepai.evillage.controller.fragment.MineFragment;
 import cn.deepai.evillage.controller.fragment.NewsFragment;
+import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 
 public class MainTabActivity extends BaseActivity implements
         BaseFragment.OnFragmentInteractionListener {
@@ -75,6 +77,18 @@ public class MainTabActivity extends BaseActivity implements
         return super.onMenuOpened(featureId, menu);
     }
 
+    private long lastPressedTime = 0;
+
+    @Override
+    public void onBackPressed() {
+        if((System.currentTimeMillis()- lastPressedTime) > 2000){
+            ToastUtil.shortToast(getString(R.string.back_pressed));
+            lastPressedTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
+        LogUtil.v(getActivityName(),"onBackPressed");
+    }
 
     @Override
     protected String getActivityName() {
