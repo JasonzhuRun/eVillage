@@ -14,7 +14,6 @@
     <string name="login_ensure">登录</string>
     <!--贫困户页面-->
     <string name="pkh_jbxx">基本信息</string>
-    <string name="pkh_zpyy">致贫原因</string>
     <string name="pkh_jtcy">家庭成员</string>
     <string name="pkh_szqk">收支情况</string>
     <string name="pkh_zfqk">住房情况</string>
@@ -29,7 +28,6 @@
     <string name="pkh_jbxx_khyh">开户银行</string>
     <string name="pkh_jbxx_yhzh">银行账号</string>
     <string name="pkh_jbxx_sfzh">身份证号</string>
-    <string name="pkh_jbxx_sbbz">识别标准</string>
     <string name="pkh_jbxx_jhsyh">计划生育户</string>
     <string name="pkh_jbxx_jzdz">居住地址</string>
 
