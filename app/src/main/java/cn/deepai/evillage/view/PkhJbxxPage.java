@@ -2,6 +2,7 @@ package cn.deepai.evillage.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 
 import cn.deepai.evillage.R;
 
@@ -20,6 +21,8 @@ public class PkhJbxxPage extends PkhBasePage{
 
     public PkhJbxxPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        LayoutInflater.from(context).inflate(R.layout.page_pkhjbxx, this);
+
     }
 
     @Override
