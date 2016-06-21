@@ -62,15 +62,18 @@
     <string name="pkh_sctj_scsl">牲畜（头）</string>
     <!--生活条件-->
     <string name="pkh_shtj_tjnd">统计年度</string>
-    <string name="pkh_shtj_gdmj">耕地面积（亩）</string>
-    <string name="pkh_shtj_yxgggdmj">有效灌溉耕地面积（亩）</string>
-    <string name="pkh_shtj_tian">田（亩）</string>
-    <string name="pkh_shtj_tu">土（亩）</string>
-    <string name="pkh_shtj_lscgy">林桑茶果园（亩）</string>
-    <string name="pkh_shtj_tghl">退耕还林（亩）</string>
-    <string name="pkh_shtj_mcd">牧草地（亩）</string>
-    <string name="pkh_shtj_smmj">水面面积（亩）</string>
-    <string name="pkh_shtj_syjjzw">商用经济作物（亩）</string>
-    <string name="pkh_shtj_scyf">生产用房（平方米）</string>
-    <string name="pkh_shtj_scsl">牲畜（头）</string>
+    <string name="pkh_shtj_shyd">通生活用电</string>
+    <string name="pkh_shtj_zyrl">主要燃料类型</string>
+    <string name="pkh_shtj_ysqk">饮水情况</string>
+    <string name="pkh_shtj_hqyskn">获取饮用水的主要困难</string>
+    <string name="pkh_shtj_cslx">厕所类型</string>
+    <string name="pkh_shtj_nyxfp">耐用消费品情况</string>
+    <string name="pkh_shtj_yskn">饮水困难</string>
+    <string name="pkh_shtj_ysaq">饮水安全</string>
+    <string name="pkh_shtj_jlzgl">距离村主干路</string>
+    <string name="pkh_shtj_rhllx">入户路类型</string>
+    <string name="pkh_shtj_wscs">卫生厕所</string>
+    <string name="pkh_shtj_gbds">通广播电视</string>
+
+
 </resources>

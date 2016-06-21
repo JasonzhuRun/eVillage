@@ -19,16 +19,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_tjnd_title"
+                    android:id="@+id/shtj_tjnd_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_tjnd"
+                    android:text="@string/pkh_shtj_tjnd"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_tjnd"
+                    android:id="@+id/shtj_tjnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_tjnd_title"
+                    android:layout_toRightOf="@id/shtj_tjnd_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -48,16 +48,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_gdmj_title"
+                    android:id="@+id/shtj_shyd_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_gdmj"
+                    android:text="@string/pkh_shtj_shyd"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_gdmj"
+                    android:id="@+id/shtj_shyd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_gdmj_title"
+                    android:layout_toRightOf="@id/shtj_shyd_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -77,16 +77,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_yxgggdmj_title"
+                    android:id="@+id/shtj_zyrl_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_yxgggdmj"
+                    android:text="@string/pkh_shtj_zyrl"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_yxgggdmj"
+                    android:id="@+id/shtj_zyrl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_yxgggdmj_title"
+                    android:layout_toRightOf="@id/shtj_zyrl_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -106,16 +106,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_tian_title"
+                    android:id="@+id/shtj_ysqk_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_tian"
+                    android:text="@string/pkh_shtj_ysqk"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_tian"
+                    android:id="@+id/shtj_ysqk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_tian_title"
+                    android:layout_toRightOf="@id/shtj_ysqk_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -135,16 +135,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_tu_title"
+                    android:id="@+id/shtj_hqyskn_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_tu"
+                    android:text="@string/pkh_shtj_hqyskn"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_tu"
+                    android:id="@+id/shtj_hqyskn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_tu_title"
+                    android:layout_toRightOf="@id/shtj_hqyskn_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -164,16 +164,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_lscgy_title"
+                    android:id="@+id/shtj_cslx_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_lscgy"
+                    android:text="@string/pkh_shtj_cslx"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_lscgy"
+                    android:id="@+id/shtj_cslx"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_lscgy_title"
+                    android:layout_toRightOf="@id/shtj_cslx_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -193,16 +193,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_tghl_title"
+                    android:id="@+id/shtj_nyxfp_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_tghl"
+                    android:text="@string/pkh_shtj_nyxfp"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_tghl"
+                    android:id="@+id/shtj_nyxfp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_tghl_title"
+                    android:layout_toRightOf="@id/shtj_nyxfp_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -222,16 +222,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_mcd_title"
+                    android:id="@+id/shtj_yskn_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_mcd"
+                    android:text="@string/pkh_shtj_yskn"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_mcd"
+                    android:id="@+id/shtj_yskn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_mcd_title"
+                    android:layout_toRightOf="@id/shtj_yskn_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -251,16 +251,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_smmj_title"
+                    android:id="@+id/shtj_ysaq_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_smmj"
+                    android:text="@string/pkh_shtj_ysaq"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_smmj"
+                    android:id="@+id/shtj_ysaq"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_smmj_title"
+                    android:layout_toRightOf="@id/shtj_ysaq_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -280,16 +280,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_syjjzw_title"
+                    android:id="@+id/shtj_jlzgl_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_syjjzw"
+                    android:text="@string/pkh_shtj_jlzgl"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_syjjzw"
+                    android:id="@+id/shtj_jlzgl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_syjjzw_title"
+                    android:layout_toRightOf="@id/shtj_jlzgl_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -309,16 +309,16 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_scyf_title"
+                    android:id="@+id/shtj_rhllx_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_scyf"
+                    android:text="@string/pkh_shtj_rhllx"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_scyf"
+                    android:id="@+id/shtj_rhllx"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_scyf_title"
+                    android:layout_toRightOf="@id/shtj_rhllx_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
@@ -338,16 +338,45 @@
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
                 <TextView
-                    android:id="@+id/sctj_scsl_title"
+                    android:id="@+id/shtj_wscs_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pkh_sctj_scsl"
+                    android:text="@string/pkh_shtj_wscs"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
                 <EditText
-                    android:id="@+id/sctj_scsl"
+                    android:id="@+id/shtj_wscs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/sctj_scsl_title"
+                    android:layout_toRightOf="@id/shtj_wscs_title"
+                    android:layout_marginLeft="@dimen/pkhxq_text_gap"
+                    android:textSize="@dimen/pkhxq_content_textsize"
+                    android:background="@drawable/edit_text_backgroud"
+                    android:focusable="false" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/pkhxq_left_gap"
+                android:layout_marginRight="@dimen/pkhxq_right_gap"
+                android:background="@color/cut_off_line"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/pkhxq_top_gap"
+                android:paddingBottom="@dimen/pkhxq_bottom_gap"
+                android:paddingLeft="@dimen/pkhxq_left_gap"
+                android:paddingRight="@dimen/pkhxq_right_gap">
+                <TextView
+                    android:id="@+id/shtj_gbds_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pkh_shtj_gbds"
+                    android:textSize="@dimen/pkhxq_title_textsize"/>
+                <EditText
+                    android:id="@+id/shtj_gbds"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/shtj_gbds_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"

@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 import cn.deepai.evillage.R;
 
 /**
- * @author GaoYixuan
+ * 生活条件
  */
 public class PkhShtjPage extends PkhBasePage{
 
