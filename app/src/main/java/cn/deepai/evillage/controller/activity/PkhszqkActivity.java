@@ -5,7 +5,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +16,15 @@ import cn.deepai.evillage.view.PkhBasePage;
 import cn.deepai.evillage.view.PkhCyhPage;
 import cn.deepai.evillage.view.PkhJbxxPage;
 import cn.deepai.evillage.view.PkhJtcyPage;
-import cn.deepai.evillage.view.PkhJtqkzpPage;
 import cn.deepai.evillage.view.PkhSctjPage;
 import cn.deepai.evillage.view.PkhShtjPage;
 import cn.deepai.evillage.view.PkhSzqkPage;
 import cn.deepai.evillage.view.PkhZfqkPage;
 
 /**
- * 贫困户详情页
+ * @author GaoYixuan
  */
-public class PkhxqActivity extends BaseActivity {
+public class PkhszqkActivity extends BaseActivity {
 
     private ViewPager pager = null;
     private PagerTabStrip tabStrip = null;
@@ -54,19 +52,18 @@ public class PkhxqActivity extends BaseActivity {
 
     @Override
     protected String getActivityName() {
-        return "PkuxqActivity";
+        return "PkuDetailActivity";
     }
 
     private void initPagerContent() {
-
-        viewContainter.add(new PkhJbxxPage(this));
         viewContainter.add(new PkhJtcyPage(this));
+        viewContainter.add(new PkhJbxxPage(this));
+
         viewContainter.add(new PkhSzqkPage(this));
         viewContainter.add(new PkhZfqkPage(this));
         viewContainter.add(new PkhShtjPage(this));
         viewContainter.add(new PkhSctjPage(this));
         viewContainter.add(new PkhCyhPage(this));
-        viewContainter.add(new PkhJtqkzpPage(this));
     }
 
     private void initView() {

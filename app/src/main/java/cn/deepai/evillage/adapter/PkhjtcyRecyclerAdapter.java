@@ -25,9 +25,9 @@ public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public PkhViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PkhjtcyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        return new PkhViewHolder(parent,viewType);
+        return new PkhjtcyViewHolder(parent,viewType);
     }
 
     @Override

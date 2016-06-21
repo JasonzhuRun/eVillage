@@ -26,8 +26,6 @@ import cn.deepai.evillage.viewholder.BaseViewHolder;
  */
 public class PkhJtcyPage extends PkhBasePage{
 
-    private RecyclerView mRecyclerView;
-
     public PkhJtcyPage(Context context) {
         this(context,null);
     }
@@ -47,10 +45,10 @@ public class PkhJtcyPage extends PkhBasePage{
     }
 
     private void initView() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_pkh_jtcy);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(new PkhjtcyRecyclerAdapter());
 
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_pkh_jtcy);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(new PkhjtcyRecyclerAdapter());
     }
 }

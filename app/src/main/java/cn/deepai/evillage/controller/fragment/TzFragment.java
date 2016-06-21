@@ -21,11 +21,13 @@ public class TzFragment extends BaseFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof MainTabActivity) {
+
         }
     }
 
     @Override
     protected String getFragmentName() {
-        return "Page_Accout";
+        return "Page_Tz";
     }
+
 }

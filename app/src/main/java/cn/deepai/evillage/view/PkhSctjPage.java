@@ -22,10 +22,16 @@ public class PkhSctjPage extends PkhBasePage{
 
     public PkhSctjPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        LayoutInflater.from(context).inflate(R.layout.page_pkhsctj, this);
+        initView();
     }
 
     @Override
     public String getPageName() {
         return getResources().getString(R.string.pkh_sctj);
+    }
+
+    private void initView() {
+
     }
 }

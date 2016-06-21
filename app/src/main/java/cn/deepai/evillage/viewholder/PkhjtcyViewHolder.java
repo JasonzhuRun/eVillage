@@ -20,10 +20,10 @@ public class PkhjtcyViewHolder extends BaseViewHolder {
 
     private Context mContext;
     private PkhjtcyBean mPkhjtcyBean;
-    public TextView xm;
-    public TextView xb;
-    public TextView id;
-    public TextView gx;
+    private TextView xm;
+    private TextView xb;
+    private TextView id;
+    private TextView gx;
 
     public PkhjtcyViewHolder(ViewGroup parent, int viewType) {
         super(LayoutInflater.from(parent.getContext()).

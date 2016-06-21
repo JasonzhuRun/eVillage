@@ -5,11 +5,11 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="tab_height">48dp</dimen>
     <!--基本信息-->
-    <dimen name="pkh_jbxx_title_textsize">18sp</dimen>
-    <dimen name="pkh_jbxx_content_textsize">18sp</dimen>
-    <dimen name="pkh_jbxx_top_gap">16dp</dimen>
-    <dimen name="pkh_jbxx_bottom_gap">16dp</dimen>
-    <dimen name="pkh_jbxx_left_gap">10dp</dimen>
-    <dimen name="pkh_jbxx_right_gap">10dp</dimen>
-    <dimen name="pkh_jbxx_text_gap">20dp</dimen>
+    <dimen name="pkhxq_title_textsize">18sp</dimen>
+    <dimen name="pkhxq_content_textsize">18sp</dimen>
+    <dimen name="pkhxq_top_gap">16dp</dimen>
+    <dimen name="pkhxq_bottom_gap">16dp</dimen>
+    <dimen name="pkhxq_left_gap">10dp</dimen>
+    <dimen name="pkhxq_right_gap">10dp</dimen>
+    <dimen name="pkhxq_text_gap">20dp</dimen>
 </resources>
