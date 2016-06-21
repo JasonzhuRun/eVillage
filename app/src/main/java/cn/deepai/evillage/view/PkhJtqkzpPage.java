@@ -25,7 +25,7 @@ public class PkhJtqkzpPage extends PkhBasePage{
 
     public PkhJtqkzpPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.page_pkhcyhqk, this);
+        LayoutInflater.from(context).inflate(R.layout.page_pkhjtqkzp, this);
         initView();
     }
 
