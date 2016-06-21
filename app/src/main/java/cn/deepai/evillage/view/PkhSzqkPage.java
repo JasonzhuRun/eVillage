@@ -22,6 +22,7 @@ public class PkhSzqkPage extends PkhBasePage{
 
     public PkhSzqkPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        LayoutInflater.from(context).inflate(R.layout.page_pkhjbxx, this);
     }
 
     @Override

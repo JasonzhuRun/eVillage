@@ -53,13 +53,13 @@ public class PkhxqActivity extends BaseActivity {
 
     @Override
     protected String getActivityName() {
-        return "PkuDetailActivity";
+        return "PkuxqActivity";
     }
 
     private void initPagerContent() {
-        viewContainter.add(new PkhJtcyPage(this));
-        viewContainter.add(new PkhJbxxPage(this));
 
+//        viewContainter.add(new PkhJbxxPage(this));
+//        viewContainter.add(new PkhJtcyPage(this));
         viewContainter.add(new PkhSzqkPage(this));
         viewContainter.add(new PkhZfqkPage(this));
         viewContainter.add(new PkhShtjPage(this));
