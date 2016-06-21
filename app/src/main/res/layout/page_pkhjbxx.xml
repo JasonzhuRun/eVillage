@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".controller.activity.PkhDetailActivity">
+    tools:context=".controller.activity.PkhxqActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

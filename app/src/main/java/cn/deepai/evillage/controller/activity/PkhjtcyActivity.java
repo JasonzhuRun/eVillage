@@ -5,7 +5,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import cn.deepai.evillage.view.PkhZfqkPage;
 /**
  * @author GaoYixuan
  */
-public class PkhDetailActivity extends BaseActivity {
+public class PkhjtcyActivity extends BaseActivity {
 
     private ViewPager pager = null;
     private PagerTabStrip tabStrip = null;
@@ -43,9 +42,7 @@ public class PkhDetailActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkh);
-        initPagerContent();
         initView();
-
     }
 
     @Override
@@ -59,9 +56,9 @@ public class PkhDetailActivity extends BaseActivity {
     }
 
     private void initPagerContent() {
-
-        viewContainter.add(new PkhJbxxPage(this));
         viewContainter.add(new PkhJtcyPage(this));
+        viewContainter.add(new PkhJbxxPage(this));
+
         viewContainter.add(new PkhSzqkPage(this));
         viewContainter.add(new PkhZfqkPage(this));
         viewContainter.add(new PkhShtjPage(this));
@@ -136,6 +133,7 @@ public class PkhDetailActivity extends BaseActivity {
 
             }
         });
+
     }
 
 }

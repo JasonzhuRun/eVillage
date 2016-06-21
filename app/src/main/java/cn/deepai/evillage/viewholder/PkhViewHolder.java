@@ -10,11 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.controller.activity.PkhDetailActivity;
+import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.model.PkhjbxxBean;
 
 /**
- * @author GaoYixuan
+ * 贫困户列表
  */
 public class PkhViewHolder extends BaseViewHolder {
 
@@ -45,7 +45,7 @@ public class PkhViewHolder extends BaseViewHolder {
     public void onClick(View v) {
         super.onClick(v);
         mPkhjbxxBean.getVid();
-        Intent intent = new Intent(mContext, PkhDetailActivity.class);
+        Intent intent = new Intent(mContext, PkhxqActivity.class);
         mContext.startActivity(intent);
         ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }

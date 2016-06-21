@@ -30,5 +30,9 @@
     <string name="pkh_jbxx_sfzh">身份证号</string>
     <string name="pkh_jbxx_jhsyh">计划生育户</string>
     <string name="pkh_jbxx_jzdz">居住地址</string>
-
+    <!--家庭成员-->
+    <string name="pkh_jtcy_xm">姓名</string>
+    <string name="pkh_jtcy_xb">性别</string>
+    <string name="pkh_jtcy_id">身份证号</string>
+    <string name="pkh_jtcy_gx">与户主关系</string>
 </resources>

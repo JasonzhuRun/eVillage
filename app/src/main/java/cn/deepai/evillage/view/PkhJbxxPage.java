@@ -22,11 +22,15 @@ public class PkhJbxxPage extends PkhBasePage{
     public PkhJbxxPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhjbxx, this);
-
+        initView();
     }
 
     @Override
     public String getPageName() {
         return getResources().getString(R.string.pkh_jbxx);
+    }
+
+    private void initView() {
+
     }
 }
