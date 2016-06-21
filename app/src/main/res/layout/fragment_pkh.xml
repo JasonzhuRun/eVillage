@@ -2,12 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.fragment.TzFragment">
+    tools:context=".controller.fragment.PkhFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_pkh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="台账" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

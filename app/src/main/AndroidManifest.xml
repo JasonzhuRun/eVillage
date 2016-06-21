@@ -17,13 +17,12 @@
             android:name=".controller.activity.MainTabActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
+             <!--<intent-filter>-->
+             <!--<action android:name="android.intent.action.MAIN" />-->
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
 
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+             <!--<category android:name="android.intent.category.LAUNCHER" />-->
+             <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".controller.activity.LoginActivity"
@@ -35,13 +34,24 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".controller.activity.PageViewerActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+        <activity
+            android:name=".controller.activity.NewsDetailActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".controller.activity.PkhxqActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".controller.activity.PkhjtcyActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>

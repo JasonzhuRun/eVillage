@@ -7,16 +7,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.utils.LogUtil;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BaseFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- */
 public abstract class BaseFragment extends Fragment {
 
 

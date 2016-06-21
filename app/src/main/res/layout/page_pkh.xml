@@ -2,12 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.deepai.evillage.controller.fragment.DetailFragment">
+    tools:context=".controller.activity.PkhxqActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_detail"
-        android:divider="#ffff0000"
-        android:dividerHeight="10dp"
+        android:id="@+id/recyclerview_pkh_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

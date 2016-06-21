@@ -3,8 +3,8 @@
     <string name="app_name">数字农村</string>
     <!--公共模块-->
     <string name="dialog_loading">请稍后&#8230;</string>
+    <string name="back_pressed">再按一次退出程序</string>
     <!--一级页面-->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_news">资讯</string>
     <string name="tab_detail">贫困户</string>
     <string name="tab_account">台账</string>
@@ -12,6 +12,27 @@
     <string name="login_username">用户名</string>
     <string name="login_password">密码</string>
     <string name="login_ensure">登录</string>
-
-    <string name="txt_yo_yo">Yo Yo</string>
+    <!--贫困户页面-->
+    <string name="pkh_jbxx">基本信息</string>
+    <string name="pkh_jtcy">家庭成员</string>
+    <string name="pkh_szqk">收支情况</string>
+    <string name="pkh_zfqk">住房情况</string>
+    <string name="pkh_shtj">生活条件</string>
+    <string name="pkh_sctj">生产条件</string>
+    <string name="pkh_cyh">产业化情况</string>
+    <!--基本信息页面-->
+    <string name="pkh_jbxx_hzxx">户主姓名</string>
+    <string name="pkh_jbxx_lxdh">联系电话</string>
+    <string name="pkh_jbxx_pkzt">贫困状态</string>
+    <string name="pkh_jbxx_zpyy">致贫原因</string>
+    <string name="pkh_jbxx_khyh">开户银行</string>
+    <string name="pkh_jbxx_yhzh">银行账号</string>
+    <string name="pkh_jbxx_sfzh">身份证号</string>
+    <string name="pkh_jbxx_jhsyh">计划生育户</string>
+    <string name="pkh_jbxx_jzdz">居住地址</string>
+    <!--家庭成员-->
+    <string name="pkh_jtcy_xm">姓名</string>
+    <string name="pkh_jtcy_xb">性别</string>
+    <string name="pkh_jtcy_id">身份证号</string>
+    <string name="pkh_jtcy_gx">与户主关系</string>
 </resources>

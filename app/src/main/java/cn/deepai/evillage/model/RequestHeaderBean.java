@@ -3,7 +3,7 @@ package cn.deepai.evillage.model;
 /**
  * @author GaoYixuan
  */
-public class RequestHeader {
+public class RequestHeaderBean {
     String reqCode;
     String reqTime;
     String tokenId;

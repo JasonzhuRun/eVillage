@@ -7,23 +7,12 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.Date;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.request.EVNetRequest;
-import cn.deepai.evillage.model.LoginData;
-import cn.deepai.evillage.model.LoginResult;
-import cn.deepai.evillage.model.ResponseHeader;
-import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.model.LoginDataBean;
 import cn.deepai.evillage.utils.MD5Util;
-import cn.deepai.evillage.model.RequestHeader;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import cn.deepai.evillage.model.RequestHeaderBean;
 
 /**
  * @author GaoYixuan
@@ -64,18 +53,18 @@ public class LoginActivity extends BaseActivity{
     }
 
     private void login() {
-        LoginData loginData = new LoginData();
-        loginData.setUserCode("admin");
-        loginData.setPassword(MD5Util.getMD5("12ab!@"));
-        loginData.setVersionCode("1");
-        RequestHeader header = new RequestHeader();
+        LoginDataBean loginDataBean = new LoginDataBean();
+        loginDataBean.setUserCode("admin");
+        loginDataBean.setPassword(MD5Util.getMD5("12ab!@"));
+        loginDataBean.setVersionCode("1");
+        RequestHeaderBean header = new RequestHeaderBean();
 
         header.setReqCode("zyfp01001");
         header.setReqTime((new Date()).toString());
         header.setTokenId("0");
 
         final Gson gson = new Gson();
-//        EVNetRequest.request(EVNetRequest.ACTION_LOGIN_WITH_PASSWORD, gson.toJson(header), gson.toJson(loginData), new Callback() {
+//        EVNetRequest.request(EVNetRequest.ACTION_LOGIN_WITH_PASSWORD, gson.toJson(header), gson.toJson(loginDataBean), new Callback() {
 //            @Override
 //            public void onFailure(Call call, IOException e) {
 //                tryToHideProcessDialog();
@@ -88,8 +77,8 @@ public class LoginActivity extends BaseActivity{
 //                    String str1 = jsonObject.getString("rspHeader");
 //                    String str2 = jsonObject.getString("data");
 //
-//                    ResponseHeader responseHeader = gson.fromJson(str1, ResponseHeader.class);
-//                    LoginResult result = gson.fromJson(str2, LoginResult.class);
+//                    ResponseHeaderBean responseHeader = gson.fromJson(str1, ResponseHeaderBean.class);
+//                    LoginResultBean result = gson.fromJson(str2, LoginResultBean.class);
 //                    LogUtil.v(LoginActivity.class,str1);
 //                    LogUtil.v(LoginActivity.class,str2);
 //

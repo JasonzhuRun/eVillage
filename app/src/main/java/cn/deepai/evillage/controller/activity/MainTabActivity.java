@@ -18,11 +18,13 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.controller.fragment.AccountFragment;
+import cn.deepai.evillage.controller.fragment.TzFragment;
 import cn.deepai.evillage.controller.fragment.BaseFragment;
-import cn.deepai.evillage.controller.fragment.DetailFragment;
+import cn.deepai.evillage.controller.fragment.PkhFragment;
 import cn.deepai.evillage.controller.fragment.MineFragment;
 import cn.deepai.evillage.controller.fragment.NewsFragment;
+import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 
 public class MainTabActivity extends BaseActivity implements
         BaseFragment.OnFragmentInteractionListener {
@@ -75,6 +77,18 @@ public class MainTabActivity extends BaseActivity implements
         return super.onMenuOpened(featureId, menu);
     }
 
+    private long lastPressedTime = 0;
+
+    @Override
+    public void onBackPressed() {
+        if((System.currentTimeMillis()- lastPressedTime) > 2000){
+            ToastUtil.shortToast(getString(R.string.back_pressed));
+            lastPressedTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
+        LogUtil.v(getActivityName(),"onBackPressed");
+    }
 
     @Override
     protected String getActivityName() {
@@ -115,7 +129,7 @@ public class MainTabActivity extends BaseActivity implements
 
         tabHost.addTab(newTabSpec(tabHost, "0", getString(R.string.tab_detail),
                 R.drawable.ic_action_location_found_dark),
-                DetailFragment.class,
+                PkhFragment.class,
                 null
         );
         tabHost.addTab(newTabSpec(tabHost, "1", getString(R.string.tab_news),
@@ -125,7 +139,7 @@ public class MainTabActivity extends BaseActivity implements
         );
         tabHost.addTab(newTabSpec(tabHost, "2", getString(R.string.tab_account),
                 R.drawable.ic_action_location_found_dark),
-                AccountFragment.class,
+                TzFragment.class,
                 null
         );
         tabHost.addTab(newTabSpec(tabHost, "3", getString(R.string.tab_mine),
