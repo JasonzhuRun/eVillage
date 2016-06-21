@@ -1,7 +1,7 @@
 package cn.deepai.evillage.model;
 
 /**
- * 参与生产化组织情况
+ * 贫困户家庭情况照片
  */
 public class PkhjtqkzpBean {
 

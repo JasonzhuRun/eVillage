@@ -1,7 +1,7 @@
 package cn.deepai.evillage.model;
 
 /**
- * @author GaoYixuan
+ * 贫困户基本信息
  */
 public class PkhjbxxBean {
 

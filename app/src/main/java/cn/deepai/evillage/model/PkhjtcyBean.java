@@ -1,7 +1,7 @@
 package cn.deepai.evillage.model;
 
 /**
- * @author GaoYixuan
+ * 家庭成员
  */
 public class PkhjtcyBean {
 

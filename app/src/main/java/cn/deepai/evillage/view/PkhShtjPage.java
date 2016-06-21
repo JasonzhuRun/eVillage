@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.model.PkhshtjBean;
 
 /**
  * 生活条件
@@ -24,6 +25,10 @@ public class PkhShtjPage extends PkhBasePage{
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhshtj, this);
         initView();
+    }
+
+    public void bindData(PkhshtjBean pkhshtjBean) {
+
     }
 
     @Override

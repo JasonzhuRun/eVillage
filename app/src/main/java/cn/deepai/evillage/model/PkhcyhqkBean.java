@@ -1,7 +1,7 @@
 package cn.deepai.evillage.model;
 
 /**
- * 参与生产化组织情况
+ * 贫困户参与生产化组织情况
  */
 public class PkhcyhqkBean {
 

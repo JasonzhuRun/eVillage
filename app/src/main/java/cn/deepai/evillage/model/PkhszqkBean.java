@@ -1,7 +1,7 @@
 package cn.deepai.evillage.model;
 
 /**
- * @author GaoYixuan
+ * 收支情况
  */
 public class PkhszqkBean {
 
