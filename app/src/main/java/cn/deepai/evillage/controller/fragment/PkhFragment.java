@@ -8,16 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.util.List;
-
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhRecyclerAdapter;
-import cn.deepai.evillage.model.PkhjbxxBean;
-import cn.deepai.evillage.model.RequestFailedEvent;
-import cn.deepai.evillage.model.RequestSucceedEvent;
+import cn.deepai.evillage.event.PkhListEvent;
 import cn.deepai.evillage.request.PkhJbxxListRequest;
 import cn.deepai.evillage.utils.LogUtil;
 import de.greenrobot.event.EventBus;
@@ -38,35 +31,22 @@ public class PkhFragment extends BaseFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
+        EventBus.getDefault().register(this);
         loadData();
     }
 
-    @SuppressWarnings("all")
-    public void onEventMainThread(RequestSucceedEvent event) {
-        LogUtil.v(PkhFragment.class,event.body);
-        Gson gson = new Gson();
-        List<PkhjbxxBean> mPkhjbxxBeen = gson.fromJson(event.body, new TypeToken<List<PkhjbxxBean>>(){}.getType());
-
-        mPkhRecyclerAdapter.notifyResult(true, mPkhjbxxBeen);
-        tryToHideProcessDialog();
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
     }
+
     @SuppressWarnings("all")
-    public void onEventMainThread(RequestFailedEvent event) {
+    public void onEventMainThread(PkhListEvent event) {
+        LogUtil.v(PkhFragment.class,event.rspHeader.toString());
+        mPkhRecyclerAdapter.notifyResult(true, event.data);
         tryToHideProcessDialog();
     }
 

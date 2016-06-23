@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
-import cn.deepai.evillage.model.PkhjbxxBean;
+import cn.deepai.evillage.bean.PkhjbxxBean;
 
 /**
  * 贫困户列表
@@ -44,8 +44,8 @@ public class PkhViewHolder extends BaseViewHolder {
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        mPkhjbxxBean.getVid();
         Intent intent = new Intent(mContext, PkhxqActivity.class);
+        intent.putExtra(PkhxqActivity.PKH_KEY,mPkhjbxxBean.getHid());
         mContext.startActivity(intent);
         ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }

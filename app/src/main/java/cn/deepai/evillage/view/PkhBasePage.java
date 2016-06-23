@@ -26,4 +26,9 @@ public abstract class PkhBasePage  extends FrameLayout {
 
     public abstract String getPageName();
 
+    public abstract void requestData();
+
+    public abstract boolean hasData();
+
+    public abstract void bindData(Object dataJson);
 }

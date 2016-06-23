@@ -1,9 +1,9 @@
-package cn.deepai.evillage.model;
+package cn.deepai.evillage.bean;
 
 /**
  * @author GaoYixuan
  */
-public class LoginResultBean {
+public class LoginResponseBean {
 
     private String tokenId;
     private String isUpdate;

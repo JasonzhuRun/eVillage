@@ -1,4 +1,4 @@
-package cn.deepai.evillage.model;
+package cn.deepai.evillage.bean;
 
 /**
  * 收支情况

@@ -1,9 +1,9 @@
-package cn.deepai.evillage.model;
+package cn.deepai.evillage.bean;
 
 /**
  * @author GaoYixuan
  */
-public class LoginDataBean {
+public class LoginRequestBean {
 
     private String userCode;
     private String password;

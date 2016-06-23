@@ -5,14 +5,23 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.PkhjbxxBean;
+import cn.deepai.evillage.bean.PkhjbxxBean;
+import cn.deepai.evillage.controller.activity.PkhxqActivity;
+import cn.deepai.evillage.event.LoginEvent;
+import cn.deepai.evillage.event.PkhListEvent;
+import cn.deepai.evillage.event.PkhxqEvent;
+import cn.deepai.evillage.utils.LogUtil;
+import de.greenrobot.event.EventBus;
 
 /**
  * 贫困户基本信息
  */
 public class PkhJbxxPage extends PkhBasePage{
 
+    private boolean mHasData = false;
     // 户主姓名
     private	EditText	hzxm;
     // 居住地址
@@ -47,6 +56,43 @@ public class PkhJbxxPage extends PkhBasePage{
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhjbxx, this);
         initView();
+
+    }
+
+    @Override
+    public void requestData() {
+        String str = "{\n" +
+                "\t\"data\": {\n" +
+                "\t\t\"isMustUpdate\": \"\",\n" +
+                "\t\t\"isUpdate\": \"0\",\n" +
+                "\t\t\"tokenId\": \"989ae59688094d6b8803744e6f3d4588\",\n" +
+                "\t\t\"updateContent\": \"\",\n" +
+                "\t\t\"updateUrl\": \"\",\n" +
+                "\t\t\"userId\": \"1\",\n" +
+                "\t\t\"versionName\": \"\"\n" +
+                "\t},\n" +
+                "\t\"rspHeader\": {\n" +
+                "\t\t\"reqCode\": \"zyfp01001\",\n" +
+                "\t\t\"rspCode\": \"0000\",\n" +
+                "\t\t\"rspDesc\": \"请求成功\",\n" +
+                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
+                "\t}\n" +
+                "}";
+        Gson gson = new Gson();
+        PkhxqEvent event = gson.fromJson(str, PkhxqEvent.class);
+        EventBus.getDefault().post(event);
+    }
+
+    @Override
+    public boolean hasData() {
+        return mHasData;
+    }
+
+    @Override
+    public void bindData(Object dataJson) {
+//        Gson gson = new Gson();
+//        PkhjbxxBean pkhjbxxBean = gson.fromJson(dataJson, PkhjbxxBean.class);
+        bindData((PkhjbxxBean) dataJson);
     }
 
     public void bindData(PkhjbxxBean pkhjbxxBean) {
@@ -58,6 +104,7 @@ public class PkhJbxxPage extends PkhBasePage{
         yxzh.setText(pkhjbxxBean.getYxzh());
         jhsyh.setText(pkhjbxxBean.getJhsyh());
         pkhsx.setText(pkhjbxxBean.getPkhsx());
+        mHasData = true;
     }
 
     @Override
@@ -74,5 +121,6 @@ public class PkhJbxxPage extends PkhBasePage{
         yxzh	 = (EditText) findViewById(R.id.jbxx_yhzh);
         jhsyh	 = (EditText) findViewById(R.id.jbxx_jhsyh);
         pkhsx	 = (EditText) findViewById(R.id.jbxx_pkzt);
+        mHasData = false;
     }
 }

@@ -26,6 +26,21 @@ public class PkhZfqkPage extends PkhBasePage{
     }
 
     @Override
+    public void requestData() {
+
+    }
+
+    @Override
+    public boolean hasData() {
+        return false;
+    }
+
+    @Override
+    public void bindData(Object dataJson) {
+
+    }
+
+    @Override
     public String getPageName() {
         return getResources().getString(R.string.pkh_zfqk);
     }

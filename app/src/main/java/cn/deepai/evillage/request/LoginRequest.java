@@ -7,14 +7,19 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.logging.LogRecord;
 
+import cn.deepai.evillage.EVApplication;
+import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.LoginActivity;
-import cn.deepai.evillage.model.LoginDataBean;
-import cn.deepai.evillage.model.LoginResultBean;
-import cn.deepai.evillage.model.RequestHeaderBean;
-import cn.deepai.evillage.model.ResponseHeaderBean;
+import cn.deepai.evillage.bean.LoginRequestBean;
+import cn.deepai.evillage.bean.LoginResponseBean;
+import cn.deepai.evillage.bean.RequestHeaderBean;
+import cn.deepai.evillage.bean.ResponseHeaderBean;
+import cn.deepai.evillage.event.LoginEvent;
 import cn.deepai.evillage.utils.LogUtil;
 import cn.deepai.evillage.utils.MD5Util;
+import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -23,22 +28,22 @@ import okhttp3.Response;
  * @author GaoYixuan
  * 登录请求处理
  */
-public class LoginRequest extends EVNetRequest{
+public class LoginRequest extends EVNetRequest {
 
     public static void request(String name,String password) {
 
-        LoginDataBean loginDataBean = new LoginDataBean();
-        loginDataBean.setUserCode(name);
-        loginDataBean.setPassword(MD5Util.getMD5(password));
-        loginDataBean.setVersionCode("1");
+        LoginRequestBean loginRequestBean = new LoginRequestBean();
+        loginRequestBean.setUserCode(name);
+        loginRequestBean.setPassword(MD5Util.getMD5(password));
+        loginRequestBean.setVersionCode("1");
 
         RequestHeaderBean header = new RequestHeaderBean();
-        header.setReqCode("zyfp01001");
+        header.setReqCode(EVApplication.getApplication().getString(R.string.req_code_login));
         header.setReqTime((new Date()).toString());
         header.setTokenId("0");
 
         final Gson gson = new Gson();
-        EVNetRequest.request(EVNetRequest.ACTION_LOGIN_WITH_PASSWORD, gson.toJson(header), gson.toJson(loginDataBean), new Callback() {
+        EVNetRequest.request(EVNetRequest.ACTION_LOGIN, gson.toJson(header), gson.toJson(loginRequestBean), new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 
@@ -46,20 +51,9 @@ public class LoginRequest extends EVNetRequest{
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    JSONObject jsonObject = new JSONObject(response.body().string());
-                    String str1 = jsonObject.getString("rspHeader");
-                    String str2 = jsonObject.getString("data");
-
-                    ResponseHeaderBean responseHeaderBean = gson.fromJson(str1, ResponseHeaderBean.class);
-                    LoginResultBean result = gson.fromJson(str2, LoginResultBean.class);
-                    LogUtil.v(LoginActivity.class,str1);
-                    LogUtil.v(LoginActivity.class,str2);
-
-                } catch (JSONException e) {
-
-                }
-
+                LoginEvent event = gson.fromJson(response.body().string(), LoginEvent.class);
+                LogUtil.v(LoginRequest.class,event.toString());
+                EventBus.getDefault().post(event);
             }
         });
     }

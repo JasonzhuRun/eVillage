@@ -1,6 +1,4 @@
-package cn.deepai.evillage.model;
-
-import java.util.Date;
+package cn.deepai.evillage.bean;
 
 /**
  * @author GaoYixuan

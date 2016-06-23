@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.NewsBean;
+import cn.deepai.evillage.bean.NewsBean;
 
 /**
  * @author GaoYixuan

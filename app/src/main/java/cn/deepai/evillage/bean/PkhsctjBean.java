@@ -1,4 +1,4 @@
-package cn.deepai.evillage.model;
+package cn.deepai.evillage.bean;
 
 /**
  * 贫困户生产条件

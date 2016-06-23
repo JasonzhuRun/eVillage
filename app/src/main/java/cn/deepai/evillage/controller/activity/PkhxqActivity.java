@@ -5,7 +5,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.event.LoginEvent;
+import cn.deepai.evillage.event.PkhxqEvent;
+import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.PkhBasePage;
 import cn.deepai.evillage.view.PkhCyhPage;
 import cn.deepai.evillage.view.PkhJbxxPage;
@@ -22,15 +26,19 @@ import cn.deepai.evillage.view.PkhSctjPage;
 import cn.deepai.evillage.view.PkhShtjPage;
 import cn.deepai.evillage.view.PkhSzqkPage;
 import cn.deepai.evillage.view.PkhZfqkPage;
+import de.greenrobot.event.EventBus;
 
 /**
  * 贫困户详情页
  */
 public class PkhxqActivity extends BaseActivity {
 
+    public static final String PKH_KEY = "hid";
+    private static int sSelectedPage = 0;
+    private int pkhID;
     private ViewPager pager = null;
     private PagerTabStrip tabStrip = null;
-    private ArrayList<View> viewContainter = new ArrayList<View>();
+    private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home) {
@@ -44,12 +52,39 @@ public class PkhxqActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkh);
+        pkhID = getIntent().getIntExtra(PKH_KEY,-1);
+        if (pkhID == -1) {
+            ToastUtil.longToast(getString(R.string.pkh_error_id));
+            finish();
+            return;
+        }
         initView();
     }
 
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhxqEvent event) {
+        switch (event.rspHeader.getRspCode()) {
+            case RspCode.RSP_CODE_SUCCESS:
+                viewContainter.get(sSelectedPage).bindData(event.data);
+                break;
+            default:
+                ToastUtil.longToast(event.rspHeader.getRspDesc());
+                break;
+        }
+        tryToHideProcessDialog();
+    }
+
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
+        EventBus.getDefault().register(this);
+        onPageRequestData(sSelectedPage);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -116,7 +151,7 @@ public class PkhxqActivity extends BaseActivity {
 
             @Override
             public CharSequence getPageTitle(int position) {
-                return ((PkhBasePage)viewContainter.get(position)).getPageName();
+                return viewContainter.get(position).getPageName();
             }
         });
 
@@ -133,10 +168,16 @@ public class PkhxqActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int arg0) {
-
+                sSelectedPage = arg0;
+                onPageRequestData(arg0);
             }
         });
-
     }
 
+    private void onPageRequestData(int index) {
+        if (!viewContainter.get(index).hasData()) {
+            tryToShowProcessDialog();
+            viewContainter.get(index).requestData();
+        }
+    }
 }

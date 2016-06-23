@@ -1,4 +1,4 @@
-package cn.deepai.evillage.model;
+package cn.deepai.evillage.bean;
 
 /**
  * 贫困户基本信息
@@ -8,6 +8,7 @@ public class PkhjbxxBean {
     private String hzxm;
     private String jzdz;
     private int vid;
+    private int hid;
     private String lxdh;
     private String hzsfz;
     private String hkhyx;
@@ -22,6 +23,14 @@ public class PkhjbxxBean {
     private String jlr;
     private String bz;
     private String zt;
+
+    public int getHid() {
+        return hid;
+    }
+
+    public void setHid(int hid) {
+        this.hid = hid;
+    }
 
     public String getHzxm() {
         return hzxm;

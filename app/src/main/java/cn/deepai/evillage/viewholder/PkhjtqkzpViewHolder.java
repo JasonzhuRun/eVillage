@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.PkhjtqkzpBean;
+import cn.deepai.evillage.bean.PkhjtqkzpBean;
 
 /**
  * 贫困户家庭情况照片

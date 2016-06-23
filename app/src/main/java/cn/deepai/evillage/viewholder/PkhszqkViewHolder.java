@@ -9,10 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.controller.activity.PkhjtcyActivity;
 import cn.deepai.evillage.controller.activity.PkhszqkActivity;
-import cn.deepai.evillage.model.PkhjtcyBean;
-import cn.deepai.evillage.model.PkhszqkBean;
+import cn.deepai.evillage.bean.PkhszqkBean;
 
 /**
  * 贫困户家庭成员

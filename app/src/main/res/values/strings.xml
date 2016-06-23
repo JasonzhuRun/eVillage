@@ -4,6 +4,13 @@
     <!--公共模块-->
     <string name="dialog_loading">请稍后&#8230;</string>
     <string name="back_pressed">再按一次退出程序</string>
+    <string name="username_empyt">用户名不能为空</string>
+    <string name="password_empyt">密码不能为空</string>
+    <!--reqCode-->
+    <string name="req_code_login">zyfp01001</string>
+
+    <!--rspCode-->
+    <string name="rsp_code_login">zyfp01001</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
     <string name="tab_detail">贫困户</string>
@@ -21,6 +28,7 @@
     <string name="pkh_sctj">生产条件</string>
     <string name="pkh_cyh">产业化情况</string>
     <string name="pkh_jtqkzp">家庭情况照片</string>
+    <string name="pkh_error_id">没有查询到该贫困户相关信息</string>
     <!--基本信息页面-->
     <string name="pkh_jbxx_hzxx">户主姓名</string>
     <string name="pkh_jbxx_lxdh">联系电话</string>
