@@ -6,22 +6,84 @@ package cn.deepai.evillage.bean;
 public class PkhjtqkzpBean {
 
     private	int	id;
-    private	String	tpnr;
-
-    public String getTpnr() {
-        return tpnr;
-    }
-
-    public void setTpnr(String tpnr) {
-        this.tpnr = tpnr;
-    }
+    private	int	hid;
+    private	String	zplx;
+    private	String	tpmc;
+    private	String	tpdz;
+    private	String	jlsj;
+    private	String	jlr;
+    private	String	bz;
+    private	String	zt;
 
     public int getId() {
-
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getHid() {
+        return hid;
+    }
+
+    public void setHid(int hid) {
+        this.hid = hid;
+    }
+
+    public String getZplx() {
+        return zplx;
+    }
+
+    public void setZplx(String zplx) {
+        this.zplx = zplx;
+    }
+
+    public String getTpmc() {
+        return tpmc;
+    }
+
+    public void setTpmc(String tpmc) {
+        this.tpmc = tpmc;
+    }
+
+    public String getTpdz() {
+        return tpdz;
+    }
+
+    public void setTpdz(String tpdz) {
+        this.tpdz = tpdz;
+    }
+
+    public String getJlsj() {
+        return jlsj;
+    }
+
+    public void setJlsj(String jlsj) {
+        this.jlsj = jlsj;
+    }
+
+    public String getJlr() {
+        return jlr;
+    }
+
+    public void setJlr(String jlr) {
+        this.jlr = jlr;
+    }
+
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
+    }
+
+    public String getZt() {
+        return zt;
+    }
+
+    public void setZt(String zt) {
+        this.zt = zt;
     }
 }

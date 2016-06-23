@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 public abstract class PkhBasePage  extends FrameLayout {
 
     protected Context mContext;
+    protected boolean mHasData = false;
 
     public PkhBasePage(Context context) {
         this(context, null);
@@ -28,7 +29,7 @@ public abstract class PkhBasePage  extends FrameLayout {
 
     public abstract void requestData();
 
-    public abstract boolean hasData();
-
-    public abstract void bindData(Object dataJson);
+    public boolean hasData() {
+        return mHasData;
+    }
 }

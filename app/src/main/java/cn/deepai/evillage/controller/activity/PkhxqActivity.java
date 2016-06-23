@@ -12,10 +12,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.event.LoginEvent;
-import cn.deepai.evillage.event.PkhxqEvent;
+import cn.deepai.evillage.event.ResponseHeaderEvent;
 import cn.deepai.evillage.event.RspCode;
-import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.PkhBasePage;
 import cn.deepai.evillage.view.PkhCyhPage;
@@ -34,7 +32,6 @@ import de.greenrobot.event.EventBus;
 public class PkhxqActivity extends BaseActivity {
 
     public static final String PKH_KEY = "hid";
-    private static int sSelectedPage = 0;
     private int pkhID;
     private ViewPager pager = null;
     private PagerTabStrip tabStrip = null;
@@ -62,13 +59,12 @@ public class PkhxqActivity extends BaseActivity {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(PkhxqEvent event) {
-        switch (event.rspHeader.getRspCode()) {
+    public void onEventMainThread(ResponseHeaderEvent event) {
+        switch (event.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
-                viewContainter.get(sSelectedPage).bindData(event.data);
                 break;
             default:
-                ToastUtil.longToast(event.rspHeader.getRspDesc());
+                ToastUtil.longToast(event.getRspDesc());
                 break;
         }
         tryToHideProcessDialog();
@@ -78,7 +74,7 @@ public class PkhxqActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
         EventBus.getDefault().register(this);
-        onPageRequestData(sSelectedPage);
+        onPageRequestData(0);
     }
 
     @Override
@@ -168,7 +164,6 @@ public class PkhxqActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int arg0) {
-                sSelectedPage = arg0;
                 onPageRequestData(arg0);
             }
         });

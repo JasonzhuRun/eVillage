@@ -36,7 +36,7 @@ public class PkhszqkViewHolder extends BaseViewHolder {
 
     public void onBindData(PkhszqkBean pkhszqkBean) {
         this.mPkhszqkBean = pkhszqkBean;
-        sznd.setText(pkhszqkBean.getTjnd());
+        sznd.setText(String.valueOf(pkhszqkBean.getTjnd()));
         jtzsr.setText(String.valueOf(pkhszqkBean.getJtzsr()));
         jtcsr.setText(String.valueOf(pkhszqkBean.getJtcsr()));
         rjcsr.setText(String.valueOf(pkhszqkBean.getJtnrjcsr()));

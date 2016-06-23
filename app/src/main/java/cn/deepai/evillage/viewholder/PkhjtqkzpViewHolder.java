@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
 import cn.deepai.evillage.bean.PkhjtqkzpBean;
 
 /**
@@ -19,22 +23,38 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
     private Context mContext;
     private PkhjtqkzpBean mPkhjtqkzpBean;
     private ImageView zp;
-
+    private int viewType;
     public PkhjtqkzpViewHolder(ViewGroup parent, int viewType) {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_pkhjtqkzp,parent,false));
         mContext = parent.getContext();
         zp = (ImageView) itemView.findViewById(R.id.item_jtqkzp_zp);
+        this.viewType = viewType;
+        if (viewType == PkhjtqkzpRecyclerAdapter.TYPT_ADD_MORE) {
+            zp.setImageResource(R.drawable.add);
+        }
     }
 
     public void onBindData(PkhjtqkzpBean pkhjtqkzpBean) {
         this.mPkhjtqkzpBean = pkhjtqkzpBean;
-        byte[] temp = Base64.decode(pkhjtqkzpBean.getTpnr(), Base64.DEFAULT);
-        zp.setImageBitmap(BitmapFactory.decodeByteArray(temp, 0, temp.length));
+        ImageLoader.getInstance().displayImage(pkhjtqkzpBean.getTpdz(),zp, EVApplication.getDisplayImageOptions());
     }
 
     @Override
     public void onClick(View v) {
-        super.onClick(v);
+        // 点击添加
+        if (viewType == PkhjtqkzpRecyclerAdapter.TYPT_ADD_MORE) {
+
+        }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        // 长按删除
+        if (viewType == PkhjtqkzpRecyclerAdapter.TYPT_IMAGE) {
+
+            return true;
+        }
+        return false;
     }
 }

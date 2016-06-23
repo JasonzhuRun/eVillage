@@ -45,10 +45,10 @@
     <string name="pkh_jtcy_id">身份证号</string>
     <string name="pkh_jtcy_gx">与户主关系</string>
     <!--收支情况-->
-    <string name="pkh_szqk_sznd">收支年度</string>
-    <string name="pkh_szqk_jtzsr">家庭总收入</string>
-    <string name="pkh_szqk_jtcsr">家庭纯收入</string>
-    <string name="pkh_szqk_jtnrjcsr">人均纯收入</string>
+    <string name="pkh_szqk_sznd">收支年度(元)</string>
+    <string name="pkh_szqk_jtzsr">家庭总收入(元)</string>
+    <string name="pkh_szqk_jtcsr">家庭纯收入(元)</string>
+    <string name="pkh_szqk_jtnrjcsr">人均纯收入(元)</string>
     <!--住房情况-->
     <string name="pkh_zfqk_zfmj">住房面积</string>
     <string name="pkh_zfqk_fwjg">房屋结构</string>

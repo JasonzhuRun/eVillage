@@ -39,7 +39,6 @@ public class AssetsDataManager {
 
     public static void copyFileFromAssets(Context context, String assetsFilePath, String targetFileFullPath) {
         try {
-
             AssetManager assetManager = EVApplication.getApplication().getAssets();
             InputStream source = assetManager.open(new File(assetsFilePath).getPath());
             File destinationFile = new File(targetFileFullPath, assetsFilePath);

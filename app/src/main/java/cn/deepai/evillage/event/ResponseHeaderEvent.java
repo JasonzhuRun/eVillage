@@ -1,9 +1,9 @@
-package cn.deepai.evillage.bean;
+package cn.deepai.evillage.event;
 
 /**
  * @author GaoYixuan
  */
-public class ResponseHeaderBean {
+public class ResponseHeaderEvent {
 
     private String reqCode;
     private String rspCode;

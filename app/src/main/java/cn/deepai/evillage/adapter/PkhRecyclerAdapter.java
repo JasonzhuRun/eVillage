@@ -21,6 +21,7 @@ public class PkhRecyclerAdapter extends RecyclerView.Adapter {
             mPkhjbxxBeen.clear();
         }
         mPkhjbxxBeen.addAll(pkhjbxxBeen);
+        notifyDataSetChanged();
     }
 
     @Override

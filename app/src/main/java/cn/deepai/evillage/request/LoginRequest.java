@@ -2,20 +2,13 @@ package cn.deepai.evillage.request;
 
 import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.Date;
-import java.util.logging.LogRecord;
 
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.controller.activity.LoginActivity;
 import cn.deepai.evillage.bean.LoginRequestBean;
-import cn.deepai.evillage.bean.LoginResponseBean;
 import cn.deepai.evillage.bean.RequestHeaderBean;
-import cn.deepai.evillage.bean.ResponseHeaderBean;
 import cn.deepai.evillage.event.LoginEvent;
 import cn.deepai.evillage.utils.LogUtil;
 import cn.deepai.evillage.utils.MD5Util;

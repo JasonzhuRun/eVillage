@@ -21,6 +21,7 @@ public class PkhszqkRecyclerAdapter extends RecyclerView.Adapter {
             mPkhszqkBeans.clear();
         }
         mPkhszqkBeans.addAll(pkhszqkBean);
+        notifyDataSetChanged();
     }
 
     @Override

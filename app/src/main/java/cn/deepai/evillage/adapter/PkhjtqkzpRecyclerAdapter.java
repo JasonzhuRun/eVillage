@@ -14,6 +14,10 @@ import cn.deepai.evillage.viewholder.PkhjtqkzpViewHolder;
  */
 public class PkhjtqkzpRecyclerAdapter extends RecyclerView.Adapter {
 
+    public static final int TYPT_ADD_MORE = 0;
+    public static final int TYPT_IMAGE = 1;
+
+
     private List<PkhjtqkzpBean> mPkhjtqkzpBeans = new ArrayList<>();
 
     public void notifyResult(boolean isFirstPage, List<PkhjtqkzpBean> pkhjtqkzpBean) {
@@ -21,6 +25,7 @@ public class PkhjtqkzpRecyclerAdapter extends RecyclerView.Adapter {
             mPkhjtqkzpBeans.clear();
         }
         mPkhjtqkzpBeans.addAll(pkhjtqkzpBean);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -31,6 +36,9 @@ public class PkhjtqkzpRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (mPkhjtqkzpBeans == null||position == mPkhjtqkzpBeans.size()) {
+            return;
+        }
         if (holder instanceof PkhjtqkzpViewHolder) {
             ((PkhjtqkzpViewHolder) holder).onBindData(mPkhjtqkzpBeans.get(position));
         }
@@ -38,12 +46,15 @@ public class PkhjtqkzpRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return mPkhjtqkzpBeans == null?0: mPkhjtqkzpBeans.size();
+        return mPkhjtqkzpBeans == null?1: (mPkhjtqkzpBeans.size() + 1);
     }
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        if (mPkhjtqkzpBeans == null||position == mPkhjtqkzpBeans.size()) {
+            return TYPT_ADD_MORE;
+        }
+        return TYPT_IMAGE;
     }
 
 }

@@ -4,14 +4,37 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.bean.PkhsctjBean;
+import cn.deepai.evillage.bean.PkhshtjBean;
+import cn.deepai.evillage.bean.PkhxqBean;
+import de.greenrobot.event.EventBus;
 
 /**
  * @author GaoYixuan
  */
 public class PkhSctjPage extends PkhBasePage{
+
+    private EditText    tjnd;
+    private	EditText	gdmj;
+    private	EditText	xyggdgdmj;
+    private	EditText	tian;
+    private	EditText	tu;
+    private	EditText	lscgymj;
+    private	EditText	tghlmj;
+    private	EditText	mcdmj;
+    private	EditText	smmj;
+    private	EditText	syjjzwmj;
+    private	EditText	scyfmj;
+    private	EditText	sxsl;
 
     public PkhSctjPage(Context context) {
         this(context,null);
@@ -28,17 +51,53 @@ public class PkhSctjPage extends PkhBasePage{
 
     @Override
     public void requestData() {
-
+        String str = "{\n" +
+                "\t\"data\":{\n" +
+                "        \"id\":43,\n" +
+                "        \"tjnd\":2015,\n" +
+                "        \"gdmj\":1.5,\n" +
+                "        \"yxggdgdmj\":2.1,\n" +
+                "        \"tian\":3.2,\n" +
+                "        \"tu\":5.4,\n" +
+                "        \"lscgymj\":1.5,\n" +
+                "        \"tghlmj\":1.2,\n" +
+                "        \"mudmj\":1.6,\n" +
+                "        \"smmj\":0.8,\n" +
+                "        \"syjjzwmj\":10.1,\n" +
+                "        \"scyfmj\":5.6,\n" +
+                "        \"sxsl\":2,\n" +
+                "        \"jlsj\":2015080312121,\n" +
+                "        \"jlr\":\"管理员\",\n" +
+                "        \"bz\":\"备注内容\"\n" +
+                "    },\n" +
+                "\t\"rspHeader\": {\n" +
+                "\t\t\"reqCode\": \"zyfp01001\",\n" +
+                "\t\t\"rspCode\": \"0000\",\n" +
+                "\t\t\"rspDesc\": \"请求成功\",\n" +
+                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
+                "\t}\n" +
+                "}";
+        Gson gson = new Gson();
+        Type type = new TypeToken<PkhxqBean<PkhsctjBean>>(){}.getType();
+        PkhxqBean<PkhsctjBean> pkhxqBean = gson.fromJson(str, type);
+        bindData(pkhxqBean.data);
+        EventBus.getDefault().post(pkhxqBean.rspHeader);
     }
 
-    @Override
-    public boolean hasData() {
-        return false;
-    }
-
-    @Override
-    public void bindData(Object dataJson) {
-
+    private void bindData(PkhsctjBean pkhsctjBean) {
+        tjnd.setText(String.valueOf(pkhsctjBean.getTjnd()));
+        gdmj.setText(String.valueOf(pkhsctjBean.getGdmj()));
+        xyggdgdmj.setText(String.valueOf(pkhsctjBean.getXyggdgdmj()));
+        tian.setText(String.valueOf(pkhsctjBean.getTian()));
+        tu.setText(String.valueOf(pkhsctjBean.getTu()));
+        lscgymj.setText(String.valueOf(pkhsctjBean.getLscgymj()));
+        tghlmj.setText(String.valueOf(pkhsctjBean.getTghlmj()));
+        mcdmj.setText(String.valueOf(pkhsctjBean.getMcdmj()));
+        smmj.setText(String.valueOf(pkhsctjBean.getSmmj()));
+        syjjzwmj.setText(String.valueOf(pkhsctjBean.getSyjjzwmj()));
+        scyfmj.setText(String.valueOf(pkhsctjBean.getScyfmj()));
+        sxsl.setText(String.valueOf(pkhsctjBean.getSxsl()));
+        mHasData = true;
     }
 
     @Override
@@ -47,6 +106,18 @@ public class PkhSctjPage extends PkhBasePage{
     }
 
     private void initView() {
-
+        tjnd	 = (EditText)findViewById(R.id.sctj_tjnd);
+        gdmj	 = (EditText)findViewById(R.id.sctj_gdmj);
+        xyggdgdmj	 = (EditText)findViewById(R.id.sctj_yxgggdmj);
+        tian	 = (EditText)findViewById(R.id.sctj_tian);
+        tu	 = (EditText)findViewById(R.id.sctj_tu);
+        lscgymj	 = (EditText)findViewById(R.id.sctj_lscgy);
+        tghlmj	 = (EditText)findViewById(R.id.sctj_tghl);
+        mcdmj	 = (EditText)findViewById(R.id.sctj_mcd);
+        smmj	 = (EditText)findViewById(R.id.sctj_smmj);
+        syjjzwmj	 = (EditText)findViewById(R.id.sctj_syjjzw);
+        scyfmj	 = (EditText)findViewById(R.id.sctj_scyf);
+        sxsl	 = (EditText)findViewById(R.id.sctj_scsl);
+        mHasData = false;
     }
 }

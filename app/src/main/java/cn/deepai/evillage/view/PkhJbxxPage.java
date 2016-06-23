@@ -6,14 +6,13 @@ import android.view.LayoutInflater;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.bean.PkhjbxxBean;
-import cn.deepai.evillage.controller.activity.PkhxqActivity;
-import cn.deepai.evillage.event.LoginEvent;
-import cn.deepai.evillage.event.PkhListEvent;
-import cn.deepai.evillage.event.PkhxqEvent;
-import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.bean.PkhxqBean;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -21,7 +20,6 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhJbxxPage extends PkhBasePage{
 
-    private boolean mHasData = false;
     // 户主姓名
     private	EditText	hzxm;
     // 居住地址
@@ -34,6 +32,8 @@ public class PkhJbxxPage extends PkhBasePage{
     private	EditText	hkhyx;
     // 银行账号
     private	EditText	yxzh;
+    // 贫困识别标准
+    private EditText    sbbz;
     // 计划生育户
     private	EditText	jhsyh;
     // 贫困户属性
@@ -61,55 +61,62 @@ public class PkhJbxxPage extends PkhBasePage{
 
     @Override
     public void requestData() {
-        String str = "{\n" +
-                "\t\"data\": {\n" +
-                "\t\t\"isMustUpdate\": \"\",\n" +
-                "\t\t\"isUpdate\": \"0\",\n" +
-                "\t\t\"tokenId\": \"989ae59688094d6b8803744e6f3d4588\",\n" +
-                "\t\t\"updateContent\": \"\",\n" +
-                "\t\t\"updateUrl\": \"\",\n" +
-                "\t\t\"userId\": \"1\",\n" +
-                "\t\t\"versionName\": \"\"\n" +
-                "\t},\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
-                "}";
-        Gson gson = new Gson();
-        PkhxqEvent event = gson.fromJson(str, PkhxqEvent.class);
-        EventBus.getDefault().post(event);
+        new Thread() {
+            @Override
+            public void run() {
+                String str = "{\n" +
+                        "\t\"data\": {\n" +
+                        "\t\t\"hzxm\": \"张三2\",\n" +
+                        "\t\t\"jzdz\": \"遵义\",\n" +
+                        "        \"vid\": null,\n" +
+                        "        \"lxdh\": \"1888888883\",\n" +
+                        "        \"hzsfz\": \"55521525351535\",\n" +
+                        "        \"hkhyx\": null,\n" +
+                        "        \"yxzh\": null,\n" +
+                        "        \"pksbbz\": \"G\",\n" +
+                        "        \"jhsyh\": 0,\n" +
+                        "        \"pkhsx\": \"2\",\n" +
+                        "        \"pkhzt\": null,\n" +
+                        "        \"jdnf\": 2015,\n" +
+                        "        \"tpnf\": 0,\n" +
+                        "        \"jlsj\": null,\n" +
+                        "        \"jlr\": null,\n" +
+                        "\t\t\"bz\": null,\n" +
+                        "\t\t\"zt\": null\n" +
+                        "\t},\n" +
+                        "\t\"rspHeader\": {\n" +
+                        "\t\t\"reqCode\": \"zyfp01001\",\n" +
+                        "\t\t\"rspCode\": \"0000\",\n" +
+                        "\t\t\"rspDesc\": \"请求成功\",\n" +
+                        "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
+                        "\t}\n" +
+                        "}";
+                Gson gson = new Gson();
+                Type type = new TypeToken<PkhxqBean<PkhjbxxBean>>(){}.getType();
+                PkhxqBean<PkhjbxxBean> pkhxqBean = gson.fromJson(str, type);
+                bindData(pkhxqBean.data);
+                EventBus.getDefault().post(pkhxqBean.rspHeader);
+            }
+        }.start();
     }
+
+
 
     @Override
-    public boolean hasData() {
-        return mHasData;
+    public String getPageName() {
+        return getResources().getString(R.string.pkh_jbxx);
     }
 
-    @Override
-    public void bindData(Object dataJson) {
-//        Gson gson = new Gson();
-//        PkhjbxxBean pkhjbxxBean = gson.fromJson(dataJson, PkhjbxxBean.class);
-        bindData((PkhjbxxBean) dataJson);
-    }
-
-    public void bindData(PkhjbxxBean pkhjbxxBean) {
+    private void bindData(PkhjbxxBean pkhjbxxBean) {
         hzxm.setText(pkhjbxxBean.getHzxm());
         jzdz.setText(pkhjbxxBean.getJzdz());
         lxdh.setText(pkhjbxxBean.getLxdh());
         hzsfz.setText(pkhjbxxBean.getHzsfz());
         hkhyx.setText(pkhjbxxBean.getHkhyx());
         yxzh.setText(pkhjbxxBean.getYxzh());
-        jhsyh.setText(pkhjbxxBean.getJhsyh());
-        pkhsx.setText(pkhjbxxBean.getPkhsx());
+        jhsyh.setText(String.valueOf(pkhjbxxBean.getJhsyh()));
+        pkhzt.setText(pkhjbxxBean.getPkhzt());
         mHasData = true;
-    }
-
-    @Override
-    public String getPageName() {
-        return getResources().getString(R.string.pkh_jbxx);
     }
 
     private void initView() {
@@ -120,7 +127,7 @@ public class PkhJbxxPage extends PkhBasePage{
         hkhyx	 = (EditText) findViewById(R.id.jbxx_khyh);
         yxzh	 = (EditText) findViewById(R.id.jbxx_yhzh);
         jhsyh	 = (EditText) findViewById(R.id.jbxx_jhsyh);
-        pkhsx	 = (EditText) findViewById(R.id.jbxx_pkzt);
+        pkhzt	 = (EditText) findViewById(R.id.jbxx_pkzt);
         mHasData = false;
     }
 }

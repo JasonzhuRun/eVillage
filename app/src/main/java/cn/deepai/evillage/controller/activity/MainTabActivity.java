@@ -18,11 +18,11 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.controller.fragment.TzFragment;
 import cn.deepai.evillage.controller.fragment.BaseFragment;
-import cn.deepai.evillage.controller.fragment.PkhFragment;
 import cn.deepai.evillage.controller.fragment.MineFragment;
 import cn.deepai.evillage.controller.fragment.NewsFragment;
+import cn.deepai.evillage.controller.fragment.PkhFragment;
+import cn.deepai.evillage.controller.fragment.TzFragment;
 import cn.deepai.evillage.utils.LogUtil;
 import cn.deepai.evillage.utils.ToastUtil;
 

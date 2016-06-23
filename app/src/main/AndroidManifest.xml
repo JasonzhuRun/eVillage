@@ -52,6 +52,10 @@
             android:name=".controller.activity.PkhjtcyActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleInstance"/>
+        <activity
+            android:name=".controller.activity.PkhszqkActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>
