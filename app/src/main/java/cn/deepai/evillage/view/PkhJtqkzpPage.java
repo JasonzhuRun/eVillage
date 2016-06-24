@@ -10,16 +10,29 @@ import android.view.LayoutInflater;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
+import cn.deepai.evillage.bean.LoginRequestBean;
 import cn.deepai.evillage.bean.PkhcyhqkBean;
 import cn.deepai.evillage.bean.PkhjtcyBean;
 import cn.deepai.evillage.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.bean.PkhxqBean;
+import cn.deepai.evillage.bean.RequestHeaderBean;
+import cn.deepai.evillage.event.LoginEvent;
+import cn.deepai.evillage.request.EVNetRequest;
+import cn.deepai.evillage.request.LoginRequest;
+import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.MD5Util;
 import de.greenrobot.event.EventBus;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * @author GaoYixuan
@@ -252,6 +265,30 @@ public class PkhJtqkzpPage extends PkhBasePage{
                 "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
                 "\t}\n" +
                 "}";
+//        LoginRequestBean loginRequestBean = new LoginRequestBean();
+//        loginRequestBean.setUserCode(name);
+//        loginRequestBean.setPassword(MD5Util.getMD5(password));
+//        loginRequestBean.setVersionCode("1");
+//
+//        RequestHeaderBean header = new RequestHeaderBean();
+//        header.setReqCode(EVApplication.getApplication().getString(R.string.req_code_login));
+//        header.setReqTime((new Date()).toString());
+//        header.setTokenId("0");
+//
+//        final Gson gson = new Gson();
+//        EVNetRequest.request(EVNetRequest.ACTION_LOGIN, gson.toJson(header), gson.toJson(loginRequestBean), new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                LoginEvent event = gson.fromJson(response.body().string(), LoginEvent.class);
+//                LogUtil.v(LoginRequest.class,event.toString());
+//                EventBus.getDefault().post(event);
+//            }
+//        });
         Gson gson = new Gson();
         Type type = new TypeToken<PkhxqBean<List<PkhjtqkzpBean>>>(){}.getType();
         PkhxqBean<List<PkhjtqkzpBean>> pkhxqBean = gson.fromJson(str, type);

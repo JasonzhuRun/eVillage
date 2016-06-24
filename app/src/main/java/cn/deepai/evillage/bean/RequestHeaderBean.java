@@ -1,12 +1,20 @@
 package cn.deepai.evillage.bean;
 
+import java.util.Date;
+
 /**
  * @author GaoYixuan
  */
 public class RequestHeaderBean {
-    String reqCode;
-    String reqTime;
-    String tokenId;
+
+
+    private String reqCode;
+    private  String reqTime;
+    private String tokenId;
+
+    public RequestHeaderBean() {
+        reqTime = new Date().toString();
+    }
 
     public String getReqCode() {
         return reqCode;

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhRecyclerAdapter;
 import cn.deepai.evillage.event.PkhListEvent;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.request.PkhJbxxListRequest;
 import cn.deepai.evillage.utils.LogUtil;
 import de.greenrobot.event.EventBus;
@@ -57,7 +58,8 @@ public class PkhFragment extends BaseFragment {
 
     private void loadData() {
         tryToShowProcessDialog();
-        PkhJbxxListRequest.request(0);
+        int id = SettingManager.getInstance().getUserId();
+        PkhJbxxListRequest.request(id);
     }
 
     private void initView() {

@@ -8,6 +8,9 @@
     <string name="password_empyt">密码不能为空</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>
+    <string name="req_code_getPkhJbxxList">zyfp01002</string>
+    <string name="req_code_getPkhJbxx">zyfp01003</string>
+    <string name="req_code_getPkhJtcyxxList">zyfp01004</string>
 
     <!--rspCode-->
     <string name="rsp_code_login">zyfp01001</string>

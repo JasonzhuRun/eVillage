@@ -31,10 +31,6 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhxqActivity extends BaseActivity {
 
-    public static final String PKH_KEY = "hid";
-    private int pkhID;
-    private ViewPager pager = null;
-    private PagerTabStrip tabStrip = null;
     private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -49,12 +45,6 @@ public class PkhxqActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkh);
-        pkhID = getIntent().getIntExtra(PKH_KEY,-1);
-        if (pkhID == -1) {
-            ToastUtil.longToast(getString(R.string.pkh_error_id));
-            finish();
-            return;
-        }
         initView();
     }
 
@@ -74,7 +64,7 @@ public class PkhxqActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
         EventBus.getDefault().register(this);
-        onPageRequestData(0);
+        onPageShow(0);
     }
 
     @Override
@@ -107,8 +97,9 @@ public class PkhxqActivity extends BaseActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        pager = (ViewPager) this.findViewById(R.id.view_pager);
-        tabStrip = (PagerTabStrip) this.findViewById(R.id.view_pager_tabstrip);
+        ViewPager pager = (ViewPager) this.findViewById(R.id.view_pager);
+        if (pager == null) return;
+        PagerTabStrip tabStrip = (PagerTabStrip) this.findViewById(R.id.view_pager_tabstrip);
         if (tabStrip != null) {
             //取消tab下面的长横线
             tabStrip.setDrawFullUnderline(false);
@@ -164,12 +155,12 @@ public class PkhxqActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int arg0) {
-                onPageRequestData(arg0);
+                onPageShow(arg0);
             }
         });
     }
 
-    private void onPageRequestData(int index) {
+    private void onPageShow(int index) {
         if (!viewContainter.get(index).hasData()) {
             tryToShowProcessDialog();
             viewContainter.get(index).requestData();

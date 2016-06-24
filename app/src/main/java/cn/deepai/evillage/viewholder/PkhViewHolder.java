@@ -9,9 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.bean.PkhjbxxBean;
+import cn.deepai.evillage.manager.SettingManager;
 
 /**
  * 贫困户列表
@@ -35,8 +39,7 @@ public class PkhViewHolder extends BaseViewHolder {
 
     public void onBindData(PkhjbxxBean pkhjbxxBean) {
         this.mPkhjbxxBean = pkhjbxxBean;
-//        byte[] temp = Base64.decode(pkhjbxxBean.getBz(),Base64.DEFAULT);
-//        photo.setImageBitmap(BitmapFactory.decodeByteArray(temp, 0, temp.length));
+//todo        ImageLoader.getInstance().displayImage(pkhjbxxBean.getTpdz(),photo, EVApplication.getDisplayImageOptions());
         name.setText(pkhjbxxBean.getHzxm());
         address.setText(pkhjbxxBean.getJzdz());
     }
@@ -44,8 +47,8 @@ public class PkhViewHolder extends BaseViewHolder {
     @Override
     public void onClick(View v) {
         super.onClick(v);
+        SettingManager.getInstance().setCurrentHid(mPkhjbxxBean.getHid());
         Intent intent = new Intent(mContext, PkhxqActivity.class);
-        intent.putExtra(PkhxqActivity.PKH_KEY,mPkhjbxxBean.getHid());
         mContext.startActivity(intent);
         ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }

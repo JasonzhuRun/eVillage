@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import cn.deepai.evillage.EVApplication;
+
 /**
  * SharePreference操作类
  */
@@ -13,15 +15,18 @@ public final class SettingManager {
 	/**
 	 * the first part: a pref for common setting
 	 */
-	public static final String SETTING_NAME = "setting";
+	private static final String SETTING_NAME = "setting";
 
-    public static final String CURRENT_USER = "current_user";
+	private static final String CURRENT_USER = "current_user";
 
     /**
 	 * the second part:  
 	 * each user has unique pref for app information. named SETTING_NAME + CURRENT_USER
 	 */
-	public static final String TOKEN = "token";
+	private static final String TOKEN = "token";
+	private static final String USER_ID = "user_id";
+	// 当前编辑的贫困户ID
+	private static final String HID = "hid";
 
 	private Context mContext;
 	private SharedPreferences mCommPref;
@@ -29,11 +34,11 @@ public final class SettingManager {
 
 	private static SettingManager mInstance;
 
-	public static SettingManager getInstance(Context context) {
+	public static SettingManager getInstance() {
 		if (mInstance == null) {
 			synchronized (SettingManager.class) {
 				if (mInstance == null) {
-					mInstance = new SettingManager(context);
+					mInstance = new SettingManager();
 				}
 			}
 		}
@@ -41,8 +46,8 @@ public final class SettingManager {
 		return mInstance;
 	}
 
-	private SettingManager(Context context) {
-		mContext = context;
+	private SettingManager() {
+		mContext = EVApplication.getApplication();
         // 系统设置文件
 		mCommPref = mContext.getSharedPreferences(SETTING_NAME,
 				Context.MODE_PRIVATE);
@@ -94,6 +99,7 @@ public final class SettingManager {
 
         SharedPreferences.Editor edit = mCurUserPref.edit();
 		edit.remove(TOKEN);
+		edit.remove(USER_ID);
 		edit.apply();
 	}
 	
@@ -113,5 +119,41 @@ public final class SettingManager {
         }
 
         return mCurUserPref.getString(TOKEN, "");
+	}
+
+	public void setUserId(int id) {
+		if (mCurUserPref == null) {
+			return;
+		}
+
+		SharedPreferences.Editor edit = mCurUserPref.edit();
+		edit.putInt(USER_ID, id);
+		edit.apply();
+	}
+
+	public int getUserId() {
+		if (mCurUserPref == null) {
+			return -1;
+		}
+
+		return mCurUserPref.getInt(USER_ID, -1);
+	}
+
+	public void setCurrentHid(int id) {
+		if (mCurUserPref == null) {
+			return;
+		}
+
+		SharedPreferences.Editor edit = mCurUserPref.edit();
+		edit.putInt(HID, id);
+		edit.apply();
+	}
+
+	public int getCurrentHid() {
+		if (mCurUserPref == null) {
+			return -1;
+		}
+
+		return mCurUserPref.getInt(HID, -1);
 	}
 }

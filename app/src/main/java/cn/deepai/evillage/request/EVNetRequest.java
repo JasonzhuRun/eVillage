@@ -35,14 +35,34 @@ import okhttp3.RequestBody;
  */
 public class EVNetRequest {
 
-    protected static final String ACTION_LOGIN = "login.action";
-    protected static final String ACTION_PKHLIST= "login.action";
+    public static final String ACTION_LOGIN = "login.action";
+    public static final String ACTION_GET_PKHLIST = "login.action";
+    public static final String ACTION_GET_PKHJBXX = "getPkhJbxx.action";
+    public static final String ACTION_GET_PKHJTCYLIST = "getPkhJtcyList.action";
+    public static final String ACTION_GET_JTCYJBXX = "getPkhJtcyJbxx.action";
+    public static final String ACTION_GET_PKHSZQKLIST = "getPkhSzqkList.action";
+    public static final String ACTION_GET_PKHSZQKJBXX= "getPkhSzqkJbxx.action";
+    public static final String ACTION_UPDATE_PKHSZQKJBXX = "updatePkhSzqkJbxx.action";
+    public static final String ACTION_ADD_PKHZFJBXX = "addPkhSzqkJbxx.action";
+    public static final String ACTION_GET_PKHZFQJBXX = "getPkhZfqkJbxx.action";
+    public static final String ACTION_UPDATE_PKHZFQKJBXX = "updatePkhZfqkJbxx.action";
+    public static final String ACTION_ADD_PKHZFQKJBXX = "addPkhZfqkJbxx.action";
+    public static final String ACTION_GET_PKHSCTJJBXX = "getPkhSctjJbxx.action";
+    public static final String ACTION_UPDATE_PKHSCTJJBXX = "updatePkhSctjJbxx.action";
+    public static final String ACTION_ADD_PKHSCTJJBXX = "addPkhSctjJbxx.action";
+    public static final String ACTION_GET_PKHSHQKJBXX = "getPkhShqkJbxx.action";
+    public static final String ACTION_UPDATE_PKHSHQKJNXX = "updatePkhShqkJbxx.action";
+    public static final String ACTION_ADD_PKHSGQKJBXX = "addPkhShqkJbxx.action";
+    public static final String ACTION_GET_PKUCYHZZJBXX = "getPkhCyhzzJbxx.action";
+    public static final String ACTION_UPDATE_PKHCYHZZJBXX = "updatePkhCyhzzJbxx.action";
+    public static final String ACTION_ADD_PKHCYHZZJBXX = "addPkhCyhzzJbxx.action";
+
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
     private static final String mURL = "http://192.168.101.18:8080/zyfp-web/inter/termLogin!";
     private static OkHttpClient client = new OkHttpClient();
 
-    protected static void request(String action,String jsonHeader,String jsonData,Callback callback) {
+    public static void request(String action,String jsonHeader,String jsonData,Callback callback) {
         JSONObject jsonObject = new JSONObject();
 
         try {

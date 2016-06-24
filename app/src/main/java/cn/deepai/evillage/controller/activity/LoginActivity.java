@@ -27,7 +27,7 @@ public class LoginActivity extends BaseActivity{
     public void onEventMainThread(LoginEvent event) {
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
-                SettingManager.getInstance(this).setToken(event.data.getTokenId());
+                SettingManager.getInstance().setToken(event.data.getTokenId());
                 tryToEnter();
                 break;
             default:
@@ -67,7 +67,7 @@ public class LoginActivity extends BaseActivity{
         Button loginBtn = (Button)findViewById(R.id.login_ensure);
         username = (EditText)findViewById(R.id.login_username);
         password = (EditText)findViewById(R.id.login_password);
-        String curUser = SettingManager.getInstance(this).getCurUser();
+        String curUser = SettingManager.getInstance().getCurUser();
         if (!TextUtils.isEmpty(curUser)) {
             username.setText(curUser);
             password.requestFocus();
@@ -86,7 +86,7 @@ public class LoginActivity extends BaseActivity{
 
     private void tryToEnter() {
         tryToShowProcessDialog();
-        String token = SettingManager.getInstance(this).getToken();
+        String token = SettingManager.getInstance().getToken();
         if (!TextUtils.isEmpty(token)) {
             Intent intent = new Intent(LoginActivity.this,MainTabActivity.class);
             startActivity(intent);
@@ -110,7 +110,7 @@ public class LoginActivity extends BaseActivity{
             tryToHideProcessDialog();
             return;
         }
-        SettingManager.getInstance(LoginActivity.this).setCurUser(strName);
+        SettingManager.getInstance().setCurUser(strName);
         LoginRequest.request(strName,strPasswd);
     }
 }
