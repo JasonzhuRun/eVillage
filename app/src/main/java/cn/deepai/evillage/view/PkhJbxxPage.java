@@ -121,7 +121,7 @@ public class PkhJbxxPage extends PkhBasePage{
 //        header.setTokenId(token);
 //
 //        final Gson requestGson = new Gson();
-//        EVNetRequest.request(EVNetRequest.ACTION_PKHJBXX, requestGson.toJson(header), jsonObject.toString(), new Callback() {
+//        EVNetRequest.request(EVNetRequest.ACTION_GET_PKHJBXX, requestGson.toJson(header), jsonObject.toString(), new Callback() {
 //            @Override
 //            public void onFailure(Call call, IOException e) {
 //

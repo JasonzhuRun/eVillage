@@ -59,6 +59,7 @@ public class PkhJbxxListRequest extends EVNetRequest{
                 "}";
         Gson gson = new Gson();
         PkhListEvent event = gson.fromJson(str, PkhListEvent.class);
+        EventBus.getDefault().post(event);
 
 //        JSONObject jsonObject = new JSONObject();
 //        try {

@@ -36,7 +36,7 @@ import okhttp3.RequestBody;
 public class EVNetRequest {
 
     public static final String ACTION_LOGIN = "login.action";
-    public static final String ACTION_GET_PKHLIST = "login.action";
+    public static final String ACTION_GET_PKHLIST = "getPkhJbxxList.action";
     public static final String ACTION_GET_PKHJBXX = "getPkhJbxx.action";
     public static final String ACTION_GET_PKHJTCYLIST = "getPkhJtcyList.action";
     public static final String ACTION_GET_JTCYJBXX = "getPkhJtcyJbxx.action";
