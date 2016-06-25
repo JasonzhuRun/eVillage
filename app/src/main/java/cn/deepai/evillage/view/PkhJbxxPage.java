@@ -8,24 +8,12 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.lang.reflect.Type;
 
-import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.bean.PkhjbxxBean;
 import cn.deepai.evillage.bean.PkhxqBean;
-import cn.deepai.evillage.bean.RequestHeaderBean;
-import cn.deepai.evillage.event.PkhListEvent;
-import cn.deepai.evillage.manager.SettingManager;
-import cn.deepai.evillage.request.EVNetRequest;
 import de.greenrobot.event.EventBus;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 /**
  * 贫困户基本信息
@@ -121,7 +109,7 @@ public class PkhJbxxPage extends PkhBasePage{
 //        header.setTokenId(token);
 //
 //        final Gson requestGson = new Gson();
-//        EVNetRequest.request(EVNetRequest.ACTION_GET_PKHJBXX, requestGson.toJson(header), jsonObject.toString(), new Callback() {
+//        EVRequest.request(EVRequest.ACTION_GET_PKHJBXX, requestGson.toJson(header), jsonObject.toString(), new Callback() {
 //            @Override
 //            public void onFailure(Call call, IOException e) {
 //

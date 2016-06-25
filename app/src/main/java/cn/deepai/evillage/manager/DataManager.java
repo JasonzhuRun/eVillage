@@ -1,6 +1,6 @@
 package cn.deepai.evillage.manager;
 
-import cn.deepai.evillage.request.EVNetRequest;
+import cn.deepai.evillage.request.EVRequest;
 
 /**
  * @author GaoYixuan
@@ -19,7 +19,7 @@ public class DataManager {
 
     }
 
-    public void addProcess(EVNetRequest request) {
+    public void addProcess(EVRequest request) {
 
     }
 }

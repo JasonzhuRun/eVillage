@@ -33,7 +33,7 @@ import okhttp3.RequestBody;
  * 19贫困户产业化组织情况维护接口  termLogin!updatePkhCyhzzJbxx.action
  * 20贫困户产业化组织新增接口  	termLogin!addPkhCyhzzJbxx.action
  */
-public class EVNetRequest {
+public class EVRequest {
 
     public static final String ACTION_LOGIN = "login.action";
     public static final String ACTION_GET_PKHLIST = "getPkhJbxxList.action";
@@ -69,7 +69,7 @@ public class EVNetRequest {
             jsonObject.put("reqHeader",jsonHeader);
             jsonObject.put("data",jsonData);
         }catch (JSONException e) {
-            LogUtil.e(EVNetRequest.class,"Illegal json format:"+e.toString());
+            LogUtil.e(EVRequest.class,"Illegal json format:"+e.toString());
             return;
         }
         RequestBody requestBody = RequestBody.create(MEDIA_TYPE,jsonObject.toString());

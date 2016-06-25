@@ -6,7 +6,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.Authenticator;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -83,18 +82,20 @@ public class LogUtil {
      * @param msg 日志
      */
     private static void log(String tag, String msg, char level) {
-        if ('e' == level) { // 输出错误信息
-            Log.e(tag, msg);
-        } else if ('w' == level) {
-            Log.w(tag, msg);
-        } else if ('d' == level) {
-            Log.d(tag, msg);
-        } else if ('i' == level) {
-            Log.i(tag, msg);
-        } else {
-            Log.v(tag, msg);
+        if (EVApplication.isDebug()) {
+            if ('e' == level) { // 输出错误信息
+                Log.e(tag, msg);
+            } else if ('w' == level) {
+                Log.w(tag, msg);
+            } else if ('d' == level) {
+                Log.d(tag, msg);
+            } else if ('i' == level) {
+                Log.i(tag, msg);
+            } else {
+                Log.v(tag, msg);
+            }
+            writeLogtoFile(String.valueOf(level), tag, msg);
         }
-        writeLogtoFile(String.valueOf(level), tag, msg);
     }
 
     /**
@@ -102,7 +103,7 @@ public class LogUtil {
      * **/
     private static void writeLogtoFile(String logType, String tag, String text) {// 新建或打开日志文件
 
-        String sdcardRoot = FileUtil.getSdcardDir();
+        String sdcardRoot = FileUtil.getAppDir();
         if (sdcardRoot == null) return;
         String appName = EVApplication.getApplication().getResources().getString(R.string.app_name);
         Date nowtime = new Date();

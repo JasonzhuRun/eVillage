@@ -1,5 +1,8 @@
 package cn.deepai.evillage.utils;
 
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.os.Debug;
 import android.os.Environment;
 
 import java.io.File;
@@ -7,28 +10,42 @@ import java.io.File;
 import cn.deepai.evillage.EVApplication;
 
 /**
- * Created by GaoYixuan on 16/5/30.
+ * 文件夹及文件工具
  */
 public class FileUtil {
 
+    public static String getAppDir() {
 
-    public static String getSdcardDir() {
-
-        String sdcardRoot = SdcardUtil.isSdcardStateMount()?Environment.getExternalStorageDirectory().getPath():null;
-        if (sdcardRoot == null) return null;
-        File file =new File(sdcardRoot+"/DeepAI/eVillage");
-        //如果文件夹不存在则创建
-        if  (!file .exists()  && !file .isDirectory()) {
-            File parentFile =new File(sdcardRoot+"/DeepAI");
-            parentFile .mkdir();
-            file .mkdir();
+        String appPath;
+        Context context = EVApplication.getApplication();
+        File exFileDir =  context.getExternalFilesDir(null);
+        if (exFileDir != null) {
+            appPath = exFileDir.getPath();
+        } else {
+            appPath = context.getFilesDir().getPath();
         }
-        return sdcardRoot+"/DeepAI/eVillage";
+        return appPath;
     }
 
-    public static String getPrivateDir() {
-
-        return EVApplication.getApplication().getFilesDir().getPath();
+    public static File getTextCacheDir() {
+        Context context = EVApplication.getApplication();
+        String cachePath;
+        if (EVApplication.isDebug()&&context.getExternalCacheDir() != null) {
+            cachePath = context.getExternalCacheDir().getPath();
+        } else {
+            cachePath = context.getCacheDir().getPath();
+        }
+        return new File(cachePath + File.separator + "text");
     }
 
+    public static File getPicCacheDir() {
+        Context context = EVApplication.getApplication();
+        String cachePath;
+        if (context.getExternalCacheDir() != null) {
+            cachePath = context.getExternalCacheDir().getPath();
+        } else {
+            cachePath = context.getCacheDir().getPath();
+        }
+        return new File(cachePath + File.separator + "pic");
+    }
 }

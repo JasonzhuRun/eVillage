@@ -9,6 +9,8 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import cn.deepai.evillage.EVApplication;
+
 public class PhoneInfoUtil {
 	
 	public static boolean isNetworkAvailable(Context context) {
@@ -122,7 +124,8 @@ public class PhoneInfoUtil {
     	inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public static String getVersionName(Context appContext) {
+    public static String getVersionName() {
+		Context appContext = EVApplication.getApplication();
         String version = null;
         try {
             PackageInfo pi = appContext.getPackageManager().getPackageInfo(appContext.getPackageName(), 0);
@@ -134,7 +137,8 @@ public class PhoneInfoUtil {
         return version;
     }
 
-    public static int getVersionCode(Context appContext) {
+    public static int getVersionCode() {
+		Context appContext = EVApplication.getApplication();
         int version = 0;
         try {
             PackageInfo pi = appContext.getPackageManager().getPackageInfo(appContext.getPackageName(), 0);

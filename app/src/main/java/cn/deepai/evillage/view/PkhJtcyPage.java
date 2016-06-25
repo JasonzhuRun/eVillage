@@ -25,7 +25,7 @@ import cn.deepai.evillage.bean.PkhjtcyBean;
 import cn.deepai.evillage.bean.PkhxqBean;
 import cn.deepai.evillage.bean.RequestHeaderBean;
 import cn.deepai.evillage.manager.SettingManager;
-import cn.deepai.evillage.request.EVNetRequest;
+import cn.deepai.evillage.request.EVRequest;
 import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -99,7 +99,7 @@ public class PkhJtcyPage extends PkhBasePage{
         header.setTokenId(token);
 
         final Gson requestGson = new Gson();
-        EVNetRequest.request(EVNetRequest.ACTION_GET_PKHJTCYLIST, requestGson.toJson(header), jsonObject.toString(), new Callback() {
+        EVRequest.request(EVRequest.ACTION_GET_PKHJTCYLIST, requestGson.toJson(header), jsonObject.toString(), new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 

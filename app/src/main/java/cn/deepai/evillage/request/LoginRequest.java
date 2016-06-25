@@ -10,8 +10,8 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.bean.LoginRequestBean;
 import cn.deepai.evillage.bean.RequestHeaderBean;
 import cn.deepai.evillage.event.LoginEvent;
+import cn.deepai.evillage.utils.EncryptionUtil;
 import cn.deepai.evillage.utils.LogUtil;
-import cn.deepai.evillage.utils.MD5Util;
 import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -21,13 +21,13 @@ import okhttp3.Response;
  * @author GaoYixuan
  * 登录请求处理
  */
-public class LoginRequest extends EVNetRequest {
+public class LoginRequest extends EVRequest {
 
     public static void request(String name,String password) {
 
         LoginRequestBean loginRequestBean = new LoginRequestBean();
         loginRequestBean.setUserCode(name);
-        loginRequestBean.setPassword(MD5Util.getMD5(password));
+        loginRequestBean.setPassword(EncryptionUtil.getMD5(password));
         loginRequestBean.setVersionCode("1");
 
         RequestHeaderBean header = new RequestHeaderBean();
@@ -36,7 +36,7 @@ public class LoginRequest extends EVNetRequest {
         header.setTokenId("0");
 
         final Gson gson = new Gson();
-        EVNetRequest.request(EVNetRequest.ACTION_LOGIN, gson.toJson(header), gson.toJson(loginRequestBean), new Callback() {
+        EVRequest.request(EVRequest.ACTION_LOGIN, gson.toJson(header), gson.toJson(loginRequestBean), new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 

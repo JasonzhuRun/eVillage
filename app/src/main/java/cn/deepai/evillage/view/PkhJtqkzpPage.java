@@ -10,29 +10,14 @@ import android.view.LayoutInflater;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.Date;
 import java.util.List;
 
-import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
-import cn.deepai.evillage.bean.LoginRequestBean;
-import cn.deepai.evillage.bean.PkhcyhqkBean;
-import cn.deepai.evillage.bean.PkhjtcyBean;
 import cn.deepai.evillage.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.bean.PkhxqBean;
-import cn.deepai.evillage.bean.RequestHeaderBean;
-import cn.deepai.evillage.event.LoginEvent;
-import cn.deepai.evillage.request.EVNetRequest;
-import cn.deepai.evillage.request.LoginRequest;
-import cn.deepai.evillage.utils.LogUtil;
-import cn.deepai.evillage.utils.MD5Util;
 import de.greenrobot.event.EventBus;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 /**
  * @author GaoYixuan
@@ -276,7 +261,7 @@ public class PkhJtqkzpPage extends PkhBasePage{
 //        header.setTokenId("0");
 //
 //        final Gson gson = new Gson();
-//        EVNetRequest.request(EVNetRequest.ACTION_LOGIN, gson.toJson(header), gson.toJson(loginRequestBean), new Callback() {
+//        EVRequest.request(EVRequest.ACTION_LOGIN, gson.toJson(header), gson.toJson(loginRequestBean), new Callback() {
 //            @Override
 //            public void onFailure(Call call, IOException e) {
 //

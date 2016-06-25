@@ -6,6 +6,8 @@
     <string name="back_pressed">再按一次退出程序</string>
     <string name="username_empyt">用户名不能为空</string>
     <string name="password_empyt">密码不能为空</string>
+    <string name="request_error">缓存</string>
+    <string name="cache_text">text</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>
     <string name="req_code_getPkhJbxxList">zyfp01002</string>
