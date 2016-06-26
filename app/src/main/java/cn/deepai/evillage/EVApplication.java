@@ -109,7 +109,7 @@ public class EVApplication extends Application {
                 // You can pass your own memory cache implementation你可以通过自己的内存缓存实现
                 // .memoryCache(new UsingFreqLimitedMemoryCache(2 * 1024 * 1024))
                 // .memoryCacheSize(2 * 1024 * 1024)
-                //硬盘缓存50MB
+                //硬盘缓存100MB
                 .discCacheSize(100 * 1024 * 1024)
                 //将保存的时候的URI名称用MD5
                 .discCacheFileNameGenerator(new Md5FileNameGenerator())

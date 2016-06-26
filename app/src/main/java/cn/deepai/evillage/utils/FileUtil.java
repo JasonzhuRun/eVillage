@@ -47,6 +47,9 @@ public class FileUtil {
             cachePath = context.getCacheDir().getPath();
         }
         File file = new File(cachePath + File.separator + "pic");
+        if (!file.exists()) {
+            file.mkdirs();
+        }
         return file.getPath();
     }
 }

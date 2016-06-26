@@ -45,8 +45,8 @@ public class PkhjtcyViewHolder extends BaseViewHolder {
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        mPkhjtcyBean.getId();
         Intent intent = new Intent(mContext, PkhjtcyActivity.class);
+        intent.putExtra("id",mPkhjtcyBean.getId());
         mContext.startActivity(intent);
         ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }

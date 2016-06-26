@@ -6,7 +6,8 @@
     <string name="back_pressed">再按一次退出程序</string>
     <string name="username_empyt">用户名不能为空</string>
     <string name="password_empyt">密码不能为空</string>
-    <string name="request_error">缓存</string>
+    <string name="request_error">请求失败，显示缓存</string>
+    <string name="update_cache">缓存更新成功</string>
     <string name="cache_text">text</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>
@@ -31,8 +32,6 @@
     <string name="req_code_updatePkhCyhzzJbxx">zyfp01020</string>
     <string name="req_code_addPkhCyhzzJbxx">zyfp01021</string>
     <string name="req_code_getPkhJtqkzpList">zyfp01022</string>
-    <!--rspCode-->
-    <string name="rsp_code_login">zyfp01001</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
     <string name="tab_detail">贫困户</string>
@@ -64,13 +63,43 @@
     <!--家庭成员-->
     <string name="pkh_jtcy_xm">姓名</string>
     <string name="pkh_jtcy_xb">性别</string>
-    <string name="pkh_jtcy_id">身份证号</string>
-    <string name="pkh_jtcy_gx">与户主关系</string>
+    <string name="pkh_jtcy_sfzhm">身份证号</string>
+    <string name="pkh_jtcy_yhzgx">与户主关系</string>
+    <string name="pkh_jtcy_mz">民族</string>
+    <string name="pkh_jtcy_whcd">文化程度</string>
+    <string name="pkh_jtcy_zxsqk">在校生情况</string>
+    <string name="pkh_jtcy_jkqk">健康情况</string>
+    <string name="pkh_jtcy_ldnlzk">劳动能力状况</string>
+    <string name="pkh_jtcy_wgzk">务工状况</string>
+    <string name="pkh_jtcy_wgsj">务工时间</string>
+    <string name="pkh_jtcy_dbrk">是否低保人口</string>
+    <string name="pkh_jtcy_cjxnhyl">参加新农合医疗</string>
+    <string name="pkh_jtcy_cjcxjmjbylbx">参加城乡居民基本养老保险</string>
+    <string name="pkh_jtcy_sfldlzyjy">是否劳动力转移就业</string>
+    <string name="pkh_jtcy_sfxyjr">是否现役军人</string>
+    <string name="pkh_jtcy_zzmm">政治面貌</string>
+    <string name="pkh_jtcy_sfczzgylbx">是否参加城镇职工基本养老保险</string>
+    <string name="pkh_jtcy_zdxx">在读学校</string>
+    <string name="pkh_jtcy_cyzt">成员状态</string>
+    <string name="pkh_jtcy_ztbhsj">状态变化时间</string>
     <!--收支情况-->
-    <string name="pkh_szqk_sznd">收支年度(元)</string>
-    <string name="pkh_szqk_jtzsr">家庭总收入(元)</string>
-    <string name="pkh_szqk_jtcsr">家庭纯收入(元)</string>
-    <string name="pkh_szqk_jtnrjcsr">人均纯收入(元)</string>
+    <string name="pkh_szqk_tjnd">年度</string>
+    <string name="pkh_szqk_jtzsr">家庭总收入</string>
+    <string name="pkh_szqk_wgsr">务工收入</string>
+    <string name="pkh_szqk_scjyxsr">生产经营性收入</string>
+    <string name="pkh_szqk_zyxsr">转移性收入</string>
+    <string name="pkh_szqk_ccxsr">财产性收入</string>
+    <string name="pkh_szqk_dk">贷款</string>
+    <string name="pkh_szqk_scjyzcfy">生产经营支出费用</string>
+    <string name="pkh_szqk_jtcsr">家庭纯收入</string>
+    <string name="pkh_szqk_jtnrjcsr">家庭年人均纯收入</string>
+    <string name="pkh_szqk_glbt">各类补贴</string>
+    <string name="pkh_szqk_jhsyj">计划生育金</string>
+    <string name="pkh_szqk_dbj">低保金</string>
+    <string name="pkh_szqk_cxjmjbylbx">城乡居民基本养老保险</string>
+    <string name="pkh_szqk_ylbx">医疗报销</string>
+    <string name="pkh_szqk_deylbz">大额医疗补助</string>
+    <string name="pkh_szqk_stbcj">生态补偿金</string>
     <!--住房情况-->
     <string name="pkh_zfqk_zfmj">住房面积</string>
     <string name="pkh_zfqk_fwjg">房屋结构</string>

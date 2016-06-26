@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.bean.PkhxqBean;
-import cn.deepai.evillage.event.ResponseHeaderEvent;
 import cn.deepai.evillage.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.PkhBasePage;

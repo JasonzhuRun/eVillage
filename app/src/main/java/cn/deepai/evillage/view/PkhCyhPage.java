@@ -1,11 +1,9 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -16,15 +14,12 @@ import java.lang.reflect.Type;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.bean.HidBean;
 import cn.deepai.evillage.bean.PkhcyhqkBean;
-import cn.deepai.evillage.bean.PkhjbxxBean;
-import cn.deepai.evillage.bean.PkhsctjBean;
 import cn.deepai.evillage.bean.PkhxqBean;
 import cn.deepai.evillage.bean.RequestHeaderBean;
 import cn.deepai.evillage.event.ResponseHeaderEvent;
 import cn.deepai.evillage.event.RspCode;
 import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.request.EVRequest;
-import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -88,7 +83,7 @@ public class PkhCyhPage extends PkhBasePage{
                 new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        PkhxqBean<PkhcyhqkBean> pkhxqBean = new PkhxqBean<PkhcyhqkBean>();
+                        PkhxqBean<PkhcyhqkBean> pkhxqBean = new PkhxqBean<>();
                         String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHCYHZZJBXX);
                         pkhxqBean.data = requestGson.fromJson(cache, PkhcyhqkBean.class);
                         pkhxqBean.rspHeader = new ResponseHeaderEvent();
