@@ -38,6 +38,7 @@ public class EVApplication extends Application {
         mContext = this;
         DictionaryUtil.init();
         initImageLoader();
+//        initCache();
     }
 
     public static DisplayImageOptions getDisplayImageOptions() {
@@ -566,5 +567,65 @@ public class EVApplication extends Application {
                 "}";
         CacheManager.getInstance().cacheData(
                 EVRequest.ACTION_GET_PKHZFQJBXX,gson.toJson(str));
+        /////////////////////////////////
+        str = "{\n" +
+                "                \"xm\":\"赵四\",\n" +
+                "                \"xb\":\"F\",\n" +
+                "                \"sfzhm\":\"110233200908091231\",\n" +
+                "                \"yhzgx\":\"3\",\n" +
+                "                \"mz\": \"1\",\n" +
+                "                \"whcd\": \"3\",\n" +
+                "                \"zxsqk\": \"1\",\n" +
+                "                \"jkqk\": \"1\",\n" +
+                "                \"ldnlzk\": \"1\",\n" +
+                "                \"wgzk\": \"1\",\n" +
+                "                \"wgsj\": \"1\",\n" +
+                "                \"dbrk\": \"1\",\n" +
+                "                \"cjxnhyl\": \"1\",\n" +
+                "\"cjcxjmjbylbx\": 0,\n" +
+                "                \"cjxnhyl\": 0,\n" +
+                "                \"cyzt\": null,\n" +
+                "                \"dbrk\": 0,\n" +
+                "                \"id\": null,\n" +
+                "                \"jkqk\": null,\n" +
+                "                \"jlr\": null,\n" +
+                "                \"jlsj\": null,\n" +
+                "                \"ldnlzk\": null,\n" +
+                "       }\n";
+        CacheManager.getInstance().cacheData(
+                EVRequest.ACTION_GET_JTCYJBXX,gson.toJson(str));
+        /////////////////////////////
+        str = "{\n" +
+                "\t\"data\":{\n" +
+                "\t\t\"id\":43,\n" +
+                "\t\t\"tjnd\":2015,\n" +
+                "\t\t\"jtzsr\":15000,\n" +
+                "\t\t\"wgsr\":200.1,\n" +
+                "\t\t\"scjyxsr\":30.2,\n" +
+                "\t\t\"ccxsr\":500.4,\n" +
+                "\t\t\"dk\":1000.5,\n" +
+                "\t\t\"scjyzcfy\":1000.2,\n" +
+                "\t\t\"jtcsr\":100.6,\n" +
+                "\t\t\"jtnrjcsr\":20.8,\n" +
+                "\t\t\"glbt\":1000.1,\n" +
+                "\t\t\"jhsyj\":50.6,\n" +
+                "\t\t\"dbj\":200,\n" +
+                "\t\t\"cxjmjbylbx\":20,\n" +
+                "\t\t\"ylbx\":200,\n" +
+                "\t\t\"deylbz\":2000,\n" +
+                "\t\t\"stbcj\":20,\n" +
+                "\t\t\"jlsj\":2015080312121,\t\n" +
+                "\t\t\"jlr\":\"管理员\",\n" +
+                "\t\t\"by\":\"备注内容\"\n" +
+                "\t},\n" +
+                "\t\"rspHeader\": {\n" +
+                "\t\t\"reqCode\": \"zyfp01001\",\n" +
+                "\t\t\"rspCode\": \"0000\",\n" +
+                "\t\t\"rspDesc\": \"请求成功\",\n" +
+                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
+                "\t}\n" +
+                "}";
+        CacheManager.getInstance().cacheData(
+                EVRequest.ACTION_GET_PKHSZQKJBXX,gson.toJson(str));
     }
 }
