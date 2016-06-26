@@ -27,4 +27,5 @@ public final class RspCode {
     public static final String RSP_CODE_OTHER_DSC = "其他信息";
     public static final String RSP_CODE_ILLEGAL_LOGIN = "1109";
     public static final String RSP_CODE_ILLEGAL_LOGIN_DSC = "非法登陆";
+    public static final String RSP_CODE_NO_CONNECTION = "请求失败";
 }

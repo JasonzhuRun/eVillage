@@ -10,14 +10,26 @@ import android.view.LayoutInflater;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
+import cn.deepai.evillage.bean.HidBean;
+import cn.deepai.evillage.bean.PkhcyhqkBean;
+import cn.deepai.evillage.bean.PkhjtcyBean;
 import cn.deepai.evillage.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.bean.PkhxqBean;
+import cn.deepai.evillage.bean.RequestHeaderBean;
+import cn.deepai.evillage.event.ResponseHeaderEvent;
+import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.manager.CacheManager;
+import cn.deepai.evillage.request.EVRequest;
 import de.greenrobot.event.EventBus;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * @author GaoYixuan
@@ -41,245 +53,55 @@ public class PkhJtqkzpPage extends PkhBasePage{
     }
 
     @Override
+    public void registeEventBus() {
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void unRegisteEventBus() {
+        EventBus.getDefault().unregister(this);
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhxqBean<List<PkhjtqkzpBean>> event) {
+        if (!isSelected()) return;
+        switch (event.rspHeader.getRspCode()) {
+            case RspCode.RSP_CODE_SUCCESS:
+            case RspCode.RSP_CODE_NO_CONNECTION:
+                mPkhjtqkzpRecyclerAdapter.notifyResult(true,event.data);
+                break;
+        }
+    }
+
+    @Override
     public void requestData() {
-        String str = "{\n" +
-                "\t\"data\":[\n" +
-                "\t{\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img4q.duitang.com/uploads/item/201402/07/20140207211400_LctxW.jpeg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://p4.gexing.com/G1/M00/C7/EF/rBACFFO3lPyijm3OAACQJjM7w-o542.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img2.100bt.com/upload/ttq/20140601/1401600704545_middle.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img5.duitang.com/uploads/item/201412/01/20141201081607_XFssr.jpeg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://tupian.enterdesk.com/2013/lxy/07/22/3/g2.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://imgsrc.baidu.com/forum/pic/item/96e1d53f8794a4c215b1fbd60ef41bd5ac6e3921.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img4.duitang.com/uploads/item/201207/18/20120718131407_hBzFy.jpeg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://cdn.duitang.com/uploads/blog/201309/22/20130922144610_mVyyY.thumb.600_0.jpeg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://a.hiphotos.baidu.com/zhidao/pic/item/f603918fa0ec08fa39cce19c58ee3d6d55fbda39.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img2.100bt.com/upload/ttq/20140601/1401600704545_middle.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img2.100bt.com/upload/ttq/20140601/1401600704545_middle.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img6.faloo.com/Picture/680x580/0/927/927569.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    }\n" +
-                "    ],\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
-                "}";
-//        LoginRequestBean loginRequestBean = new LoginRequestBean();
-//        loginRequestBean.setUserCode(name);
-//        loginRequestBean.setPassword(MD5Util.getMD5(password));
-//        loginRequestBean.setVersionCode("1");
-//
-//        RequestHeaderBean header = new RequestHeaderBean();
-//        header.setReqCode(EVApplication.getApplication().getString(R.string.req_code_login));
-//        header.setReqTime((new Date()).toString());
-//        header.setTokenId("0");
-//
-//        final Gson gson = new Gson();
-//        EVRequest.request(EVRequest.ACTION_LOGIN, gson.toJson(header), gson.toJson(loginRequestBean), new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                LoginEvent event = gson.fromJson(response.body().string(), LoginEvent.class);
-//                LogUtil.v(LoginRequest.class,event.toString());
-//                EventBus.getDefault().post(event);
-//            }
-//        });
-        Gson gson = new Gson();
-        Type type = new TypeToken<PkhxqBean<List<PkhjtqkzpBean>>>(){}.getType();
-        PkhxqBean<List<PkhjtqkzpBean>> pkhxqBean = gson.fromJson(str, type);
-        mPkhjtqkzpRecyclerAdapter.notifyResult(true,pkhxqBean.data);
-        mHasData = true;
-        EventBus.getDefault().post(pkhxqBean.rspHeader);
+        final Gson requestGson = new Gson();
+        EVRequest.request(EVRequest.ACTION_GET_PKHJTQKZPLIST,
+                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJtqkzpList)),
+                requestGson.toJson(new HidBean()),
+                new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        PkhxqBean<List<PkhjtqkzpBean>> pkhxqBean = new PkhxqBean<>();
+                        String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHJTQKZPLIST);
+                        Type type = new TypeToken<List<PkhjtqkzpBean>>(){}.getType();
+                        pkhxqBean.data = requestGson.fromJson(cache, type);
+                        pkhxqBean.rspHeader = new ResponseHeaderEvent();
+                        pkhxqBean.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
+                        EventBus.getDefault().post(pkhxqBean);
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Type type = new TypeToken<PkhxqBean<List<PkhjtqkzpBean>>>(){}.getType();
+                        PkhxqBean<List<PkhjtqkzpBean>> pkhxqBean = requestGson.fromJson(response.body().string(), type);
+                        EventBus.getDefault().post(pkhxqBean);
+                        if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqBean.rspHeader.getRspCode())) {
+                            CacheManager.getInstance().cacheData(
+                                    EVRequest.ACTION_GET_PKHJTQKZPLIST,requestGson.toJson(pkhxqBean.data));
+                        }
+                    }
+                });
     }
 
     @Override

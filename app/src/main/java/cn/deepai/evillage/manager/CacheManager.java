@@ -46,6 +46,7 @@ public class CacheManager {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                removeCacheData(request);
                 try {
                     String key = EncryptionUtil.getMD5(request);
                     DiskLruCache.Editor editor = mDiskLruCache.edit(key);

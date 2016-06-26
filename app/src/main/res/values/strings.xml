@@ -12,8 +12,25 @@
     <string name="req_code_login">zyfp01001</string>
     <string name="req_code_getPkhJbxxList">zyfp01002</string>
     <string name="req_code_getPkhJbxx">zyfp01003</string>
-    <string name="req_code_getPkhJtcyxxList">zyfp01004</string>
-
+    <string name="req_code_getPkhJtcyList">zyfp01004</string>
+    <string name="req_code_getPkhJtcyJbxx">zyfp01005</string>
+    <string name="req_code_getPkhSzqkList">zyfp01006</string>
+    <string name="req_code_getPkhSzqkJbxx">zyfp01007</string>
+    <string name="req_code_updatePkhSzqkJbxx">zyfp01008</string>
+    <string name="req_code_addPkhSzqkJbxx">zyfp01009</string>
+    <string name="req_code_getPkhZfqkJbxx">zyfp01010</string>
+    <string name="req_code_updatePkhZfqkJbxx">zyfp01011</string>
+    <string name="req_code_addPkhZfqkJbxx">zyfp01012</string>
+    <string name="req_code_getPkhSctjJbxx">zyfp01013</string>
+    <string name="req_code_updatePkhSctjJbxx">zyfp01014</string>
+    <string name="req_code_addPkhSctjJbxx">zyfp01015</string>
+    <string name="req_code_getPkhShqkJbxx">zyfp01016</string>
+    <string name="req_code_updatePkhShqkJbxx">zyfp01017</string>
+    <string name="req_code_addPkhShqkJbxx">zyfp01018</string>
+    <string name="req_code_getPkhCyhzzJbxx">zyfp01019</string>
+    <string name="req_code_updatePkhCyhzzJbxx">zyfp01020</string>
+    <string name="req_code_addPkhCyhzzJbxx">zyfp01021</string>
+    <string name="req_code_getPkhJtqkzpList">zyfp01022</string>
     <!--rspCode-->
     <string name="rsp_code_login">zyfp01001</string>
     <!--一级页面-->

@@ -10,13 +10,25 @@ import android.widget.FrameLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.bean.HidBean;
+import cn.deepai.evillage.bean.PkhjbxxBean;
 import cn.deepai.evillage.bean.PkhsctjBean;
 import cn.deepai.evillage.bean.PkhshtjBean;
 import cn.deepai.evillage.bean.PkhxqBean;
+import cn.deepai.evillage.bean.RequestHeaderBean;
+import cn.deepai.evillage.event.ResponseHeaderEvent;
+import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.manager.CacheManager;
+import cn.deepai.evillage.request.EVRequest;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * @author GaoYixuan
@@ -50,38 +62,54 @@ public class PkhSctjPage extends PkhBasePage{
     }
 
     @Override
+    public void registeEventBus() {
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void unRegisteEventBus() {
+        EventBus.getDefault().unregister(this);
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhxqBean<PkhsctjBean> event) {
+        if (!isSelected()) return;
+        switch (event.rspHeader.getRspCode()) {
+            case RspCode.RSP_CODE_SUCCESS:
+            case RspCode.RSP_CODE_NO_CONNECTION:
+                bindData(event.data);
+                break;
+        }
+    }
+
+    @Override
     public void requestData() {
-        String str = "{\n" +
-                "\t\"data\":{\n" +
-                "        \"id\":43,\n" +
-                "        \"tjnd\":2015,\n" +
-                "        \"gdmj\":1.5,\n" +
-                "        \"yxggdgdmj\":2.1,\n" +
-                "        \"tian\":3.2,\n" +
-                "        \"tu\":5.4,\n" +
-                "        \"lscgymj\":1.5,\n" +
-                "        \"tghlmj\":1.2,\n" +
-                "        \"mudmj\":1.6,\n" +
-                "        \"smmj\":0.8,\n" +
-                "        \"syjjzwmj\":10.1,\n" +
-                "        \"scyfmj\":5.6,\n" +
-                "        \"sxsl\":2,\n" +
-                "        \"jlsj\":2015080312121,\n" +
-                "        \"jlr\":\"管理员\",\n" +
-                "        \"bz\":\"备注内容\"\n" +
-                "    },\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
-                "}";
-        Gson gson = new Gson();
-        Type type = new TypeToken<PkhxqBean<PkhsctjBean>>(){}.getType();
-        PkhxqBean<PkhsctjBean> pkhxqBean = gson.fromJson(str, type);
-        bindData(pkhxqBean.data);
-        EventBus.getDefault().post(pkhxqBean.rspHeader);
+        final Gson requestGson = new Gson();
+        EVRequest.request(EVRequest.ACTION_GET_PKHSCTJJBXX,
+                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhSctjJbxx)),
+                requestGson.toJson(new HidBean()),
+                new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        PkhxqBean<PkhsctjBean> pkhxqBean = new PkhxqBean<>();
+                        String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHSCTJJBXX);
+                        pkhxqBean.data = requestGson.fromJson(cache, PkhsctjBean.class);
+                        pkhxqBean.rspHeader = new ResponseHeaderEvent();
+                        pkhxqBean.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
+                        EventBus.getDefault().post(pkhxqBean);
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Type type = new TypeToken<PkhxqBean<PkhsctjBean>>(){}.getType();
+                        PkhxqBean<PkhsctjBean> pkhxqBean = requestGson.fromJson(response.body().string(), type);
+                        EventBus.getDefault().post(pkhxqBean);
+                        if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqBean.rspHeader.getRspCode())) {
+                            CacheManager.getInstance().cacheData(
+                                    EVRequest.ACTION_GET_PKHSCTJJBXX,requestGson.toJson(pkhxqBean.data));
+                        }
+                    }
+                });
     }
 
     private void bindData(PkhsctjBean pkhsctjBean) {

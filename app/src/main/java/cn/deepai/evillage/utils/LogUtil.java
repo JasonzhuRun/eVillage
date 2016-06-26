@@ -103,7 +103,7 @@ public class LogUtil {
      * **/
     private static void writeLogtoFile(String logType, String tag, String text) {// 新建或打开日志文件
 
-        String sdcardRoot = FileUtil.getAppDir();
+        String sdcardRoot = FileUtil.getAppDirPath();
         if (sdcardRoot == null) return;
         String appName = EVApplication.getApplication().getResources().getString(R.string.app_name);
         Date nowtime = new Date();

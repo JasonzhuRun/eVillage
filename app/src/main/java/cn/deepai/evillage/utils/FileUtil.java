@@ -14,7 +14,7 @@ import cn.deepai.evillage.EVApplication;
  */
 public class FileUtil {
 
-    public static String getAppDir() {
+    public static String getAppDirPath() {
 
         String appPath;
         Context context = EVApplication.getApplication();
@@ -38,7 +38,7 @@ public class FileUtil {
         return new File(cachePath + File.separator + "text");
     }
 
-    public static File getPicCacheDir() {
+    public static String getPicCacheDirPath() {
         Context context = EVApplication.getApplication();
         String cachePath;
         if (context.getExternalCacheDir() != null) {
@@ -46,6 +46,7 @@ public class FileUtil {
         } else {
             cachePath = context.getCacheDir().getPath();
         }
-        return new File(cachePath + File.separator + "pic");
+        File file = new File(cachePath + File.separator + "pic");
+        return file.getPath();
     }
 }

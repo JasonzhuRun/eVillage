@@ -8,13 +8,26 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.bean.HidBean;
+import cn.deepai.evillage.bean.PkhjbxxBean;
+import cn.deepai.evillage.bean.PkhsctjBean;
 import cn.deepai.evillage.bean.PkhshtjBean;
 import cn.deepai.evillage.bean.PkhxqBean;
 import cn.deepai.evillage.bean.PkhzfqkBean;
+import cn.deepai.evillage.bean.RequestHeaderBean;
+import cn.deepai.evillage.event.ResponseHeaderEvent;
+import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.manager.CacheManager;
+import cn.deepai.evillage.request.EVRequest;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * 生活条件
@@ -49,39 +62,54 @@ public class PkhShtjPage extends PkhBasePage{
     }
 
     @Override
+    public void registeEventBus() {
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void unRegisteEventBus() {
+        EventBus.getDefault().unregister(this);
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhxqBean<PkhshtjBean> event) {
+        if (!isSelected()) return;
+        switch (event.rspHeader.getRspCode()) {
+            case RspCode.RSP_CODE_SUCCESS:
+            case RspCode.RSP_CODE_NO_CONNECTION:
+                bindData(event.data);
+                break;
+        }
+    }
+
+    @Override
     public void requestData() {
-        String str = "{\n" +
-                "\t\"data\":{\n" +
-                "\t\t\t\"id\":43,\n" +
-                "            \"tjnd\":2015,\n" +
-                "            \"tshyd \":1,\n" +
-                "            \"zyrllx\":\"木柴，煤\",\n" +
-                "            \"ysqk\":\"不方便\",\n" +
-                "            \"hqyysdzykn\":\"劳动力不足\",\n" +
-                "            \"cslx\":\"露天\",\n" +
-                "            \"nyxfpqk\":\"收音机，手电\",\n" +
-                "            \"yskn\":1,\n" +
-                "            \"ysaq\":0,\n" +
-                "            \"jlczgl\":10.1,\n" +
-                "            \"rullx\":\"土路\",\n" +
-                "            \"wscs\":0,\n" +
-                "            \"tgbds\":0,\n" +
-                "            \"jlsj\":2015080312121,\n" +
-                "            \"jlr\":\"管理员\",\n" +
-                "            \"by\":\"备注内容\"\n" +
-                "\t},\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
-                "}";
-        Gson gson = new Gson();
-        Type type = new TypeToken<PkhxqBean<PkhshtjBean>>(){}.getType();
-        PkhxqBean<PkhshtjBean> pkhxqBean = gson.fromJson(str, type);
-        bindData(pkhxqBean.data);
-        EventBus.getDefault().post(pkhxqBean.rspHeader);
+        final Gson requestGson = new Gson();
+        EVRequest.request(EVRequest.ACTION_GET_PKHSHQKJBXX,
+                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhShqkJbxx)),
+                requestGson.toJson(new HidBean()),
+                new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        PkhxqBean<PkhshtjBean> pkhxqBean = new PkhxqBean<>();
+                        String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHSHQKJBXX);
+                        pkhxqBean.data = requestGson.fromJson(cache, PkhshtjBean.class);
+                        pkhxqBean.rspHeader = new ResponseHeaderEvent();
+                        pkhxqBean.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
+                        EventBus.getDefault().post(pkhxqBean);
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Type type = new TypeToken<PkhxqBean<PkhshtjBean>>(){}.getType();
+                        PkhxqBean<PkhshtjBean> pkhxqBean = requestGson.fromJson(response.body().string(), type);
+                        EventBus.getDefault().post(pkhxqBean);
+                        if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqBean.rspHeader.getRspCode())) {
+                            CacheManager.getInstance().cacheData(
+                                    EVRequest.ACTION_GET_PKHSHQKJBXX,requestGson.toJson(pkhxqBean.data));
+                        }
+                    }
+                });
     }
 
     @Override

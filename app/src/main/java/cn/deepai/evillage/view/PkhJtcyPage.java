@@ -10,21 +10,19 @@ import android.view.LayoutInflater;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtcyRecyclerAdapter;
-import cn.deepai.evillage.bean.PkhjbxxBean;
+import cn.deepai.evillage.bean.HidBean;
 import cn.deepai.evillage.bean.PkhjtcyBean;
 import cn.deepai.evillage.bean.PkhxqBean;
 import cn.deepai.evillage.bean.RequestHeaderBean;
-import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.event.ResponseHeaderEvent;
+import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.request.EVRequest;
 import de.greenrobot.event.EventBus;
 import okhttp3.Call;
@@ -51,70 +49,55 @@ public class PkhJtcyPage extends PkhBasePage{
     }
 
     @Override
-    public void requestData() {
-        String str = "{\n" +
-                "\t\"data\":[\n" +
-                "        {\n" +
-                "            \"id\":43,\n" +
-                "            \"xm\":\"张三\",\n" +
-                "            \"xb\":\"F\",\n" +
-                "            \"sfzhm\":\"110233199908091231\",\n" +
-                "            \"yhzgx\":\"1\",\n" +
-                "            \"jlsj\":20150803121212\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"id\":44,\n" +
-                "            \"xm\":\"张小三\",\n" +
-                "            \"xb\":\"F\",\n" +
-                "            \"sfzhm\":\"110233200908091231\",\n" +
-                "            \"yhzgx\":\"3\",\n" +
-                "            \"jlsj\":20150803121212\n" +
-                "        }\n" +
-                "    ],\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
-                "}";
-        Gson gson = new Gson();
-        Type type = new TypeToken<PkhxqBean<List<PkhjtcyBean>>>(){}.getType();
-        PkhxqBean<List<PkhjtcyBean>> pkhxqBean = gson.fromJson(str, type);
-        mPkhjtcyRecyclerAdapter.notifyResult(true,pkhxqBean.data);
-        mHasData = true;
-        EventBus.getDefault().post(pkhxqBean.rspHeader);
-        //todo///////////////////////////////////////////////////////////////////////////////////////////////////////////
-        int hid = SettingManager.getInstance().getCurrentHid();
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("hid", hid);
-        }catch (JSONException e) {
-            return;
-        }
+    public void registeEventBus() {
+        EventBus.getDefault().register(this);
+    }
 
-        RequestHeaderBean header = new RequestHeaderBean();
-        header.setReqCode(EVApplication.getApplication().getString(R.string.req_code_getPkhJtcyxxList));
-        String token = SettingManager.getInstance().getToken();
-        header.setTokenId(token);
+    @Override
+    public void unRegisteEventBus() {
+        EventBus.getDefault().unregister(this);
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhxqBean<List<PkhjtcyBean>> event) {
+        if (!isSelected()) return;
+        switch (event.rspHeader.getRspCode()) {
+            case RspCode.RSP_CODE_SUCCESS:
+            case RspCode.RSP_CODE_NO_CONNECTION:
+                mPkhjtcyRecyclerAdapter.notifyResult(true,event.data);
+                break;
+        }
+    }
+
+    @Override
+    public void requestData() {
 
         final Gson requestGson = new Gson();
-        EVRequest.request(EVRequest.ACTION_GET_PKHJTCYLIST, requestGson.toJson(header), jsonObject.toString(), new Callback() {
+        EVRequest.request(EVRequest.ACTION_GET_PKHJTCYLIST,
+                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJtcyList)),
+                requestGson.toJson(new HidBean()),
+                new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
-            }
-
-            @Override
-            protected Object clone() throws CloneNotSupportedException {
-                return super.clone();
+                PkhxqBean<List<PkhjtcyBean>> pkhxqBean = new PkhxqBean<>();
+                String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHJTCYLIST);
+                Type type = new TypeToken<List<PkhjtcyBean>>(){}.getType();
+                pkhxqBean.data = requestGson.fromJson(cache, type);
+                pkhxqBean.rspHeader = new ResponseHeaderEvent();
+                pkhxqBean.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
+                EventBus.getDefault().post(pkhxqBean);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Type type = new TypeToken<PkhxqBean<PkhjbxxBean>>(){}.getType();
-                PkhxqBean<PkhjbxxBean> pkhxqBean = requestGson.fromJson(response.body().string(), type);
-                EventBus.getDefault().post(pkhxqBean.rspHeader);
+
+                Type type = new TypeToken<PkhxqBean<List<PkhjtcyBean>>>(){}.getType();
+                PkhxqBean<List<PkhjtcyBean>> pkhxqBean = requestGson.fromJson(response.body().string(), type);
+                EventBus.getDefault().post(pkhxqBean);
+                if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqBean.rspHeader.getRspCode())) {
+                    CacheManager.getInstance().cacheData(
+                            EVRequest.ACTION_GET_PKHJTCYLIST,requestGson.toJson(pkhxqBean.data));
+                }
             }
         });
     }
@@ -125,7 +108,6 @@ public class PkhJtcyPage extends PkhBasePage{
     }
 
     private void initView() {
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_pkh_jtcy);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

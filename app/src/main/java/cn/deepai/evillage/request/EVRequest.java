@@ -36,7 +36,7 @@ import okhttp3.RequestBody;
 public class EVRequest {
 
     public static final String ACTION_LOGIN = "login.action";
-    public static final String ACTION_GET_PKHLIST = "getPkhJbxxList.action";
+    public static final String ACTION_GET_PKHLIST = "ACTION_GET_PKHLIST";
     public static final String ACTION_GET_PKHJBXX = "getPkhJbxx.action";
     public static final String ACTION_GET_PKHJTCYLIST = "getPkhJtcyList.action";
     public static final String ACTION_GET_JTCYJBXX = "getPkhJtcyJbxx.action";
@@ -53,9 +53,10 @@ public class EVRequest {
     public static final String ACTION_GET_PKHSHQKJBXX = "getPkhShqkJbxx.action";
     public static final String ACTION_UPDATE_PKHSHQKJNXX = "updatePkhShqkJbxx.action";
     public static final String ACTION_ADD_PKHSGQKJBXX = "addPkhShqkJbxx.action";
-    public static final String ACTION_GET_PKUCYHZZJBXX = "getPkhCyhzzJbxx.action";
+    public static final String ACTION_GET_PKHCYHZZJBXX = "getPkhCyhzzJbxx.action";
     public static final String ACTION_UPDATE_PKHCYHZZJBXX = "updatePkhCyhzzJbxx.action";
     public static final String ACTION_ADD_PKHCYHZZJBXX = "addPkhCyhzzJbxx.action";
+    public static final String ACTION_GET_PKHJTQKZPLIST = "ACTION_GET_JTQKZPLIST";
 
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");

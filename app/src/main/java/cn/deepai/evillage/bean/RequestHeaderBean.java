@@ -2,6 +2,10 @@ package cn.deepai.evillage.bean;
 
 import java.util.Date;
 
+import cn.deepai.evillage.EVApplication;
+import cn.deepai.evillage.R;
+import cn.deepai.evillage.manager.SettingManager;
+
 /**
  * @author GaoYixuan
  */
@@ -12,8 +16,10 @@ public class RequestHeaderBean {
     private  String reqTime;
     private String tokenId;
 
-    public RequestHeaderBean() {
-        reqTime = new Date().toString();
+    public RequestHeaderBean(int reqCodeId) {
+        this.reqTime = new Date().toString();
+        this.reqCode = EVApplication.getApplication().getString(reqCodeId);
+        this.tokenId = SettingManager.getInstance().getToken();
     }
 
     public String getReqCode() {

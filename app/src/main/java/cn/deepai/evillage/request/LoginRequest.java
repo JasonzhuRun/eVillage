@@ -30,10 +30,7 @@ public class LoginRequest extends EVRequest {
         loginRequestBean.setPassword(EncryptionUtil.getMD5(password));
         loginRequestBean.setVersionCode("1");
 
-        RequestHeaderBean header = new RequestHeaderBean();
-        header.setReqCode(EVApplication.getApplication().getString(R.string.req_code_login));
-        header.setReqTime((new Date()).toString());
-        header.setTokenId("0");
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_login);
 
         final Gson gson = new Gson();
         EVRequest.request(EVRequest.ACTION_LOGIN, gson.toJson(header), gson.toJson(loginRequestBean), new Callback() {

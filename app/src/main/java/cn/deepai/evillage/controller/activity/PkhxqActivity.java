@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.bean.PkhxqBean;
 import cn.deepai.evillage.event.ResponseHeaderEvent;
 import cn.deepai.evillage.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
@@ -46,31 +47,35 @@ public class PkhxqActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkh);
         initView();
-    }
-
-    @SuppressWarnings("all")
-    public void onEventMainThread(ResponseHeaderEvent event) {
-        switch (event.getRspCode()) {
-            case RspCode.RSP_CODE_SUCCESS:
-                break;
-            default:
-                ToastUtil.longToast(event.getRspDesc());
-                break;
-        }
-        tryToHideProcessDialog();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         EventBus.getDefault().register(this);
+        for (PkhBasePage page:viewContainter) {
+            page.registeEventBus();
+        }
         onPageShow(0);
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    protected void onDestroy() {
+        super.onDestroy();
         EventBus.getDefault().unregister(this);
+        for (PkhBasePage page:viewContainter) {
+            page.unRegisteEventBus();
+        }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhxqBean event) {
+        switch (event.rspHeader.getRspCode()) {
+            case RspCode.RSP_CODE_SUCCESS:
+                break;
+            case RspCode.RSP_CODE_NO_CONNECTION:
+                ToastUtil.shortToast(getResources().getString(R.string.request_error));
+                break;
+            default:
+                ToastUtil.longToast(event.rspHeader.getRspDesc());
+                break;
+        }
+        tryToHideProcessDialog();
     }
 
     @Override
@@ -161,6 +166,10 @@ public class PkhxqActivity extends BaseActivity {
     }
 
     private void onPageShow(int index) {
+        for (PkhBasePage page:viewContainter) {
+            page.setSelected(false);
+        }
+        viewContainter.get(index).setSelected(true);
         if (!viewContainter.get(index).hasData()) {
             tryToShowProcessDialog();
             viewContainter.get(index).requestData();
