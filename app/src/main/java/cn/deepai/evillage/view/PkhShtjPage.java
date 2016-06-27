@@ -28,25 +28,26 @@ import okhttp3.Response;
 /**
  * 生活条件
  */
-public class PkhShtjPage extends PkhBasePage{
+public class PkhShtjPage extends PkhBasePage {
 
-    private EditText    tjnd;
-    private	EditText	tshyd;
-    private	EditText	zyrllx;
-    private	EditText	ysqk;
-    private	EditText	hqyysdzykn;
-    private	EditText	cslx;
-    private	EditText	nyxfpqk;
-    private	EditText	yskn;
-    private	EditText	ysaq;
-    private	EditText	jlczgl;
-    private	EditText	rullx;
-    private	EditText	wscs;
-    private	EditText	tgbds;
+    private EditText tjnd;
+    private EditText tshyd;
+    private EditText zyrllx;
+    private EditText ysqk;
+    private EditText hqyysdzykn;
+    private EditText cslx;
+    private EditText nyxfpqk;
+    private EditText yskn;
+    private EditText ysaq;
+    private EditText jlczgl;
+    private EditText rullx;
+    private EditText wscs;
+    private EditText tgbds;
 
     public PkhShtjPage(Context context) {
-        this(context,null);
+        this(context, null);
     }
+
     public PkhShtjPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -97,12 +98,13 @@ public class PkhShtjPage extends PkhBasePage{
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Type type = new TypeToken<PkhxqEvent<PkhshtjBean>>(){}.getType();
+                        Type type = new TypeToken<PkhxqEvent<PkhshtjBean>>() {
+                        }.getType();
                         PkhxqEvent<PkhshtjBean> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
                         EventBus.getDefault().post(pkhxqEvent);
                         if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
                             CacheManager.getInstance().cacheData(
-                                    EVRequest.ACTION_GET_PKHSHQKJBXX,requestGson.toJson(pkhxqEvent.data));
+                                    EVRequest.ACTION_GET_PKHSHQKJBXX, requestGson.toJson(pkhxqEvent.data));
                         }
                     }
                 });
@@ -136,19 +138,19 @@ public class PkhShtjPage extends PkhBasePage{
     }
 
     private void initView() {
-        tjnd	 = (EditText)findViewById(R.id.shtj_tjnd);
-        tshyd	 = (EditText)findViewById(R.id.shtj_shyd);
-        zyrllx	 = (EditText)findViewById(R.id.shtj_zyrl);
-        ysqk	 = (EditText)findViewById(R.id.shtj_ysqk);
-        hqyysdzykn	 = (EditText)findViewById(R.id.shtj_hqyskn);
-        cslx	 = (EditText)findViewById(R.id.shtj_cslx);
-        nyxfpqk	 = (EditText)findViewById(R.id.shtj_nyxfp);
-        yskn	 = (EditText)findViewById(R.id.shtj_yskn);
-        ysaq	 = (EditText)findViewById(R.id.shtj_ysaq);
-        jlczgl	 = (EditText)findViewById(R.id.shtj_jlzgl);
-        rullx	 = (EditText)findViewById(R.id.shtj_rhllx);
-        wscs	 = (EditText)findViewById(R.id.shtj_wscs);
-        tgbds	 = (EditText)findViewById(R.id.shtj_gbds);
+        tjnd = (EditText) findViewById(R.id.shtj_tjnd);
+        tshyd = (EditText) findViewById(R.id.shtj_shyd);
+        zyrllx = (EditText) findViewById(R.id.shtj_zyrl);
+        ysqk = (EditText) findViewById(R.id.shtj_ysqk);
+        hqyysdzykn = (EditText) findViewById(R.id.shtj_hqyskn);
+        cslx = (EditText) findViewById(R.id.shtj_cslx);
+        nyxfpqk = (EditText) findViewById(R.id.shtj_nyxfp);
+        yskn = (EditText) findViewById(R.id.shtj_yskn);
+        ysaq = (EditText) findViewById(R.id.shtj_ysaq);
+        jlczgl = (EditText) findViewById(R.id.shtj_jlzgl);
+        rullx = (EditText) findViewById(R.id.shtj_rhllx);
+        wscs = (EditText) findViewById(R.id.shtj_wscs);
+        tgbds = (EditText) findViewById(R.id.shtj_gbds);
         mHasData = false;
     }
 }

@@ -1,5 +1,8 @@
 package cn.deepai.evillage.controller.activity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
@@ -8,6 +11,7 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -41,27 +45,6 @@ public class PkhxqActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pkh);
-        initView();
-        EventBus.getDefault().register(this);
-        for (PkhBasePage page:viewContainter) {
-            page.registeEventBus();
-        }
-        onPageShow(0);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-        for (PkhBasePage page:viewContainter) {
-            page.unRegisteEventBus();
-        }
-    }
-
     @SuppressWarnings("all")
     public void onEventMainThread(PkhxqEvent event) {
         switch (event.rspHeader.getRspCode()) {
@@ -75,6 +58,53 @@ public class PkhxqActivity extends BaseActivity {
                 break;
         }
         tryToHideProcessDialog();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pkh);
+        initView();
+        EventBus.getDefault().register(this);
+        for (PkhBasePage page:viewContainter) {
+            page.registeEventBus();
+        }
+        onPageShow(0);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+            Uri uri = data.getData();
+            //to do find the path of pic by uri
+
+        } else if (requestCode == 1 ) {
+            Uri uri = data.getData();
+            if(uri == null){
+                //use bundle to get data
+                Bundle bundle = data.getExtras();
+                if (bundle != null) {
+                    Bitmap photo = (Bitmap) bundle.get("data"); //get bitmap
+                    Toast.makeText(getApplicationContext(), "err****", Toast.LENGTH_LONG).show();
+
+                    //spath :生成图片取个名字和路径包含类型
+                } else {
+                    Toast.makeText(getApplicationContext(), "err****", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }else{
+                //to do find the path of pic by uri
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+        for (PkhBasePage page:viewContainter) {
+            page.unRegisteEventBus();
+        }
     }
 
     @Override

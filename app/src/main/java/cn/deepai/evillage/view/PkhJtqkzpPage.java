@@ -32,7 +32,7 @@ import okhttp3.Response;
 /**
  * @author GaoYixuan
  */
-public class PkhJtqkzpPage extends PkhBasePage{
+public class PkhJtqkzpPage extends PkhBasePage {
 
     private PkhjtqkzpRecyclerAdapter mPkhjtqkzpRecyclerAdapter;
 
@@ -66,10 +66,21 @@ public class PkhJtqkzpPage extends PkhBasePage{
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
             case RspCode.RSP_CODE_NO_CONNECTION:
-                mPkhjtqkzpRecyclerAdapter.notifyResult(true,event.data);
+                mPkhjtqkzpRecyclerAdapter.notifyResult(true, event.data);
                 break;
         }
     }
+
+//    @SuppressWarnings("all")
+//    public void onEvent(PkhxqEvent<List<PkhjtqkzpBean>> event) {
+//        if (!isSelected()) return;
+//        switch (event.rspHeader.getRspCode()) {
+//            case RspCode.RSP_CODE_SUCCESS:
+//            case RspCode.RSP_CODE_NO_CONNECTION:
+//                mPkhjtqkzpRecyclerAdapter.notifyResult(true, event.data);
+//                break;
+//        }
+//    }
 
     @Override
     public void requestData() {
@@ -82,7 +93,8 @@ public class PkhJtqkzpPage extends PkhBasePage{
                     public void onFailure(Call call, IOException e) {
                         PkhxqEvent<List<PkhjtqkzpBean>> pkhxqEvent = new PkhxqEvent<>();
                         String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHJTQKZPLIST);
-                        Type type = new TypeToken<List<PkhjtqkzpBean>>(){}.getType();
+                        Type type = new TypeToken<List<PkhjtqkzpBean>>() {
+                        }.getType();
                         pkhxqEvent.data = requestGson.fromJson(cache, type);
                         pkhxqEvent.rspHeader = new ResponseHeaderEvent();
                         pkhxqEvent.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
@@ -91,12 +103,13 @@ public class PkhJtqkzpPage extends PkhBasePage{
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Type type = new TypeToken<PkhxqEvent<List<PkhjtqkzpBean>>>(){}.getType();
+                        Type type = new TypeToken<PkhxqEvent<List<PkhjtqkzpBean>>>() {
+                        }.getType();
                         PkhxqEvent<List<PkhjtqkzpBean>> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
                         EventBus.getDefault().post(pkhxqEvent);
                         if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
                             CacheManager.getInstance().cacheData(
-                                    EVRequest.ACTION_GET_PKHJTQKZPLIST,requestGson.toJson(pkhxqEvent.data));
+                                    EVRequest.ACTION_GET_PKHJTQKZPLIST, requestGson.toJson(pkhxqEvent.data));
                         }
                     }
                 });
@@ -110,7 +123,7 @@ public class PkhJtqkzpPage extends PkhBasePage{
     private void initView() {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_pkh_jtqkzp);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mPkhjtqkzpRecyclerAdapter = new PkhjtqkzpRecyclerAdapter();
         recyclerView.setAdapter(mPkhjtqkzpRecyclerAdapter);

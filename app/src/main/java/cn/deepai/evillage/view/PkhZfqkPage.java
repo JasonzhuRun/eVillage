@@ -28,18 +28,18 @@ import okhttp3.Response;
 /**
  * @author GaoYixuan
  */
-public class PkhZfqkPage extends PkhBasePage{
+public class PkhZfqkPage extends PkhBasePage {
 
     // 住房面积
-    private	EditText	zfmj;
+    private EditText zfmj;
     // 主要结构
-    private	EditText	fwzyjg;
+    private EditText fwzyjg;
     // 建房时间
-    private	EditText	jfsj;
+    private EditText jfsj;
     // 是否危房
-    private	EditText	zyzfsfwf;
+    private EditText zyzfsfwf;
     // 异地搬迁扶贫情况
-    private	EditText	ydfpbqqk;
+    private EditText ydfpbqqk;
 
 
     public PkhZfqkPage(Context context) {
@@ -97,12 +97,13 @@ public class PkhZfqkPage extends PkhBasePage{
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Type type = new TypeToken<PkhxqEvent<PkhzfqkBean>>(){}.getType();
+                        Type type = new TypeToken<PkhxqEvent<PkhzfqkBean>>() {
+                        }.getType();
                         PkhxqEvent<PkhzfqkBean> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
                         EventBus.getDefault().post(pkhxqEvent);
                         if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
                             CacheManager.getInstance().cacheData(
-                                    EVRequest.ACTION_GET_PKHZFQJBXX,requestGson.toJson(pkhxqEvent.data));
+                                    EVRequest.ACTION_GET_PKHZFQJBXX, requestGson.toJson(pkhxqEvent.data));
                         }
                     }
                 });
@@ -123,11 +124,11 @@ public class PkhZfqkPage extends PkhBasePage{
     }
 
     private void initView() {
-        zfmj	 = (EditText)findViewById(R.id.zfqk_zfmj);
-        fwzyjg	 = (EditText)findViewById(R.id.zfqk_fwjg);
-        jfsj	 = (EditText)findViewById(R.id.zfqk_jfsj);
-        zyzfsfwf	 = (EditText)findViewById(R.id.zfqk_sfwf);
-        ydfpbqqk	 = (EditText)findViewById(R.id.zfqk_ydfpbqqk);
+        zfmj = (EditText) findViewById(R.id.zfqk_zfmj);
+        fwzyjg = (EditText) findViewById(R.id.zfqk_fwjg);
+        jfsj = (EditText) findViewById(R.id.zfqk_jfsj);
+        zyzfsfwf = (EditText) findViewById(R.id.zfqk_sfwf);
+        ydfpbqqk = (EditText) findViewById(R.id.zfqk_ydfpbqqk);
         mHasData = false;
     }
 }

@@ -28,20 +28,21 @@ import okhttp3.Response;
 /**
  * 参与产业化组织情况
  */
-public class PkhCyhPage extends PkhBasePage{
+public class PkhCyhPage extends PkhBasePage {
 
-    private EditText    tjnd;
-    private	EditText	cylx;
-    private	EditText	cyzzlx;
-    private	EditText	cyzsy;
-    private	EditText	cjfphzzjzz;
-    private	EditText	trhzzzje;
-    private	EditText	cynyhzzz;
-    private	EditText	ltqyddsy;
+    private EditText tjnd;
+    private EditText cylx;
+    private EditText cyzzlx;
+    private EditText cyzsy;
+    private EditText cjfphzzjzz;
+    private EditText trhzzzje;
+    private EditText cynyhzzz;
+    private EditText ltqyddsy;
 
     public PkhCyhPage(Context context) {
-        this(context,null);
+        this(context, null);
     }
+
     public PkhCyhPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -93,12 +94,13 @@ public class PkhCyhPage extends PkhBasePage{
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Type type = new TypeToken<PkhxqEvent<PkhcyhqkBean>>(){}.getType();
+                        Type type = new TypeToken<PkhxqEvent<PkhcyhqkBean>>() {
+                        }.getType();
                         PkhxqEvent<PkhcyhqkBean> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
                         EventBus.getDefault().post(pkhxqEvent);
                         if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
                             CacheManager.getInstance().cacheData(
-                                    EVRequest.ACTION_GET_PKHCYHZZJBXX,requestGson.toJson(pkhxqEvent.data));
+                                    EVRequest.ACTION_GET_PKHCYHZZJBXX, requestGson.toJson(pkhxqEvent.data));
                         }
                     }
                 });
@@ -123,14 +125,14 @@ public class PkhCyhPage extends PkhBasePage{
 
     private void initView() {
 
-        tjnd	 = (EditText)findViewById(R.id.cyhqk_tjnd);
-        cylx	 = (EditText)findViewById(R.id.cyhqk_cylx);
-        cyzzlx	 = (EditText)findViewById(R.id.cyhqk_cyzzlx);
-        cyzsy	 = (EditText)findViewById(R.id.cyhqk_cyzsy);
-        cjfphzzjzz	 = (EditText)findViewById(R.id.cyhqk_cjfpzz);
-        trhzzzje	 = (EditText)findViewById(R.id.cyhqk_hzzj);
-        cynyhzzz	 = (EditText)findViewById(R.id.cyhqk_hzzz);
-        ltqyddsy	 = (EditText)findViewById(R.id.cyhqk_ltqy);
+        tjnd = (EditText) findViewById(R.id.cyhqk_tjnd);
+        cylx = (EditText) findViewById(R.id.cyhqk_cylx);
+        cyzzlx = (EditText) findViewById(R.id.cyhqk_cyzzlx);
+        cyzsy = (EditText) findViewById(R.id.cyhqk_cyzsy);
+        cjfphzzjzz = (EditText) findViewById(R.id.cyhqk_cjfpzz);
+        trhzzzje = (EditText) findViewById(R.id.cyhqk_hzzj);
+        cynyhzzz = (EditText) findViewById(R.id.cyhqk_hzzz);
+        ltqyddsy = (EditText) findViewById(R.id.cyhqk_ltqy);
         mHasData = false;
     }
 }

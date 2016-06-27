@@ -28,36 +28,37 @@ import okhttp3.Response;
 /**
  * 贫困户基本信息
  */
-public class PkhJbxxPage extends PkhBasePage{
+public class PkhJbxxPage extends PkhBasePage {
 
     // 户主姓名
-    private	EditText	hzxm;
+    private EditText hzxm;
     // 居住地址
-    private	EditText	jzdz;
+    private EditText jzdz;
     // 联系电话
-    private	EditText	lxdh;
+    private EditText lxdh;
     // 户主身份证
-    private	EditText	hzsfz;
+    private EditText hzsfz;
     // 户开户银行
-    private	EditText	hkhyx;
+    private EditText hkhyx;
     // 银行账号
-    private	EditText	yxzh;
+    private EditText yxzh;
     // 贫困识别标准
-    private EditText    sbbz;
+    private EditText sbbz;
     // 计划生育户
-    private	EditText	jhsyh;
+    private EditText jhsyh;
     // 贫困户属性
-    private	EditText	pkhsx;
+    private EditText pkhsx;
     // 贫困户状态
-    private	EditText	pkhzt;
+    private EditText pkhzt;
     // 建档年份
-    private	EditText	jdnf;
+    private EditText jdnf;
     // 脱贫年份
-    private	EditText	tpnf;
+    private EditText tpnf;
 
     public PkhJbxxPage(Context context) {
-        this(context,null);
+        this(context, null);
     }
+
     public PkhJbxxPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -97,29 +98,29 @@ public class PkhJbxxPage extends PkhBasePage{
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJbxx)),
                 requestGson.toJson(new HidBean()),
                 new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                PkhxqEvent<PkhjbxxBean> pkhxqEvent = new PkhxqEvent<>();
-                String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHJBXX);
-                pkhxqEvent.data = requestGson.fromJson(cache, PkhjbxxBean.class);
-                pkhxqEvent.rspHeader = new ResponseHeaderEvent();
-                pkhxqEvent.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
-                EventBus.getDefault().post(pkhxqEvent);
-            }
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        PkhxqEvent<PkhjbxxBean> pkhxqEvent = new PkhxqEvent<>();
+                        String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHJBXX);
+                        pkhxqEvent.data = requestGson.fromJson(cache, PkhjbxxBean.class);
+                        pkhxqEvent.rspHeader = new ResponseHeaderEvent();
+                        pkhxqEvent.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
+                        EventBus.getDefault().post(pkhxqEvent);
+                    }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Type type = new TypeToken<PkhxqEvent<PkhjbxxBean>>(){}.getType();
-                PkhxqEvent<PkhjbxxBean> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
-                EventBus.getDefault().post(pkhxqEvent);
-                if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
-                    CacheManager.getInstance().cacheData(
-                            EVRequest.ACTION_GET_PKHJBXX,requestGson.toJson(pkhxqEvent.data));
-                }
-            }
-        });
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Type type = new TypeToken<PkhxqEvent<PkhjbxxBean>>() {
+                        }.getType();
+                        PkhxqEvent<PkhjbxxBean> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
+                        EventBus.getDefault().post(pkhxqEvent);
+                        if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
+                            CacheManager.getInstance().cacheData(
+                                    EVRequest.ACTION_GET_PKHJBXX, requestGson.toJson(pkhxqEvent.data));
+                        }
+                    }
+                });
     }
-
 
 
     @Override
@@ -140,14 +141,14 @@ public class PkhJbxxPage extends PkhBasePage{
     }
 
     private void initView() {
-        hzxm	 = (EditText) findViewById(R.id.jbxx_hzxx);
-        jzdz	 = (EditText) findViewById(R.id.jbxx_jzdz);
-        lxdh	 = (EditText) findViewById(R.id.jbxx_lxdh);
-        hzsfz	 = (EditText) findViewById(R.id.jbxx_sfzh);
-        hkhyx	 = (EditText) findViewById(R.id.jbxx_khyh);
-        yxzh	 = (EditText) findViewById(R.id.jbxx_yhzh);
-        jhsyh	 = (EditText) findViewById(R.id.jbxx_jhsyh);
-        pkhzt	 = (EditText) findViewById(R.id.jbxx_pkzt);
+        hzxm = (EditText) findViewById(R.id.jbxx_hzxx);
+        jzdz = (EditText) findViewById(R.id.jbxx_jzdz);
+        lxdh = (EditText) findViewById(R.id.jbxx_lxdh);
+        hzsfz = (EditText) findViewById(R.id.jbxx_sfzh);
+        hkhyx = (EditText) findViewById(R.id.jbxx_khyh);
+        yxzh = (EditText) findViewById(R.id.jbxx_yhzh);
+        jhsyh = (EditText) findViewById(R.id.jbxx_jhsyh);
+        pkhzt = (EditText) findViewById(R.id.jbxx_pkzt);
         mHasData = false;
     }
 }

@@ -28,24 +28,25 @@ import okhttp3.Response;
 /**
  * @author GaoYixuan
  */
-public class PkhSctjPage extends PkhBasePage{
+public class PkhSctjPage extends PkhBasePage {
 
-    private EditText    tjnd;
-    private	EditText	gdmj;
-    private	EditText	xyggdgdmj;
-    private	EditText	tian;
-    private	EditText	tu;
-    private	EditText	lscgymj;
-    private	EditText	tghlmj;
-    private	EditText	mcdmj;
-    private	EditText	smmj;
-    private	EditText	syjjzwmj;
-    private	EditText	scyfmj;
-    private	EditText	sxsl;
+    private EditText tjnd;
+    private EditText gdmj;
+    private EditText xyggdgdmj;
+    private EditText tian;
+    private EditText tu;
+    private EditText lscgymj;
+    private EditText tghlmj;
+    private EditText mcdmj;
+    private EditText smmj;
+    private EditText syjjzwmj;
+    private EditText scyfmj;
+    private EditText sxsl;
 
     public PkhSctjPage(Context context) {
-        this(context,null);
+        this(context, null);
     }
+
     public PkhSctjPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -96,12 +97,13 @@ public class PkhSctjPage extends PkhBasePage{
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Type type = new TypeToken<PkhxqEvent<PkhsctjBean>>(){}.getType();
+                        Type type = new TypeToken<PkhxqEvent<PkhsctjBean>>() {
+                        }.getType();
                         PkhxqEvent<PkhsctjBean> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
                         EventBus.getDefault().post(pkhxqEvent);
                         if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
                             CacheManager.getInstance().cacheData(
-                                    EVRequest.ACTION_GET_PKHSCTJJBXX,requestGson.toJson(pkhxqEvent.data));
+                                    EVRequest.ACTION_GET_PKHSCTJJBXX, requestGson.toJson(pkhxqEvent.data));
                         }
                     }
                 });
@@ -129,18 +131,18 @@ public class PkhSctjPage extends PkhBasePage{
     }
 
     private void initView() {
-        tjnd	 = (EditText)findViewById(R.id.sctj_tjnd);
-        gdmj	 = (EditText)findViewById(R.id.sctj_gdmj);
-        xyggdgdmj	 = (EditText)findViewById(R.id.sctj_yxgggdmj);
-        tian	 = (EditText)findViewById(R.id.sctj_tian);
-        tu	 = (EditText)findViewById(R.id.sctj_tu);
-        lscgymj	 = (EditText)findViewById(R.id.sctj_lscgy);
-        tghlmj	 = (EditText)findViewById(R.id.sctj_tghl);
-        mcdmj	 = (EditText)findViewById(R.id.sctj_mcd);
-        smmj	 = (EditText)findViewById(R.id.sctj_smmj);
-        syjjzwmj	 = (EditText)findViewById(R.id.sctj_syjjzw);
-        scyfmj	 = (EditText)findViewById(R.id.sctj_scyf);
-        sxsl	 = (EditText)findViewById(R.id.sctj_scsl);
+        tjnd = (EditText) findViewById(R.id.sctj_tjnd);
+        gdmj = (EditText) findViewById(R.id.sctj_gdmj);
+        xyggdgdmj = (EditText) findViewById(R.id.sctj_yxgggdmj);
+        tian = (EditText) findViewById(R.id.sctj_tian);
+        tu = (EditText) findViewById(R.id.sctj_tu);
+        lscgymj = (EditText) findViewById(R.id.sctj_lscgy);
+        tghlmj = (EditText) findViewById(R.id.sctj_tghl);
+        mcdmj = (EditText) findViewById(R.id.sctj_mcd);
+        smmj = (EditText) findViewById(R.id.sctj_smmj);
+        syjjzwmj = (EditText) findViewById(R.id.sctj_syjjzw);
+        scyfmj = (EditText) findViewById(R.id.sctj_scyf);
+        sxsl = (EditText) findViewById(R.id.sctj_scsl);
         mHasData = false;
     }
 }

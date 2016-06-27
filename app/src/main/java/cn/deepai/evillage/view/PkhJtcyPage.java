@@ -28,16 +28,18 @@ import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+
 /**
  * @author GaoYixuan
  */
-public class PkhJtcyPage extends PkhBasePage{
+public class PkhJtcyPage extends PkhBasePage {
 
     private PkhjtcyRecyclerAdapter mPkhjtcyRecyclerAdapter;
 
     public PkhJtcyPage(Context context) {
-        this(context,null);
+        this(context, null);
     }
+
     public PkhJtcyPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -60,7 +62,7 @@ public class PkhJtcyPage extends PkhBasePage{
 
     @SuppressWarnings("all")
     public void onEventMainThread(PkhxqEvent<List<PkhjtcyBean>> event) {
-        if (isSelected()&&event.data instanceof List) {
+        if (isSelected() && event.data instanceof List) {
             switch (event.rspHeader.getRspCode()) {
                 case RspCode.RSP_CODE_SUCCESS:
                 case RspCode.RSP_CODE_NO_CONNECTION:
@@ -78,29 +80,31 @@ public class PkhJtcyPage extends PkhBasePage{
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJtcyList)),
                 requestGson.toJson(new HidBean()),
                 new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                PkhxqEvent<List<PkhjtcyBean>> pkhxqEvent = new PkhxqEvent<>();
-                String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHJTCYLIST);
-                Type type = new TypeToken<List<PkhjtcyBean>>(){}.getType();
-                pkhxqEvent.data = requestGson.fromJson(cache, type);
-                pkhxqEvent.rspHeader = new ResponseHeaderEvent();
-                pkhxqEvent.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
-                EventBus.getDefault().post(pkhxqEvent);
-            }
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        PkhxqEvent<List<PkhjtcyBean>> pkhxqEvent = new PkhxqEvent<>();
+                        String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHJTCYLIST);
+                        Type type = new TypeToken<List<PkhjtcyBean>>() {
+                        }.getType();
+                        pkhxqEvent.data = requestGson.fromJson(cache, type);
+                        pkhxqEvent.rspHeader = new ResponseHeaderEvent();
+                        pkhxqEvent.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
+                        EventBus.getDefault().post(pkhxqEvent);
+                    }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
 
-                Type type = new TypeToken<PkhxqEvent<List<PkhjtcyBean>>>(){}.getType();
-                PkhxqEvent<List<PkhjtcyBean>> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
-                EventBus.getDefault().post(pkhxqEvent);
-                if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
-                    CacheManager.getInstance().cacheData(
-                            EVRequest.ACTION_GET_PKHJTCYLIST,requestGson.toJson(pkhxqEvent.data));
-                }
-            }
-        });
+                        Type type = new TypeToken<PkhxqEvent<List<PkhjtcyBean>>>() {
+                        }.getType();
+                        PkhxqEvent<List<PkhjtcyBean>> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
+                        EventBus.getDefault().post(pkhxqEvent);
+                        if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
+                            CacheManager.getInstance().cacheData(
+                                    EVRequest.ACTION_GET_PKHJTCYLIST, requestGson.toJson(pkhxqEvent.data));
+                        }
+                    }
+                });
     }
 
     @Override
