@@ -128,504 +128,393 @@ public class EVApplication extends Application {
     }
 
     private void initCache() {
-        Gson gson = new Gson();
-        String str = "{\n" +
-                "    \"data\": [\n" +
-                "            {\n" +
-                "                \"hid\":43,\n" +
-                "                \"hzxm\":\"张三\",\n" +
-                "                \"jdnf\":2015,\n" +
-                "                \"jzdz\":\"遵义市桐梓县燎原镇花园新村7号楼7-201\",\n" +
-                "                \"vid\":43,\n" +
-                "                \"lxdh\":\"17012332312\",\n" +
-                "                \"jlsj\":20150803121212\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"hid\":44,\n" +
-                "                \"hzxm\":\"李四\",\n" +
-                "                \"jdnf\":2014,\n" +
-                "                \"jzdz\":\"遵义市桐梓县燎原镇花园新村5号楼7-201\",\n" +
-                "                \"vid\":43,\n" +
-                "                \"lxdh\":\"18012332322\",\n" +
-                "                \"jlsj\":20150803121212\n" +
-                "            }\n" +
-                "        ],\n" +
-                "    \"rspHeader\": {\n" +
-                "        \"reqCode\": \"zyfp01001\",\n" +
-                "        \"rspCode\": \"0000\",\n" +
-                "        \"rspDesc\": \"请求成功\",\n" +
-                "        \"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "    }\n" +
-                "}";
+        String str = "[\n" +
+                "{\n" +
+                "\"hid\":43,\n" +
+                "\"hzxm\":\"张三\",\n" +
+                "\"jdnf\":2015,\n" +
+                "\"jzdz\":\"遵义市桐梓县燎原镇花园新村7号楼7-201\",\n" +
+                "\"vid\":43,\n" +
+                "\"lxdh\":\"17012332312\",\n" +
+                "\"jlsj\":20150803121212\n" +
+                "},\n" +
+                "{\n" +
+                "\"hid\":44,\n" +
+                "\"hzxm\":\"李四\",\n" +
+                "\"jdnf\":2014,\n" +
+                "\"jzdz\":\"遵义市桐梓县燎原镇花园新村5号楼7-201\",\n" +
+                "\"vid\":43,\n" +
+                "\"lxdh\":\"18012332322\",\n" +
+                "\"jlsj\":20150803121212\n" +
+                "}\n" +
+                "]\n";
         CacheManager.getInstance().cacheData(EVRequest.ACTION_GET_PKHLIST, str);
         ////////////////////////////
-        str = "{\n" +
-                "\t\"data\": {\n" +
-                "\t\t\"hzxm\": \"张三2\",\n" +
-                "\t\t\"jzdz\": \"遵义\",\n" +
-                "        \"vid\": null,\n" +
-                "        \"lxdh\": \"1888888883\",\n" +
-                "        \"hzsfz\": \"55521525351535\",\n" +
-                "        \"hkhyx\": null,\n" +
-                "        \"yxzh\": null,\n" +
-                "        \"pksbbz\": \"G\",\n" +
-                "        \"jhsyh\": 0,\n" +
-                "        \"pkhsx\": \"2\",\n" +
-                "        \"pkhzt\": null,\n" +
-                "        \"jdnf\": 2015,\n" +
-                "        \"tpnf\": 0,\n" +
-                "        \"jlsj\": null,\n" +
-                "        \"jlr\": null,\n" +
-                "\t\t\"bz\": null,\n" +
-                "\t\t\"zt\": null\n" +
-                "\t},\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
-                "}";
+        str = "{\"hid\":0,\"hkhyx\":\"北京市招商银行双榆树支行\",\"hzsfz\":\"55521525351535\",\"hzxm\":\"张三2\",\"jdnf\":2015,\"jhsyh\":0,\"jzdz\":\"遵义\",\"lxdh\":\"1888888883\",\"pkhsx\":\"2\",\"pkhzt\":\"未脱贫\",\"pksbbz\":\"G\",\"tpnf\":0,\"vid\":0,\"yxzh\":\"1234567890\"}";
         CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_PKHJBXX,gson.toJson(str));
+                EVRequest.ACTION_GET_PKHJBXX,str);
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        str = "[\n" +
+                "{\n" +
+                "\"id\":43,\n" +
+                "\"xm\":\"张三\",\n" +
+                "\"xb\":\"F\",\n" +
+                "\"sfzhm\":\"110233199908091231\",\n" +
+                "\"yhzgx\":\"1\",\n" +
+                "\"jlsj\":20150803121212\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":44,\n" +
+                "\"xm\":\"张小三\",\n" +
+                "\"xb\":\"F\",\n" +
+                "\"sfzhm\":\"110233200908091231\",\n" +
+                "\"yhzgx\":\"3\",\n" +
+                "\"jlsj\":20150803121212\n" +
+                "}\n" +
+                "]";
+        CacheManager.getInstance().cacheData(
+                EVRequest.ACTION_GET_PKHJTCYLIST,str);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         str = "{\n" +
-                "\t\"data\":[\n" +
-                "        {\n" +
-                "            \"id\":43,\n" +
-                "            \"xm\":\"张三\",\n" +
-                "            \"xb\":\"F\",\n" +
-                "            \"sfzhm\":\"110233199908091231\",\n" +
-                "            \"yhzgx\":\"1\",\n" +
-                "            \"jlsj\":20150803121212\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"id\":44,\n" +
-                "            \"xm\":\"张小三\",\n" +
-                "            \"xb\":\"F\",\n" +
-                "            \"sfzhm\":\"110233200908091231\",\n" +
-                "            \"yhzgx\":\"3\",\n" +
-                "            \"jlsj\":20150803121212\n" +
-                "        }\n" +
-                "    ],\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
+                "\"id\":43,\n" +
+                "\"tjnd\":2015,\n" +
+                "\"cylx\":\"类型1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"cyzsy\":20000,\n" +
+                "\"cjfphzzjzz\":1,\n" +
+                "\"trhzzjje\":43,\n" +
+                "\"cynyhzzz\":1,\n" +
+                "\"ltqyddsy\":1000,\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"bz\":\"备注内容\"\n" +
                 "}";
         CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_PKHJTCYLIST,gson.toJson(str));
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        str = "{\n" +
-                "\t\"data\":{\n" +
-                "\t\t\"id\":43,\n" +
-                "\t\t\"tjnd\":2015,\n" +
-                "\t\t\"cylx\":\"类型1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"cyzsy\":20000,\n" +
-                "\t\t\"cjfphzzjzz\":1,\n" +
-                "\t\t\"trhzzjje\":43,\n" +
-                "\t\t\"cynyhzzz\":1,\n" +
-                "\t\t\"ltqyddsy\":1000,\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"bz\":\"备注内容\"\n" +
-                "    },\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
-                "}";
-        CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_PKHCYHZZJBXX,gson.toJson(str));
+                EVRequest.ACTION_GET_PKHCYHZZJBXX,str);
         /////////////////////////////////
-        str = "{\n" +
-                "\t\"data\":[\n" +
-                "\t{\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img4q.duitang.com/uploads/item/201402/07/20140207211400_LctxW.jpeg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://p4.gexing.com/G1/M00/C7/EF/rBACFFO3lPyijm3OAACQJjM7w-o542.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img2.100bt.com/upload/ttq/20140601/1401600704545_middle.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img5.duitang.com/uploads/item/201412/01/20141201081607_XFssr.jpeg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://tupian.enterdesk.com/2013/lxy/07/22/3/g2.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://imgsrc.baidu.com/forum/pic/item/96e1d53f8794a4c215b1fbd60ef41bd5ac6e3921.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img4.duitang.com/uploads/item/201207/18/20120718131407_hBzFy.jpeg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://cdn.duitang.com/uploads/blog/201309/22/20130922144610_mVyyY.thumb.600_0.jpeg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://a.hiphotos.baidu.com/zhidao/pic/item/f603918fa0ec08fa39cce19c58ee3d6d55fbda39.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img2.100bt.com/upload/ttq/20140601/1401600704545_middle.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img2.100bt.com/upload/ttq/20140601/1401600704545_middle.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "\t\t\"id\":1,\n" +
-                "\t\t\"hid\":43,\n" +
-                "\t\t\"zplx\":\"1\",\n" +
-                "\t\t\"cyzzlx\":\"类型2\",\n" +
-                "\t\t\"tpmc\":\"img_2015080123.jpg\",\n" +
-                "\t\t\"tpdz\":\"http://img6.faloo.com/Picture/680x580/0/927/927569.jpg\",\n" +
-                "\t\t\"jlsj\":2015080312121,\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "    }\n" +
-                "    ],\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
-                "}";
+        str = "[\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://img4q.duitang.com/uploads/item/201402/07/20140207211400_LctxW.jpeg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://img2.100bt.com/upload/ttq/20140601/1401600704545_middle.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://img5.duitang.com/uploads/item/201412/01/20141201081607_XFssr.jpeg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://tupian.enterdesk.com/2013/lxy/07/22/3/g2.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://imgsrc.baidu.com/forum/pic/item/96e1d53f8794a4c215b1fbd60ef41bd5ac6e3921.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://img4.duitang.com/uploads/item/201207/18/20120718131407_hBzFy.jpeg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://cdn.duitang.com/uploads/blog/201309/22/20130922144610_mVyyY.thumb.600_0.jpeg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://a.hiphotos.baidu.com/zhidao/pic/item/f603918fa0ec08fa39cce19c58ee3d6d55fbda39.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://img2.100bt.com/upload/ttq/20140601/1401600704545_middle.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://img2.100bt.com/upload/ttq/20140601/1401600704545_middle.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://pic1.win4000.com/wallpaper/270*185/22301.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":1,\n" +
+                "\"hid\":43,\n" +
+                "\"zplx\":\"1\",\n" +
+                "\"cyzzlx\":\"类型2\",\n" +
+                "\"tpmc\":\"img_2015080123.jpg\",\n" +
+                "\"tpdz\":\"http://img6.faloo.com/Picture/680x580/0/927/927569.jpg\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
+                "}\n" +
+                "]";
         CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_PKHJTQKZPLIST,gson.toJson(str));
+                EVRequest.ACTION_GET_PKHJTQKZPLIST,str);
         ////////////////////////////////
         str = "{\n" +
-                "\t\"data\":{\n" +
-                "        \"id\":43,\n" +
-                "        \"tjnd\":2015,\n" +
-                "        \"gdmj\":1.5,\n" +
-                "        \"yxggdgdmj\":2.1,\n" +
-                "        \"tian\":3.2,\n" +
-                "        \"tu\":5.4,\n" +
-                "        \"lscgymj\":1.5,\n" +
-                "        \"tghlmj\":1.2,\n" +
-                "        \"mudmj\":1.6,\n" +
-                "        \"smmj\":0.8,\n" +
-                "        \"syjjzwmj\":10.1,\n" +
-                "        \"scyfmj\":5.6,\n" +
-                "        \"sxsl\":2,\n" +
-                "        \"jlsj\":2015080312121,\n" +
-                "        \"jlr\":\"管理员\",\n" +
-                "        \"bz\":\"备注内容\"\n" +
-                "    },\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
+                "\"id\":43,\n" +
+                "\"tjnd\":2015,\n" +
+                "\"gdmj\":1.5,\n" +
+                "\"yxggdgdmj\":2.1,\n" +
+                "\"tian\":3.2,\n" +
+                "\"tu\":5.4,\n" +
+                "\"lscgymj\":1.5,\n" +
+                "\"tghlmj\":1.2,\n" +
+                "\"mudmj\":1.6,\n" +
+                "\"smmj\":0.8,\n" +
+                "\"syjjzwmj\":10.1,\n" +
+                "\"scyfmj\":5.6,\n" +
+                "\"sxsl\":2,\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"bz\":\"备注内容\"\n" +
                 "}";
         CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_PKHSCTJJBXX,gson.toJson(str));
+                EVRequest.ACTION_GET_PKHSCTJJBXX,str);
         ////////////////////////////////
         str = "{\n" +
-                "\t\"data\":{\n" +
-                "\t\t\t\"id\":43,\n" +
-                "            \"tjnd\":2015,\n" +
-                "            \"tshyd \":1,\n" +
-                "            \"zyrllx\":\"木柴，煤\",\n" +
-                "            \"ysqk\":\"不方便\",\n" +
-                "            \"hqyysdzykn\":\"劳动力不足\",\n" +
-                "            \"cslx\":\"露天\",\n" +
-                "            \"nyxfpqk\":\"收音机，手电\",\n" +
-                "            \"yskn\":1,\n" +
-                "            \"ysaq\":0,\n" +
-                "            \"jlczgl\":10.1,\n" +
-                "            \"rullx\":\"土路\",\n" +
-                "            \"wscs\":0,\n" +
-                "            \"tgbds\":0,\n" +
-                "            \"jlsj\":2015080312121,\n" +
-                "            \"jlr\":\"管理员\",\n" +
-                "            \"by\":\"备注内容\"\n" +
-                "\t},\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
+                "\"id\":43,\n" +
+                "\"tjnd\":2015,\n" +
+                "\"tshyd \":1,\n" +
+                "\"zyrllx\":\"木柴，煤\",\n" +
+                "\"ysqk\":\"不方便\",\n" +
+                "\"hqyysdzykn\":\"劳动力不足\",\n" +
+                "\"cslx\":\"露天\",\n" +
+                "\"nyxfpqk\":\"收音机，手电\",\n" +
+                "\"yskn\":1,\n" +
+                "\"ysaq\":0,\n" +
+                "\"jlczgl\":10.1,\n" +
+                "\"rullx\":\"土路\",\n" +
+                "\"wscs\":0,\n" +
+                "\"tgbds\":0,\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
                 "}";
         CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_PKHSHQKJBXX,gson.toJson(str));
+                EVRequest.ACTION_GET_PKHSHQKJBXX,str);
+        /////////////////////////
+        str = "[\n" +
+                "{\n" +
+                "\"id\":43,\n" +
+                "\"tjnd\":2014,\n" +
+                "\"jtzsr\":4333.55,\n" +
+                "\"scjyzcfy \":2456.00,\n" +
+                "\"jtcsr\":1877.55,\n" +
+                "\"jtnrjcsr\":938.7,\n" +
+                "\"jlsj\":20150803121212\n" +
+                "},\n" +
+                "{\n" +
+                "\"id\":44,\n" +
+                "\"tjnd\":2015,\n" +
+                "\"jtzsr\":4933.55,\n" +
+                "\"scjyzcfy\":2656.00,\n" +
+                "\"jtcsr\":2277.55,\n" +
+                "\"jtnrjcsr\":1138.7,\n" +
+                "\"jlsj\":20150803121212\n" +
+                "}\n" +
+                "]";
+        CacheManager.getInstance().cacheData(
+                EVRequest.ACTION_GET_PKHSZQKLIST,str);
         /////////////////////////
         str = "{\n" +
-                "\t\"data\":[\n" +
-                "        {\n" +
-                "                \"id\":43,\n" +
-                "                \"tjnd\":2014,\n" +
-                "                \"jtzsr\":4333.55,\n" +
-                "                \"scjyzcfy \":2456.00,\n" +
-                "                \"jtcsr\":1877.55,\n" +
-                "                \"jtnrjcsr\":938.7,\n" +
-                "                \"jlsj\":20150803121212\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"id\":44,\n" +
-                "                \"tjnd\":2015,\n" +
-                "                \"jtzsr\":4933.55,\n" +
-                "                \"scjyzcfy\":2656.00,\n" +
-                "                \"jtcsr\":2277.55,\n" +
-                "                \"jtnrjcsr\":1138.7,\n" +
-                "                \"jlsj\":20150803121212\n" +
-                "            }\n" +
-                "\n" +
-                "    ],\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
+                "\"id\":43,\n" +
+                "\"tjnd\":2015,\n" +
+                "\"zfmj\":10.5,\n" +
+                "\"fwzyjg\":\"土坯\",\n" +
+                "\"jfsj\":20050803,\n" +
+                "\"zyzfsfwf\":1,\n" +
+                "\"ydfpbqqk\":\"\",\n" +
+                "\"jlsj\":2015080312121,\n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
                 "}";
         CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_PKHSZQKLIST,gson.toJson(str));
-        /////////////////////////
-        str = "{\n" +
-                "\t\"data\":{\n" +
-                "        \"id\":43,\n" +
-                "        \"tjnd\":2015,\n" +
-                "        \"zfmj\":10.5,\n" +
-                "        \"fwzyjg\":\"土坯\",\n" +
-                "        \"jfsj\":20050803,\n" +
-                "        \"zyzfsfwf\":1,\n" +
-                "        \"ydfpbqqk\":\"\",\n" +
-                "        \"jlsj\":2015080312121,\n" +
-                "        \"jlr\":\"管理员\",\n" +
-                "        \"by\":\"备注内容\"\n" +
-                "    },\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
-                "}";
-        CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_PKHZFQJBXX,gson.toJson(str));
+                EVRequest.ACTION_GET_PKHZFQJBXX,str);
         /////////////////////////////////
         str = "{\n" +
-                "                \"xm\":\"赵四\",\n" +
-                "                \"xb\":\"F\",\n" +
-                "                \"sfzhm\":\"110233200908091231\",\n" +
-                "                \"yhzgx\":\"3\",\n" +
-                "                \"mz\": \"1\",\n" +
-                "                \"whcd\": \"3\",\n" +
-                "                \"zxsqk\": \"1\",\n" +
-                "                \"jkqk\": \"1\",\n" +
-                "                \"ldnlzk\": \"1\",\n" +
-                "                \"wgzk\": \"1\",\n" +
-                "                \"wgsj\": \"1\",\n" +
-                "                \"dbrk\": \"1\",\n" +
-                "                \"cjxnhyl\": \"1\",\n" +
+                "\"xm\":\"赵四\",\n" +
+                "\"xb\":\"F\",\n" +
+                "\"sfzhm\":\"110233200908091231\",\n" +
+                "\"yhzgx\":\"3\",\n" +
+                "\"mz\": \"1\",\n" +
+                "\"whcd\": \"3\",\n" +
+                "\"zxsqk\": \"1\",\n" +
+                "\"jkqk\": \"1\",\n" +
+                "\"ldnlzk\": \"1\",\n" +
+                "\"wgzk\": \"1\",\n" +
+                "\"wgsj\": \"1\",\n" +
+                "\"dbrk\": \"1\",\n" +
+                "\"cjxnhyl\": \"1\",\n" +
                 "\"cjcxjmjbylbx\": 0,\n" +
-                "                \"cjxnhyl\": 0,\n" +
-                "                \"cyzt\": null,\n" +
-                "                \"dbrk\": 0,\n" +
-                "                \"id\": null,\n" +
-                "                \"jkqk\": null,\n" +
-                "                \"jlr\": null,\n" +
-                "                \"jlsj\": null,\n" +
-                "                \"ldnlzk\": null,\n" +
-                "       }\n";
+                "\"cjxnhyl\": 0,\n" +
+                "\"cyzt\": null,\n" +
+                "\"dbrk\": 0,\n" +
+                "\"id\": null,\n" +
+                "\"jkqk\": null,\n" +
+                "\"jlr\": null,\n" +
+                "\"jlsj\": null,\n" +
+                "\"ldnlzk\": null\n" +
+                "}";
         CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_JTCYJBXX,gson.toJson(str));
+                EVRequest.ACTION_GET_JTCYJBXX,str);
         /////////////////////////////
         str = "{\n" +
-                "\t\"data\":{\n" +
-                "\t\t\"id\":43,\n" +
-                "\t\t\"tjnd\":2015,\n" +
-                "\t\t\"jtzsr\":15000,\n" +
-                "\t\t\"wgsr\":200.1,\n" +
-                "\t\t\"scjyxsr\":30.2,\n" +
-                "\t\t\"ccxsr\":500.4,\n" +
-                "\t\t\"dk\":1000.5,\n" +
-                "\t\t\"scjyzcfy\":1000.2,\n" +
-                "\t\t\"jtcsr\":100.6,\n" +
-                "\t\t\"jtnrjcsr\":20.8,\n" +
-                "\t\t\"glbt\":1000.1,\n" +
-                "\t\t\"jhsyj\":50.6,\n" +
-                "\t\t\"dbj\":200,\n" +
-                "\t\t\"cxjmjbylbx\":20,\n" +
-                "\t\t\"ylbx\":200,\n" +
-                "\t\t\"deylbz\":2000,\n" +
-                "\t\t\"stbcj\":20,\n" +
-                "\t\t\"jlsj\":2015080312121,\t\n" +
-                "\t\t\"jlr\":\"管理员\",\n" +
-                "\t\t\"by\":\"备注内容\"\n" +
-                "\t},\n" +
-                "\t\"rspHeader\": {\n" +
-                "\t\t\"reqCode\": \"zyfp01001\",\n" +
-                "\t\t\"rspCode\": \"0000\",\n" +
-                "\t\t\"rspDesc\": \"请求成功\",\n" +
-                "\t\t\"rspTime\": \"2016-06-22 14:44:17\"\n" +
-                "\t}\n" +
+                "\"id\":43,\n" +
+                "\"tjnd\":2015,\n" +
+                "\"jtzsr\":15000,\n" +
+                "\"wgsr\":200.1,\n" +
+                "\"scjyxsr\":30.2,\n" +
+                "\"ccxsr\":500.4,\n" +
+                "\"dk\":1000.5,\n" +
+                "\"scjyzcfy\":1000.2,\n" +
+                "\"jtcsr\":100.6,\n" +
+                "\"jtnrjcsr\":20.8,\n" +
+                "\"glbt\":1000.1,\n" +
+                "\"jhsyj\":50.6,\n" +
+                "\"dbj\":200,\n" +
+                "\"cxjmjbylbx\":20,\n" +
+                "\"ylbx\":200,\n" +
+                "\"deylbz\":2000,\n" +
+                "\"stbcj\":20,\n" +
+                "\"jlsj\":2015080312121,   \n" +
+                "\"jlr\":\"管理员\",\n" +
+                "\"by\":\"备注内容\"\n" +
                 "}";
         CacheManager.getInstance().cacheData(
-                EVRequest.ACTION_GET_PKHSZQKJBXX,gson.toJson(str));
+                EVRequest.ACTION_GET_PKHSZQKJBXX,str);
     }
 }

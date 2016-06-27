@@ -47,6 +47,7 @@ public class PkhszqkViewHolder extends BaseViewHolder {
         super.onClick(v);
         mPkhszqkBean.getId();
         Intent intent = new Intent(mContext, PkhszqkActivity.class);
+        intent.putExtra("id",mPkhszqkBean.getId());
         mContext.startActivity(intent);
         ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }

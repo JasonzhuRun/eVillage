@@ -1,19 +1,8 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-
-import java.util.List;
-
-import cn.deepai.evillage.R;
-import cn.deepai.evillage.bean.PkhjtcyBean;
-import cn.deepai.evillage.bean.PkhxqBean;
-import cn.deepai.evillage.event.RspCode;
-import cn.deepai.evillage.utils.ToastUtil;
-import de.greenrobot.event.EventBus;
 
 /**
  * @author GaoYixuan

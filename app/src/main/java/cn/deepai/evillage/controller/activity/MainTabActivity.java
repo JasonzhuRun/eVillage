@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.fragment.BaseFragment;
+import cn.deepai.evillage.controller.fragment.JdFragment;
 import cn.deepai.evillage.controller.fragment.MineFragment;
 import cn.deepai.evillage.controller.fragment.NewsFragment;
 import cn.deepai.evillage.controller.fragment.PkhFragment;
@@ -145,6 +146,11 @@ public class MainTabActivity extends BaseActivity implements
         tabHost.addTab(newTabSpec(tabHost, "3", getString(R.string.tab_mine),
                 R.drawable.ic_action_location_found_dark),
                 MineFragment.class,
+                null
+        );
+        tabHost.addTab(newTabSpec(tabHost, "4", getString(R.string.tab_build),
+                R.drawable.ic_action_location_found_dark),
+                JdFragment.class,
                 null
         );
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {

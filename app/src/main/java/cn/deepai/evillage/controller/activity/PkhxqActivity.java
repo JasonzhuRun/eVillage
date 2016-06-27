@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.bean.PkhxqBean;
+import cn.deepai.evillage.event.PkhxqEvent;
 import cn.deepai.evillage.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.PkhBasePage;
@@ -63,7 +63,7 @@ public class PkhxqActivity extends BaseActivity {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(PkhxqBean event) {
+    public void onEventMainThread(PkhxqEvent event) {
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
                 break;

@@ -1,16 +1,26 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.bean.PkhjtcyBean;
 import cn.deepai.evillage.bean.PkhszqkBean;
+import cn.deepai.evillage.event.PkhxqEvent;
+import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.request.PkhJtcyRequest;
+import cn.deepai.evillage.request.PkhSzqkRequest;
+import cn.deepai.evillage.utils.ToastUtil;
+import de.greenrobot.event.EventBus;
 
 /**
  * 收支情况详情页
  */
 public class PkhszqkActivity extends BaseActivity {
 
+    private int id;
     private EditText tjnd;
     private EditText jtzsr;
     private EditText wgsr;
@@ -29,24 +39,50 @@ public class PkhszqkActivity extends BaseActivity {
     private EditText deylbz;
     private EditText stbcj;
 
+
     public void onBindData(PkhszqkBean pkhszqkBean) {
         tjnd.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        jtzsr.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        wgsr.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        scjyxsr.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        zyxsr.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        ccxsr.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        dk.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        scjyzcfy.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        jtcsr.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        jtnrjcsr.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        glbt.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        jhsyj.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        dbj.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        cxjmjbylbx.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        ylbx.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        deylbz.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        stbcj.setText(String.valueOf(pkhszqkBean.getTjnd()));
+        jtzsr.setText(String.valueOf(pkhszqkBean.getJtzsr()));
+        wgsr.setText(String.valueOf(pkhszqkBean.getWgsr()));
+        scjyxsr.setText(String.valueOf(pkhszqkBean.getScjyxsr()));
+        zyxsr.setText(String.valueOf(pkhszqkBean.getZyxsr()));
+        ccxsr.setText(String.valueOf(pkhszqkBean.getCcxsr()));
+        dk.setText(String.valueOf(pkhszqkBean.getDk()));
+        scjyzcfy.setText(String.valueOf(pkhszqkBean.getScjyxsr()));
+        jtcsr.setText(String.valueOf(pkhszqkBean.getJtcsr()));
+        jtnrjcsr.setText(String.valueOf(pkhszqkBean.getJtnrjcsr()));
+        glbt.setText(String.valueOf(pkhszqkBean.getGlbt()));
+        jhsyj.setText(String.valueOf(pkhszqkBean.getJhsyj()));
+        dbj.setText(String.valueOf(pkhszqkBean.getDbj()));
+        cxjmjbylbx.setText(String.valueOf(pkhszqkBean.getCxjmjbylbx()));
+        ylbx.setText(String.valueOf(pkhszqkBean.getYlbx()));
+        deylbz.setText(String.valueOf(pkhszqkBean.getDeylbz()));
+        stbcj.setText(String.valueOf(pkhszqkBean.getStbcj()));
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhxqEvent<PkhszqkBean> event) {
+        switch (event.rspHeader.getRspCode()) {
+            case RspCode.RSP_CODE_SUCCESS:
+                onBindData(event.data);
+                break;
+            case RspCode.RSP_CODE_NO_CONNECTION:
+                onBindData(event.data);
+                ToastUtil.shortToast(getResources().getString(R.string.request_error));
+                break;
+            default:
+                ToastUtil.longToast(event.rspHeader.getRspDesc());
+                break;
+        }
+        tryToHideProcessDialog();
     }
 
     @Override
@@ -54,7 +90,17 @@ public class PkhszqkActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkhszqk);
         initView();
+        id = getIntent().getIntExtra("id", -1);
+        if (id == -1) {
+            ToastUtil.shortToast(getResources().getString(R.string.pkh_szqk_none));
+            finish();
+        } else {
+            initView();
+            EventBus.getDefault().register(this);
+            PkhSzqkRequest.request(id);
+        }
     }
+
 
     @Override
     protected String getActivityName() {
@@ -62,6 +108,11 @@ public class PkhszqkActivity extends BaseActivity {
     }
 
     private void initView() {
+        ActionBar actionBar = getSupportActionBar();
+        if (null != actionBar) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         tjnd = (EditText) findViewById(R.id.szqk_tjnd);
         jtzsr = (EditText) findViewById(R.id.szqk_jtzsr);
         wgsr = (EditText) findViewById(R.id.szqk_wgsr);

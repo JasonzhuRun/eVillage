@@ -1,33 +1,24 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.PagerTabStrip;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-
-import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.bean.PkhjtcyBean;
-import cn.deepai.evillage.view.PkhBasePage;
-import cn.deepai.evillage.view.PkhCyhPage;
-import cn.deepai.evillage.view.PkhJbxxPage;
-import cn.deepai.evillage.view.PkhJtcyPage;
-import cn.deepai.evillage.view.PkhSctjPage;
-import cn.deepai.evillage.view.PkhShtjPage;
-import cn.deepai.evillage.view.PkhSzqkPage;
-import cn.deepai.evillage.view.PkhZfqkPage;
+import cn.deepai.evillage.event.PkhxqEvent;
+import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.request.PkhJtcyRequest;
+import cn.deepai.evillage.utils.ToastUtil;
+import de.greenrobot.event.EventBus;
 
 /**
  * 家庭成员信息详情
  */
 public class PkhjtcyActivity extends BaseActivity {
 
+    private int id;
     private EditText xm;
     private EditText xb;
     private EditText sfzhm;
@@ -50,12 +41,50 @@ public class PkhjtcyActivity extends BaseActivity {
     private EditText cyzt;
     private EditText ztbhsj;
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkhjtcy);
-        initView();
+        id = getIntent().getIntExtra("id",-1);
+        if (id == -1) {
+            ToastUtil.shortToast(getResources().getString(R.string.pkh_jtcy_none));
+            finish();
+        } else {
+            initView();
+            EventBus.getDefault().register(this);
+            PkhJtcyRequest.request(id);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhxqEvent<PkhjtcyBean> event) {
+        switch (event.rspHeader.getRspCode()) {
+            case RspCode.RSP_CODE_SUCCESS:
+                onBindData(event.data);
+                break;
+            case RspCode.RSP_CODE_NO_CONNECTION:
+                onBindData(event.data);
+                ToastUtil.shortToast(getResources().getString(R.string.request_error));
+                break;
+            default:
+                ToastUtil.longToast(event.rspHeader.getRspDesc());
+                break;
+        }
+        tryToHideProcessDialog();
     }
 
     @Override
@@ -88,6 +117,12 @@ public class PkhjtcyActivity extends BaseActivity {
     }
 
     private void initView() {
+
+        ActionBar actionBar = getSupportActionBar();
+        if (null != actionBar) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         xm = (EditText) findViewById(R.id.jtcy_xm);
         xb = (EditText) findViewById(R.id.jtcy_xb);
         sfzhm = (EditText) findViewById(R.id.jtcy_sfzhm);
