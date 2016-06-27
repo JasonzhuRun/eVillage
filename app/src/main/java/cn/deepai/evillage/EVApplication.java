@@ -89,7 +89,7 @@ public class EVApplication extends Application {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
                 mContext)
                 // max width, max height，即保存的每个缓存文件的最大长宽
-                .memoryCacheExtraOptions(480, 800)
+                .memoryCacheExtraOptions(1000, 1000)
                 // Can slow ImageLoader, use it carefully (Better don't use it)设置缓存的详细信息，最好不要设置这个
 //				 .discCacheExtraOptions(480, 800, CompressFormat.JPEG, 75, null)
                 // 线程池内加载的数量

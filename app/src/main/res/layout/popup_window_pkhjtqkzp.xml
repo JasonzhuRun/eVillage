@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pop_backgroud"
+    tools:context=".controller.activity.PkhxqActivity" >
+
+    <Button
+        android:id="@+id/popup_btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关闭"/>
+    <ImageView
+        android:id="@+id/popup_view_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/app_name"/>
+
+</RelativeLayout>
