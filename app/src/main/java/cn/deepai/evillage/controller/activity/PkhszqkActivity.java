@@ -6,11 +6,9 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.bean.PkhjtcyBean;
-import cn.deepai.evillage.bean.PkhszqkBean;
-import cn.deepai.evillage.event.PkhxqEvent;
-import cn.deepai.evillage.event.RspCode;
-import cn.deepai.evillage.request.PkhJtcyRequest;
+import cn.deepai.evillage.model.bean.PkhszqkBean;
+import cn.deepai.evillage.model.event.ResponseEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.request.PkhSzqkRequest;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -69,7 +67,7 @@ public class PkhszqkActivity extends BaseActivity {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(PkhxqEvent<PkhszqkBean> event) {
+    public void onEventMainThread(ResponseEvent<PkhszqkBean> event) {
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
                 onBindData(event.data);

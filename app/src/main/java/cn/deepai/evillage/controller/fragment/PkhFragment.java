@@ -1,5 +1,6 @@
 package cn.deepai.evillage.controller.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,12 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.gson.Gson;
-
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhRecyclerAdapter;
-import cn.deepai.evillage.event.PkhListEvent;
-import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.controller.activity.LoginActivity;
+import cn.deepai.evillage.model.event.PkhListEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.request.PkhJbxxListRequest;
 import cn.deepai.evillage.utils.LogUtil;
@@ -53,11 +53,15 @@ public class PkhFragment extends BaseFragment {
         LogUtil.v(PkhFragment.class,event.rspHeader.toString());
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
-                mPkhRecyclerAdapter.notifyResult(true, event.data);
-                break;
             case RspCode.RSP_CODE_NO_CONNECTION:
                 mPkhRecyclerAdapter.notifyResult(true, event.data);
-                ToastUtil.shortToast(getString(R.string.request_error));
+                break;
+            case RspCode.RSP_CODE_TOKEN_NOTEXIST:
+                ToastUtil.shortToast(getString(R.string.login_overdue));
+                SettingManager.getInstance().clearToken();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
                 break;
             default:
                 ToastUtil.longToast(event.rspHeader.getRspDesc());

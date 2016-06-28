@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 import cn.deepai.evillage.EVApplication;
-import cn.deepai.evillage.bean.DomainBean;
-import cn.deepai.evillage.bean.ValueBean;
+import cn.deepai.evillage.model.bean.DomainBean;
+import cn.deepai.evillage.model.bean.DictionaryValueBean;
 
 /**
  * @author GaoYixuan
@@ -39,7 +39,7 @@ public class DictionaryUtil {
         dictinary = new HashMap<>();
         for (DomainBean domain:domains) {
             Map<String,String> temp = new HashMap<>();
-            for (ValueBean value:domain.domainValue) {
+            for (DictionaryValueBean value:domain.domainValue) {
                 temp.put(value.valueCode,value.valueName);
             }
             dictinary.put(domain.domainCode,temp);

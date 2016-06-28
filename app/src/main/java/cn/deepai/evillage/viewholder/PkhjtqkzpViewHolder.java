@@ -16,7 +16,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
-import cn.deepai.evillage.bean.PkhjtqkzpBean;
+import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
 
 /**

@@ -1,10 +1,10 @@
-package cn.deepai.evillage.event;
+package cn.deepai.evillage.model.event;
 
 /**
  * @author GaoYixuan
  */
 
-public class PkhxqEvent<T> {
+public class ResponseEvent<T> {
     public ResponseHeaderEvent rspHeader;
     public T data;
 }

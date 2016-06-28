@@ -1,4 +1,4 @@
-package cn.deepai.evillage.bean;
+package cn.deepai.evillage.model.bean;
 
 import cn.deepai.evillage.manager.SettingManager;
 

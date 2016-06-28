@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.event.LoginEvent;
-import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.model.event.LoginEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.request.LoginRequest;
 import cn.deepai.evillage.utils.ToastUtil;
@@ -28,6 +28,7 @@ public class LoginActivity extends BaseActivity{
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
                 SettingManager.getInstance().setToken(event.data.getTokenId());
+                SettingManager.getInstance().setUserId(event.data.getUserId());
                 tryToEnter();
                 break;
             default:
@@ -87,7 +88,7 @@ public class LoginActivity extends BaseActivity{
     private void tryToEnter() {
         tryToShowProcessDialog();
         String token = SettingManager.getInstance().getToken();
-        if (!TextUtils.isEmpty(token)) {
+        if (!TextUtils.isEmpty(token)&&!"0".equals(token)) {
             Intent intent = new Intent(LoginActivity.this,MainTabActivity.class);
             startActivity(intent);
             finish();

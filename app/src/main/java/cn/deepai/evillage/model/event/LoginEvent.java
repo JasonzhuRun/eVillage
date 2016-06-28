@@ -1,6 +1,6 @@
-package cn.deepai.evillage.event;
+package cn.deepai.evillage.model.event;
 
-import cn.deepai.evillage.bean.LoginResponseBean;
+import cn.deepai.evillage.model.bean.LoginResponseBean;
 
 /**
  * @author GaoYixuan

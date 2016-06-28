@@ -1,8 +1,8 @@
-package cn.deepai.evillage.event;
+package cn.deepai.evillage.model.event;
 
 import java.util.List;
 
-import cn.deepai.evillage.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 
 /**
  * 贫困户列表响应参数

@@ -1,4 +1,4 @@
-package cn.deepai.evillage.bean;
+package cn.deepai.evillage.model.bean;
 
 /**
  * @author GaoYixuan
@@ -11,7 +11,7 @@ public class LoginResponseBean {
     private String updateContent;
     private String isMustUpdate;
     private String versionName;
-    private String userId;
+    private int userId;
 
     public String getTokenId() {
         return tokenId;
@@ -61,11 +61,11 @@ public class LoginResponseBean {
         this.versionName = versionName;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 }

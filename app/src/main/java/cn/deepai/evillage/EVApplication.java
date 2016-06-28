@@ -20,6 +20,7 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 import java.io.File;
 
 import cn.deepai.evillage.manager.CacheManager;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.request.EVRequest;
 import cn.deepai.evillage.utils.DictionaryUtil;
 import cn.deepai.evillage.utils.FileUtil;
@@ -38,7 +39,8 @@ public class EVApplication extends Application {
         mContext = this;
         DictionaryUtil.init();
         initImageLoader();
-//        initCache();
+        initCache();
+        SettingManager.getInstance().setToken("asdfasdfasdf");
     }
 
     public static DisplayImageOptions getDisplayImageOptions() {
@@ -428,25 +430,43 @@ public class EVApplication extends Application {
                 EVRequest.ACTION_GET_PKHSHQKJBXX,str);
         /////////////////////////
         str = "[\n" +
-                "{\n" +
-                "\"id\":43,\n" +
-                "\"tjnd\":2014,\n" +
-                "\"jtzsr\":4333.55,\n" +
-                "\"scjyzcfy \":2456.00,\n" +
-                "\"jtcsr\":1877.55,\n" +
-                "\"jtnrjcsr\":938.7,\n" +
-                "\"jlsj\":20150803121212\n" +
-                "},\n" +
-                "{\n" +
-                "\"id\":44,\n" +
-                "\"tjnd\":2015,\n" +
-                "\"jtzsr\":4933.55,\n" +
-                "\"scjyzcfy\":2656.00,\n" +
-                "\"jtcsr\":2277.55,\n" +
-                "\"jtnrjcsr\":1138.7,\n" +
-                "\"jlsj\":20150803121212\n" +
-                "}\n" +
-                "]";
+                "\t\t\t{\n" +
+                "\t\t\t\t\"id\": \"1\",\n" +
+                "\t\t\t\t\"jlsj\": \"Thu Jun 16 15:14:48 CST 2016\",\n" +
+                "\t\t\t\t\"jtcsr\": \"111.0\",\n" +
+                "\t\t\t\t\"jtnrjcsr\": \"111.0\",\n" +
+                "\t\t\t\t\"jtzsr\": \"21122.0\",\n" +
+                "\t\t\t\t\"scjyzcfy\": \"223.0\",\n" +
+                "\t\t\t\t\"tjnd\": \"2012\"\n" +
+                "\t\t\t},\n" +
+                "\t\t\t{\n" +
+                "\t\t\t\t\"id\": \"2\",\n" +
+                "\t\t\t\t\"jlsj\": \"Wed Jun 01 11:03:31 CST 2016\",\n" +
+                "\t\t\t\t\"jtcsr\": \"123.0\",\n" +
+                "\t\t\t\t\"jtnrjcsr\": \"123.0\",\n" +
+                "\t\t\t\t\"jtzsr\": \"3333.0\",\n" +
+                "\t\t\t\t\"scjyzcfy\": \"3123.0\",\n" +
+                "\t\t\t\t\"tjnd\": \"2015\"\n" +
+                "\t\t\t},\n" +
+                "\t\t\t{\n" +
+                "\t\t\t\t\"id\": \"31\",\n" +
+                "\t\t\t\t\"jlsj\": \"Thu Jun 16 15:15:28 CST 2016\",\n" +
+                "\t\t\t\t\"jtcsr\": \"111.0\",\n" +
+                "\t\t\t\t\"jtnrjcsr\": \"111.0\",\n" +
+                "\t\t\t\t\"jtzsr\": \"21122.0\",\n" +
+                "\t\t\t\t\"scjyzcfy\": \"223.0\",\n" +
+                "\t\t\t\t\"tjnd\": \"2011\"\n" +
+                "\t\t\t},\n" +
+                "\t\t\t{\n" +
+                "\t\t\t\t\"id\": \"32\",\n" +
+                "\t\t\t\t\"jlsj\": \"Thu Jun 16 15:15:35 CST 2016\",\n" +
+                "\t\t\t\t\"jtcsr\": \"111.0\",\n" +
+                "\t\t\t\t\"jtnrjcsr\": \"111.0\",\n" +
+                "\t\t\t\t\"jtzsr\": \"21122.0\",\n" +
+                "\t\t\t\t\"scjyzcfy\": \"223.0\",\n" +
+                "\t\t\t\t\"tjnd\": \"2011\"\n" +
+                "\t\t\t}\n" +
+                "\t\t]";
         CacheManager.getInstance().cacheData(
                 EVRequest.ACTION_GET_PKHSZQKLIST,str);
         /////////////////////////

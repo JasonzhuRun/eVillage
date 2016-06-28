@@ -1,4 +1,4 @@
-package cn.deepai.evillage.bean;
+package cn.deepai.evillage.model.bean;
 
 import java.util.List;
 
@@ -10,5 +10,5 @@ public class DomainBean {
 
     public String domainCode;
     public String domainName;
-    public List<ValueBean> domainValue;
+    public List<DictionaryValueBean> domainValue;
 }

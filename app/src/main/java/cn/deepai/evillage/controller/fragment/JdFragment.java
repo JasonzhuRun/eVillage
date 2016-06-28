@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhRecyclerAdapter;
-import cn.deepai.evillage.event.PkhListEvent;
-import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.model.event.PkhListEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.request.PkhJbxxListRequest;
 import cn.deepai.evillage.utils.LogUtil;

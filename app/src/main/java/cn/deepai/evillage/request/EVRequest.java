@@ -61,6 +61,7 @@ public class EVRequest {
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
     private static final String mURL = "http://192.168.101.18:8080/zyfp-web/inter/termLogin!";
+//    private static final String mURL = "http://192.168.212.29:8888/zyfp-web/inter/termLogin!";
     private static OkHttpClient client = new OkHttpClient();
 
     public static void request(String action,String jsonHeader,String jsonData,Callback callback) {

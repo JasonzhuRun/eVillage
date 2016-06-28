@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.deepai.evillage.bean.NewsBean;
+import cn.deepai.evillage.model.bean.NewsBean;
 import cn.deepai.evillage.viewholder.NewsViewHolder;
 
 /**

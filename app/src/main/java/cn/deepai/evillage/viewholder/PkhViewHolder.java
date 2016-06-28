@@ -9,12 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-
-import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
-import cn.deepai.evillage.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.manager.SettingManager;
 
 /**

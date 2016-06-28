@@ -1,6 +1,7 @@
 package cn.deepai.evillage.request;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
@@ -10,15 +11,13 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.bean.PkhjbxxBean;
-import cn.deepai.evillage.bean.RequestHeaderBean;
-import cn.deepai.evillage.event.PkhListEvent;
-import cn.deepai.evillage.event.ResponseHeaderEvent;
-import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.event.PkhListEvent;
+import cn.deepai.evillage.model.event.ResponseHeaderEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.manager.CacheManager;
-import cn.deepai.evillage.manager.SettingManager;
 import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -54,10 +53,26 @@ public class PkhJbxxListRequest extends EVRequest {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                PkhListEvent event = gson.fromJson(response.body().string(), PkhListEvent.class);
-                EventBus.getDefault().post(event);
-                if (RspCode.RSP_CODE_SUCCESS.equals(event.rspHeader.getRspCode())) {
-                    CacheManager.getInstance().cacheData(EVRequest.ACTION_GET_PKHLIST, gson.toJson(event.data));
+                String body = response.body().string();
+                PkhListEvent event;
+                try {
+                    event = gson.fromJson(body, PkhListEvent.class);
+                    EventBus.getDefault().post(event);
+                    if (RspCode.RSP_CODE_SUCCESS.equals(event.rspHeader.getRspCode())) {
+                        CacheManager.getInstance().cacheData(EVRequest.ACTION_GET_PKHLIST, gson.toJson(event.data));
+                    }
+                } catch (JsonSyntaxException e) {
+                    event = new PkhListEvent();
+                    try {
+                        JSONObject object = new JSONObject(body);
+                        String rspStr =object.getString("rspHeader");
+                        event.rspHeader = gson.fromJson(rspStr,ResponseHeaderEvent.class);
+                    } catch (JSONException jsonException) {
+                        event.rspHeader = new ResponseHeaderEvent();
+                        event.rspHeader.setRspCode(RspCode.RSP_CODE_OTHER);
+                        event.rspHeader.setRspDesc("未知的服务器异常");
+                    }
+                    EventBus.getDefault().post(event);
                 }
             }
         });

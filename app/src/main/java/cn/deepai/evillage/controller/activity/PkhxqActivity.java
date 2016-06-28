@@ -16,8 +16,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.event.PkhxqEvent;
-import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.model.event.ResponseEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.PkhBasePage;
 import cn.deepai.evillage.view.PkhCyhPage;
@@ -46,7 +46,7 @@ public class PkhxqActivity extends BaseActivity {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(PkhxqEvent event) {
+    public void onEventMainThread(ResponseEvent event) {
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
                 break;

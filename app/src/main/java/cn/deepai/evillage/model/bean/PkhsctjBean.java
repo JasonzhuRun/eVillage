@@ -1,26 +1,26 @@
-package cn.deepai.evillage.bean;
+package cn.deepai.evillage.model.bean;
 
 /**
  * 贫困户生产条件
  */
 public class PkhsctjBean {
 
-    private	int	id;
-    private	int	tjnd;
-    private	float	gdmj;
-    private	float	xyggdgdmj;
-    private	float	tian;
-    private	float	tu;
-    private	float	lscgymj;
-    private	float	tghlmj;
-    private	float	mcdmj;
-    private	float	smmj;
-    private	float	syjjzwmj;
-    private	float	scyfmj;
-    private	int	sxsl;
-    private	String	jlsj;
-    private	String	jlr;
-    private	String	bz;
+    private int id;
+    private int tjnd;
+    private float gdmj;
+    private float xyggdgdmj;
+    private float tian;
+    private float tu;
+    private float lscgymj;
+    private float tghlmj;
+    private float mcdmj;
+    private float smmj;
+    private float syjjzwmj;
+    private float scyfmj;
+    private int sxsl;
+    private String jlsj;
+    private String jlr;
+    private String bz;
 
     public int getId() {
         return id;

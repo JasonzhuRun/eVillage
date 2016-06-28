@@ -12,12 +12,12 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.bean.HidBean;
-import cn.deepai.evillage.bean.PkhshtjBean;
-import cn.deepai.evillage.event.PkhxqEvent;
-import cn.deepai.evillage.bean.RequestHeaderBean;
-import cn.deepai.evillage.event.ResponseHeaderEvent;
-import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.model.bean.HidBean;
+import cn.deepai.evillage.model.bean.PkhshtjBean;
+import cn.deepai.evillage.model.event.ResponseEvent;
+import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.event.ResponseHeaderEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.request.EVRequest;
 import de.greenrobot.event.EventBus;
@@ -69,7 +69,7 @@ public class PkhShtjPage extends PkhBasePage {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(PkhxqEvent<PkhshtjBean> event) {
+    public void onEventMainThread(ResponseEvent<PkhshtjBean> event) {
         if (!isSelected()) return;
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
@@ -88,23 +88,23 @@ public class PkhShtjPage extends PkhBasePage {
                 new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        PkhxqEvent<PkhshtjBean> pkhxqEvent = new PkhxqEvent<>();
+                        ResponseEvent<PkhshtjBean> responseEvent = new ResponseEvent<>();
                         String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHSHQKJBXX);
-                        pkhxqEvent.data = requestGson.fromJson(cache, PkhshtjBean.class);
-                        pkhxqEvent.rspHeader = new ResponseHeaderEvent();
-                        pkhxqEvent.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
-                        EventBus.getDefault().post(pkhxqEvent);
+                        responseEvent.data = requestGson.fromJson(cache, PkhshtjBean.class);
+                        responseEvent.rspHeader = new ResponseHeaderEvent();
+                        responseEvent.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
+                        EventBus.getDefault().post(responseEvent);
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Type type = new TypeToken<PkhxqEvent<PkhshtjBean>>() {
+                        Type type = new TypeToken<ResponseEvent<PkhshtjBean>>() {
                         }.getType();
-                        PkhxqEvent<PkhshtjBean> pkhxqEvent = requestGson.fromJson(response.body().string(), type);
-                        EventBus.getDefault().post(pkhxqEvent);
-                        if (RspCode.RSP_CODE_SUCCESS.equals(pkhxqEvent.rspHeader.getRspCode())) {
+                        ResponseEvent<PkhshtjBean> responseEvent = requestGson.fromJson(response.body().string(), type);
+                        EventBus.getDefault().post(responseEvent);
+                        if (RspCode.RSP_CODE_SUCCESS.equals(responseEvent.rspHeader.getRspCode())) {
                             CacheManager.getInstance().cacheData(
-                                    EVRequest.ACTION_GET_PKHSHQKJBXX, requestGson.toJson(pkhxqEvent.data));
+                                    EVRequest.ACTION_GET_PKHSHQKJBXX, requestGson.toJson(responseEvent.data));
                         }
                     }
                 });

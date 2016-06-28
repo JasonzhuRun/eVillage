@@ -1,4 +1,4 @@
-package cn.deepai.evillage.bean;
+package cn.deepai.evillage.model.bean;
 
 /**
  * 贫困户参与生产化组织情况

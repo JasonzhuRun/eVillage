@@ -1,10 +1,10 @@
-package cn.deepai.evillage.bean;
+package cn.deepai.evillage.model.bean;
 
 /**
  * @author GaoYixuan
  */
 
-public class ValueBean {
+public class DictionaryValueBean {
     public String valueCode;
     public String valueName;
 }

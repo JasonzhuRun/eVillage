@@ -6,9 +6,9 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.bean.PkhjtcyBean;
-import cn.deepai.evillage.event.PkhxqEvent;
-import cn.deepai.evillage.event.RspCode;
+import cn.deepai.evillage.model.bean.PkhjtcyBean;
+import cn.deepai.evillage.model.event.ResponseEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.request.PkhJtcyRequest;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -71,7 +71,7 @@ public class PkhjtcyActivity extends BaseActivity {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(PkhxqEvent<PkhjtcyBean> event) {
+    public void onEventMainThread(ResponseEvent<PkhjtcyBean> event) {
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
                 onBindData(event.data);

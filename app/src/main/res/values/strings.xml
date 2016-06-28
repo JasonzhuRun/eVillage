@@ -8,6 +8,7 @@
     <string name="password_empyt">密码不能为空</string>
     <string name="request_error">请求失败，显示缓存</string>
     <string name="update_cache">缓存更新成功</string>
+    <string name="login_overdue">登录失效，请重新登录</string>
     <string name="cache_text">text</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>

@@ -1,4 +1,4 @@
-package cn.deepai.evillage.event;
+package cn.deepai.evillage.model.event;
 
 /**
  * 请求响应码
