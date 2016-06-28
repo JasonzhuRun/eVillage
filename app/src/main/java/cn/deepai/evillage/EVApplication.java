@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 
-import com.google.gson.Gson;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -21,7 +20,7 @@ import java.io.File;
 
 import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.manager.SettingManager;
-import cn.deepai.evillage.request.EVRequest;
+import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.utils.DictionaryUtil;
 import cn.deepai.evillage.utils.FileUtil;
 
@@ -157,23 +156,31 @@ public class EVApplication extends Application {
                 EVRequest.ACTION_GET_PKHJBXX,str);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         str = "[\n" +
-                "{\n" +
-                "\"id\":43,\n" +
-                "\"xm\":\"张三\",\n" +
-                "\"xb\":\"F\",\n" +
-                "\"sfzhm\":\"110233199908091231\",\n" +
-                "\"yhzgx\":\"1\",\n" +
-                "\"jlsj\":20150803121212\n" +
-                "},\n" +
-                "{\n" +
-                "\"id\":44,\n" +
-                "\"xm\":\"张小三\",\n" +
-                "\"xb\":\"F\",\n" +
-                "\"sfzhm\":\"110233200908091231\",\n" +
-                "\"yhzgx\":\"3\",\n" +
-                "\"jlsj\":20150803121212\n" +
-                "}\n" +
-                "]";
+                "\t\t\t{\n" +
+                "\t\t\t\t\"id\": \"1\",\n" +
+                "\t\t\t\t\"jlsj\": \"Thu Jun 02 16:47:33 CST 2016\",\n" +
+                "\t\t\t\t\"sfzhm\": \"132112\",\n" +
+                "\t\t\t\t\"xb\": \"M\",\n" +
+                "\t\t\t\t\"xm\": \"张三1\",\n" +
+                "\t\t\t\t\"yhzgx\": \"2\"\n" +
+                "\t\t\t},\n" +
+                "\t\t\t{\n" +
+                "\t\t\t\t\"id\": \"3\",\n" +
+                "\t\t\t\t\"jlsj\": \"Wed Jun 01 10:02:49 CST 2016\",\n" +
+                "\t\t\t\t\"sfzhm\": \"123214\",\n" +
+                "\t\t\t\t\"xb\": \"F\",\n" +
+                "\t\t\t\t\"xm\": \"张三儿子\",\n" +
+                "\t\t\t\t\"yhzgx\": null\n" +
+                "\t\t\t},\n" +
+                "\t\t\t{\n" +
+                "\t\t\t\t\"id\": \"4\",\n" +
+                "\t\t\t\t\"jlsj\": \"Tue May 31 16:09:47 CST 2016\",\n" +
+                "\t\t\t\t\"sfzhm\": null,\n" +
+                "\t\t\t\t\"xb\": \"M\",\n" +
+                "\t\t\t\t\"xm\": \"张三女222\",\n" +
+                "\t\t\t\t\"yhzgx\": null\n" +
+                "\t\t\t}\n" +
+                "\t\t]";
         CacheManager.getInstance().cacheData(
                 EVRequest.ACTION_GET_PKHJTCYLIST,str);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -431,40 +438,22 @@ public class EVApplication extends Application {
         /////////////////////////
         str = "[\n" +
                 "\t\t\t{\n" +
-                "\t\t\t\t\"id\": \"1\",\n" +
-                "\t\t\t\t\"jlsj\": \"Thu Jun 16 15:14:48 CST 2016\",\n" +
-                "\t\t\t\t\"jtcsr\": \"111.0\",\n" +
-                "\t\t\t\t\"jtnrjcsr\": \"111.0\",\n" +
-                "\t\t\t\t\"jtzsr\": \"21122.0\",\n" +
-                "\t\t\t\t\"scjyzcfy\": \"223.0\",\n" +
-                "\t\t\t\t\"tjnd\": \"2012\"\n" +
+                "\t\t\t\t\"id\": \"3\",\n" +
+                "\t\t\t\t\"jlsj\": <null>,\n" +
+                "\t\t\t\t\"jtcsr\": <null>,\n" +
+                "\t\t\t\t\"jtnrjcsr\": <null>,\n" +
+                "\t\t\t\t\"jtzsr\": \"234.0\",\n" +
+                "\t\t\t\t\"scjyzcfy\": <null>,\n" +
+                "\t\t\t\t\"tjnd\": <null>\n" +
                 "\t\t\t},\n" +
                 "\t\t\t{\n" +
-                "\t\t\t\t\"id\": \"2\",\n" +
-                "\t\t\t\t\"jlsj\": \"Wed Jun 01 11:03:31 CST 2016\",\n" +
-                "\t\t\t\t\"jtcsr\": \"123.0\",\n" +
-                "\t\t\t\t\"jtnrjcsr\": \"123.0\",\n" +
-                "\t\t\t\t\"jtzsr\": \"3333.0\",\n" +
-                "\t\t\t\t\"scjyzcfy\": \"3123.0\",\n" +
-                "\t\t\t\t\"tjnd\": \"2015\"\n" +
-                "\t\t\t},\n" +
-                "\t\t\t{\n" +
-                "\t\t\t\t\"id\": \"31\",\n" +
-                "\t\t\t\t\"jlsj\": \"Thu Jun 16 15:15:28 CST 2016\",\n" +
-                "\t\t\t\t\"jtcsr\": \"111.0\",\n" +
-                "\t\t\t\t\"jtnrjcsr\": \"111.0\",\n" +
-                "\t\t\t\t\"jtzsr\": \"21122.0\",\n" +
-                "\t\t\t\t\"scjyzcfy\": \"223.0\",\n" +
-                "\t\t\t\t\"tjnd\": \"2011\"\n" +
-                "\t\t\t},\n" +
-                "\t\t\t{\n" +
-                "\t\t\t\t\"id\": \"32\",\n" +
-                "\t\t\t\t\"jlsj\": \"Thu Jun 16 15:15:35 CST 2016\",\n" +
-                "\t\t\t\t\"jtcsr\": \"111.0\",\n" +
-                "\t\t\t\t\"jtnrjcsr\": \"111.0\",\n" +
-                "\t\t\t\t\"jtzsr\": \"21122.0\",\n" +
-                "\t\t\t\t\"scjyzcfy\": \"223.0\",\n" +
-                "\t\t\t\t\"tjnd\": \"2011\"\n" +
+                "\t\t\t\t\"id\": \"4\",\n" +
+                "\t\t\t\t\"jlsj\": <null>,\n" +
+                "\t\t\t\t\"jtcsr\": <null>,\n" +
+                "\t\t\t\t\"jtnrjcsr\": <null>,\n" +
+                "\t\t\t\t\"jtzsr\": \"234.0\",\n" +
+                "\t\t\t\t\"scjyzcfy\": <null>,\n" +
+                "\t\t\t\t\"tjnd\": <null>\n" +
                 "\t\t\t}\n" +
                 "\t\t]";
         CacheManager.getInstance().cacheData(

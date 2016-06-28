@@ -5,29 +5,29 @@ package cn.deepai.evillage.model.bean;
  */
 public class PkhjtqkzpBean {
 
-    private	int	id;
-    private	int	hid;
-    private	String	zplx;
-    private	String	tpmc;
-    private	String	tpdz;
-    private	String	jlsj;
-    private	String	jlr;
-    private	String	bz;
-    private	String	zt;
+    private String id;
+    private String hid;
+    private String zplx;
+    private String tpmc;
+    private String tpdz;
+    private String jlsj;
+    private String jlr;
+    private String bz;
+    private String zt;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getHid() {
+    public String getHid() {
         return hid;
     }
 
-    public void setHid(int hid) {
+    public void setHid(String hid) {
         this.hid = hid;
     }
 

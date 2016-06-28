@@ -9,7 +9,7 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhszqkBean;
 import cn.deepai.evillage.model.event.ResponseEvent;
 import cn.deepai.evillage.model.event.RspCode;
-import cn.deepai.evillage.request.PkhSzqkRequest;
+import cn.deepai.evillage.net.PkhSzqkRequest;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 

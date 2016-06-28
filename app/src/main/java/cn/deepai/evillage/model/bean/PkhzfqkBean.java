@@ -5,38 +5,38 @@ package cn.deepai.evillage.model.bean;
  */
 public class PkhzfqkBean {
 
-    private	int	id;
-    private	int	tjnd;
-    private	float	zfmj;
-    private	String	fwzyjg;
-    private	String	jfsj;
-    private	int	zyzfsfwf;
-    private	String	ydfpbqqk;
-    private	String	jlsj;
-    private	String	jlr;
-    private	String	bz;
+    private String id;
+    private String tjnd;
+    private String zfmj;
+    private String fwzyjg;
+    private String jfsj;
+    private String zyzfsfwf;
+    private String ydfpbqqk;
+    private String jlsj;
+    private String jlr;
+    private String bz;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getTjnd() {
+    public String getTjnd() {
         return tjnd;
     }
 
-    public void setTjnd(int tjnd) {
+    public void setTjnd(String tjnd) {
         this.tjnd = tjnd;
     }
 
-    public float getZfmj() {
+    public String getZfmj() {
         return zfmj;
     }
 
-    public void setZfmj(float zfmj) {
+    public void setZfmj(String zfmj) {
         this.zfmj = zfmj;
     }
 
@@ -56,11 +56,11 @@ public class PkhzfqkBean {
         this.jfsj = jfsj;
     }
 
-    public int getZyzfsfwf() {
+    public String getZyzfsfwf() {
         return zyzfsfwf;
     }
 
-    public void setZyzfsfwf(int zyzfsfwf) {
+    public void setZyzfsfwf(String zyzfsfwf) {
         this.zyzfsfwf = zyzfsfwf;
     }
 

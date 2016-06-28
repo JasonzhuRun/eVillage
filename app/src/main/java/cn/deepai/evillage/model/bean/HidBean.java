@@ -7,7 +7,7 @@ import cn.deepai.evillage.manager.SettingManager;
  */
 public class HidBean {
 
-    public int hid;
+    public String hid;
 
     public HidBean() {
         hid = SettingManager.getInstance().getCurrentHid();

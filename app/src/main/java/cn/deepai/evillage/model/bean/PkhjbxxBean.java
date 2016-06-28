@@ -7,30 +7,22 @@ public class PkhjbxxBean {
 
     private String hzxm;
     private String jzdz;
-    private int vid;
-    private int hid;
+    private String vid;
+    private String hid;
     private String lxdh;
     private String hzsfz;
     private String hkhyx;
     private String yxzh;
     private String pksbbz;
-    private int jhsyh;
+    private String jhsyh;
     private String pkhsx;
     private String pkhzt;
-    private int jdnf;
-    private int tpnf;
+    private String jdnf;
+    private String tpnf;
     private String jlsj;
     private String jlr;
     private String bz;
     private String zt;
-
-    public int getHid() {
-        return hid;
-    }
-
-    public void setHid(int hid) {
-        this.hid = hid;
-    }
 
     public String getHzxm() {
         return hzxm;
@@ -48,12 +40,20 @@ public class PkhjbxxBean {
         this.jzdz = jzdz;
     }
 
-    public int getVid() {
+    public String getVid() {
         return vid;
     }
 
-    public void setVid(int vid) {
+    public void setVid(String vid) {
         this.vid = vid;
+    }
+
+    public String getHid() {
+        return hid;
+    }
+
+    public void setHid(String hid) {
+        this.hid = hid;
     }
 
     public String getLxdh() {
@@ -96,11 +96,11 @@ public class PkhjbxxBean {
         this.pksbbz = pksbbz;
     }
 
-    public int getJhsyh() {
+    public String getJhsyh() {
         return jhsyh;
     }
 
-    public void setJhsyh(int jhsyh) {
+    public void setJhsyh(String jhsyh) {
         this.jhsyh = jhsyh;
     }
 
@@ -120,19 +120,19 @@ public class PkhjbxxBean {
         this.pkhzt = pkhzt;
     }
 
-    public int getJdnf() {
+    public String getJdnf() {
         return jdnf;
     }
 
-    public void setJdnf(int jdnf) {
+    public void setJdnf(String jdnf) {
         this.jdnf = jdnf;
     }
 
-    public int getTpnf() {
+    public String getTpnf() {
         return tpnf;
     }
 
-    public void setTpnf(int tpnf) {
+    public void setTpnf(String tpnf) {
         this.tpnf = tpnf;
     }
 

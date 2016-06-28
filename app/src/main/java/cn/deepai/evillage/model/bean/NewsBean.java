@@ -6,7 +6,7 @@ package cn.deepai.evillage.model.bean;
  */
 public class NewsBean {
 
-    private int id;
+    private String id;
     private String title;
     private String type;
     private String content;
@@ -16,11 +16,11 @@ public class NewsBean {
     private String origin;
     private String bz;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

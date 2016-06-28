@@ -1,7 +1,7 @@
 package cn.deepai.evillage.model.bean;
 
 /**
- * @author GaoYixuan
+ * 登录请求
  */
 public class LoginRequestBean {
 

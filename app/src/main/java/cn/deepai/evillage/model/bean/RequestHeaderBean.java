@@ -13,7 +13,7 @@ public class RequestHeaderBean {
 
 
     private String reqCode;
-    private  String reqTime;
+    private String reqTime;
     private String tokenId;
 
     public RequestHeaderBean(int reqCodeId) {

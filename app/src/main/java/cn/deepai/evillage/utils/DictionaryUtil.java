@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.deepai.evillage.EVApplication;
-import cn.deepai.evillage.model.bean.DomainBean;
+import cn.deepai.evillage.model.bean.DictionaryDomainBean;
 import cn.deepai.evillage.model.bean.DictionaryValueBean;
 
 /**
@@ -34,10 +34,10 @@ public class DictionaryUtil {
             return;
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<List<DomainBean>>(){}.getType();
-        List<DomainBean> domains = gson.fromJson(jsonString, type);
+        Type type = new TypeToken<List<DictionaryDomainBean>>(){}.getType();
+        List<DictionaryDomainBean> domains = gson.fromJson(jsonString, type);
         dictinary = new HashMap<>();
-        for (DomainBean domain:domains) {
+        for (DictionaryDomainBean domain:domains) {
             Map<String,String> temp = new HashMap<>();
             for (DictionaryValueBean value:domain.domainValue) {
                 temp.put(value.valueCode,value.valueName);

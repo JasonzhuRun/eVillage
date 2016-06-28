@@ -5,32 +5,32 @@ package cn.deepai.evillage.model.bean;
  */
 public class PkhcyhqkBean {
 
-    private	int	id;
-    private	int	tjnd;
-    private	String	cylx;
-    private	String	cyzzlx;
-    private	float	cyzsy;
-    private	int	cjfphzzjzz;
-    private	float	trhzzzje;
-    private	int	cynyhzzz;
-    private	float	ltqyddsy;
-    private	String	jlsj;
-    private	String	jlr;
-    private	String	bz;
+    private String id;
+    private String tjnd;
+    private String cylx;
+    private String cyzzlx;
+    private String cyzsy;
+    private String cjfphzzjzz;
+    private String trhzzzje;
+    private String cynyhzzz;
+    private String ltqyddsy;
+    private String jlsj;
+    private String jlr;
+    private String bz;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getTjnd() {
+    public String getTjnd() {
         return tjnd;
     }
 
-    public void setTjnd(int tjnd) {
+    public void setTjnd(String tjnd) {
         this.tjnd = tjnd;
     }
 
@@ -50,43 +50,43 @@ public class PkhcyhqkBean {
         this.cyzzlx = cyzzlx;
     }
 
-    public float getCyzsy() {
+    public String getCyzsy() {
         return cyzsy;
     }
 
-    public void setCyzsy(float cyzsy) {
+    public void setCyzsy(String cyzsy) {
         this.cyzsy = cyzsy;
     }
 
-    public int getCjfphzzjzz() {
+    public String getCjfphzzjzz() {
         return cjfphzzjzz;
     }
 
-    public void setCjfphzzjzz(int cjfphzzjzz) {
+    public void setCjfphzzjzz(String cjfphzzjzz) {
         this.cjfphzzjzz = cjfphzzjzz;
     }
 
-    public float getTrhzzzje() {
+    public String getTrhzzzje() {
         return trhzzzje;
     }
 
-    public void setTrhzzzje(float trhzzzje) {
+    public void setTrhzzzje(String trhzzzje) {
         this.trhzzzje = trhzzzje;
     }
 
-    public int getCynyhzzz() {
+    public String getCynyhzzz() {
         return cynyhzzz;
     }
 
-    public void setCynyhzzz(int cynyhzzz) {
+    public void setCynyhzzz(String cynyhzzz) {
         this.cynyhzzz = cynyhzzz;
     }
 
-    public float getLtqyddsy() {
+    public String getLtqyddsy() {
         return ltqyddsy;
     }
 
-    public void setLtqyddsy(float ltqyddsy) {
+    public void setLtqyddsy(String ltqyddsy) {
         this.ltqyddsy = ltqyddsy;
     }
 

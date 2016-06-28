@@ -8,10 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.event.LoginEvent;
-import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.manager.SettingManager;
-import cn.deepai.evillage.request.LoginRequest;
+import cn.deepai.evillage.model.bean.LoginResponseBean;
+import cn.deepai.evillage.model.event.ResponseEvent;
+import cn.deepai.evillage.model.event.RspCode;
+import cn.deepai.evillage.net.LoginRequest;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
@@ -24,7 +25,7 @@ public class LoginActivity extends BaseActivity{
     private EditText password;
 
     @SuppressWarnings("all")
-    public void onEventMainThread(LoginEvent event) {
+    public void onEventMainThread(ResponseEvent<LoginResponseBean> event) {
         switch (event.rspHeader.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
                 SettingManager.getInstance().setToken(event.data.getTokenId());
@@ -88,7 +89,7 @@ public class LoginActivity extends BaseActivity{
     private void tryToEnter() {
         tryToShowProcessDialog();
         String token = SettingManager.getInstance().getToken();
-        if (!TextUtils.isEmpty(token)&&!"0".equals(token)) {
+        if (!TextUtils.isEmpty(token)) {
             Intent intent = new Intent(LoginActivity.this,MainTabActivity.class);
             startActivity(intent);
             finish();

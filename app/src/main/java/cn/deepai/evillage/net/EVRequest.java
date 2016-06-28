@@ -1,14 +1,19 @@
-package cn.deepai.evillage.request;
+package cn.deepai.evillage.net;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
+import cn.deepai.evillage.model.event.ResponseEvent;
 import cn.deepai.evillage.utils.LogUtil;
+import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * @author GaoYixuan
@@ -82,5 +87,43 @@ public class EVRequest {
                 .build();
 
         client.newCall(request).enqueue(callback);
+    }
+
+    public static void request(String action,String jsonHeader,String jsonData,ResponseCallback callback) {
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("reqHeader",jsonHeader);
+            jsonObject.put("data",jsonData);
+        }catch (JSONException e) {
+            LogUtil.e(EVRequest.class,"Illegal json format:"+e.toString());
+            return;
+        }
+        RequestBody requestBody = RequestBody.create(MEDIA_TYPE,jsonObject.toString());
+
+        Request request = new Request.Builder()
+                .url(mURL+action)
+                .post(requestBody)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+//                JSONObject jsonObject = new JSONObject();
+//
+//                try {
+//                    jsonObject.put("rspHeader",jsonHeader);
+//                    jsonObject.put("data",jsonData);
+//                }catch (JSONException e) {
+//                    LogUtil.e(EVRequest.class,"Illegal json format:"+e.toString());
+//                    return;
+//                }
+            }
+        });
     }
 }

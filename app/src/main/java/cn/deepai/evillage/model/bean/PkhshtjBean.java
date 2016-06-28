@@ -5,45 +5,45 @@ package cn.deepai.evillage.model.bean;
  */
 public class PkhshtjBean {
 
-    private	int	id;
-    private	int	tjnd;
-    private	int	tshyd;
-    private	String	zyrllx;
-    private	String	ysqk;
-    private	String	hqyysdzykn;
-    private	String	cslx;
-    private	String	nyxfpqk;
-    private	int	yskn;
-    private	int	ysaq;
-    private	float	jlczgl;
-    private	String	rullx;
-    private	int	wscs;
-    private	int	tgbds;
-    private	String	jlsj;
-    private	String	jlr;
-    private	String	bz;
+    private String id;
+    private String tjnd;
+    private String tshyd;
+    private String zyrllx;
+    private String ysqk;
+    private String hqyysdzykn;
+    private String cslx;
+    private String nyxfpqk;
+    private String yskn;
+    private String ysaq;
+    private String jlczgl;
+    private String rullx;
+    private String wscs;
+    private String tgbds;
+    private String jlsj;
+    private String jlr;
+    private String bz;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getTjnd() {
+    public String getTjnd() {
         return tjnd;
     }
 
-    public void setTjnd(int tjnd) {
+    public void setTjnd(String tjnd) {
         this.tjnd = tjnd;
     }
 
-    public int getTshyd() {
+    public String getTshyd() {
         return tshyd;
     }
 
-    public void setTshyd(int tshyd) {
+    public void setTshyd(String tshyd) {
         this.tshyd = tshyd;
     }
 
@@ -87,27 +87,27 @@ public class PkhshtjBean {
         this.nyxfpqk = nyxfpqk;
     }
 
-    public int getYskn() {
+    public String getYskn() {
         return yskn;
     }
 
-    public void setYskn(int yskn) {
+    public void setYskn(String yskn) {
         this.yskn = yskn;
     }
 
-    public int getYsaq() {
+    public String getYsaq() {
         return ysaq;
     }
 
-    public void setYsaq(int ysaq) {
+    public void setYsaq(String ysaq) {
         this.ysaq = ysaq;
     }
 
-    public float getJlczgl() {
+    public String getJlczgl() {
         return jlczgl;
     }
 
-    public void setJlczgl(float jlczgl) {
+    public void setJlczgl(String jlczgl) {
         this.jlczgl = jlczgl;
     }
 
@@ -119,19 +119,19 @@ public class PkhshtjBean {
         this.rullx = rullx;
     }
 
-    public int getWscs() {
+    public String getWscs() {
         return wscs;
     }
 
-    public void setWscs(int wscs) {
+    public void setWscs(String wscs) {
         this.wscs = wscs;
     }
 
-    public int getTgbds() {
+    public String getTgbds() {
         return tgbds;
     }
 
-    public void setTgbds(int tgbds) {
+    public void setTgbds(String tgbds) {
         this.tgbds = tgbds;
     }
 

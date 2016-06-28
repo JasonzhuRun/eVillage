@@ -5,169 +5,169 @@ package cn.deepai.evillage.model.bean;
  */
 public class PkhszqkBean {
 
-    private	int	id;
-    private	int	tjnd;
-    private	float	jtzsr;
-    private	float	wgsr;
-    private	float	scjyxsr;
-    private	float	zyxsr;
-    private	float	ccxsr;
-    private	float	dk;
-    private	float	scjyzcfy;
-    private	float	jtcsr;
-    private	float	jtnrjcsr;
-    private	float	glbt;
-    private	float	jhsyj;
-    private	float	dbj;
-    private	float	cxjmjbylbx;
-    private	float	ylbx;
-    private	float	deylbz;
-    private	float	stbcj;
-    private	String	jlsj;
-    private	String	jlr;
-    private	String	bz;
+    private String id;
+    private String tjnd;
+    private String jtzsr;
+    private String wgsr;
+    private String scjyxsr;
+    private String zyxsr;
+    private String ccxsr;
+    private String dk;
+    private String scjyzcfy;
+    private String jtcsr;
+    private String jtnrjcsr;
+    private String glbt;
+    private String jhsyj;
+    private String dbj;
+    private String cxjmjbylbx;
+    private String ylbx;
+    private String deylbz;
+    private String stbcj;
+    private String jlsj;
+    private String jlr;
+    private String bz;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getTjnd() {
+    public String getTjnd() {
         return tjnd;
     }
 
-    public void setTjnd(int tjnd) {
+    public void setTjnd(String tjnd) {
         this.tjnd = tjnd;
     }
 
-    public float getJtzsr() {
+    public String getJtzsr() {
         return jtzsr;
     }
 
-    public void setJtzsr(float jtzsr) {
+    public void setJtzsr(String jtzsr) {
         this.jtzsr = jtzsr;
     }
 
-    public float getWgsr() {
+    public String getWgsr() {
         return wgsr;
     }
 
-    public void setWgsr(float wgsr) {
+    public void setWgsr(String wgsr) {
         this.wgsr = wgsr;
     }
 
-    public float getScjyxsr() {
+    public String getScjyxsr() {
         return scjyxsr;
     }
 
-    public void setScjyxsr(float scjyxsr) {
+    public void setScjyxsr(String scjyxsr) {
         this.scjyxsr = scjyxsr;
     }
 
-    public float getZyxsr() {
+    public String getZyxsr() {
         return zyxsr;
     }
 
-    public void setZyxsr(float zyxsr) {
+    public void setZyxsr(String zyxsr) {
         this.zyxsr = zyxsr;
     }
 
-    public float getCcxsr() {
+    public String getCcxsr() {
         return ccxsr;
     }
 
-    public void setCcxsr(float ccxsr) {
+    public void setCcxsr(String ccxsr) {
         this.ccxsr = ccxsr;
     }
 
-    public float getDk() {
+    public String getDk() {
         return dk;
     }
 
-    public void setDk(float dk) {
+    public void setDk(String dk) {
         this.dk = dk;
     }
 
-    public float getScjyzcfy() {
+    public String getScjyzcfy() {
         return scjyzcfy;
     }
 
-    public void setScjyzcfy(float scjyzcfy) {
+    public void setScjyzcfy(String scjyzcfy) {
         this.scjyzcfy = scjyzcfy;
     }
 
-    public float getJtcsr() {
+    public String getJtcsr() {
         return jtcsr;
     }
 
-    public void setJtcsr(float jtcsr) {
+    public void setJtcsr(String jtcsr) {
         this.jtcsr = jtcsr;
     }
 
-    public float getJtnrjcsr() {
+    public String getJtnrjcsr() {
         return jtnrjcsr;
     }
 
-    public void setJtnrjcsr(float jtnrjcsr) {
+    public void setJtnrjcsr(String jtnrjcsr) {
         this.jtnrjcsr = jtnrjcsr;
     }
 
-    public float getGlbt() {
+    public String getGlbt() {
         return glbt;
     }
 
-    public void setGlbt(float glbt) {
+    public void setGlbt(String glbt) {
         this.glbt = glbt;
     }
 
-    public float getJhsyj() {
+    public String getJhsyj() {
         return jhsyj;
     }
 
-    public void setJhsyj(float jhsyj) {
+    public void setJhsyj(String jhsyj) {
         this.jhsyj = jhsyj;
     }
 
-    public float getDbj() {
+    public String getDbj() {
         return dbj;
     }
 
-    public void setDbj(float dbj) {
+    public void setDbj(String dbj) {
         this.dbj = dbj;
     }
 
-    public float getCxjmjbylbx() {
+    public String getCxjmjbylbx() {
         return cxjmjbylbx;
     }
 
-    public void setCxjmjbylbx(float cxjmjbylbx) {
+    public void setCxjmjbylbx(String cxjmjbylbx) {
         this.cxjmjbylbx = cxjmjbylbx;
     }
 
-    public float getYlbx() {
+    public String getYlbx() {
         return ylbx;
     }
 
-    public void setYlbx(float ylbx) {
+    public void setYlbx(String ylbx) {
         this.ylbx = ylbx;
     }
 
-    public float getDeylbz() {
+    public String getDeylbz() {
         return deylbz;
     }
 
-    public void setDeylbz(float deylbz) {
+    public void setDeylbz(String deylbz) {
         this.deylbz = deylbz;
     }
 
-    public float getStbcj() {
+    public String getStbcj() {
         return stbcj;
     }
 
-    public void setStbcj(float stbcj) {
+    public void setStbcj(String stbcj) {
         this.stbcj = stbcj;
     }
 

@@ -131,39 +131,39 @@ public final class SettingManager {
         return mCurUserPref.getString(TOKEN, "");
 	}
 
-	public void setUserId(int id) {
+	public void setUserId(String id) {
 		if (mCurUserPref == null) {
 			return;
 		}
 
 		SharedPreferences.Editor edit = mCurUserPref.edit();
-		edit.putInt(USER_ID, id);
+		edit.putString(USER_ID, id);
 		edit.apply();
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		if (mCurUserPref == null) {
-			return -1;
+			return "";
 		}
 
-		return mCurUserPref.getInt(USER_ID, -1);
+		return mCurUserPref.getString(USER_ID, "");
 	}
 
-	public void setCurrentHid(int id) {
+	public void setCurrentHid(String id) {
 		if (mCurUserPref == null) {
 			return;
 		}
 
 		SharedPreferences.Editor edit = mCurUserPref.edit();
-		edit.putInt(HID, id);
+		edit.putString(HID, id);
 		edit.apply();
 	}
 
-	public int getCurrentHid() {
+	public String getCurrentHid() {
 		if (mCurUserPref == null) {
-			return -1;
+			return "";
 		}
 
-		return mCurUserPref.getInt(HID, -1);
+		return mCurUserPref.getString(HID, "");
 	}
 }

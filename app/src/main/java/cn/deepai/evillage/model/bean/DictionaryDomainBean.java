@@ -6,7 +6,7 @@ import java.util.List;
  * @author GaoYixuan
  */
 
-public class DomainBean {
+public class DictionaryDomainBean {
 
     public String domainCode;
     public String domainName;

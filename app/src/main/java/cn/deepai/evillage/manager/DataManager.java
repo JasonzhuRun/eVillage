@@ -1,6 +1,6 @@
 package cn.deepai.evillage.manager;
 
-import cn.deepai.evillage.request.EVRequest;
+import cn.deepai.evillage.net.EVRequest;
 
 /**
  * @author GaoYixuan

@@ -5,124 +5,124 @@ package cn.deepai.evillage.model.bean;
  */
 public class PkhsctjBean {
 
-    private int id;
-    private int tjnd;
-    private float gdmj;
-    private float xyggdgdmj;
-    private float tian;
-    private float tu;
-    private float lscgymj;
-    private float tghlmj;
-    private float mcdmj;
-    private float smmj;
-    private float syjjzwmj;
-    private float scyfmj;
-    private int sxsl;
+    private String id;
+    private String tjnd;
+    private String gdmj;
+    private String xyggdgdmj;
+    private String tian;
+    private String tu;
+    private String lscgymj;
+    private String tghlmj;
+    private String mcdmj;
+    private String smmj;
+    private String syjjzwmj;
+    private String scyfmj;
+    private String sxsl;
     private String jlsj;
     private String jlr;
     private String bz;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getTjnd() {
+    public String getTjnd() {
         return tjnd;
     }
 
-    public void setTjnd(int tjnd) {
+    public void setTjnd(String tjnd) {
         this.tjnd = tjnd;
     }
 
-    public float getGdmj() {
+    public String getGdmj() {
         return gdmj;
     }
 
-    public void setGdmj(float gdmj) {
+    public void setGdmj(String gdmj) {
         this.gdmj = gdmj;
     }
 
-    public float getXyggdgdmj() {
+    public String getXyggdgdmj() {
         return xyggdgdmj;
     }
 
-    public void setXyggdgdmj(float xyggdgdmj) {
+    public void setXyggdgdmj(String xyggdgdmj) {
         this.xyggdgdmj = xyggdgdmj;
     }
 
-    public float getTian() {
+    public String getTian() {
         return tian;
     }
 
-    public void setTian(float tian) {
+    public void setTian(String tian) {
         this.tian = tian;
     }
 
-    public float getTu() {
+    public String getTu() {
         return tu;
     }
 
-    public void setTu(float tu) {
+    public void setTu(String tu) {
         this.tu = tu;
     }
 
-    public float getLscgymj() {
+    public String getLscgymj() {
         return lscgymj;
     }
 
-    public void setLscgymj(float lscgymj) {
+    public void setLscgymj(String lscgymj) {
         this.lscgymj = lscgymj;
     }
 
-    public float getTghlmj() {
+    public String getTghlmj() {
         return tghlmj;
     }
 
-    public void setTghlmj(float tghlmj) {
+    public void setTghlmj(String tghlmj) {
         this.tghlmj = tghlmj;
     }
 
-    public float getMcdmj() {
+    public String getMcdmj() {
         return mcdmj;
     }
 
-    public void setMcdmj(float mcdmj) {
+    public void setMcdmj(String mcdmj) {
         this.mcdmj = mcdmj;
     }
 
-    public float getSmmj() {
+    public String getSmmj() {
         return smmj;
     }
 
-    public void setSmmj(float smmj) {
+    public void setSmmj(String smmj) {
         this.smmj = smmj;
     }
 
-    public float getSyjjzwmj() {
+    public String getSyjjzwmj() {
         return syjjzwmj;
     }
 
-    public void setSyjjzwmj(float syjjzwmj) {
+    public void setSyjjzwmj(String syjjzwmj) {
         this.syjjzwmj = syjjzwmj;
     }
 
-    public float getScyfmj() {
+    public String getScyfmj() {
         return scyfmj;
     }
 
-    public void setScyfmj(float scyfmj) {
+    public void setScyfmj(String scyfmj) {
         this.scyfmj = scyfmj;
     }
 
-    public int getSxsl() {
+    public String getSxsl() {
         return sxsl;
     }
 
-    public void setSxsl(int sxsl) {
+    public void setSxsl(String sxsl) {
         this.sxsl = sxsl;
     }
 

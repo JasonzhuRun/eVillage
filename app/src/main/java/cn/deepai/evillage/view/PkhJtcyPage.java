@@ -23,7 +23,7 @@ import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.manager.CacheManager;
-import cn.deepai.evillage.request.EVRequest;
+import cn.deepai.evillage.net.EVRequest;
 import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Callback;

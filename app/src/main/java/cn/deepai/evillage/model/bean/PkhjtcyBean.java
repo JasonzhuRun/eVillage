@@ -5,7 +5,7 @@ package cn.deepai.evillage.model.bean;
  */
 public class PkhjtcyBean {
 
-    private int id;
+    private String id;
     private	String	xm;
     private	String	xb;
     private	String	sfzhm;
@@ -17,13 +17,13 @@ public class PkhjtcyBean {
     private	String	ldnlzk;
     private	String	wgzk;
     private	String	wgsj;
-    private	int	dbrk;
-    private	int	cjxnhyl;
-    private	int	cjcxjmjbylbx;
-    private	int	sfldlzyjy;
-    private	int	sfxyjr;
+    private	String	dbrk;
+    private	String	cjxnhyl;
+    private	String	cjcxjmjbylbx;
+    private	String	sfldlzyjy;
+    private	String	sfxyjr;
     private	String	zzmm;
-    private	int	sfczzgylbx;
+    private	String	sfczzgylbx;
     private	String	zdxx;
     private	String	cyzt;
     private	String	ztbhsj;
@@ -31,11 +31,11 @@ public class PkhjtcyBean {
     private	String	jlr;
     private	String	bz;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -127,43 +127,43 @@ public class PkhjtcyBean {
         this.wgsj = wgsj;
     }
 
-    public int getDbrk() {
+    public String getDbrk() {
         return dbrk;
     }
 
-    public void setDbrk(int dbrk) {
+    public void setDbrk(String dbrk) {
         this.dbrk = dbrk;
     }
 
-    public int getCjxnhyl() {
+    public String getCjxnhyl() {
         return cjxnhyl;
     }
 
-    public void setCjxnhyl(int cjxnhyl) {
+    public void setCjxnhyl(String cjxnhyl) {
         this.cjxnhyl = cjxnhyl;
     }
 
-    public int getCjcxjmjbylbx() {
+    public String getCjcxjmjbylbx() {
         return cjcxjmjbylbx;
     }
 
-    public void setCjcxjmjbylbx(int cjcxjmjbylbx) {
+    public void setCjcxjmjbylbx(String cjcxjmjbylbx) {
         this.cjcxjmjbylbx = cjcxjmjbylbx;
     }
 
-    public int getSfldlzyjy() {
+    public String getSfldlzyjy() {
         return sfldlzyjy;
     }
 
-    public void setSfldlzyjy(int sfldlzyjy) {
+    public void setSfldlzyjy(String sfldlzyjy) {
         this.sfldlzyjy = sfldlzyjy;
     }
 
-    public int getSfxyjr() {
+    public String getSfxyjr() {
         return sfxyjr;
     }
 
-    public void setSfxyjr(int sfxyjr) {
+    public void setSfxyjr(String sfxyjr) {
         this.sfxyjr = sfxyjr;
     }
 
@@ -175,11 +175,11 @@ public class PkhjtcyBean {
         this.zzmm = zzmm;
     }
 
-    public int getSfczzgylbx() {
+    public String getSfczzgylbx() {
         return sfczzgylbx;
     }
 
-    public void setSfczzgylbx(int sfczzgylbx) {
+    public void setSfczzgylbx(String sfczzgylbx) {
         this.sfczzgylbx = sfczzgylbx;
     }
 
