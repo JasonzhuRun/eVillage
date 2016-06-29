@@ -1,9 +1,9 @@
-package cn.deepai.evillage.model.bean;
+package cn.deepai.evillage.model.event;
 
 /**
  * 登录响应
  */
-public class LoginResponseBean {
+public class LoginResponseEvent {
 
     private String tokenId;
     private String isUpdate;

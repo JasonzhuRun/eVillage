@@ -1,12 +1,20 @@
 package cn.deepai.evillage.net;
 
+import android.text.TextUtils;
+
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import de.greenrobot.event.EventBus;
 
 /**
  * 贫困户列表
@@ -24,42 +32,14 @@ public class PkhJbxxListRequest extends EVRequest {
         RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getPkhJbxxList);
 
         final Gson gson = new Gson();
-//        EVRequest.request(EVRequest.ACTION_GET_PKHLIST, gson.toJson(header), jsonObject.toString(), new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                PkhListEvent event = new PkhListEvent();
-//                event.rspHeader = new ResponseHeaderEvent();
-//                event.rspHeader.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
-//                String cache = CacheManager.getInstance().getCacheData(EVRequest.ACTION_GET_PKHLIST);
-//                Type type = new TypeToken<List<PkhjbxxBean>>(){}.getType();
-//                event.data = gson.fromJson(cache,type);
-//                EventBus.getDefault().post(event);
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                String body = response.body().string();
-//                PkhListEvent event;
-//                try {
-//                    event = gson.fromJson(body, PkhListEvent.class);
-//                    EventBus.getDefault().post(event);
-//                    if (RspCode.RSP_CODE_SUCCESS.equals(event.rspHeader.getRspCode())) {
-//                        CacheManager.getInstance().cacheData(EVRequest.ACTION_GET_PKHLIST, gson.toJson(event.data));
-//                    }
-//                } catch (JsonSyntaxException e) {
-//                    event = new PkhListEvent();
-//                    try {
-//                        JSONObject object = new JSONObject(body);
-//                        String rspStr =object.getString("rspHeader");
-//                        event.rspHeader = gson.fromJson(rspStr,ResponseHeaderEvent.class);
-//                    } catch (JSONException jsonException) {
-//                        event.rspHeader = new ResponseHeaderEvent();
-//                        event.rspHeader.setRspCode(RspCode.RSP_CODE_OTHER);
-//                        event.rspHeader.setRspDesc("未知的服务器异常");
-//                    }
-//                    EventBus.getDefault().post(event);
-//                }
-//            }
-//        });
+        EVRequest.request(Action.ACTION_GET_PKHLIST, gson.toJson(header), jsonObject.toString(),
+                new ResponseCallback() {
+                    @Override
+                    public void onDataResponse(String dataJsonString) {
+                        Type type = new TypeToken<List<PkhjbxxBean>>(){}.getType();
+                        List<PkhjbxxBean> jbxxList = gson.fromJson(dataJsonString,type);
+                        EventBus.getDefault().post(jbxxList);
+                    }
+             });
     }
 }

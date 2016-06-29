@@ -19,31 +19,35 @@ import cn.deepai.evillage.model.bean.DictionaryValueBean;
 /**
  * @author GaoYixuan
  */
-
 public class DictionaryUtil {
 
     private static Map<String,Map<String,String>> dictinary;
     public static void init() {
-        InputStream is;
-        String jsonString;
-        try {
-            is= EVApplication.getApplication().getAssets().open("domains");
-            jsonString = IOUtils.toString(is,"UTF-8");
-        } catch (IOException e) {
-            LogUtil.e(DictionaryUtil.class,"Dictionary init error!");
-            return;
-        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<DictionaryDomainBean>>(){}.getType();
-        List<DictionaryDomainBean> domains = gson.fromJson(jsonString, type);
-        dictinary = new HashMap<>();
-        for (DictionaryDomainBean domain:domains) {
-            Map<String,String> temp = new HashMap<>();
-            for (DictionaryValueBean value:domain.domainValue) {
-                temp.put(value.valueCode,value.valueName);
+        new Thread() {
+            @Override
+            public void run() {
+                InputStream is;
+                String jsonString;
+                try {
+                    is= EVApplication.getApplication().getAssets().open("domains");
+                    jsonString = IOUtils.toString(is,"UTF-8");
+                } catch (IOException e) {
+                    LogUtil.e(DictionaryUtil.class,"Dictionary init error!");
+                    return;
+                }
+                Gson gson = new Gson();
+                Type type = new TypeToken<List<DictionaryDomainBean>>(){}.getType();
+                List<DictionaryDomainBean> domains = gson.fromJson(jsonString, type);
+                dictinary = new HashMap<>();
+                for (DictionaryDomainBean domain:domains) {
+                    Map<String,String> temp = new HashMap<>();
+                    for (DictionaryValueBean value:domain.domainValue) {
+                        temp.put(value.valueCode,value.valueName);
+                    }
+                    dictinary.put(domain.domainCode,temp);
+                }
             }
-            dictinary.put(domain.domainCode,temp);
-        }
+        }.start();
     }
 
     public static String getValueName(String domain,String valueCode) {

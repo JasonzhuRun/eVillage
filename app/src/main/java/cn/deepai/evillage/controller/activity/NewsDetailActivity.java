@@ -3,6 +3,7 @@ package cn.deepai.evillage.controller.activity;
 import android.os.Bundle;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 
 /**
  * @author GaoYixuan
@@ -24,4 +25,5 @@ public class NewsDetailActivity extends BaseActivity {
     protected String getActivityName() {
         return "NewsDetailActivity";
     }
+
 }

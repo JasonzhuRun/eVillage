@@ -71,19 +71,8 @@ public class PkhjtcyActivity extends BaseActivity {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(ResponseEvent<PkhjtcyBean> event) {
-        switch (event.rspHeader.getRspCode()) {
-            case RspCode.RSP_CODE_SUCCESS:
-                onBindData(event.data);
-                break;
-            case RspCode.RSP_CODE_NO_CONNECTION:
-                onBindData(event.data);
-                ToastUtil.shortToast(getResources().getString(R.string.request_error));
-                break;
-            default:
-                ToastUtil.longToast(event.rspHeader.getRspDesc());
-                break;
-        }
+    public void onEventMainThread(PkhjtcyBean event) {
+        onBindData(event);
         tryToHideProcessDialog();
     }
 

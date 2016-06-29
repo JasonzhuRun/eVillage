@@ -8,9 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhRecyclerAdapter;
 import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.net.PkhJbxxListRequest;
 import de.greenrobot.event.EventBus;
 
@@ -42,27 +45,11 @@ public class PkhFragment extends BaseFragment {
         EventBus.getDefault().unregister(this);
     }
 
-//    @SuppressWarnings("all")
-//    public void onEventMainThread(PkhListEvent event) {
-//        LogUtil.v(PkhFragment.class,event.rspHeader.toString());
-//        switch (event.rspHeader.getRspCode()) {
-//            case RspCode.RSP_CODE_SUCCESS:
-//            case RspCode.RSP_CODE_NO_CONNECTION:
-//                mPkhRecyclerAdapter.notifyResult(true, event.data);
-//                break;
-//            case RspCode.RSP_CODE_TOKEN_NOTEXIST:
-//                ToastUtil.shortToast(getString(R.string.login_overdue));
-//                SettingManager.getInstance().clearToken();
-//                Intent intent = new Intent(getActivity(), LoginActivity.class);
-//                startActivity(intent);
-//                getActivity().finish();
-//                break;
-//            default:
-//                ToastUtil.longToast(event.rspHeader.getRspDesc());
-//                break;
-//        }
-//        tryToHideProcessDialog();
-//    }
+    @SuppressWarnings("all")
+    public void onEventMainThread(List<PkhjbxxBean> event) {
+        mPkhRecyclerAdapter.notifyResult(true, event);
+        tryToHideProcessDialog();
+    }
 
     @Override
     protected String getFragmentName() {

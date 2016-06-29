@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.event.ResponseEvent;
+import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.PkhBasePage;
@@ -45,27 +46,11 @@ public class PkhxqActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("all")
-    public void onEventMainThread(ResponseEvent event) {
-        switch (event.rspHeader.getRspCode()) {
-            case RspCode.RSP_CODE_SUCCESS:
-                break;
-            case RspCode.RSP_CODE_NO_CONNECTION:
-                ToastUtil.shortToast(getResources().getString(R.string.request_error));
-                break;
-            default:
-                ToastUtil.longToast(event.rspHeader.getRspDesc());
-                break;
-        }
-        tryToHideProcessDialog();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkh);
         initView();
-        EventBus.getDefault().register(this);
         for (PkhBasePage page:viewContainter) {
             page.registeEventBus();
         }
@@ -101,7 +86,6 @@ public class PkhxqActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
         for (PkhBasePage page:viewContainter) {
             page.unRegisteEventBus();
         }

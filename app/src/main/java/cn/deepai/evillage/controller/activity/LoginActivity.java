@@ -9,10 +9,11 @@ import android.widget.EditText;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
-import cn.deepai.evillage.model.bean.LoginResponseBean;
-import cn.deepai.evillage.model.event.ResponseEvent;
+import cn.deepai.evillage.model.event.LoginResponseEvent;
+import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.net.LoginRequest;
+import cn.deepai.evillage.utils.LogUtil;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
@@ -25,15 +26,26 @@ public class LoginActivity extends BaseActivity{
     private EditText password;
 
     @SuppressWarnings("all")
-    public void onEventMainThread(ResponseEvent<LoginResponseBean> event) {
-        switch (event.rspHeader.getRspCode()) {
+    public void onEventMainThread(LoginResponseEvent event) {
+
+        SettingManager.getInstance().setToken(event.getTokenId());
+        SettingManager.getInstance().setUserId(event.getUserId());
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(ResponseHeaderEvent event) {
+        switch (event.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
-                SettingManager.getInstance().setToken(event.data.getTokenId());
-                SettingManager.getInstance().setUserId(event.data.getUserId());
                 tryToEnter();
                 break;
+            case RspCode.RSP_CODE_TOKEN_NOTEXIST:
+                ToastUtil.shortToast(getString(R.string.login_overdue));
+                SettingManager.getInstance().clearToken();
+                Intent intent = new Intent(this,LoginActivity.class);
+                startActivity(intent);
+                break;
             default:
-                ToastUtil.longToast(event.rspHeader.getRspDesc());
+                ToastUtil.shortToast(event.getRspDesc());
                 break;
         }
         tryToHideProcessDialog();
@@ -90,6 +102,7 @@ public class LoginActivity extends BaseActivity{
         tryToShowProcessDialog();
         String token = SettingManager.getInstance().getToken();
         if (!TextUtils.isEmpty(token)) {
+            LogUtil.v(getActivityName(),token);
             Intent intent = new Intent(LoginActivity.this,MainTabActivity.class);
             startActivity(intent);
             finish();

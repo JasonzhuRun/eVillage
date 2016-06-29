@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.controller.activity.BaseActivity;
 import cn.deepai.evillage.utils.LogUtil;
 
 public abstract class BaseFragment extends Fragment {
@@ -79,22 +80,15 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void tryToHideProcessDialog() {
-        if (mProgressDialog != null) {
-            mProgressDialog.dismiss();
-            mProgressDialog = null;
-        }
+        ((BaseActivity)getActivity()).tryToHideProcessDialog();
     }
 
     protected void tryToShowProcessDialog() {
-        tryToShowProcessDialog(R.string.dialog_loading);
+        ((BaseActivity)getActivity()).tryToShowProcessDialog(R.string.dialog_loading);
     }
 
     protected void tryToShowProcessDialog(int strResId) {
-        tryToHideProcessDialog();
-        if (mProgressDialog == null) {
-            String str = getString(strResId);
-            mProgressDialog = ProgressDialog.show(this.getActivity(), null, str, true, true);
-        }
+        ((BaseActivity)getActivity()).tryToShowProcessDialog(strResId);
     }
 
     protected abstract String getFragmentName();

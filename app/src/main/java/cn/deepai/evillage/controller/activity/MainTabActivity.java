@@ -1,6 +1,7 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +25,9 @@ import cn.deepai.evillage.controller.fragment.MineFragment;
 import cn.deepai.evillage.controller.fragment.NewsFragment;
 import cn.deepai.evillage.controller.fragment.PkhFragment;
 import cn.deepai.evillage.controller.fragment.TzFragment;
+import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.event.ResponseHeaderEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.LogUtil;
 import cn.deepai.evillage.utils.ToastUtil;
 
@@ -33,6 +37,21 @@ public class MainTabActivity extends BaseActivity implements
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    @SuppressWarnings("all")
+    public void onEventMainThread(ResponseHeaderEvent event) {
+        switch (event.getRspCode()) {
+            case RspCode.RSP_CODE_TOKEN_NOTEXIST:
+                ToastUtil.shortToast(getString(R.string.login_overdue));
+                SettingManager.getInstance().clearToken();
+                Intent intent = new Intent(this,LoginActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                ToastUtil.shortToast(event.getRspDesc());
+                break;
+        }
+        tryToHideProcessDialog();
+    }
     /**
      * Open select menu
      */

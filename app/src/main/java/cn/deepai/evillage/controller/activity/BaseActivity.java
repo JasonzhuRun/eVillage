@@ -6,7 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.event.LoginResponseEvent;
+import cn.deepai.evillage.model.event.ResponseHeaderEvent;
+import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
+import de.greenrobot.event.EventBus;
 
 /**
  * 基类Activity
@@ -42,9 +48,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return this;
     }
 
-    public void onEvent() {
-
-    }
     /**
      * 尝试loading加锁
      */
@@ -100,7 +103,4 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract String getActivityName();
 
-    protected void tryToLoad() {
-
-    }
 }
