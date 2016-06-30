@@ -1,7 +1,5 @@
 package cn.deepai.evillage.net;
 
-import android.text.TextUtils;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -9,7 +7,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.ListBean;
