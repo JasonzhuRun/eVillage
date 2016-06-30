@@ -30,19 +30,13 @@ public class LoginActivity extends BaseActivity{
 
         SettingManager.getInstance().setToken(event.getTokenId());
         SettingManager.getInstance().setUserId(event.getUserId());
+        tryToEnter();
     }
 
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {
         switch (event.getRspCode()) {
             case RspCode.RSP_CODE_SUCCESS:
-                tryToEnter();
-                break;
-            case RspCode.RSP_CODE_TOKEN_NOTEXIST:
-                ToastUtil.shortToast(getString(R.string.login_overdue));
-                SettingManager.getInstance().clearToken();
-                Intent intent = new Intent(this,LoginActivity.class);
-                startActivity(intent);
                 break;
             default:
                 ToastUtil.shortToast(event.getRspDesc());

@@ -12,6 +12,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import de.greenrobot.event.EventBus;
@@ -36,8 +37,30 @@ public class PkhJbxxListRequest extends EVRequest {
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        Type type = new TypeToken<List<PkhjbxxBean>>(){}.getType();
-                        List<PkhjbxxBean> jbxxList = gson.fromJson(dataJsonString,type);
+                        dataJsonString = "{\n" +
+                                "\"list\":[\n" +
+                                "{\n" +
+                                "\"hid\":\"1\",\n" +
+                                "\"hzxm\":\"张三\",\n" +
+                                "\"jdnf\":2015,\n" +
+                                "\"jzdz\":\"遵义市桐梓县燎原镇花园新村7号楼7-201\",\n" +
+                                "\"vid\":\"43\",\n" +
+                                "\"lxdh\":\"17012332312\",\n" +
+                                "\"jlsj\":\"20150803121212\"\n" +
+                                "},\n" +
+                                "{\n" +
+                                "\"hid\":\"1\",\n" +
+                                "\"hzxm\":\"李四\",\n" +
+                                "\"jdnf\":2014,\n" +
+                                "\"jzdz\":\"遵义市桐梓县燎原镇花园新村5号楼7-202\",\n" +
+                                "\"vid\":\"43\",\n" +
+                                "\"lxdh\":\"18012332322\",\n" +
+                                "\"jlsj\":\"20150803121212\"\n" +
+                                "}\n" +
+                                "]\n" +
+                                "}";
+                        Type type = new TypeToken<ListBean<PkhjbxxBean>>(){}.getType();
+                        ListBean<PkhjbxxBean> jbxxList = gson.fromJson(dataJsonString,type);
                         EventBus.getDefault().post(jbxxList);
                     }
              });

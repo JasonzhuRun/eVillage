@@ -152,9 +152,9 @@ public class MainTabActivity extends BaseActivity implements
                 PkhFragment.class,
                 null
         );
-        tabHost.addTab(newTabSpec(tabHost, "1", getString(R.string.tab_news),
+        tabHost.addTab(newTabSpec(tabHost, "1", getString(R.string.tab_build),
                 R.drawable.ic_action_location_found_dark),
-                NewsFragment.class,
+                JdFragment.class,
                 null
         );
         tabHost.addTab(newTabSpec(tabHost, "2", getString(R.string.tab_account),
@@ -162,14 +162,14 @@ public class MainTabActivity extends BaseActivity implements
                 TzFragment.class,
                 null
         );
-        tabHost.addTab(newTabSpec(tabHost, "3", getString(R.string.tab_mine),
+        tabHost.addTab(newTabSpec(tabHost, "3", getString(R.string.tab_news),
                 R.drawable.ic_action_location_found_dark),
-                MineFragment.class,
+                NewsFragment.class,
                 null
         );
-        tabHost.addTab(newTabSpec(tabHost, "4", getString(R.string.tab_build),
+        tabHost.addTab(newTabSpec(tabHost, "4", getString(R.string.tab_mine),
                 R.drawable.ic_action_location_found_dark),
-                JdFragment.class,
+                MineFragment.class,
                 null
         );
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
