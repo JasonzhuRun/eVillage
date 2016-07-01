@@ -50,6 +50,7 @@ public class Action {
 
     private String name;
     private Type type;
+    private String args;
 
     enum Type{
         downstream,upstream
@@ -76,8 +77,19 @@ public class Action {
         this.type = type;
     }
 
+    public String getArgs() {
+        return args;
+    }
+
+    public void setArgs(String args) {
+        this.args = args;
+    }
+
+    /**
+     * 每次请求用请求名称＋参数唯一标识
+     */
     @Override
     public String toString() {
-        return this.name;
+        return this.name+this.args;
     }
 }

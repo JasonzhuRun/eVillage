@@ -30,6 +30,7 @@ import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.LogUtil;
 import cn.deepai.evillage.utils.ToastUtil;
+import de.greenrobot.event.EventBus;
 
 public class MainTabActivity extends BaseActivity implements
         BaseFragment.OnFragmentInteractionListener {
@@ -116,11 +117,22 @@ public class MainTabActivity extends BaseActivity implements
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-
     }
 
     private void initView() {
