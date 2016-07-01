@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.LogUtil;
@@ -27,10 +28,13 @@ public class EVRequest {
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
 //    private static final String URL = "http://192.168.101.18:8080/zyfp-web/inter/termLogin!";
 //    private static final String URL = "http://192.168.212.61:8888/zyfp-web/inter/termLogin!";
-    private static final String URL = "http://10.108.6.45:8080/zyfp-web/inter/termLogin!";
+//    private static final String URL = "http://10.108.6.45:8080/zyfp-web/inter/termLogin!";
+    private static final String URL = "http://124.65.186.26:8973/zyfp-web/inter/termLogin!";
+
     private static OkHttpClient client = new OkHttpClient();
 
     public static void request(Action action, String jsonHeader, String jsonData, final ResponseCallback callback) {
+        action.setArgs(jsonData);
         JSONObject jsonObject = new JSONObject();
 
         try {
@@ -43,7 +47,7 @@ public class EVRequest {
         request(action,jsonObject.toString(),callback);
     }
 
-    public static void request(Action action, String jsonString, final ResponseCallback callback) {
+    public static void request(final Action action, String jsonString, final ResponseCallback callback) {
         RequestBody requestBody = RequestBody.create(MEDIA_TYPE, jsonString);
 
         final Request request = new Request.Builder()
@@ -78,6 +82,7 @@ public class EVRequest {
                     EventBus.getDefault().post(headerEvent);
                     if (!TextUtils.isEmpty(dataString)) {
                         callback.onDataResponse(dataString);
+                        CacheManager.getInstance().cacheData(action.toString(),dataString);
                     }
                 }
             }

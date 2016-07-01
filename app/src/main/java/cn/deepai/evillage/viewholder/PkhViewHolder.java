@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
@@ -36,7 +39,7 @@ public class PkhViewHolder extends BaseViewHolder {
 
     public void onBindData(PkhjbxxBean pkhjbxxBean) {
         this.mPkhjbxxBean = pkhjbxxBean;
-//todo        ImageLoader.getInstance().displayImage(pkhjbxxBean.getTpdz(),photo, EVApplication.getDisplayImageOptions());
+        ImageLoader.getInstance().displayImage(pkhjbxxBean.getBz(),photo, EVApplication.getDisplayImageOptions());
         name.setText(pkhjbxxBean.getHzxm());
         address.setText(pkhjbxxBean.getJzdz());
     }

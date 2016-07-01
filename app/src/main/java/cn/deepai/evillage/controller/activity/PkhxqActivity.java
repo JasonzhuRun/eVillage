@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.event.ResponseEvent;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
@@ -36,7 +37,24 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhxqActivity extends BaseActivity {
 
+    private static int selectedIndex = 0;
     private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(ResponseHeaderEvent event) {
+        switch (event.getRspCode()) {
+            case RspCode.RSP_CODE_TOKEN_NOTEXIST:
+                ToastUtil.shortToast(getString(R.string.login_overdue));
+                SettingManager.getInstance().clearToken();
+                Intent intent = new Intent(this,LoginActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                ToastUtil.shortToast(event.getRspDesc());
+                break;
+        }
+        tryToHideProcessDialog();
+    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home) {
@@ -51,10 +69,25 @@ public class PkhxqActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkh);
         initView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
         for (PkhBasePage page:viewContainter) {
             page.registeEventBus();
         }
-        onPageShow(0);
+        onPageShow(selectedIndex);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+        for (PkhBasePage page:viewContainter) {
+            page.unRegisteEventBus();
+        }
     }
 
     @Override
@@ -80,14 +113,6 @@ public class PkhxqActivity extends BaseActivity {
             }else{
                 //to do find the path of pic by uri
             }
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        for (PkhBasePage page:viewContainter) {
-            page.unRegisteEventBus();
         }
     }
 
@@ -173,15 +198,14 @@ public class PkhxqActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int arg0) {
+                selectedIndex = arg0;
                 onPageShow(arg0);
             }
         });
     }
 
     private void onPageShow(int index) {
-        for (PkhBasePage page:viewContainter) {
-            page.setSelected(false);
-        }
+
         viewContainter.get(index).setSelected(true);
         if (!viewContainter.get(index).hasData()) {
             tryToShowProcessDialog();
