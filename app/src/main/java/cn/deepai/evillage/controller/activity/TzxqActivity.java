@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
-import cn.deepai.evillage.model.event.ResponseEvent;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
@@ -35,7 +34,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 贫困户详情页
  */
-public class PkhxqActivity extends BaseActivity {
+public class TzxqActivity extends BaseActivity {
 
     private static int selectedIndex = 0;
     private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();

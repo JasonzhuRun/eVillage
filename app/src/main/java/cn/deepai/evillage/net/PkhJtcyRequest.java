@@ -15,11 +15,11 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhJtcyRequest extends EVRequest {
 
-    public static void request(int id) {
+    public static void request(String id) {
 
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("jtcyxxId", id);
+            jsonObject.put("id", id);
         }catch (JSONException e) {
             return;
         }

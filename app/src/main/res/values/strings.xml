@@ -137,7 +137,7 @@
     <string name="pkh_shtj_rhllx">入户路类型</string>
     <string name="pkh_shtj_wscs">卫生厕所</string>
     <string name="pkh_shtj_gbds">通广播电视</string>
-    <!--生活条件-->
+    <!--参与产业化情况-->
     <string name="pkh_cyhqk_tjnd">统计年度</string>
     <string name="pkh_cyhqk_cylx">产业类型</string>
     <string name="pkh_cyhqk_cyzzlx">产业组织类型</string>
@@ -146,5 +146,8 @@
     <string name="pkh_cyhqk_hzzj">投入互助资金金额</string>
     <string name="pkh_cyhqk_hzzz">参与农业合作组织</string>
     <string name="pkh_cyhqk_ltqy">龙头企业带动收益</string>
+
+    <!--台账页面-->
+    <string name="tz_none_hid">请先选择要查看的贫困户</string>
 
 </resources>

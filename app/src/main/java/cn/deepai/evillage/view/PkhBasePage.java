@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
  */
 public abstract class PkhBasePage  extends FrameLayout {
 
-    protected boolean isSelected;
+    private boolean isSelected;
     protected Context mContext;
     protected boolean mHasData = false;
 

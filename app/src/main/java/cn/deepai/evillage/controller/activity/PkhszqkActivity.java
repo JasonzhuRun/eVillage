@@ -18,7 +18,7 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhszqkActivity extends BaseActivity {
 
-    private int id;
+    private String id;
     private EditText tjnd;
     private EditText jtzsr;
     private EditText wgsr;
@@ -77,8 +77,8 @@ public class PkhszqkActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkhszqk);
         initView();
-        id = getIntent().getIntExtra("id", -1);
-        if (id == -1) {
+        id = getIntent().getStringExtra("id");
+        if (id == null) {
             ToastUtil.shortToast(getResources().getString(R.string.pkh_szqk_none));
             finish();
         } else {

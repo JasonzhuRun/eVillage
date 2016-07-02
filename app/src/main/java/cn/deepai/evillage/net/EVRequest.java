@@ -63,6 +63,11 @@ public class EVRequest {
                 headerEvent.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
                 headerEvent.setRspDesc(RspCode.RSP_CODE_NO_CONNECTION_DSC);
                 EventBus.getDefault().post(headerEvent);
+                // 获取缓存数据
+                String dataString = CacheManager.getInstance().getCacheData(action.toString());
+                if (!isEmptyBody(dataString)) {
+                    callback.onDataResponse(dataString);
+                }
             }
 
             @Override
@@ -80,12 +85,20 @@ public class EVRequest {
                     Gson gson = new Gson();
                     ResponseHeaderEvent headerEvent = gson.fromJson(headString,ResponseHeaderEvent.class);
                     EventBus.getDefault().post(headerEvent);
-                    if (!TextUtils.isEmpty(dataString)) {
+                    if (!isEmptyBody(dataString)) {
                         callback.onDataResponse(dataString);
                         CacheManager.getInstance().cacheData(action.toString(),dataString);
                     }
                 }
             }
         });
+    }
+
+    private static boolean isEmptyBody(String data) {
+
+        if (TextUtils.isEmpty(data)) return true;
+        if ("{}".equals(data)) return true;
+        if ("[]".equals(data)) return true;
+        return false;
     }
 }

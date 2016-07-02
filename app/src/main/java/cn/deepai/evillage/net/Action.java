@@ -90,6 +90,6 @@ public class Action {
      */
     @Override
     public String toString() {
-        return this.name+this.args;
+        return this.name+ "_" +this.args;
     }
 }

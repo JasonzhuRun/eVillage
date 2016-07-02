@@ -72,7 +72,9 @@ public class PkhShtjPage extends PkhBasePage {
 
     @SuppressWarnings("all")
     public void onEventMainThread(PkhshtjBean event) {
-        bindData(event);
+        if (isSelected()) {
+            bindData(event);
+        }
     }
 
     @Override

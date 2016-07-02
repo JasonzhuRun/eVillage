@@ -1,5 +1,6 @@
 package cn.deepai.evillage.utils;
 
+import android.view.Gravity;
 import android.widget.Toast;
 
 import cn.deepai.evillage.EVApplication;
@@ -11,10 +12,14 @@ import cn.deepai.evillage.EVApplication;
 public class ToastUtil {
 
     public static void shortToast(String content) {
-        Toast.makeText(EVApplication.getApplication(), content, Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(EVApplication.getApplication(), content, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
     }
 
     public static void longToast(String content) {
-        Toast.makeText(EVApplication.getApplication(), content, Toast.LENGTH_LONG).show();
+        Toast toast = Toast.makeText(EVApplication.getApplication(), content, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
     }
 }

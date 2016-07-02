@@ -11,11 +11,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtcyRecyclerAdapter;
 import cn.deepai.evillage.model.bean.HidBean;
+import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.net.Action;
@@ -55,9 +55,11 @@ public class PkhJtcyPage extends PkhBasePage {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(List<PkhjtcyBean> event) {
-
-        mPkhjtcyRecyclerAdapter.notifyResult(true, event);
+    public void onEventMainThread(ListBean<PkhjtcyBean> event) {
+        if (isSelected()) {
+            mPkhjtcyRecyclerAdapter.notifyResult(true, event.list);
+            mHasData = true;
+        }
     }
 
     @Override
@@ -70,8 +72,8 @@ public class PkhJtcyPage extends PkhBasePage {
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        Type type = new TypeToken<List<PkhjtcyBean>>() {}.getType();
-                        List<PkhjtcyBean> responseEvent = requestGson.fromJson(dataJsonString, type);
+                        Type type = new TypeToken<ListBean<PkhjtcyBean>>() {}.getType();
+                        ListBean<PkhjtcyBean> responseEvent = requestGson.fromJson(dataJsonString, type);
                         EventBus.getDefault().post(responseEvent);
                     }
                 });

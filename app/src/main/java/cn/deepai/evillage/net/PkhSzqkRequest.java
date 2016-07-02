@@ -26,7 +26,7 @@ import okhttp3.Response;
  */
 public class PkhSzqkRequest extends EVRequest {
 
-    public static void request(int id) {
+    public static void request(String id) {
 
         JSONObject jsonObject = new JSONObject();
         try {

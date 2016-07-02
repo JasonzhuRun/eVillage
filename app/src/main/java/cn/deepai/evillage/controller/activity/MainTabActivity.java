@@ -41,6 +41,8 @@ public class MainTabActivity extends BaseActivity implements
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {
         switch (event.getRspCode()) {
+            case RspCode.RSP_CODE_SUCCESS:
+                break;
             case RspCode.RSP_CODE_TOKEN_NOTEXIST:
                 ToastUtil.shortToast(getString(R.string.login_overdue));
                 SettingManager.getInstance().clearToken();

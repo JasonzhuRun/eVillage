@@ -56,7 +56,9 @@ public class PkhCyhPage extends PkhBasePage {
 
     @SuppressWarnings("all")
     public void onEventMainThread(PkhcyhqkBean event) {
-        bindData(event);
+        if (isSelected()) {
+            bindData(event);
+        }
     }
 
     @Override

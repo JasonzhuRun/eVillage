@@ -59,7 +59,9 @@ public class PkhZfqkPage extends PkhBasePage {
 
     @SuppressWarnings("all")
     public void onEventMainThread(PkhzfqkBean event) {
-        bindData(event);
+        if (isSelected()) {
+            bindData(event);
+        }
     }
 
     @Override
