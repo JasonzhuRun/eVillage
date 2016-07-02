@@ -104,13 +104,7 @@ public final class SettingManager {
 	}
 
 	public void clearToken() {
-		if (mCurUserPref == null) {
-			return;
-		}
-
-		SharedPreferences.Editor edit = mCurUserPref.edit();
-		edit.putString(TOKEN, "0");
-		edit.apply();
+		setToken("");
 	}
 
 	public void setToken(String token) {
