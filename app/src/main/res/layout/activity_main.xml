@@ -6,47 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".controller.activity.MainTabActivity">
 
-    <android.support.v4.app.FragmentTabHost
-        android:id="@android:id/tabhost"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/title"
+            layout="@layout/title_normal"/>
+        <android.support.v4.app.FragmentTabHost
+            android:id="@android:id/tabhost"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0"/>
-
-            <FrameLayout
-                android:id="@+id/tab_content"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:background="@drawable/tab_navbar"
-                android:minHeight="@dimen/tab_height"
-                android:orientation="horizontal"/>
-        </LinearLayout>
-    </android.support.v4.app.FragmentTabHost>
-    <RelativeLayout
-        android:id="@+id/test_view"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0"/>
+                <FrameLayout
+                    android:id="@+id/tab_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:background="@color/tab_backgroud"
+                    android:minHeight="@dimen/tab_height"
+                    android:orientation="horizontal"/>
+            </LinearLayout>
+        </android.support.v4.app.FragmentTabHost>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/drawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/colorPrimary">
+        android:orientation="vertical"
+        android:background="@color/drawer_backgroud">
         <TextView
-            android:id="@+id/test_text"
+            android:id="@+id/drawer_title"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
-    </RelativeLayout>
+            android:layout_height="60dp"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:text="@string/tab_detail"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/drawer_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

@@ -11,6 +11,7 @@ import java.lang.reflect.Type;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.bean.PkhjbxxList;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import de.greenrobot.event.EventBus;
 
@@ -56,8 +57,7 @@ public class PkhJbxxListRequest extends EVRequest {
                                 "}\n" +
                                 "]\n" +
                                 "}";
-                        Type type = new TypeToken<ListBean<PkhjbxxBean>>(){}.getType();
-                        ListBean<PkhjbxxBean> jbxxList = gson.fromJson(dataJsonString,type);
+                        PkhjbxxList jbxxList = gson.fromJson(dataJsonString, PkhjbxxList.class);
                         EventBus.getDefault().post(jbxxList);
                     }
              });

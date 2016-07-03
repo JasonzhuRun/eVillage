@@ -15,6 +15,7 @@ import cn.deepai.evillage.adapter.PkhRecyclerAdapter;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.bean.PkhjbxxList;
 import cn.deepai.evillage.net.PkhJbxxListRequest;
 import de.greenrobot.event.EventBus;
 
@@ -47,7 +48,7 @@ public class PkhFragment extends BaseFragment {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(ListBean<PkhjbxxBean> event) {
+    public void onEventMainThread(PkhjbxxList event) {
         mPkhRecyclerAdapter.notifyResult(true, event.list);
         tryToHideProcessDialog();
     }
