@@ -2,17 +2,13 @@ package cn.deepai.evillage.controller.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -36,7 +32,6 @@ public class MainTabActivity extends BaseActivity implements
         BaseFragment.OnFragmentInteractionListener {
 
     private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mDrawerToggle;
 
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {
@@ -55,39 +50,10 @@ public class MainTabActivity extends BaseActivity implements
         }
         tryToHideProcessDialog();
     }
-    /**
-     * Open select menu
-     */
-    public void openDrawer() {
-
-        mDrawerLayout.openDrawer(GravityCompat.START);
-    }
-
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
-    }
-
-    /**
-     * Activity is running
-     */
-    @Override
-    public void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        return mDrawerToggle.onOptionsItemSelected(item)||super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -139,11 +105,6 @@ public class MainTabActivity extends BaseActivity implements
 
     private void initView() {
 
-        ActionBar actionBar = getSupportActionBar();
-        if (null != actionBar) {
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
         initDrawerLayout();
         initTabHost();
     }
@@ -151,9 +112,9 @@ public class MainTabActivity extends BaseActivity implements
     private void initDrawerLayout() {
 
         mDrawerLayout = (DrawerLayout)findViewById(R.id.main_drawerlayout);
-        mDrawerToggle = new ActionBarDrawerToggle(MainTabActivity.this,mDrawerLayout,R.string.app_name,R.string.app_name);
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
-        mDrawerLayout.setActivated(false);
+        if (mDrawerLayout != null) {
+            mDrawerLayout.setActivated(false);
+        }
     }
 
     private void initTabHost() {

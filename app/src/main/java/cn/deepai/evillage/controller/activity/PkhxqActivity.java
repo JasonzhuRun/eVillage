@@ -139,11 +139,6 @@ public class PkhxqActivity extends BaseActivity {
 
     private void initView() {
 
-        ActionBar actionBar = getSupportActionBar();
-        if (null != actionBar) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
         ViewPager pager = (ViewPager) this.findViewById(R.id.view_pager);
         if (pager == null) return;
         PagerTabStrip tabStrip = (PagerTabStrip) this.findViewById(R.id.view_pager_tabstrip);

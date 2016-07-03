@@ -57,14 +57,6 @@ public class TzxqActivity extends BaseActivity {
         tryToHideProcessDialog();
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,11 +129,6 @@ public class TzxqActivity extends BaseActivity {
     }
 
     private void initView() {
-
-        ActionBar actionBar = getSupportActionBar();
-        if (null != actionBar) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         ViewPager pager = (ViewPager) this.findViewById(R.id.view_pager);
         if (pager == null) return;

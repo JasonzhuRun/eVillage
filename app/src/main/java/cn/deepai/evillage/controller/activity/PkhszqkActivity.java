@@ -58,14 +58,6 @@ public class PkhszqkActivity extends BaseActivity {
         stbcj.setText(String.valueOf(pkhszqkBean.getStbcj()));
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("all")
     public void onEventMainThread(PkhszqkBean event) {
         onBindData(event);
@@ -95,10 +87,6 @@ public class PkhszqkActivity extends BaseActivity {
     }
 
     private void initView() {
-        ActionBar actionBar = getSupportActionBar();
-        if (null != actionBar) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         tjnd = (EditText) findViewById(R.id.szqk_tjnd);
         jtzsr = (EditText) findViewById(R.id.szqk_jtzsr);

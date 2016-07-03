@@ -41,14 +41,6 @@ public class PkhjtcyActivity extends BaseActivity {
     private EditText cyzt;
     private EditText ztbhsj;
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +74,7 @@ public class PkhjtcyActivity extends BaseActivity {
     }
 
     public void onBindData(PkhjtcyBean pkhjtcyBean) {
+
         xm.setText(String.valueOf(pkhjtcyBean.getXm()));
         xb.setText(String.valueOf(pkhjtcyBean.getXb()));
         sfzhm.setText(String.valueOf(pkhjtcyBean.getSfzhm()));
@@ -106,11 +99,6 @@ public class PkhjtcyActivity extends BaseActivity {
     }
 
     private void initView() {
-
-        ActionBar actionBar = getSupportActionBar();
-        if (null != actionBar) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         xm = (EditText) findViewById(R.id.jtcy_xm);
         xb = (EditText) findViewById(R.id.jtcy_xb);
