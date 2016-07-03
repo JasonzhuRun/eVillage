@@ -1,7 +1,6 @@
 package cn.deepai.evillage.model.bean;
 
 /**
- * @author GaoYixuan
  * 资讯内容
  */
 public class NewsBean {
