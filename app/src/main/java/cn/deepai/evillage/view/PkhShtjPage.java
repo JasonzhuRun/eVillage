@@ -98,19 +98,19 @@ public class PkhShtjPage extends PkhBasePage {
     }
 
     private void bindData(PkhshtjBean pkhshtjBean) {
-        tjnd.setText(String.valueOf(pkhshtjBean.getTjnd()));
-        tshyd.setText(String.valueOf(pkhshtjBean.getTshyd()));
-        zyrllx.setText(String.valueOf(pkhshtjBean.getZyrllx()));
-        ysqk.setText(String.valueOf(pkhshtjBean.getYsqk()));
-        hqyysdzykn.setText(String.valueOf(pkhshtjBean.getHqyysdzykn()));
-        cslx.setText(String.valueOf(pkhshtjBean.getCslx()));
-        nyxfpqk.setText(String.valueOf(pkhshtjBean.getNyxfpqk()));
-        yskn.setText(String.valueOf(pkhshtjBean.getYskn()));
-        ysaq.setText(String.valueOf(pkhshtjBean.getYsaq()));
-        jlczgl.setText(String.valueOf(pkhshtjBean.getJlczgl()));
-        rullx.setText(String.valueOf(pkhshtjBean.getRullx()));
-        wscs.setText(String.valueOf(pkhshtjBean.getWscs()));
-        tgbds.setText(String.valueOf(pkhshtjBean.getTgbds()));
+        tjnd.setText(pkhshtjBean.getTjnd());
+        tshyd.setText(pkhshtjBean.getTshyd());
+        zyrllx.setText(pkhshtjBean.getZyrllx());
+        ysqk.setText(pkhshtjBean.getYsqk());
+        hqyysdzykn.setText(pkhshtjBean.getHqyysdzykn());
+        cslx.setText(pkhshtjBean.getCslx());
+        nyxfpqk.setText(pkhshtjBean.getNyxfpqk());
+        yskn.setText(pkhshtjBean.getYskn());
+        ysaq.setText(pkhshtjBean.getYsaq());
+        jlczgl.setText(pkhshtjBean.getJlczgl());
+        rullx.setText(pkhshtjBean.getRullx());
+        wscs.setText(pkhshtjBean.getWscs());
+        tgbds.setText(pkhshtjBean.getTgbds());
         mHasData = true;
     }
 

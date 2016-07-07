@@ -97,8 +97,8 @@ public class EVRequest {
     private static boolean isEmptyBody(String data) {
 
         if (TextUtils.isEmpty(data)) return true;
-        if ("{}".equals(data)) return true;
-        if ("[]".equals(data)) return true;
+//        if ("{}".equals(data)) return true;
+//        if ("[]".equals(data)) return true;
         return false;
     }
 }

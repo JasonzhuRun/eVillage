@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:textColor="@color/text_main"
             android:textSize="16sp"
-            android:singleLine="true"
+            android:maxLines="1"
             android:text="@string/pkh_bfdx"/>
         <TextView
             android:id="@+id/item_person_phone"
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:textColor="@color/text_main"
             android:textSize="16sp"
-            android:singleLine="true"
+            android:maxLines="1"
             android:text="@string/pkh_jbxx_lxdh"/>
         <TextView
             android:id="@+id/item_person_address"
@@ -46,7 +46,7 @@
             android:layout_weight="2"
             android:textColor="@color/text_main"
             android:textSize="16sp"
-            android:singleLine="true"
+            android:maxLines="2"
             android:text="@string/pkh_jbxx_jzdz"/>
     </LinearLayout>
     <View

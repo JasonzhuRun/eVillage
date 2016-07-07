@@ -1,14 +1,13 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
-import cn.deepai.evillage.model.event.ResponseEvent;
-import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.net.PkhJtcyRequest;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -18,7 +17,6 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhjtcyActivity extends BaseActivity {
 
-    private String id;
     private EditText xm;
     private EditText xb;
     private EditText sfzhm;
@@ -41,11 +39,22 @@ public class PkhjtcyActivity extends BaseActivity {
     private EditText cyzt;
     private EditText ztbhsj;
 
+    @OnClick(R.id.normal_title_back)
+    public void onBackBtnClick(){
+        this.onBackPressed();
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhjtcyBean event) {
+        onBindData(event);
+        tryToHideProcessDialog();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkhjtcy);
-        id = getIntent().getStringExtra("id");
+        String id = getIntent().getStringExtra("id");
         if (id == null) {
             ToastUtil.shortToast(getResources().getString(R.string.pkh_jtcy_none));
             finish();
@@ -60,12 +69,6 @@ public class PkhjtcyActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
-    }
-
-    @SuppressWarnings("all")
-    public void onEventMainThread(PkhjtcyBean event) {
-        onBindData(event);
-        tryToHideProcessDialog();
     }
 
     @Override
@@ -121,5 +124,14 @@ public class PkhjtcyActivity extends BaseActivity {
         zdxx = (EditText) findViewById(R.id.jtcy_zdxx);
         cyzt = (EditText) findViewById(R.id.jtcy_cyzt);
         ztbhsj = (EditText) findViewById(R.id.jtcy_ztbhsj);
+
+        TextView title = (TextView)findViewById(R.id.title_text);
+        if (null != title) {
+            title.setText(getString(R.string.pkh_jtcy));
+        }
+        View view = findViewById(R.id.normal_title_back);
+        if (null != view) {
+            view.setVisibility(View.VISIBLE);
+        }
     }
 }

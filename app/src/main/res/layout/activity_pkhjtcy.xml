@@ -1,9 +1,12 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".controller.activity.PkhjtcyActivity">
+    <include
+        android:id="@+id/main_title"
+        layout="@layout/title_normal"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -622,4 +625,4 @@
                 android:background="@color/cut_off_line"/>
         </LinearLayout>
     </ScrollView>
-</FrameLayout>
+</LinearLayout>

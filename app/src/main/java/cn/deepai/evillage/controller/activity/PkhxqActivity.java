@@ -11,12 +11,21 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.event.ResponseEvent;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
@@ -40,6 +49,11 @@ public class PkhxqActivity extends BaseActivity {
     private static int selectedIndex = 0;
     private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();
 
+    @OnClick(R.id.detail_back)
+    public void onBackBtnClick(){
+        this.onBackPressed();
+    }
+
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {
         switch (event.getRspCode()) {
@@ -58,6 +72,18 @@ public class PkhxqActivity extends BaseActivity {
         tryToHideProcessDialog();
     }
 
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhjbxxBean event) {
+        ImageView pkhPhoto = (ImageView)findViewById(R.id.detail_photo);
+        TextView pkhName = (TextView) findViewById(R.id.detail_text_name);
+        TextView pkhPhone = (TextView) findViewById(R.id.detail_text_phone);
+        TextView pkhAddress = (TextView) findViewById(R.id.detail_text_address);
+        ImageLoader.getInstance().displayImage(event.getZp(),pkhPhoto, EVApplication.getDisplayImageOptions());
+        pkhName.setText(event.getHzxm());
+        pkhAddress.setText(event.getJzdz());
+        pkhPhone.setText(event.getLxdh());
+    }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home) {
             finish();
@@ -70,7 +96,14 @@ public class PkhxqActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkh);
+        ButterKnife.bind(this);
         initView();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 
     @Override
@@ -146,9 +179,9 @@ public class PkhxqActivity extends BaseActivity {
             //取消tab下面的长横线
             tabStrip.setDrawFullUnderline(false);
             //设置tab的背景色
-            tabStrip.setBackgroundColor(this.getResources().getColor(R.color.text_light));
+            tabStrip.setBackgroundColor(this.getResources().getColor(R.color.text_white));
             //设置当前tab页签的下划线颜色
-            tabStrip.setTabIndicatorColor(this.getResources().getColor(R.color.text_main));
+            tabStrip.setTabIndicatorColor(this.getResources().getColor(R.color.title_backgroud));
             tabStrip.setTextSpacing(200);
         }
         initPagerContent();

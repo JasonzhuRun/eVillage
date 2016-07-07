@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import butterknife.ButterKnife;
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
@@ -24,24 +25,23 @@ public class PkhViewHolder extends BaseViewHolder {
 
     private Context mContext;
     private PkhjbxxBean mPkhjbxxBean;
-    public ImageView photo;
-    public TextView name;
-    public TextView address;
 
     public PkhViewHolder(ViewGroup parent, int viewType) {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_pkh,parent,false));
         mContext = parent.getContext();
-        photo = (ImageView)itemView.findViewById(R.id.item_person_photo);
-        name = (TextView)itemView.findViewById(R.id.item_person_name);
-        address = (TextView)itemView.findViewById(R.id.item_person_address);
     }
 
     public void onBindData(PkhjbxxBean pkhjbxxBean) {
         this.mPkhjbxxBean = pkhjbxxBean;
-        ImageLoader.getInstance().displayImage(pkhjbxxBean.getBz(),photo, EVApplication.getDisplayImageOptions());
+        ImageView photo = (ImageView)itemView.findViewById(R.id.item_person_photo);
+        TextView name = (TextView)itemView.findViewById(R.id.item_person_name);
+        TextView address = (TextView)itemView.findViewById(R.id.item_person_address);
+        TextView phone = (TextView)itemView.findViewById(R.id.item_person_phone);
+        ImageLoader.getInstance().displayImage(pkhjbxxBean.getZp(),photo, EVApplication.getDisplayImageOptions());
         name.setText(pkhjbxxBean.getHzxm());
         address.setText(pkhjbxxBean.getJzdz());
+        phone.setText(pkhjbxxBean.getLxdh());
     }
 
     @Override
