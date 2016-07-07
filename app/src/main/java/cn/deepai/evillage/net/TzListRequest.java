@@ -34,9 +34,9 @@ public class TzListRequest extends EVRequest {
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        Type type = new TypeToken<ListBean<PkhjbxxBean>>(){}.getType();
-                        ListBean<PkhjbxxBean> jbxxList = gson.fromJson(dataJsonString,type);
-                        EventBus.getDefault().post(jbxxList);
+//                        Type type = new TypeToken<ListBean<PkhjbxxBean>>(){}.getType();
+//                        ListBean<PkhjbxxBean> jbxxList = gson.fromJson(dataJsonString,type);
+//                        EventBus.getDefault().post(jbxxList);
                     }
              });
     }

@@ -40,7 +40,7 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
         zp = (ImageView) itemView.findViewById(R.id.item_jtqkzp_zp);
         this.viewType = viewType;
         if (viewType == PkhjtqkzpRecyclerAdapter.TYPT_ADD_MORE) {
-            zp.setImageResource(R.drawable.add);
+            zp.setImageResource(R.drawable.add_photo);
         }
     }
 

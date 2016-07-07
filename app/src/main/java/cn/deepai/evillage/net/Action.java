@@ -25,28 +25,47 @@ package cn.deepai.evillage.net;
  */
 public class Action {
 
-    public static final Action ACTION_LOGIN = new Action("login.action",Type.downstream);
-    public static final Action ACTION_GET_PKHLIST = new Action("getPkhList.action",Type.downstream);
-    public static final Action ACTION_GET_PKHJBXX = new Action("getPkhJbxx.action",Type.downstream);
-    public static final Action ACTION_GET_PKHJTCYLIST = new Action("getPkhJtcyList.action",Type.downstream);
-    public static final Action ACTION_GET_JTCYJBXX = new Action("getPkhJtcyJbxx.action",Type.downstream);
-    public static final Action ACTION_GET_PKHSZQKLIST = new Action("getPkhSzqkList.action",Type.downstream);
-    public static final Action ACTION_GET_PKHSZQKJBXX = new Action("getPkhSzqkJbxx.action",Type.downstream);
-    public static final Action ACTION_UPDATE_PKHSZQKJBXX = new Action("updatePkhSzqkJbxx.action",Type.upstream);
-    public static final Action ACTION_ADD_PKHZFJBXX = new Action("addPkhSzqkJbxx.action",Type.upstream);
-    public static final Action ACTION_GET_PKHZFQJBXX = new Action("getPkhZfqkJbxx.action",Type.downstream);
-    public static final Action ACTION_UPDATE_PKHZFQKJBXX = new Action("updatePkhZfqkJbxx.action",Type.upstream);
-    public static final Action ACTION_ADD_PKHZFQKJBXX = new Action("addPkhZfqkJbxx.action",Type.upstream);
-    public static final Action ACTION_GET_PKHSCTJJBXX = new Action("getPkhSctjJbxx.action",Type.downstream);
-    public static final Action ACTION_UPDATE_PKHSCTJJBXX = new Action("updatePkhSctjJbxx.action",Type.upstream);
-    public static final Action ACTION_ADD_PKHSCTJJBXX = new Action("addPkhSctjJbxx.action",Type.upstream);
-    public static final Action ACTION_GET_PKHSHQKJBXX = new Action("getPkhShqkJbxx.action",Type.downstream);
-    public static final Action ACTION_UPDATE_PKHSHQKJNXX = new Action("updatePkhShqkJbxx.action",Type.upstream);
-    public static final Action ACTION_ADD_PKHSGQKJBXX = new Action("addPkhShqkJbxx.action",Type.upstream);
-    public static final Action ACTION_GET_PKHCYHZZJBXX = new Action("getPkhCyhzzJbxx.action",Type.downstream);
-    public static final Action ACTION_UPDATE_PKHCYHZZJBXX = new Action("updatePkhCyhzzJbxx.action",Type.upstream);
-    public static final Action ACTION_ADD_PKHCYHZZJBXX = new Action("addPkhCyhzzJbxx.action",Type.upstream);
-    public static final Action ACTION_GET_PKHJTQKZPLIST = new Action("getPkhJtqkzpList.action",Type.downstream);
+    // 登录
+    public static final Action ACTION_LOGIN = new Action("termLogin!login.action",Type.downstream);
+    // 贫困户
+    public static final Action ACTION_GET_PKHLIST = new Action("termLogin!getPkhList.action",Type.downstream);
+    public static final Action ACTION_GET_PKHJBXX = new Action("termLogin!getPkhJbxx.action",Type.downstream);
+    public static final Action ACTION_GET_PKHJTCYLIST = new Action("termLogin!getPkhJtcyList.action",Type.downstream);
+    public static final Action ACTION_GET_JTCYJBXX = new Action("termLogin!getPkhJtcyJbxx.action",Type.downstream);
+    public static final Action ACTION_GET_PKHSZQKLIST = new Action("termLogin!getPkhSzqkList.action",Type.downstream);
+    public static final Action ACTION_GET_PKHSZQKJBXX = new Action("termLogin!getPkhSzqkJbxx.action",Type.downstream);
+    public static final Action ACTION_UPDATE_PKHSZQKJBXX = new Action("termLogin!updatePkhSzqkJbxx.action",Type.upstream);
+    public static final Action ACTION_ADD_PKHZFJBXX = new Action("termLogin!addPkhSzqkJbxx.action",Type.upstream);
+    public static final Action ACTION_GET_PKHZFQJBXX = new Action("termLogin!getPkhZfqkJbxx.action",Type.downstream);
+    public static final Action ACTION_UPDATE_PKHZFQKJBXX = new Action("termLogin!updatePkhZfqkJbxx.action",Type.upstream);
+    public static final Action ACTION_ADD_PKHZFQKJBXX = new Action("termLogin!addPkhZfqkJbxx.action",Type.upstream);
+    public static final Action ACTION_GET_PKHSCTJJBXX = new Action("termLogin!getPkhSctjJbxx.action",Type.downstream);
+    public static final Action ACTION_UPDATE_PKHSCTJJBXX = new Action("termLogin!updatePkhSctjJbxx.action",Type.upstream);
+    public static final Action ACTION_ADD_PKHSCTJJBXX = new Action("termLogin!addPkhSctjJbxx.action",Type.upstream);
+    public static final Action ACTION_GET_PKHSHQKJBXX = new Action("termLogin!getPkhShqkJbxx.action",Type.downstream);
+    public static final Action ACTION_UPDATE_PKHSHQKJNXX = new Action("termLogin!updatePkhShqkJbxx.action",Type.upstream);
+    public static final Action ACTION_ADD_PKHSGQKJBXX = new Action("termLogin!addPkhShqkJbxx.action",Type.upstream);
+    public static final Action ACTION_GET_PKHCYHZZJBXX = new Action("termLogin!getPkhCyhzzJbxx.action",Type.downstream);
+    public static final Action ACTION_UPDATE_PKHCYHZZJBXX = new Action("termLogin!updatePkhCyhzzJbxx.action",Type.upstream);
+    public static final Action ACTION_ADD_PKHCYHZZJBXX = new Action("termLogin!addPkhCyhzzJbxx.action",Type.upstream);
+    public static final Action ACTION_GET_PKHJTQKZPLIST = new Action("termLogin!getPkhZp.action",Type.downstream);
+    public static final Action ACTION_ADD_PKHJTQKZP = new Action("termLogin!uploadPkhZp.action",Type.upstream);
+    // 建档
+    public static final Action ACTION_GET_DJDPKHLIST = new Action("termLogin!getPkhList.action",Type.downstream);
+    // 台账
+    public static final Action ACTION_GET_TZLIST = new Action("termPkhGztz!getPkhGztzList.action",Type.downstream);
+    public static final Action ACTION_ADD_TZ = new Action("termPkhGztz!addPkhGztz.action",Type.upstream);
+    public static final Action ACTION_GET_TZJBXX = new Action("termPkhGztz!getPkhGztzJbxx.action",Type.downstream);
+    public static final Action ACTION_GET_TZJTCYLIST = new Action("termPkhGztz!getPkhGztzJtcyList.action",Type.downstream);
+    public static final Action ACTION_GET_TZSRMX = new Action("termPkhGztz!getPkhGztzSrmx.action",Type.downstream);
+    public static final Action ACTION_ADD_TZSRMX = new Action("termPkhGztz!addPkhGztzSrmx.action",Type.upstream);
+    public static final Action ACTION_GET_TZZCMX = new Action("termPkhGztz!getPkhGztzZcmx.action",Type.downstream);
+    public static final Action ACTION_ADD_TZZCMX = new Action("termPkhGztz!addPkhGztzZcmx.action",Type.upstream);
+    public static final Action ACTION_GET_TZBFJHLIST = new Action("termPkhGztz!getPkhGztzBfjhList.action",Type.downstream);
+    public static final Action ACTION_GET_TZJHLSLIST = new Action("termPkhGztz!getPkhGztzJhlsList.action",Type.downstream);
+    public static final Action ACTION_ADD_TZZFQK = new Action("termPkhGztz!addPkhGztzZfqk.action",Type.upstream);
+    public static final Action ACTION_UPDATE_TZZFQK = new Action("termPkhGztz!updatePkhGztzZfqk.action",Type.upstream);
+    // 资讯
 
     private String name;
     private Type type;

@@ -17,8 +17,6 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import java.util.concurrent.TimeoutException;
-
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhRecyclerAdapter;
 import cn.deepai.evillage.controller.fragment.BaseFragment;
@@ -28,8 +26,6 @@ import cn.deepai.evillage.controller.fragment.NewsFragment;
 import cn.deepai.evillage.controller.fragment.PkhFragment;
 import cn.deepai.evillage.controller.fragment.TzFragment;
 import cn.deepai.evillage.manager.SettingManager;
-import cn.deepai.evillage.model.bean.ListBean;
-import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhjbxxList;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
@@ -122,7 +118,7 @@ public class MainTabActivity extends BaseActivity implements
 
         title = (TextView)findViewById(R.id.title_text);
         if (title != null) {
-            title.setText(getString(R.string.tab_detail));
+            title.setText(getString(R.string.tab_pkh));
         }
         RecyclerView drawerRecyclerView = (RecyclerView) findViewById(R.id.drawer_recyclerview);
         if (drawerRecyclerView != null){
@@ -148,75 +144,47 @@ public class MainTabActivity extends BaseActivity implements
         if (null == tabHost) return;
         tabHost.setup(this, getSupportFragmentManager(), R.id.tab_content);
 
-        tabHost.addTab(newTabSpec(tabHost, "0", getString(R.string.tab_detail),
-                R.drawable.ic_action_location_found_dark),
+        tabHost.addTab(newTabSpec(tabHost, getString(R.string.tab_pkh),R.drawable.tab_pkh),
                 PkhFragment.class,
                 null
         );
-        tabHost.addTab(newTabSpec(tabHost, "1", getString(R.string.tab_build),
-                R.drawable.ic_action_location_found_dark),
+        tabHost.addTab(newTabSpec(tabHost, getString(R.string.tab_jd),R.drawable.tab_jd),
                 JdFragment.class,
                 null
         );
-        tabHost.addTab(newTabSpec(tabHost, "2", getString(R.string.tab_account),
-                R.drawable.ic_action_location_found_dark),
+        tabHost.addTab(newTabSpec(tabHost, getString(R.string.tab_tz),R.drawable.tab_tz),
                 TzFragment.class,
                 null
         );
-        tabHost.addTab(newTabSpec(tabHost, "3", getString(R.string.tab_news),
-                R.drawable.ic_action_location_found_dark),
+        tabHost.addTab(newTabSpec(tabHost, getString(R.string.tab_news),R.drawable.tab_news),
                 NewsFragment.class,
                 null
         );
-        tabHost.addTab(newTabSpec(tabHost, "4", getString(R.string.tab_mine),
-                R.drawable.ic_action_location_found_dark),
+        tabHost.addTab(newTabSpec(tabHost, getString(R.string.tab_mine),R.drawable.tab_mine),
                 MineFragment.class,
                 null
         );
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                switch (tabId) {
-                    case "0":
-                        if (title != null) {
-                            title.setText(getString(R.string.tab_detail));
-                        }
-                        break;
-                    case "1":
-                        if (title != null) {
-                            title.setText(getString(R.string.tab_build_detail));
-                        }
-                        break;
-                    case "2":
-                        if (title != null) {
-                            title.setText(getString(R.string.tab_account));
-                        }
-                        break;
-                    case "3":
-                        if (title != null) {
-                            title.setText(getString(R.string.tab_news));
-                        }
-                    case "4":
-                        if (title != null) {
-                            title.setText(getString(R.string.tab_mine));
-                        }
-                        break;
+                if (title != null) {
+                    title.setText(tabId);
                 }
             }
         });
         tabHost.setCurrentTab(0);
     }
 
-    private TabHost.TabSpec newTabSpec(TabHost tabHost, String tag, CharSequence label,int iconRes) {
+    private TabHost.TabSpec newTabSpec(TabHost tabHost, String tag, int iconRes) {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         View indicatorView = inflater
                 .inflate(R.layout.tab_indicator, tabHost.getTabWidget(), false);
         ImageView iconImageView = (ImageView) indicatorView.findViewById(android.R.id.icon);
-        TextView labelTextView = (TextView) indicatorView.findViewById(android.R.id.title);
+//        TextView labelTextView = (TextView) indicatorView.findViewById(android.R.id.title);
         iconImageView.setImageResource(iconRes);
-        labelTextView.setText(label);
+//        labelTextView.setText(label);
         return tabHost.newTabSpec(tag).setIndicator(indicatorView);
     }
 

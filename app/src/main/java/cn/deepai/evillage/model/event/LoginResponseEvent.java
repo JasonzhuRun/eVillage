@@ -12,6 +12,15 @@ public class LoginResponseEvent {
     private String isMustUpdate;
     private String versionName;
     private String userId;
+    private String staffId;
+
+    public String getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
+    }
 
     public String getTokenId() {
         return tokenId;

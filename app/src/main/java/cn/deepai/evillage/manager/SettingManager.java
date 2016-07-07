@@ -25,6 +25,7 @@ public final class SettingManager {
 	 */
 	private static final String TOKEN = "token";
 	private static final String USER_ID = "user_id";
+	private static final String STAFF_ID = "staff_id";
 	// 当前编辑的贫困户ID
 	private static final String HID = "hid";
 
@@ -141,6 +142,28 @@ public final class SettingManager {
 		}
 
 		return mCurUserPref.getString(USER_ID, "");
+	}
+
+	public void setStaffId(String id) {
+		if (mCurUserPref == null) {
+			return;
+		}
+		SharedPreferences.Editor edit = mCurUserPref.edit();
+		edit.putString(STAFF_ID, id);
+		edit.apply();
+	}
+
+	/**
+	 * 和userId是一对多的关系
+	 * 用来实现一用户多账户
+	 * 和这个版本没多大关系
+     */
+	public String getStaffId() {
+		if (mCurUserPref == null) {
+			return "";
+		}
+
+		return mCurUserPref.getString(STAFF_ID, "");
 	}
 
 	public void setCurrentHid(String id) {

@@ -18,6 +18,7 @@ import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
 import cn.deepai.evillage.model.bean.HidBean;
 import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
+import cn.deepai.evillage.model.bean.PkhjtqkzpList;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.event.ResponseEvent;
 import cn.deepai.evillage.net.Action;
@@ -57,7 +58,7 @@ public class PkhJtqkzpPage extends PkhBasePage {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(ListBean<PkhjtqkzpBean> event) {
+    public void onEventMainThread(PkhjtqkzpList event) {
         if (isSelected()) {
             mPkhjtqkzpRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
@@ -73,9 +74,7 @@ public class PkhJtqkzpPage extends PkhBasePage {
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        Type type = new TypeToken<ListBean<PkhjtqkzpBean>>() {
-                        }.getType();
-                        ListBean<PkhjtqkzpBean> responseEvent = requestGson.fromJson(dataJsonString, type);
+                        PkhjtqkzpList responseEvent = requestGson.fromJson(dataJsonString, PkhjtqkzpList.class);
                         EventBus.getDefault().post(responseEvent);
                     }
                 });

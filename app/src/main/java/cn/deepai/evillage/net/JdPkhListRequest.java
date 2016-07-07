@@ -1,24 +1,20 @@
 package cn.deepai.evillage.net;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
-
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.bean.ListBean;
-import cn.deepai.evillage.model.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.bean.JdPkhjbxxList;
 import cn.deepai.evillage.model.bean.PkhjbxxList;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import de.greenrobot.event.EventBus;
 
 /**
- * 贫困户列表
+ * 待建档贫困户列表
  */
-public class PkhJbxxListRequest extends EVRequest {
+public class JdPkhListRequest extends EVRequest {
 
     public static void request(String staffId) {
 
@@ -28,7 +24,7 @@ public class PkhJbxxListRequest extends EVRequest {
         }catch (JSONException e) {
             return;
         }
-        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getPkhJbxxList);
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getJdList);
 
         final Gson gson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHLIST, gson.toJson(header), jsonObject.toString(),
@@ -57,7 +53,7 @@ public class PkhJbxxListRequest extends EVRequest {
                                 "}\n" +
                                 "]\n" +
                                 "}";
-                        PkhjbxxList jbxxList = gson.fromJson(dataJsonString, PkhjbxxList.class);
+                        JdPkhjbxxList jbxxList = gson.fromJson(dataJsonString, JdPkhjbxxList.class);
                         EventBus.getDefault().post(jbxxList);
                     }
              });

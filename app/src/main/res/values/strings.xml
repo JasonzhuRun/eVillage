@@ -33,18 +33,23 @@
     <string name="req_code_updatePkhCyhzzJbxx">zyfp01020</string>
     <string name="req_code_addPkhCyhzzJbxx">zyfp01021</string>
     <string name="req_code_getPkhJtqkzpList">zyfp01022</string>
+
+    <string name="req_code_getJdList">zyfp02001</string>
+
+    <string name="req_code_getTzList">zyfp03001</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
-    <string name="tab_detail">贫困户</string>
-    <string name="tab_account">台账</string>
+    <string name="tab_pkh">帮扶对象</string>
+    <string name="tab_tz">台账</string>
     <string name="tab_build">建档</string>
-    <string name="tab_build_detail">待建档贫困户</string>
+    <string name="tab_jd">待建档贫困户</string>
     <string name="tab_mine">我的</string>
     <string name="login_username">用户名</string>
     <string name="login_password">密码</string>
     <string name="login_ensure">登录</string>
     <!--贫困户页面-->
     <string name="pkh_jbxx">基本信息</string>
+    <string name="pkh_bfdx">帮扶对象</string>
     <string name="pkh_jtcy">家庭成员</string>
     <string name="pkh_szqk">收支情况</string>
     <string name="pkh_zfqk">住房情况</string>

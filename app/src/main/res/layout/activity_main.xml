@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include
-            android:id="@+id/title"
+            android:id="@+id/main_title"
             layout="@layout/title_normal"/>
         <android.support.v4.app.FragmentTabHost
             android:id="@android:id/tabhost"
@@ -39,7 +39,8 @@
                     android:layout_weight="0"
                     android:background="@color/tab_backgroud"
                     android:minHeight="@dimen/tab_height"
-                    android:orientation="horizontal"/>
+                    android:orientation="horizontal"
+                    android:divider="@null"/>
             </LinearLayout>
         </android.support.v4.app.FragmentTabHost>
     </LinearLayout>
@@ -56,7 +57,7 @@
             android:layout_height="60dp"
             android:textSize="24sp"
             android:gravity="center"
-            android:text="@string/tab_detail"/>
+            android:text="@string/tab_pkh"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/drawer_recyclerview"
             android:layout_width="match_parent"

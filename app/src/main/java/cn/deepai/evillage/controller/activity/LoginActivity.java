@@ -30,6 +30,7 @@ public class LoginActivity extends BaseActivity{
 
         SettingManager.getInstance().setToken(event.getTokenId());
         SettingManager.getInstance().setUserId(event.getUserId());
+        SettingManager.getInstance().setStaffId(event.getStaffId());
         tryToEnter();
     }
 

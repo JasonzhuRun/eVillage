@@ -2,46 +2,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_person_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="120dp"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/item_person_photo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:contentDescription="@string/app_name" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/text_white"
+        android:contentDescription="@string/app_name"/>
     <LinearLayout
+        android:id="@+id/pkh_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="80dp"
         android:layout_toRightOf="@id/item_person_photo"
-        android:layout_toEndOf="@id/item_person_photo">
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
         <TextView
             android:id="@+id/item_person_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="令狐冲  13888888888"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_main"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:text="@string/pkh_bfdx"/>
+        <TextView
+            android:id="@+id/item_person_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_main"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:text="@string/pkh_jbxx_lxdh"/>
         <TextView
             android:id="@+id/item_person_address"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="北京市海淀区中关村南大街5号"/>
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:textColor="@color/text_main"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:text="@string/pkh_jbxx_jzdz"/>
     </LinearLayout>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:contentDescription="@string/app_name" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/text_main"
+        android:background="@color/cut_off_line"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_alignParentBottom="true"/>
