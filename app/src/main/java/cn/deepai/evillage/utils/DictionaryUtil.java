@@ -55,6 +55,18 @@ public class DictionaryUtil {
         if (values != null) {
             return values.get(valueCode);
         }
-        return null;
+        return valueCode;
+    }
+
+    public static String getValueName(String valueCode) {
+        if (null == valueCode) return null;
+        switch (valueCode) {
+            case "0":
+                return "否";
+            case "1":
+                return "是";
+            default:
+                return valueCode;
+        }
     }
 }

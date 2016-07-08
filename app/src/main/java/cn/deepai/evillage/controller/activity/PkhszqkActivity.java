@@ -1,17 +1,12 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhszqkBean;
-import cn.deepai.evillage.model.event.ResponseEvent;
-import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.net.PkhSzqkRequest;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -39,11 +34,6 @@ public class PkhszqkActivity extends BaseActivity {
     private EditText ylbx;
     private EditText deylbz;
     private EditText stbcj;
-
-    @OnClick(R.id.normal_title_back)
-    public void onBackBtnClick(){
-        this.onBackPressed();
-    }
 
     public void onBindData(PkhszqkBean pkhszqkBean) {
         tjnd.setText(String.valueOf(pkhszqkBean.getTjnd()));
@@ -120,6 +110,12 @@ public class PkhszqkActivity extends BaseActivity {
         View view = findViewById(R.id.normal_title_back);
         if (null != view) {
             view.setVisibility(View.VISIBLE);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
         }
     }
 }

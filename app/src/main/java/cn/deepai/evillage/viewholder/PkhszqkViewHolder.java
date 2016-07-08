@@ -20,26 +20,26 @@ public class PkhszqkViewHolder extends BaseViewHolder {
     private Context mContext;
     private PkhszqkBean mPkhszqkBean;
     private TextView sznd;
-    private TextView jtzsr;
-    private TextView jtcsr;
-    private TextView rjcsr;
+//    private TextView jtzsr;
+//    private TextView jtcsr;
+//    private TextView rjcsr;
 
     public PkhszqkViewHolder(ViewGroup parent, int viewType) {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_pkhszqk,parent,false));
         mContext = parent.getContext();
         sznd = (TextView)itemView.findViewById(R.id.item_szqk_sznd);
-        jtzsr = (TextView)itemView.findViewById(R.id.item_szqk_jtzsr);
-        jtcsr = (TextView)itemView.findViewById(R.id.item_szqk_jtcsr);
-        rjcsr = (TextView)itemView.findViewById(R.id.item_szqk_rjcsr);
+//        jtzsr = (TextView)itemView.findViewById(R.id.item_szqk_jtzsr);
+//        jtcsr = (TextView)itemView.findViewById(R.id.item_szqk_jtcsr);
+//        rjcsr = (TextView)itemView.findViewById(R.id.item_szqk_rjcsr);
     }
 
     public void onBindData(PkhszqkBean pkhszqkBean) {
         this.mPkhszqkBean = pkhszqkBean;
         sznd.setText(String.valueOf(pkhszqkBean.getTjnd()));
-        jtzsr.setText(String.valueOf(pkhszqkBean.getJtzsr()));
-        jtcsr.setText(String.valueOf(pkhszqkBean.getJtcsr()));
-        rjcsr.setText(String.valueOf(pkhszqkBean.getJtnrjcsr()));
+//        jtzsr.setText(String.valueOf(pkhszqkBean.getJtzsr()));
+//        jtcsr.setText(String.valueOf(pkhszqkBean.getJtcsr()));
+//        rjcsr.setText(String.valueOf(pkhszqkBean.getJtnrjcsr()));
     }
 
     @Override

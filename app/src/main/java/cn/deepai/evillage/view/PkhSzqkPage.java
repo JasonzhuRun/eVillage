@@ -11,11 +11,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhszqkRecyclerAdapter;
-import cn.deepai.evillage.model.bean.HidBean;
+import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhszqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
@@ -68,7 +67,7 @@ public class PkhSzqkPage extends PkhBasePage {
         final Gson requestGson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHSZQKLIST,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhSzqkList)),
-                requestGson.toJson(new HidBean()),
+                requestGson.toJson(new PkhRequestBean()),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {

@@ -1,31 +1,22 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-import java.lang.reflect.Type;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.bean.HidBean;
+import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhshtjBean;
-import cn.deepai.evillage.model.event.ResponseEvent;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.event.ResponseHeaderEvent;
-import cn.deepai.evillage.model.event.RspCode;
-import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
+import cn.deepai.evillage.utils.DictionaryUtil;
 import de.greenrobot.event.EventBus;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 /**
  * 生活条件
@@ -82,7 +73,7 @@ public class PkhShtjPage extends PkhBasePage {
         final Gson requestGson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHSHQKJBXX,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhShqkJbxx)),
-                requestGson.toJson(new HidBean()),
+                requestGson.toJson(new PkhRequestBean(true)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
@@ -99,18 +90,28 @@ public class PkhShtjPage extends PkhBasePage {
 
     private void bindData(PkhshtjBean pkhshtjBean) {
         tjnd.setText(pkhshtjBean.getTjnd());
-        tshyd.setText(pkhshtjBean.getTshyd());
-        zyrllx.setText(pkhshtjBean.getZyrllx());
-        ysqk.setText(pkhshtjBean.getYsqk());
-        hqyysdzykn.setText(pkhshtjBean.getHqyysdzykn());
-        cslx.setText(pkhshtjBean.getCslx());
-        nyxfpqk.setText(pkhshtjBean.getNyxfpqk());
-        yskn.setText(pkhshtjBean.getYskn());
-        ysaq.setText(pkhshtjBean.getYsaq());
+        tshyd.setText(DictionaryUtil.getValueName(pkhshtjBean.getTshyd()));
+        String[] rllxCodes = pkhshtjBean.getZyrllx().split(",");
+        String rllxValue = "";
+        for (String code:rllxCodes) {
+            rllxValue += DictionaryUtil.getValueName("RLLX",code);
+        }
+        zyrllx.setText(rllxValue);
+        ysqk.setText(DictionaryUtil.getValueName("WaterCon",pkhshtjBean.getYsqk()));
+        hqyysdzykn.setText(DictionaryUtil.getValueName("YYSZYKN",pkhshtjBean.getHqyysdzykn()));
+        cslx.setText(DictionaryUtil.getValueName("CSLX",pkhshtjBean.getCslx()));
+        String[] nypxfCodes = pkhshtjBean.getNyxfpqk().split(",");
+        String nypxfValue = "";
+        for (String code:rllxCodes) {
+            rllxValue += DictionaryUtil.getValueName("NYXFP",code) + ";";
+        }
+        nyxfpqk.setText(nypxfValue);
+        yskn.setText(DictionaryUtil.getValueName(pkhshtjBean.getYskn()));
+        ysaq.setText(DictionaryUtil.getValueName(pkhshtjBean.getYsaq()));
         jlczgl.setText(pkhshtjBean.getJlczgl());
-        rullx.setText(pkhshtjBean.getRullx());
-        wscs.setText(pkhshtjBean.getWscs());
-        tgbds.setText(pkhshtjBean.getTgbds());
+        rullx.setText(DictionaryUtil.getValueName("RHLLX",pkhshtjBean.getRullx()));
+        wscs.setText(DictionaryUtil.getValueName(pkhshtjBean.getWscs()));
+        tgbds.setText(DictionaryUtil.getValueName(pkhshtjBean.getTgbds()));
         mHasData = true;
     }
 

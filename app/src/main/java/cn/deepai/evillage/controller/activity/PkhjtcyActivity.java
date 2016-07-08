@@ -5,10 +5,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
 import cn.deepai.evillage.net.PkhJtcyRequest;
+import cn.deepai.evillage.utils.DictionaryUtil;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
@@ -38,11 +38,6 @@ public class PkhjtcyActivity extends BaseActivity {
     private EditText zdxx;
     private EditText cyzt;
     private EditText ztbhsj;
-
-    @OnClick(R.id.normal_title_back)
-    public void onBackBtnClick(){
-        this.onBackPressed();
-    }
 
     @SuppressWarnings("all")
     public void onEventMainThread(PkhjtcyBean event) {
@@ -78,27 +73,27 @@ public class PkhjtcyActivity extends BaseActivity {
 
     public void onBindData(PkhjtcyBean pkhjtcyBean) {
 
-        xm.setText(String.valueOf(pkhjtcyBean.getXm()));
-        xb.setText(String.valueOf(pkhjtcyBean.getXb()));
-        sfzhm.setText(String.valueOf(pkhjtcyBean.getSfzhm()));
-        yhzgx.setText(String.valueOf(pkhjtcyBean.getYhzgx()));
-        mz.setText(String.valueOf(pkhjtcyBean.getMz()));
-        whcd.setText(String.valueOf(pkhjtcyBean.getWhcd()));
-        zxsqk.setText(String.valueOf(pkhjtcyBean.getZxsqk()));
-        jkqk.setText(String.valueOf(pkhjtcyBean.getJkqk()));
-        ldnlzk.setText(String.valueOf(pkhjtcyBean.getLdnlzk()));
-        wgzk.setText(String.valueOf(pkhjtcyBean.getWgzk()));
-        wgsj.setText(String.valueOf(pkhjtcyBean.getWgsj()));
-        dbrk.setText(String.valueOf(pkhjtcyBean.getDbrk()));
-        cjxnhyl.setText(String.valueOf(pkhjtcyBean.getCjxnhyl()));
-        cjcxjmjbylbx.setText(String.valueOf(pkhjtcyBean.getCjcxjmjbylbx()));
-        sfldlzyjy.setText(String.valueOf(pkhjtcyBean.getSfldlzyjy()));
-        sfxyjr.setText(String.valueOf(pkhjtcyBean.getSfxyjr()));
-        zzmm.setText(String.valueOf(pkhjtcyBean.getZzmm()));
-        sfczzgylbx.setText(String.valueOf(pkhjtcyBean.getSfczzgylbx()));
-        zdxx.setText(String.valueOf(pkhjtcyBean.getZdxx()));
-        cyzt.setText(String.valueOf(pkhjtcyBean.getCyzt()));
-        ztbhsj.setText(String.valueOf(pkhjtcyBean.getZtbhsj()));
+        xm.setText(pkhjtcyBean.getXm());
+        xb.setText(DictionaryUtil.getValueName("COMMON.GENDER",pkhjtcyBean.getXb()));
+        sfzhm.setText(pkhjtcyBean.getSfzhm());
+        yhzgx.setText(DictionaryUtil.getValueName("YHZGX",pkhjtcyBean.getYhzgx()));
+        mz.setText(DictionaryUtil.getValueName("NATION",pkhjtcyBean.getMz()));
+        whcd.setText(DictionaryUtil.getValueName("WHCD",pkhjtcyBean.getWhcd()));
+        zxsqk.setText(pkhjtcyBean.getZxsqk());
+        jkqk.setText(DictionaryUtil.getValueName("JKQK",pkhjtcyBean.getJkqk()));
+        ldnlzk.setText(DictionaryUtil.getValueName("LDLZK",pkhjtcyBean.getLdnlzk()));
+        wgzk.setText(DictionaryUtil.getValueName("DGZT",pkhjtcyBean.getWgzk()));
+        wgsj.setText(pkhjtcyBean.getWgsj());
+        dbrk.setText(DictionaryUtil.getValueName(pkhjtcyBean.getDbrk()));
+        cjxnhyl.setText(DictionaryUtil.getValueName(pkhjtcyBean.getCjxnhyl()));
+        cjcxjmjbylbx.setText(DictionaryUtil.getValueName(pkhjtcyBean.getCjcxjmjbylbx()));
+        sfldlzyjy.setText(DictionaryUtil.getValueName(pkhjtcyBean.getSfldlzyjy()));
+        sfxyjr.setText(DictionaryUtil.getValueName(pkhjtcyBean.getSfxyjr()));
+        zzmm.setText(DictionaryUtil.getValueName("ZZMM",pkhjtcyBean.getZzmm()));
+        sfczzgylbx.setText(DictionaryUtil.getValueName(pkhjtcyBean.getSfczzgylbx()));
+        zdxx.setText(pkhjtcyBean.getZdxx());
+        cyzt.setText(DictionaryUtil.getValueName("CYZT",pkhjtcyBean.getCyzt()));
+        ztbhsj.setText(pkhjtcyBean.getZtbhsj());
     }
 
     private void initView() {
@@ -132,6 +127,12 @@ public class PkhjtcyActivity extends BaseActivity {
         View view = findViewById(R.id.normal_title_back);
         if (null != view) {
             view.setVisibility(View.VISIBLE);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
         }
     }
 }

@@ -8,12 +8,13 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.bean.HidBean;
+import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhcyhqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
+import cn.deepai.evillage.utils.DictionaryUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -67,7 +68,7 @@ public class PkhCyhPage extends PkhBasePage {
         final Gson requestGson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHCYHZZJBXX,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhCyhzzJbxx)),
-                requestGson.toJson(new HidBean()),
+                requestGson.toJson(new PkhRequestBean(true)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
@@ -83,14 +84,14 @@ public class PkhCyhPage extends PkhBasePage {
     }
 
     private void bindData(PkhcyhqkBean pkhcyhqkBean) {
-        tjnd.setText(String.valueOf(pkhcyhqkBean.getTjnd()));
-        cylx.setText(String.valueOf(pkhcyhqkBean.getCylx()));
-        cyzzlx.setText(String.valueOf(pkhcyhqkBean.getCyzzlx()));
-        cyzsy.setText(String.valueOf(pkhcyhqkBean.getCyzsy()));
-        cjfphzzjzz.setText(String.valueOf(pkhcyhqkBean.getCjfphzzjzz()));
-        trhzzzje.setText(String.valueOf(pkhcyhqkBean.getTrhzzzje()));
-        cynyhzzz.setText(String.valueOf(pkhcyhqkBean.getCynyhzzz()));
-        ltqyddsy.setText(String.valueOf(pkhcyhqkBean.getLtqyddsy()));
+        tjnd.setText(pkhcyhqkBean.getTjnd());
+        cylx.setText(DictionaryUtil.getValueName("ZDCYLX",pkhcyhqkBean.getCylx()));
+        cyzzlx.setText(DictionaryUtil.getValueName("CYZZLX",pkhcyhqkBean.getCyzzlx()));
+        cyzsy.setText(pkhcyhqkBean.getCyzsy());
+        cjfphzzjzz.setText(DictionaryUtil.getValueName(pkhcyhqkBean.getCjfphzzjzz()));
+        trhzzzje.setText(pkhcyhqkBean.getTrhzzzje());
+        cynyhzzz.setText(DictionaryUtil.getValueName(pkhcyhqkBean.getCynyhzzz()));
+        ltqyddsy.setText(pkhcyhqkBean.getLtqyddsy());
         mHasData = true;
     }
 

@@ -8,12 +8,13 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.bean.HidBean;
+import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhzfqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
+import cn.deepai.evillage.utils.DictionaryUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -70,7 +71,7 @@ public class PkhZfqkPage extends PkhBasePage {
         final Gson requestGson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHZFQJBXX,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhZfqkJbxx)),
-                requestGson.toJson(new HidBean()),
+                requestGson.toJson(new PkhRequestBean(true)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
@@ -86,11 +87,11 @@ public class PkhZfqkPage extends PkhBasePage {
     }
 
     private void bindData(PkhzfqkBean pkhzfqkBean) {
-        zfmj.setText(String.valueOf(pkhzfqkBean.getZfmj()));
-        fwzyjg.setText(String.valueOf(pkhzfqkBean.getFwzyjg()));
-        jfsj.setText(String.valueOf(pkhzfqkBean.getJfsj()));
-        zyzfsfwf.setText(String.valueOf(pkhzfqkBean.getZyzfsfwf()));
-        ydfpbqqk.setText(String.valueOf(pkhzfqkBean.getYdfpbqqk()));
+        zfmj.setText(pkhzfqkBean.getZfmj());
+        fwzyjg.setText(DictionaryUtil.getValueName("FWJG",pkhzfqkBean.getFwzyjg()));
+        jfsj.setText(pkhzfqkBean.getJfsj());
+        zyzfsfwf.setText(DictionaryUtil.getValueName(pkhzfqkBean.getZyzfsfwf()));
+        ydfpbqqk.setText(DictionaryUtil.getValueName("YDBQQK",pkhzfqkBean.getYdfpbqqk()));
         mHasData = true;
     }
 

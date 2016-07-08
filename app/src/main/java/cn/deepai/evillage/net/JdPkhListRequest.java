@@ -31,28 +31,6 @@ public class JdPkhListRequest extends EVRequest {
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        dataJsonString = "{\n" +
-                                "\"list\":[\n" +
-                                "{\n" +
-                                "\"hid\":\"1\",\n" +
-                                "\"hzxm\":\"张三\",\n" +
-                                "\"jdnf\":2015,\n" +
-                                "\"jzdz\":\"遵义市桐梓县燎原镇花园新村7号楼7-201\",\n" +
-                                "\"vid\":\"43\",\n" +
-                                "\"lxdh\":\"17012332312\",\n" +
-                                "\"jlsj\":\"20150803121212\"\n" +
-                                "},\n" +
-                                "{\n" +
-                                "\"hid\":\"1\",\n" +
-                                "\"hzxm\":\"李四\",\n" +
-                                "\"jdnf\":2014,\n" +
-                                "\"jzdz\":\"遵义市桐梓县燎原镇花园新村5号楼7-202\",\n" +
-                                "\"vid\":\"43\",\n" +
-                                "\"lxdh\":\"18012332322\",\n" +
-                                "\"jlsj\":\"20150803121212\"\n" +
-                                "}\n" +
-                                "]\n" +
-                                "}";
                         JdPkhjbxxList jbxxList = gson.fromJson(dataJsonString, JdPkhjbxxList.class);
                         EventBus.getDefault().post(jbxxList);
                     }

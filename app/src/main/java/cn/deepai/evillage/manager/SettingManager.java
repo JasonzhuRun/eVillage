@@ -28,6 +28,8 @@ public final class SettingManager {
 	private static final String STAFF_ID = "staff_id";
 	// 当前编辑的贫困户ID
 	private static final String HID = "hid";
+	// 当前编辑的贫困户信息的统计年度（目前只有建档年度）
+	private static final String TJND = "tjnd";
 
 	private Context mContext;
 	private SharedPreferences mCommPref;
@@ -182,5 +184,24 @@ public final class SettingManager {
 		}
 
 		return mCurUserPref.getString(HID, "");
+	}
+
+
+	public void setCurrentTjnd(String nd) {
+		if (mCurUserPref == null) {
+			return;
+		}
+
+		SharedPreferences.Editor edit = mCurUserPref.edit();
+		edit.putString(TJND, nd);
+		edit.apply();
+	}
+
+	public String getCurrentTjnd() {
+		if (mCurUserPref == null) {
+			return "";
+		}
+
+		return mCurUserPref.getString(TJND, "");
 	}
 }

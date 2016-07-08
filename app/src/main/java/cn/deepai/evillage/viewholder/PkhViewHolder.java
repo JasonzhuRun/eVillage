@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import butterknife.ButterKnife;
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
@@ -38,7 +37,7 @@ public class PkhViewHolder extends BaseViewHolder {
         TextView name = (TextView)itemView.findViewById(R.id.item_person_name);
         TextView address = (TextView)itemView.findViewById(R.id.item_person_address);
         TextView phone = (TextView)itemView.findViewById(R.id.item_person_phone);
-        ImageLoader.getInstance().displayImage(pkhjbxxBean.getZp(),photo, EVApplication.getDisplayImageOptions());
+        ImageLoader.getInstance().displayImage(pkhjbxxBean.getTpdz(),photo, EVApplication.getDisplayImageOptions());
         name.setText(pkhjbxxBean.getHzxm());
         address.setText(pkhjbxxBean.getJzdz());
         phone.setText(pkhjbxxBean.getLxdh());
@@ -48,7 +47,12 @@ public class PkhViewHolder extends BaseViewHolder {
     public void onClick(View v) {
         super.onClick(v);
         SettingManager.getInstance().setCurrentHid(mPkhjbxxBean.getHid());
+        SettingManager.getInstance().setCurrentTjnd(mPkhjbxxBean.getJdnf());
         Intent intent = new Intent(mContext, PkhxqActivity.class);
+        intent.putExtra("tpdz",mPkhjbxxBean.getTpdz());
+        intent.putExtra("hzxm",mPkhjbxxBean.getHzxm());
+        intent.putExtra("jzdz",mPkhjbxxBean.getJzdz());
+        intent.putExtra("lxdh",mPkhjbxxBean.getLxdh());
         mContext.startActivity(intent);
         ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }

@@ -6,14 +6,16 @@ import android.view.LayoutInflater;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.bean.HidBean;
+import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
+import cn.deepai.evillage.utils.DictionaryUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -41,8 +43,6 @@ public class PkhJbxxPage extends PkhBasePage {
     private EditText pkhsx;
     // 贫困户状态
     private EditText pkhzt;
-    // 建档年份
-    private EditText jdnf;
     // 脱贫年份
     private EditText tpnf;
 
@@ -83,7 +83,7 @@ public class PkhJbxxPage extends PkhBasePage {
         final Gson requestGson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHJBXX,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJbxx)),
-                requestGson.toJson(new HidBean()),
+                requestGson.toJson(new PkhRequestBean()),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
@@ -101,13 +101,23 @@ public class PkhJbxxPage extends PkhBasePage {
 
     private void bindData(PkhjbxxBean pkhjbxxBean) {
         hzxm.setText(pkhjbxxBean.getHzxm());
+        // 地址
         jzdz.setText(pkhjbxxBean.getJzdz());
+        // 电话
         lxdh.setText(pkhjbxxBean.getLxdh());
+        // 身份证
         hzsfz.setText(pkhjbxxBean.getHzsfz());
+        // 开户行
         hkhyx.setText(pkhjbxxBean.getHkhyx());
+        // 银行账号
         yxzh.setText(pkhjbxxBean.getYxzh());
-        jhsyh.setText(String.valueOf(pkhjbxxBean.getJhsyh()));
+        // 计划生育户
+        jhsyh.setText(DictionaryUtil.getValueName(pkhjbxxBean.getJhsyh()));
+        // 贫困户状态
         pkhzt.setText(pkhjbxxBean.getPkhzt());
+        sbbz.setText(DictionaryUtil.getValueName("PKBZ",pkhjbxxBean.getPksbbz()));
+        tpnf.setText(pkhjbxxBean.getTpnf());
+        pkhsx.setText(DictionaryUtil.getValueName("PKHSX",pkhjbxxBean.getPkhsx()));
         mHasData = true;
     }
 
@@ -119,7 +129,10 @@ public class PkhJbxxPage extends PkhBasePage {
         hkhyx = (EditText) findViewById(R.id.jbxx_khyh);
         yxzh = (EditText) findViewById(R.id.jbxx_yhzh);
         jhsyh = (EditText) findViewById(R.id.jbxx_jhsyh);
-        pkhzt = (EditText) findViewById(R.id.jbxx_pkzt);
+        pkhzt = (EditText) findViewById(R.id.jbxx_pkhzt);
+        sbbz = (EditText) findViewById(R.id.jbxx_sbbz);
+        tpnf = (EditText) findViewById(R.id.jbxx_tpnf);
+        pkhsx = (EditText) findViewById(R.id.jbxx_pkhsx);
         mHasData = false;
     }
 }

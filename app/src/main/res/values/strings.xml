@@ -61,12 +61,14 @@
     <!--基本信息页面-->
     <string name="pkh_jbxx_hzxx">户主姓名</string>
     <string name="pkh_jbxx_lxdh">联系电话</string>
-    <string name="pkh_jbxx_pkzt">贫困状态</string>
-    <string name="pkh_jbxx_zpyy">致贫原因</string>
+    <string name="pkh_jbxx_pkzt">贫困户状态</string>
+    <string name="pkh_jbxx_sbbz">识别标准</string>
+    <string name="pkh_jbxx_tpnf">脱贫年份</string>
     <string name="pkh_jbxx_khyh">开户银行</string>
     <string name="pkh_jbxx_yhzh">银行账号</string>
     <string name="pkh_jbxx_sfzh">身份证号</string>
     <string name="pkh_jbxx_jhsyh">计划生育户</string>
+    <string name="pkh_jbxx_pkhsx">贫困户属性</string>
     <string name="pkh_jbxx_jzdz">居住地址</string>
     <!--家庭成员-->
     <string name="pkh_jtcy_none">成员信息有误，请求失败</string>
@@ -94,41 +96,41 @@
     <!--收支情况-->
     <string name="pkh_szqk_none">收支信息有误，请求失败</string>
     <string name="pkh_szqk_tjnd">年度</string>
-    <string name="pkh_szqk_jtzsr">家庭总收入</string>
-    <string name="pkh_szqk_wgsr">务工收入</string>
-    <string name="pkh_szqk_scjyxsr">生产经营性收入</string>
-    <string name="pkh_szqk_zyxsr">转移性收入</string>
-    <string name="pkh_szqk_ccxsr">财产性收入</string>
-    <string name="pkh_szqk_dk">贷款</string>
-    <string name="pkh_szqk_scjyzcfy">生产经营支出费用</string>
-    <string name="pkh_szqk_jtcsr">家庭纯收入</string>
-    <string name="pkh_szqk_jtnrjcsr">家庭年人均纯收入</string>
-    <string name="pkh_szqk_glbt">各类补贴</string>
-    <string name="pkh_szqk_jhsyj">计划生育金</string>
-    <string name="pkh_szqk_dbj">低保金</string>
-    <string name="pkh_szqk_cxjmjbylbx">城乡居民基本养老保险</string>
-    <string name="pkh_szqk_ylbx">医疗报销</string>
-    <string name="pkh_szqk_deylbz">大额医疗补助</string>
-    <string name="pkh_szqk_stbcj">生态补偿金</string>
+    <string name="pkh_szqk_jtzsr">家庭总收入(元)</string>
+    <string name="pkh_szqk_wgsr">务工收入(元)</string>
+    <string name="pkh_szqk_scjyxsr">生产经营性收入(元)</string>
+    <string name="pkh_szqk_zyxsr">转移性收入(元)</string>
+    <string name="pkh_szqk_ccxsr">财产性收入(元)</string>
+    <string name="pkh_szqk_dk">贷款(元)</string>
+    <string name="pkh_szqk_scjyzcfy">生产经营支出费用(元)</string>
+    <string name="pkh_szqk_jtcsr">家庭纯收入(元)</string>
+    <string name="pkh_szqk_jtnrjcsr">家庭年人均纯收入(元)</string>
+    <string name="pkh_szqk_glbt">各类补贴(元)</string>
+    <string name="pkh_szqk_jhsyj">计划生育金(元)</string>
+    <string name="pkh_szqk_dbj">低保金(元)</string>
+    <string name="pkh_szqk_cxjmjbylbx">城乡居民基本养老保险(元)</string>
+    <string name="pkh_szqk_ylbx">医疗报销(元)</string>
+    <string name="pkh_szqk_deylbz">大额医疗补助(元)</string>
+    <string name="pkh_szqk_stbcj">生态补偿金(元)</string>
     <!--住房情况-->
-    <string name="pkh_zfqk_zfmj">住房面积</string>
+    <string name="pkh_zfqk_zfmj">住房面积(平方米)</string>
     <string name="pkh_zfqk_fwjg">房屋结构</string>
     <string name="pkh_zfqk_jfsj">建房时间</string>
     <string name="pkh_zfqk_sfwf">是否危房</string>
     <string name="pkh_zfqk_ydfpbqqk">异地扶贫搬迁情况</string>
     <!--生产条件-->
     <string name="pkh_sctj_tjnd">统计年度</string>
-    <string name="pkh_sctj_gdmj">耕地面积（亩）</string>
-    <string name="pkh_sctj_yxgggdmj">有效灌溉耕地面积（亩）</string>
-    <string name="pkh_sctj_tian">田（亩）</string>
-    <string name="pkh_sctj_tu">土（亩）</string>
-    <string name="pkh_sctj_lscgy">林桑茶果园（亩）</string>
-    <string name="pkh_sctj_tghl">退耕还林（亩）</string>
-    <string name="pkh_sctj_mcd">牧草地（亩）</string>
-    <string name="pkh_sctj_smmj">水面面积（亩）</string>
-    <string name="pkh_sctj_syjjzw">商用经济作物（亩）</string>
-    <string name="pkh_sctj_scyf">生产用房（平方米）</string>
-    <string name="pkh_sctj_scsl">牲畜（头）</string>
+    <string name="pkh_sctj_gdmj">耕地面积(亩)</string>
+    <string name="pkh_sctj_yxgggdmj">有效灌溉耕地面积(亩)</string>
+    <string name="pkh_sctj_tian">田(亩)</string>
+    <string name="pkh_sctj_tu">土(亩)</string>
+    <string name="pkh_sctj_lscgy">林桑茶果园(亩)</string>
+    <string name="pkh_sctj_tghl">退耕还林(亩)</string>
+    <string name="pkh_sctj_mcd">牧草地(亩)</string>
+    <string name="pkh_sctj_smmj">水面面积(亩)</string>
+    <string name="pkh_sctj_syjjzw">商用经济作物(亩)</string>
+    <string name="pkh_sctj_scyf">生产用房(平方米)</string>
+    <string name="pkh_sctj_scsl">牲畜(头)</string>
     <!--生活条件-->
     <string name="pkh_shtj_tjnd">统计年度</string>
     <string name="pkh_shtj_shyd">通生活用电</string>
@@ -139,7 +141,7 @@
     <string name="pkh_shtj_nyxfp">耐用消费品情况</string>
     <string name="pkh_shtj_yskn">饮水困难</string>
     <string name="pkh_shtj_ysaq">饮水安全</string>
-    <string name="pkh_shtj_jlzgl">距离村主干路</string>
+    <string name="pkh_shtj_jlzgl">距离村主干路(公里)</string>
     <string name="pkh_shtj_rhllx">入户路类型</string>
     <string name="pkh_shtj_wscs">卫生厕所</string>
     <string name="pkh_shtj_gbds">通广播电视</string>
@@ -147,11 +149,11 @@
     <string name="pkh_cyhqk_tjnd">统计年度</string>
     <string name="pkh_cyhqk_cylx">产业类型</string>
     <string name="pkh_cyhqk_cyzzlx">产业组织类型</string>
-    <string name="pkh_cyhqk_cyzsy">产业中收益</string>
+    <string name="pkh_cyhqk_cyzsy">产业中收益(元)</string>
     <string name="pkh_cyhqk_cjfpzz">参加扶贫互助资金组织</string>
-    <string name="pkh_cyhqk_hzzj">投入互助资金金额</string>
+    <string name="pkh_cyhqk_hzzj">投入互助资金金额(元)</string>
     <string name="pkh_cyhqk_hzzz">参与农业合作组织</string>
-    <string name="pkh_cyhqk_ltqy">龙头企业带动收益</string>
+    <string name="pkh_cyhqk_ltqy">龙头企业带动收益(元)</string>
 
     <!--台账页面-->
     <string name="tz_none_hid">请先选择要查看的贫困户</string>

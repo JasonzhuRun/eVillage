@@ -11,6 +11,7 @@ import android.widget.TextView;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhjtcyActivity;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
+import cn.deepai.evillage.utils.DictionaryUtil;
 
 /**
  * 贫困户家庭成员
@@ -20,8 +21,8 @@ public class PkhjtcyViewHolder extends BaseViewHolder {
     private Context mContext;
     private PkhjtcyBean mPkhjtcyBean;
     private TextView xm;
-    private TextView xb;
-    private TextView id;
+//    private TextView xb;
+//    private TextView id;
     private TextView gx;
 
     public PkhjtcyViewHolder(ViewGroup parent, int viewType) {
@@ -29,17 +30,17 @@ public class PkhjtcyViewHolder extends BaseViewHolder {
                 inflate(R.layout.item_pkhjtcy,parent,false));
         mContext = parent.getContext();
         xm = (TextView)itemView.findViewById(R.id.item_pkhjtcy_xm);
-        xb = (TextView)itemView.findViewById(R.id.item_pkhjtcy_xb);
-        id = (TextView)itemView.findViewById(R.id.item_pkhjtcy_id);
+//        xb = (TextView)itemView.findViewById(R.id.item_pkhjtcy_xb);
+//        id = (TextView)itemView.findViewById(R.id.item_pkhjtcy_id);
         gx = (TextView)itemView.findViewById(R.id.item_pkhjtcy_gx);
     }
 
     public void onBindData(PkhjtcyBean pkhjtcyBean) {
         this.mPkhjtcyBean = pkhjtcyBean;
         xm.setText(pkhjtcyBean.getXm());
-        xb.setText(pkhjtcyBean.getXb());
-        id.setText(pkhjtcyBean.getSfzhm());
-        gx.setText(pkhjtcyBean.getYhzgx());
+//        xb.setText(pkhjtcyBean.getXb());
+//        id.setText(pkhjtcyBean.getSfzhm());
+        gx.setText(DictionaryUtil.getValueName("YHZGX",pkhjtcyBean.getYhzgx()));
     }
 
     @Override

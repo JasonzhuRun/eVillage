@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +18,11 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
-import cn.deepai.evillage.model.bean.PkhjbxxBean;
-import cn.deepai.evillage.model.event.ResponseEvent;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
@@ -46,7 +42,7 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhxqActivity extends BaseActivity {
 
-    private static int selectedIndex = 0;
+    private int selectedIndex = 0;
     private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();
 
     @OnClick(R.id.detail_back)
@@ -72,17 +68,6 @@ public class PkhxqActivity extends BaseActivity {
         tryToHideProcessDialog();
     }
 
-    @SuppressWarnings("all")
-    public void onEventMainThread(PkhjbxxBean event) {
-        ImageView pkhPhoto = (ImageView)findViewById(R.id.detail_photo);
-        TextView pkhName = (TextView) findViewById(R.id.detail_text_name);
-        TextView pkhPhone = (TextView) findViewById(R.id.detail_text_phone);
-        TextView pkhAddress = (TextView) findViewById(R.id.detail_text_address);
-        ImageLoader.getInstance().displayImage(event.getZp(),pkhPhoto, EVApplication.getDisplayImageOptions());
-        pkhName.setText(event.getHzxm());
-        pkhAddress.setText(event.getJzdz());
-        pkhPhone.setText(event.getLxdh());
-    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home) {
@@ -170,8 +155,28 @@ public class PkhxqActivity extends BaseActivity {
         viewContainter.add(new PkhJtqkzpPage(this));
     }
 
-    private void initView() {
+    private void initTitle() {
 
+        Intent intent = getIntent();
+        if (null != intent) {
+            String Tpdz = intent.getStringExtra("tpdz");
+            String Hzxm = intent.getStringExtra("hzxm");
+            String Jzdz = intent.getStringExtra("jzdz");
+            String Lxdh = intent.getStringExtra("lxdh");
+            ImageView pkhPhoto = (ImageView)findViewById(R.id.detail_photo);
+            TextView pkhName = (TextView) findViewById(R.id.detail_text_name);
+            TextView pkhPhone = (TextView) findViewById(R.id.detail_text_phone);
+            TextView pkhAddress = (TextView) findViewById(R.id.detail_text_address);
+            ImageLoader.getInstance().displayImage(Tpdz,pkhPhoto, EVApplication.getDisplayImageOptions());
+            pkhName.setText(Hzxm);
+            pkhAddress.setText(Jzdz);
+            pkhPhone.setText(Lxdh);
+        }
+
+    }
+
+    private void initView() {
+        initTitle();
         ViewPager pager = (ViewPager) this.findViewById(R.id.view_pager);
         if (pager == null) return;
         PagerTabStrip tabStrip = (PagerTabStrip) this.findViewById(R.id.view_pager_tabstrip);

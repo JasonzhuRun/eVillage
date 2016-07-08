@@ -23,16 +23,15 @@ public class PkhjbxxBean {
     private String jlr;
     private String bz;
     private String zt;
+    private String tpdz;
 
-    public String getZp() {
-        return zp;
+    public String getTpdz() {
+        return tpdz;
     }
 
-    public void setZp(String zp) {
-        this.zp = zp;
+    public void setTpdz(String tpdz) {
+        this.tpdz = tpdz;
     }
-
-    private String zp;
 
     public String getHzxm() {
         return hzxm;
