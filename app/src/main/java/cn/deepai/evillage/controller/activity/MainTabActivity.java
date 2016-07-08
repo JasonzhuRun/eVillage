@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -27,6 +28,7 @@ import cn.deepai.evillage.controller.fragment.PkhFragment;
 import cn.deepai.evillage.controller.fragment.TzFragment;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxList;
+import cn.deepai.evillage.model.event.PkhSelectedEvent;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.LogUtil;
@@ -50,11 +52,20 @@ public class MainTabActivity extends BaseActivity implements
                 Intent intent = new Intent(this,LoginActivity.class);
                 startActivity(intent);
                 break;
+            case RspCode.RSP_CODE_NO_CONNECTION:
+                break;
             default:
                 ToastUtil.shortToast(event.getRspDesc());
                 break;
         }
         tryToHideProcessDialog();
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhSelectedEvent event) {
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+        ToastUtil.shortToast(getString(R.string.pkh_selected)+event.name);
+        mPkhRecyclerAdapter.notifyDataSetChanged();
     }
 
     @SuppressWarnings("all")
@@ -123,7 +134,7 @@ public class MainTabActivity extends BaseActivity implements
         RecyclerView drawerRecyclerView = (RecyclerView) findViewById(R.id.drawer_recyclerview);
         if (drawerRecyclerView != null){
             drawerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-            mPkhRecyclerAdapter = new PkhRecyclerAdapter();
+            mPkhRecyclerAdapter = new PkhRecyclerAdapter(PkhRecyclerAdapter.TYPE_SELECT);
             drawerRecyclerView.setAdapter(mPkhRecyclerAdapter);
             drawerRecyclerView.setItemAnimator(new DefaultItemAnimator());
         }

@@ -13,8 +13,19 @@ import cn.deepai.evillage.viewholder.PkhViewHolder;
  * @author GaoYixuan
  */
 public class PkhRecyclerAdapter extends RecyclerView.Adapter {
+    // 贫困户浏览
+    public static final int TYPE_READ = 0;
+    // 贫困户编辑
+    public static final int TYPE_WRITE = 1;
+    // 贫困户选择
+    public static final int TYPE_SELECT = 2;
 
+    private int viewType;
     private List<PkhjbxxBean> mPkhjbxxBeen = new ArrayList<>();
+
+    public PkhRecyclerAdapter(int type) {
+        viewType = type;
+    }
 
     public void notifyResult(boolean isFirstPage, List<PkhjbxxBean> pkhjbxxBeen) {
         if (isFirstPage) {
@@ -26,7 +37,6 @@ public class PkhRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public PkhViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         return new PkhViewHolder(parent,viewType);
     }
 
@@ -44,7 +54,7 @@ public class PkhRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        return viewType;
     }
 
 }

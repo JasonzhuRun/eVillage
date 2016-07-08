@@ -103,6 +103,7 @@ public final class SettingManager {
         SharedPreferences.Editor edit = mCurUserPref.edit();
 		edit.remove(TOKEN);
 		edit.remove(USER_ID);
+		edit.remove(STAFF_ID);
 		edit.apply();
 	}
 
@@ -168,40 +169,27 @@ public final class SettingManager {
 		return mCurUserPref.getString(STAFF_ID, "");
 	}
 
-	public void setCurrentHid(String id) {
-		if (mCurUserPref == null) {
-			return;
-		}
-
-		SharedPreferences.Editor edit = mCurUserPref.edit();
-		edit.putString(HID, id);
-		edit.apply();
+	private static String hid = "";
+	public static void setCurrentHid(String id) {
+		hid = id;
+	}
+	public static String getCurrentHid() {
+		return hid;
+	}
+	private static String tjnd = "";
+	public static void setCurrentTjnd(String nd) {
+		tjnd = nd;
 	}
 
-	public String getCurrentHid() {
-		if (mCurUserPref == null) {
-			return "";
-		}
-
-		return mCurUserPref.getString(HID, "");
+	public static String getCurrentTjnd() {
+		return tjnd;
 	}
 
-
-	public void setCurrentTjnd(String nd) {
-		if (mCurUserPref == null) {
-			return;
-		}
-
-		SharedPreferences.Editor edit = mCurUserPref.edit();
-		edit.putString(TJND, nd);
-		edit.apply();
+	private static String jdHid = "";
+	public static void setJdHid(String id) {
+		jdHid = id;
 	}
-
-	public String getCurrentTjnd() {
-		if (mCurUserPref == null) {
-			return "";
-		}
-
-		return mCurUserPref.getString(TJND, "");
+	public static String getJdHid() {
+		return jdHid;
 	}
 }

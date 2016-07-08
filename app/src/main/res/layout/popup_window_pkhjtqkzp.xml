@@ -5,13 +5,17 @@
     android:background="@color/pop_backgroud"
     tools:context=".controller.activity.PkhxqActivity" >
 
-    <Button
+    <TextView
         android:id="@+id/popup_btn_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="关闭"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/arrow_back"/>
     <ImageView
         android:id="@+id/popup_view_img"
+        android:layout_below="@+id/popup_btn_close"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerInside"

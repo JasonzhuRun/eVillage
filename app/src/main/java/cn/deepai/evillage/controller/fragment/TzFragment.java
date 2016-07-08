@@ -52,9 +52,10 @@ public class TzFragment extends BaseFragment {
 
     private void loadData() {
         tryToShowProcessDialog();
-        String hid = SettingManager.getInstance().getCurrentHid();
+        String hid = SettingManager.getCurrentHid();
         if (TextUtils.isEmpty(hid)) {
             ToastUtil.shortToast(getString(R.string.tz_none_hid));
+            tryToHideProcessDialog();
         } else {
             TzListRequest.request(hid);
         }

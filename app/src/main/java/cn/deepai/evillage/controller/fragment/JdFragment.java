@@ -64,7 +64,7 @@ public class JdFragment extends BaseFragment {
     private void initView() {
         if (mRecyclerView == null) return;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mPkhRecyclerAdapter = new PkhRecyclerAdapter();
+        mPkhRecyclerAdapter = new PkhRecyclerAdapter(PkhRecyclerAdapter.TYPE_WRITE);
         mRecyclerView.setAdapter(mPkhRecyclerAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }

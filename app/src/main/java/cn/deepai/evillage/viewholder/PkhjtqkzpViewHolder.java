@@ -10,14 +10,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
-import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
+import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
 
 /**
  * 贫困户家庭情况照片
@@ -75,8 +76,8 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
             LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View root = layoutInflater.inflate(R.layout.popup_window_pkhjtqkzp, mParent,false);
             mPopZp = (ImageView)root.findViewById(R.id.popup_view_img);
-            Button closeBtn = (Button)root.findViewById(R.id.popup_btn_close);
-            mPopupWindow = new PopupWindow(root, mParent.getWidth(), mParent.getHeight());
+            TextView closeBtn = (TextView)root.findViewById(R.id.popup_btn_close);
+            mPopupWindow = new PopupWindow(root, dip2px(mContext,300), dip2px(mContext,450));
             closeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -84,6 +85,11 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
                 }
             });
         }
+    }
+
+    private int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 
     private void showWindow() {

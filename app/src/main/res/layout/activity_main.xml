@@ -50,7 +50,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:orientation="vertical"
-        android:background="@color/drawer_backgroud">
+        android:background="@color/white">
         <TextView
             android:id="@+id/drawer_title"
             android:layout_width="match_parent"
@@ -58,6 +58,10 @@
             android:textSize="24sp"
             android:gravity="center"
             android:text="@string/tab_pkh"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/cut_off_line"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/drawer_recyclerview"
             android:layout_width="match_parent"

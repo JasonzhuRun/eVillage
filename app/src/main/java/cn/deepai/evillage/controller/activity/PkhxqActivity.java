@@ -42,6 +42,7 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhxqActivity extends BaseActivity {
 
+    private boolean editable = false;
     private int selectedIndex = 0;
     private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();
 
@@ -60,6 +61,8 @@ public class PkhxqActivity extends BaseActivity {
                 SettingManager.getInstance().clearToken();
                 Intent intent = new Intent(this,LoginActivity.class);
                 startActivity(intent);
+                break;
+            case RspCode.RSP_CODE_NO_CONNECTION:
                 break;
             default:
                 ToastUtil.shortToast(event.getRspDesc());
@@ -82,6 +85,10 @@ public class PkhxqActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkh);
         ButterKnife.bind(this);
+        Intent intent = getIntent();
+        if (null != intent) {
+            editable = intent.getBooleanExtra("editable",false);
+        }
         initView();
     }
 

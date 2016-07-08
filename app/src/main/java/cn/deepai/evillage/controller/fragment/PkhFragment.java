@@ -63,7 +63,7 @@ public class PkhFragment extends BaseFragment {
     private void initView() {
         if (mRecyclerView == null) return;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mPkhRecyclerAdapter = new PkhRecyclerAdapter();
+        mPkhRecyclerAdapter = new PkhRecyclerAdapter(PkhRecyclerAdapter.TYPE_READ);
         mRecyclerView.setAdapter(mPkhRecyclerAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }

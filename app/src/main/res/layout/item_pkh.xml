@@ -49,6 +49,14 @@
             android:maxLines="2"
             android:text="@string/pkh_jbxx_jzdz"/>
     </LinearLayout>
+    <RadioButton
+        android:id="@+id/item_person_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:visibility="invisible"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
