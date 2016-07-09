@@ -22,19 +22,19 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class PkhJtqkzpPage extends PkhBasePage {
+public class JdJtqkzpPage extends PkhBasePage {
 
     private PkhjtqkzpRecyclerAdapter mPkhjtqkzpRecyclerAdapter;
 
-    public PkhJtqkzpPage(Context context) {
+    public JdJtqkzpPage(Context context) {
         this(context, null);
     }
 
-    public PkhJtqkzpPage(Context context, AttributeSet attrs) {
+    public JdJtqkzpPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhJtqkzpPage(Context context, AttributeSet attrs, int defStyle) {
+    public JdJtqkzpPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhjtqkzp, this);
         initView();
@@ -63,7 +63,7 @@ public class PkhJtqkzpPage extends PkhBasePage {
         final Gson requestGson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHJTQKZPLIST,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJtqkzpList)),
-                requestGson.toJson(new PkhRequestBean()),
+                requestGson.toJson(new PkhRequestBean(true)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {

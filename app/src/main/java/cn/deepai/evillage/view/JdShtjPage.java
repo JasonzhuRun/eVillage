@@ -1,7 +1,6 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -21,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 生活条件
  */
-public class PkhShtjPage extends PkhBasePage {
+public class JdShtjPage extends PkhBasePage {
 
     private EditText tjnd;
     private EditText tshyd;
@@ -37,15 +36,15 @@ public class PkhShtjPage extends PkhBasePage {
     private EditText wscs;
     private EditText tgbds;
 
-    public PkhShtjPage(Context context) {
+    public JdShtjPage(Context context) {
         this(context, null);
     }
 
-    public PkhShtjPage(Context context, AttributeSet attrs) {
+    public JdShtjPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhShtjPage(Context context, AttributeSet attrs, int defStyle) {
+    public JdShtjPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhshtj, this);
         initView();
@@ -73,7 +72,7 @@ public class PkhShtjPage extends PkhBasePage {
         final Gson requestGson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHSHQKJBXX,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhShqkJbxx)),
-                requestGson.toJson(new PkhRequestBean()),
+                requestGson.toJson(new PkhRequestBean(true)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {

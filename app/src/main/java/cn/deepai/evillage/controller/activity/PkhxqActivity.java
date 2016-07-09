@@ -26,6 +26,14 @@ import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
+import cn.deepai.evillage.view.JdCyhPage;
+import cn.deepai.evillage.view.JdJbxxPage;
+import cn.deepai.evillage.view.JdJtcyPage;
+import cn.deepai.evillage.view.JdJtqkzpPage;
+import cn.deepai.evillage.view.JdSctjPage;
+import cn.deepai.evillage.view.JdShtjPage;
+import cn.deepai.evillage.view.JdSzqkPage;
+import cn.deepai.evillage.view.JdZfqkPage;
 import cn.deepai.evillage.view.PkhBasePage;
 import cn.deepai.evillage.view.PkhCyhPage;
 import cn.deepai.evillage.view.PkhJbxxPage;
@@ -147,19 +155,29 @@ public class PkhxqActivity extends BaseActivity {
 
     @Override
     protected String getActivityName() {
-        return "PkuxqActivity";
+        return "PkhxqActivity";
     }
 
     private void initPagerContent() {
-
-        viewContainter.add(new PkhJbxxPage(this));
-        viewContainter.add(new PkhJtcyPage(this));
-        viewContainter.add(new PkhSzqkPage(this));
-        viewContainter.add(new PkhZfqkPage(this));
-        viewContainter.add(new PkhShtjPage(this));
-        viewContainter.add(new PkhSctjPage(this));
-        viewContainter.add(new PkhCyhPage(this));
-        viewContainter.add(new PkhJtqkzpPage(this));
+        if (editable) {
+            viewContainter.add(new JdJbxxPage(this));
+            viewContainter.add(new JdJtcyPage(this));
+            viewContainter.add(new JdSzqkPage(this));
+            viewContainter.add(new JdZfqkPage(this));
+            viewContainter.add(new JdShtjPage(this));
+            viewContainter.add(new JdSctjPage(this));
+            viewContainter.add(new JdCyhPage(this));
+            viewContainter.add(new JdJtqkzpPage(this));
+        } else {
+            viewContainter.add(new PkhJbxxPage(this));
+            viewContainter.add(new PkhJtcyPage(this));
+            viewContainter.add(new PkhSzqkPage(this));
+            viewContainter.add(new PkhZfqkPage(this));
+            viewContainter.add(new PkhShtjPage(this));
+            viewContainter.add(new PkhSctjPage(this));
+            viewContainter.add(new PkhCyhPage(this));
+            viewContainter.add(new PkhJtqkzpPage(this));
+        }
     }
 
     private void initTitle() {

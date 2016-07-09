@@ -19,7 +19,7 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class PkhSctjPage extends PkhBasePage {
+public class JdSctjPage extends PkhBasePage {
 
     private EditText tjnd;
     private EditText gdmj;
@@ -34,15 +34,15 @@ public class PkhSctjPage extends PkhBasePage {
     private EditText scyfmj;
     private EditText sxsl;
 
-    public PkhSctjPage(Context context) {
+    public JdSctjPage(Context context) {
         this(context, null);
     }
 
-    public PkhSctjPage(Context context, AttributeSet attrs) {
+    public JdSctjPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhSctjPage(Context context, AttributeSet attrs, int defStyle) {
+    public JdSctjPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhsctj, this);
         initView();
@@ -70,7 +70,7 @@ public class PkhSctjPage extends PkhBasePage {
         final Gson requestGson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHSCTJJBXX,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhSctjJbxx)),
-                requestGson.toJson(new PkhRequestBean()),
+                requestGson.toJson(new PkhRequestBean(true)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {

@@ -2,17 +2,17 @@ package cn.deepai.evillage.view;
 
 import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
 import com.google.gson.Gson;
 
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
+import cn.deepai.evillage.adapter.PkhjtcyRecyclerAdapter;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
-import cn.deepai.evillage.model.bean.PkhjtqkzpList;
+import cn.deepai.evillage.model.bean.PkhjtcyList;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -22,21 +22,21 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class PkhJtqkzpPage extends PkhBasePage {
+public class JdJtcyPage extends PkhBasePage {
 
-    private PkhjtqkzpRecyclerAdapter mPkhjtqkzpRecyclerAdapter;
+    private PkhjtcyRecyclerAdapter mPkhjtcyRecyclerAdapter;
 
-    public PkhJtqkzpPage(Context context) {
+    public JdJtcyPage(Context context) {
         this(context, null);
     }
 
-    public PkhJtqkzpPage(Context context, AttributeSet attrs) {
+    public JdJtcyPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhJtqkzpPage(Context context, AttributeSet attrs, int defStyle) {
+    public JdJtcyPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.page_pkhjtqkzp, this);
+        LayoutInflater.from(context).inflate(R.layout.page_pkhjtcy, this);
         initView();
     }
 
@@ -51,23 +51,24 @@ public class PkhJtqkzpPage extends PkhBasePage {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(PkhjtqkzpList event) {
+    public void onEventMainThread(PkhjtcyList event) {
         if (isSelected()) {
-            mPkhjtqkzpRecyclerAdapter.notifyResult(true, event.list);
+            mPkhjtcyRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
         }
     }
 
     @Override
     public void requestData() {
+
         final Gson requestGson = new Gson();
-        EVRequest.request(Action.ACTION_GET_PKHJTQKZPLIST,
-                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJtqkzpList)),
-                requestGson.toJson(new PkhRequestBean()),
+        EVRequest.request(Action.ACTION_GET_PKHJTCYLIST,
+                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJtcyList)),
+                requestGson.toJson(new PkhRequestBean(true)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        PkhjtqkzpList responseEvent = requestGson.fromJson(dataJsonString, PkhjtqkzpList.class);
+                        PkhjtcyList responseEvent = requestGson.fromJson(dataJsonString, PkhjtcyList.class);
                         EventBus.getDefault().post(responseEvent);
                     }
                 });
@@ -75,15 +76,15 @@ public class PkhJtqkzpPage extends PkhBasePage {
 
     @Override
     public String getPageName() {
-        return getResources().getString(R.string.pkh_jtqkzp);
+        return getResources().getString(R.string.pkh_jtcy);
     }
 
     private void initView() {
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_pkh_jtqkzp);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_pkh_jtcy);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mPkhjtqkzpRecyclerAdapter = new PkhjtqkzpRecyclerAdapter(false);
-        recyclerView.setAdapter(mPkhjtqkzpRecyclerAdapter);
+        mPkhjtcyRecyclerAdapter = new PkhjtcyRecyclerAdapter();
+        recyclerView.setAdapter(mPkhjtcyRecyclerAdapter);
+        mHasData = false;
     }
 }

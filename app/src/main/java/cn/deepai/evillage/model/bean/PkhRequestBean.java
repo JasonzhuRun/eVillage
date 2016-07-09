@@ -12,12 +12,13 @@ public class PkhRequestBean {
 
     public PkhRequestBean() {
         hid = SettingManager.getCurrentHid();
+        tjnd = SettingManager.getCurrentTjnd();
     }
 
-    public PkhRequestBean(boolean setTjnd) {
-        hid = SettingManager.getCurrentHid();
-        if (setTjnd) {
-            tjnd = SettingManager.getCurrentTjnd();
+    public PkhRequestBean(boolean isJdPkh) {
+        this();
+        if (isJdPkh) {
+            hid = SettingManager.getJdHid();
         }
     }
 }

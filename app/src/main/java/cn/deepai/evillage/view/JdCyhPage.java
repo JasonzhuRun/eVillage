@@ -20,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 参与产业化组织情况
  */
-public class PkhCyhPage extends PkhBasePage {
+public class JdCyhPage extends PkhBasePage {
 
     private EditText tjnd;
     private EditText cylx;
@@ -31,15 +31,15 @@ public class PkhCyhPage extends PkhBasePage {
     private EditText cynyhzzz;
     private EditText ltqyddsy;
 
-    public PkhCyhPage(Context context) {
+    public JdCyhPage(Context context) {
         this(context, null);
     }
 
-    public PkhCyhPage(Context context, AttributeSet attrs) {
+    public JdCyhPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhCyhPage(Context context, AttributeSet attrs, int defStyle) {
+    public JdCyhPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhcyhqk, this);
         initView();
@@ -68,7 +68,7 @@ public class PkhCyhPage extends PkhBasePage {
         final Gson requestGson = new Gson();
         EVRequest.request(Action.ACTION_GET_PKHCYHZZJBXX,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhCyhzzJbxx)),
-                requestGson.toJson(new PkhRequestBean()),
+                requestGson.toJson(new PkhRequestBean(true)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
