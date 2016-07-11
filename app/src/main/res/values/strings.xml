@@ -158,5 +158,10 @@
 
     <!--台账页面-->
     <string name="tz_none_hid">请先选择要查看的贫困户</string>
+    <string name="tz_jbxx">基本信息</string>
+    <string name="tz_jtcy">家庭成员</string>
+    <string name="tz_srmx">收入明细</string>
+    <string name="tz_zcmx">支出明细</string>
+    <string name="tz_zfxx">走访信息</string>
 
 </resources>

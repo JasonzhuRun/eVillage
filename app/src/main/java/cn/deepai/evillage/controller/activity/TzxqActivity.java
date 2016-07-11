@@ -1,17 +1,12 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,18 +16,15 @@ import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.PkhBasePage;
-import cn.deepai.evillage.view.PkhCyhPage;
-import cn.deepai.evillage.view.PkhJbxxPage;
-import cn.deepai.evillage.view.PkhJtcyPage;
-import cn.deepai.evillage.view.PkhJtqkzpPage;
-import cn.deepai.evillage.view.PkhSctjPage;
-import cn.deepai.evillage.view.PkhShtjPage;
-import cn.deepai.evillage.view.PkhSzqkPage;
-import cn.deepai.evillage.view.PkhZfqkPage;
+import cn.deepai.evillage.view.TzjbxxPage;
+import cn.deepai.evillage.view.TzjtcyPage;
+import cn.deepai.evillage.view.TzsrmxPage;
+import cn.deepai.evillage.view.TzzcmxPage;
+import cn.deepai.evillage.view.TzzfxxPage;
 import de.greenrobot.event.EventBus;
 
 /**
- * 贫困户详情页
+ * 台账详情页
  */
 public class TzxqActivity extends BaseActivity {
 
@@ -60,7 +52,7 @@ public class TzxqActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pkh);
+        setContentView(R.layout.activity_xq);
         initView();
     }
 
@@ -84,48 +76,17 @@ public class TzxqActivity extends BaseActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == 0) {
-                Uri uri = data.getData();
-                //to do find the path of pic by uri
-
-            } else if (requestCode == 1 ) {
-                Uri uri = data.getData();
-                if(uri == null){
-                    //use bundle to get data
-                    Bundle bundle = data.getExtras();
-                    if (bundle != null) {
-                        Bitmap photo = (Bitmap) bundle.get("data"); //get bitmap
-                        Toast.makeText(getApplicationContext(), "err****", Toast.LENGTH_LONG).show();
-
-                        //spath :生成图片取个名字和路径包含类型
-                    } else {
-                        Toast.makeText(getApplicationContext(), "err****", Toast.LENGTH_LONG).show();
-                        return;
-                    }
-                }else{
-                    //to do find the path of pic by uri
-                }
-            }
-        }
-    }
-
-    @Override
     protected String getActivityName() {
-        return "PkuxqActivity";
+        return "TzxqActivity";
     }
 
     private void initPagerContent() {
 
-        viewContainter.add(new PkhJbxxPage(this));
-        viewContainter.add(new PkhJtcyPage(this));
-        viewContainter.add(new PkhSzqkPage(this));
-        viewContainter.add(new PkhZfqkPage(this));
-        viewContainter.add(new PkhShtjPage(this));
-        viewContainter.add(new PkhSctjPage(this));
-        viewContainter.add(new PkhCyhPage(this));
-        viewContainter.add(new PkhJtqkzpPage(this));
+        viewContainter.add(new TzjbxxPage(this));
+        viewContainter.add(new TzjtcyPage(this));
+        viewContainter.add(new TzsrmxPage(this));
+        viewContainter.add(new TzzcmxPage(this));
+        viewContainter.add(new TzzfxxPage(this));
     }
 
     private void initView() {

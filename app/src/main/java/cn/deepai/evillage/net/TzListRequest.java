@@ -19,18 +19,19 @@ import de.greenrobot.event.EventBus;
  */
 public class TzListRequest extends EVRequest {
 
-    public static void request(String hid) {
+    public static void request(String userId,String hid) {
 
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("hid", hid);
+            jsonObject.put("userId", userId);
         }catch (JSONException e) {
             return;
         }
-        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getPkhJbxxList);
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getTzList);
 
         final Gson gson = new Gson();
-        EVRequest.request(Action.ACTION_GET_PKHLIST, gson.toJson(header), jsonObject.toString(),
+        EVRequest.request(Action.ACTION_GET_TZLIST, gson.toJson(header), jsonObject.toString(),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {

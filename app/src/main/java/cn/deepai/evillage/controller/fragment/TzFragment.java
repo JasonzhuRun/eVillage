@@ -1,6 +1,7 @@
 package cn.deepai.evillage.controller.fragment;
 
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import cn.deepai.evillage.adapter.TzRecyclerAdapter;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.event.PkhSelectedEvent;
 import cn.deepai.evillage.net.TzListRequest;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -50,14 +52,20 @@ public class TzFragment extends BaseFragment {
 //        tryToHideProcessDialog();
     }
 
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhSelectedEvent event) {
+        loadData();
+    }
+
     private void loadData() {
         tryToShowProcessDialog();
+        String userId = SettingManager.getInstance().getUserId();
         String hid = SettingManager.getCurrentHid();
         if (TextUtils.isEmpty(hid)) {
             ToastUtil.shortToast(getString(R.string.tz_none_hid));
             tryToHideProcessDialog();
         } else {
-            TzListRequest.request(hid);
+            TzListRequest.request(userId,hid);
         }
     }
 

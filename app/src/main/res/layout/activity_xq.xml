@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     tools:context=".controller.activity.PkhxqActivity" >
     <include
-        android:id="@+id/pkh_title"
+        android:id="@+id/xq_title"
         layout="@layout/title_detail"/>
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
-        android:layout_below="@id/pkh_title"
+        android:layout_below="@id/xq_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 

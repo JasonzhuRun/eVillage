@@ -91,7 +91,7 @@ public class PkhxqActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pkh);
+        setContentView(R.layout.activity_xq);
         ButterKnife.bind(this);
         Intent intent = getIntent();
         if (null != intent) {
@@ -197,7 +197,6 @@ public class PkhxqActivity extends BaseActivity {
             pkhAddress.setText(Jzdz);
             pkhPhone.setText(Lxdh);
         }
-
     }
 
     private void initView() {
