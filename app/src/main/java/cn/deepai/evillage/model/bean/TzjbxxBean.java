@@ -5,6 +5,7 @@ package cn.deepai.evillage.model.bean;
  */
 public class TzjbxxBean {
 
+    private String id;
     private String hid;
     private String zrrid;
     private String tznd;
@@ -26,6 +27,14 @@ public class TzjbxxBean {
     private String sftx;
     private String sftds;
     private String sftkd;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getHid() {
         return hid;

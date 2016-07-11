@@ -15,6 +15,7 @@ import cn.deepai.evillage.adapter.TzRecyclerAdapter;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.bean.TzjbxxList;
 import cn.deepai.evillage.model.event.PkhSelectedEvent;
 import cn.deepai.evillage.net.TzListRequest;
 import cn.deepai.evillage.utils.ToastUtil;
@@ -47,9 +48,9 @@ public class TzFragment extends BaseFragment {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(ListBean<PkhjbxxBean> event) {
-//        mTzRecyclerAdapter.notifyResult(true, event.list);
-//        tryToHideProcessDialog();
+    public void onEventMainThread(TzjbxxList event) {
+        mTzRecyclerAdapter.notifyResult(true, event.list);
+        tryToHideProcessDialog();
     }
 
     @SuppressWarnings("all")

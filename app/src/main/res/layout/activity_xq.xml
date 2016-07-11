@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.activity.PkhxqActivity" >
+    tools:context=".controller.activity.TzxqActivity" >
     <include
         android:id="@+id/xq_title"
         layout="@layout/title_detail"/>

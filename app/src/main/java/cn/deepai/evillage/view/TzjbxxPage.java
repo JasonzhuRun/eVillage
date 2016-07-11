@@ -38,12 +38,12 @@ public class TzjbxxPage extends PkhBasePage {
 
     @Override
     public void registeEventBus() {
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
     @Override
     public void unRegisteEventBus() {
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
     }
 
     @SuppressWarnings("all")

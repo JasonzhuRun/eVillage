@@ -163,5 +163,6 @@
     <string name="tz_srmx">收入明细</string>
     <string name="tz_zcmx">支出明细</string>
     <string name="tz_zfxx">走访信息</string>
+    <string name="tz_tznd">年度台账</string>
 
 </resources>

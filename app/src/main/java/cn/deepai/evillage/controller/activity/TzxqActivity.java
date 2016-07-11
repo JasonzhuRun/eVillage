@@ -98,9 +98,9 @@ public class TzxqActivity extends BaseActivity {
             //取消tab下面的长横线
             tabStrip.setDrawFullUnderline(false);
             //设置tab的背景色
-            tabStrip.setBackgroundColor(this.getResources().getColor(R.color.text_light));
+            tabStrip.setBackgroundColor(this.getResources().getColor(R.color.text_white));
             //设置当前tab页签的下划线颜色
-            tabStrip.setTabIndicatorColor(this.getResources().getColor(R.color.text_main));
+            tabStrip.setTabIndicatorColor(this.getResources().getColor(R.color.title_backgroud));
             tabStrip.setTextSpacing(200);
         }
         initPagerContent();
