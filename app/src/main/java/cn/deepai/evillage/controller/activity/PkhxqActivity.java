@@ -23,6 +23,7 @@ import butterknife.OnClick;
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
@@ -181,22 +182,20 @@ public class PkhxqActivity extends BaseActivity {
     }
 
     private void initTitle() {
-
-        Intent intent = getIntent();
-        if (null != intent) {
-            String Tpdz = intent.getStringExtra("tpdz");
-            String Hzxm = intent.getStringExtra("hzxm");
-            String Jzdz = intent.getStringExtra("jzdz");
-            String Lxdh = intent.getStringExtra("lxdh");
-            ImageView pkhPhoto = (ImageView)findViewById(R.id.detail_photo);
-            TextView pkhName = (TextView) findViewById(R.id.detail_text_name);
-            TextView pkhPhone = (TextView) findViewById(R.id.detail_text_phone);
-            TextView pkhAddress = (TextView) findViewById(R.id.detail_text_address);
-            ImageLoader.getInstance().displayImage(Tpdz,pkhPhoto, EVApplication.getDisplayImageOptions());
-            pkhName.setText(Hzxm);
-            pkhAddress.setText(Jzdz);
-            pkhPhone.setText(Lxdh);
+        PkhjbxxBean pkh;
+        if (editable) {
+            pkh = SettingManager.getCurrentJdPkh();
+        } else {
+            pkh = SettingManager.getCurrentPkh();
         }
+        ImageView pkhPhoto = (ImageView)findViewById(R.id.detail_photo);
+        TextView pkhName = (TextView) findViewById(R.id.detail_text_name);
+        TextView pkhPhone = (TextView) findViewById(R.id.detail_text_phone);
+        TextView pkhAddress = (TextView) findViewById(R.id.detail_text_address);
+        ImageLoader.getInstance().displayImage(pkh.getTpdz(),pkhPhoto, EVApplication.getDisplayImageOptions());
+        pkhName.setText(pkh.getHzxm());
+        pkhAddress.setText(pkh.getJzdz());
+        pkhPhone.setText(pkh.getLxdh());
     }
 
     private void initView() {

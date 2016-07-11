@@ -5,10 +5,8 @@ package cn.deepai.evillage.model.event;
  */
 
 public class PkhSelectedEvent {
-    public String hid;
     public String name;
-    public PkhSelectedEvent(String hid,String name) {
-        this.hid = hid;
+    public PkhSelectedEvent(String name) {
         this.name = name;
     }
 }

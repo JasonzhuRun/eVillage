@@ -3,7 +3,7 @@ package cn.deepai.evillage.model.bean;
 /**
  * 贫困户基本信息
  */
-public class PkhjbxxBean {
+public class PkhjbxxBean{
 
     private String hzxm;
     private String jzdz;
@@ -24,6 +24,68 @@ public class PkhjbxxBean {
     private String bz;
     private String zt;
     private String tpdz;
+
+//    public PkhjbxxBean(Parcel in) {
+//        hzxm = in.readString();
+//        jzdz = in.readString();
+//        vid = in.readString();
+//        hid = in.readString();
+//        lxdh = in.readString();
+//        hzsfz = in.readString();
+//        hkhyx = in.readString();
+//        yxzh = in.readString();
+//        pksbbz = in.readString();
+//        jhsyh = in.readString();
+//        pkhsx = in.readString();
+//        pkhzt = in.readString();
+//        jdnf = in.readString();
+//        tpnf = in.readString();
+//        jlsj = in.readString();
+//        jlr = in.readString();
+//        bz = in.readString();
+//        zt = in.readString();
+//        tpdz = in.readString();
+//    }
+//
+//    public static final Parcelable.Creator<PkhjbxxBean> CREATOR = new Parcelable.Creator<PkhjbxxBean>() {
+//        @Override
+//        public PkhjbxxBean createFromParcel(Parcel source) {
+//            return new PkhjbxxBean(source);
+//        }
+//
+//        @Override
+//        public PkhjbxxBean[] newArray(int size) {
+//            return new PkhjbxxBean[size];
+//        }
+//    };
+//
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeString(hzxm);
+//        dest.writeString(jzdz);
+//        dest.writeString(vid);
+//        dest.writeString(hid);
+//        dest.writeString(lxdh);
+//        dest.writeString(hzsfz);
+//        dest.writeString(hkhyx);
+//        dest.writeString(yxzh);
+//        dest.writeString(pksbbz);
+//        dest.writeString(jhsyh);
+//        dest.writeString(pkhsx);
+//        dest.writeString(pkhzt);
+//        dest.writeString(jdnf);
+//        dest.writeString(tpnf);
+//        dest.writeString(jlsj);
+//        dest.writeString(jlr);
+//        dest.writeString(bz);
+//        dest.writeString(zt);
+//        dest.writeString(tpdz);
+//    }
 
     public String getTpdz() {
         return tpdz;

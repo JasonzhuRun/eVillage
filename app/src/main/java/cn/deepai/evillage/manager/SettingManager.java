@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import cn.deepai.evillage.EVApplication;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 
 /**
  * SharePreference操作类
@@ -169,27 +170,44 @@ public final class SettingManager {
 		return mCurUserPref.getString(STAFF_ID, "");
 	}
 
-	private static String hid = "";
-	public static void setCurrentHid(String id) {
-		hid = id;
+//	private static String hid = "";
+//	public static void setCurrentHid(String id) {
+//		hid = id;
+//	}
+//	public static String getCurrentHid() {
+//		return hid;
+//	}
+//	private static String tjnd = "";
+//	public static void setCurrentTjnd(String nd) {
+//		tjnd = nd;
+//	}
+//
+//	public static String getCurrentTjnd() {
+//		return tjnd;
+//	}
+//
+//	private static String jdHid = "";
+//	public static void setJdHid(String id) {
+//		jdHid = id;
+//	}
+//	public static String getJdHid() {
+//		return jdHid;
+//	}
+	private static PkhjbxxBean sPkh = null;
+	public static void setCurrentPkh(PkhjbxxBean pkh) {
+		sPkh = pkh;
 	}
-	public static String getCurrentHid() {
-		return hid;
-	}
-	private static String tjnd = "";
-	public static void setCurrentTjnd(String nd) {
-		tjnd = nd;
+	public static PkhjbxxBean getCurrentPkh() {
+		if (sPkh == null) sPkh = new PkhjbxxBean();
+		return sPkh;
 	}
 
-	public static String getCurrentTjnd() {
-		return tjnd;
+	private static PkhjbxxBean sJdPkh = null;
+	public static void setCurrentJdPkh(PkhjbxxBean pkh) {
+		sJdPkh = pkh;
 	}
-
-	private static String jdHid = "";
-	public static void setJdHid(String id) {
-		jdHid = id;
-	}
-	public static String getJdHid() {
-		return jdHid;
+	public static PkhjbxxBean getCurrentJdPkh() {
+		if (sJdPkh == null) sJdPkh = new PkhjbxxBean();
+		return sJdPkh;
 	}
 }

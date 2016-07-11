@@ -7,11 +7,17 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
@@ -89,8 +95,22 @@ public class TzxqActivity extends BaseActivity {
         viewContainter.add(new TzzfxxPage(this));
     }
 
+    private void initTitle() {
+
+        PkhjbxxBean pkh = SettingManager.getCurrentPkh();
+        ImageView pkhPhoto = (ImageView)findViewById(R.id.detail_photo);
+        TextView pkhName = (TextView) findViewById(R.id.detail_text_name);
+        TextView pkhPhone = (TextView) findViewById(R.id.detail_text_phone);
+        TextView pkhAddress = (TextView) findViewById(R.id.detail_text_address);
+        ImageLoader.getInstance().displayImage(pkh.getTpdz(),pkhPhoto, EVApplication.getDisplayImageOptions());
+        pkhName.setText(pkh.getHzxm());
+        pkhAddress.setText(pkh.getJzdz());
+        pkhPhone.setText(pkh.getLxdh());
+    }
+
     private void initView() {
 
+        initTitle();
         ViewPager pager = (ViewPager) this.findViewById(R.id.view_pager);
         if (pager == null) return;
         PagerTabStrip tabStrip = (PagerTabStrip) this.findViewById(R.id.view_pager_tabstrip);

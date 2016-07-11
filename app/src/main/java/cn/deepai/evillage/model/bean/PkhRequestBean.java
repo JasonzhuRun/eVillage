@@ -11,14 +11,14 @@ public class PkhRequestBean {
     public String tjnd;
 
     public PkhRequestBean() {
-        hid = SettingManager.getCurrentHid();
-        tjnd = SettingManager.getCurrentTjnd();
+        hid = SettingManager.getCurrentPkh().getHid();
+        tjnd = SettingManager.getCurrentPkh().getJdnf();
     }
 
     public PkhRequestBean(boolean isJdPkh) {
         this();
         if (isJdPkh) {
-            hid = SettingManager.getJdHid();
+            hid = SettingManager.getCurrentJdPkh().getHid();
         }
     }
 }

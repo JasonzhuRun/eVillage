@@ -61,7 +61,7 @@ public class TzFragment extends BaseFragment {
     private void loadData() {
         tryToShowProcessDialog();
         String userId = SettingManager.getInstance().getUserId();
-        String hid = SettingManager.getCurrentHid();
+        String hid = SettingManager.getCurrentPkh().getHid();
         if (TextUtils.isEmpty(hid)) {
             ToastUtil.shortToast(getString(R.string.tz_none_hid));
             tryToHideProcessDialog();

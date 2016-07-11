@@ -46,7 +46,7 @@ public class PkhViewHolder extends BaseViewHolder {
         TextView address = (TextView)itemView.findViewById(R.id.item_person_address);
         TextView phone = (TextView)itemView.findViewById(R.id.item_person_phone);
         if (viewType == PkhRecyclerAdapter.TYPE_SELECT) {
-            String hid = SettingManager.getCurrentHid();
+            String hid = SettingManager.getCurrentPkh().getHid();
             if (mPkhjbxxBean.getHid().equals(hid)) {
                 itemView.findViewById(R.id.item_person_layout).setBackgroundColor(Color.parseColor("#7f8daf"));
             } else {
@@ -62,22 +62,17 @@ public class PkhViewHolder extends BaseViewHolder {
     @Override
     public void onClick(View v) {
         if (viewType == PkhRecyclerAdapter.TYPE_SELECT) {
-            SettingManager.setCurrentHid(mPkhjbxxBean.getHid());
-            SettingManager.setCurrentTjnd(mPkhjbxxBean.getJdnf());
-            EventBus.getDefault().post(new PkhSelectedEvent(mPkhjbxxBean.getHid(),mPkhjbxxBean.getHzxm()));
+            SettingManager.setCurrentPkh(mPkhjbxxBean);
+            EventBus.getDefault().post(new PkhSelectedEvent(mPkhjbxxBean.getHzxm()));
         } else{
             Intent intent = new Intent(mContext, PkhxqActivity.class);
-            intent.putExtra("tpdz", mPkhjbxxBean.getTpdz());
-            intent.putExtra("hzxm", mPkhjbxxBean.getHzxm());
-            intent.putExtra("jzdz", mPkhjbxxBean.getJzdz());
-            intent.putExtra("lxdh", mPkhjbxxBean.getLxdh());
+
             if (viewType == PkhRecyclerAdapter.TYPE_WRITE) {
                 intent.putExtra("editable", true);
-                SettingManager.setJdHid(mPkhjbxxBean.getHid());
+                SettingManager.setCurrentJdPkh(mPkhjbxxBean);
             } else {//TYPE_READ
-                SettingManager.setCurrentHid(mPkhjbxxBean.getHid());
-                SettingManager.setCurrentTjnd(mPkhjbxxBean.getJdnf());
-                EventBus.getDefault().post(new PkhSelectedEvent(mPkhjbxxBean.getHid(),mPkhjbxxBean.getHzxm()));
+                SettingManager.setCurrentPkh(mPkhjbxxBean);
+                EventBus.getDefault().post(new PkhSelectedEvent(mPkhjbxxBean.getHzxm()));
             }
             mContext.startActivity(intent);
             ((Activity) mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
