@@ -27,7 +27,7 @@ public class JdPkhListRequest extends EVRequest {
         RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getJdList);
 
         final Gson gson = new Gson();
-        EVRequest.request(Action.ACTION_GET_PKHLIST, gson.toJson(header), jsonObject.toString(),
+        EVRequest.request(Action.ACTION_GET_DJDPKHLIST, gson.toJson(header), jsonObject.toString(),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {

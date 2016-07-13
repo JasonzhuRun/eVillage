@@ -51,7 +51,7 @@ public class Action {
     public static final Action ACTION_GET_PKHJTQKZPLIST = new Action("termLogin!getPkhZp.action",Type.downstream);
     public static final Action ACTION_ADD_PKHJTQKZP = new Action("termLogin!uploadPkhZp.action",Type.upstream);
     // 建档
-    public static final Action ACTION_GET_DJDPKHLIST = new Action("termLogin!getPkhList.action",Type.downstream);
+    public static final Action ACTION_GET_DJDPKHLIST = new Action("termLogin!getDjkPkhList.action",Type.downstream);
     // 台账
     public static final Action ACTION_GET_TZLIST = new Action("termPkhGztz!getPkhGztzList.action",Type.downstream);
     public static final Action ACTION_ADD_TZ = new Action("termPkhGztz!addPkhGztz.action",Type.upstream);

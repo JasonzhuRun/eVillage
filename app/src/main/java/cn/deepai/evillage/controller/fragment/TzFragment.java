@@ -34,6 +34,7 @@ public class TzFragment extends BaseFragment {
         initView();
         return root;
     }
+
     @Override
     public void onResume() {
         super.onResume();
