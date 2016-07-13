@@ -36,7 +36,8 @@ public class TzxqActivity extends BaseActivity {
 
     private static int selectedIndex = 0;
     private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();
-
+    private String tzId;
+    private String tznd;
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {
         switch (event.getRspCode()) {

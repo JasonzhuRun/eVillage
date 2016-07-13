@@ -8,7 +8,7 @@
     <string name="password_empyt">密码不能为空</string>
     <string name="request_error">请求失败，显示缓存</string>
     <string name="update_cache">缓存更新成功</string>
-    <string name="login_overdue">登录失效，请重新登录</string>
+    <string name="login_overdue">登录信息失效，请重新登录</string>
     <string name="pkh_selected">当前帮扶对象：</string>
     <string name="cache_text">text</string>
     <!--reqCode-->
@@ -38,6 +38,7 @@
     <string name="req_code_getJdList">zyfp02001</string>
 
     <string name="req_code_getTzList">zyfp03001</string>
+    <string name="req_code_getTzjbxx">zyfp03002</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
     <string name="tab_pkh">帮扶对象</string>
@@ -165,4 +166,28 @@
     <string name="tz_zfxx">走访信息</string>
     <string name="tz_tznd">年度台账</string>
 
+    <string name="tz_jbxx_nrjcsr">年人均纯收入</string>
+    <string name="tz_jbxx_nsrhj">年收入合计</string>
+    <string name="tz_jbxx_nzchj">年支出合计</string>
+    <string name="tz_jbxx_dkje">贷款合计</string>
+    <string name="tz_jbxx_zfjg">住房结构</string>
+    <string name="tz_jbxx_zfmj">住房面积</string>
+    <string name="tz_jbxx_sfwf">是否危房</string>
+    <string name="tz_jbxx_gdtian">耕地田(亩)</string>
+    <string name="tz_jbxx_gdtu">耕地土(亩)</string>
+    <string name="tz_jbxx_gdldm">耕地林地(亩)</string>
+    <string name="tz_jbxx_gdhjm">耕地合计(亩)</string>
+    <string name="tz_jbxx_sfts">是否通水</string>
+    <string name="tz_jbxx_sftd">是否通电</string>
+    <string name="tz_jbxx_sftl">是否通路</string>
+    <string name="tz_jbxx_sftx">是否通讯</string>
+    <string name="tz_jbxx_sftds">是否通电视</string>
+    <string name="tz_jbxx_sftkd">是否通宽带</string>
+
+    <!--我的页面-->
+    <string name="mine_clean_success">清除缓存成功</string>
+    <string name="mine_clean">清除缓存</string>
+    <string name="mine_about">关于</string>
+    <string name="mine_logout">注销</string>
+    <string name="mine_logout_success">您已经成功注销！</string>
 </resources>

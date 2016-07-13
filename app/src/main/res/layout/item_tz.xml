@@ -3,12 +3,12 @@
     android:id="@+id/item_tz_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:padding="40dp">
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
         android:gravity="center_vertical">
         <TextView
             android:id="@+id/item_tznd"

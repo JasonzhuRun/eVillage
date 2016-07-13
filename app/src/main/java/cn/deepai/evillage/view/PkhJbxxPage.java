@@ -87,7 +87,7 @@ public class PkhJbxxPage extends PkhBasePage {
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        PkhjbxxBean pkhjbxxBean = requestGson.fromJson(dataJsonString,PkhjbxxBean.class);
+                        PkhjbxxBean pkhjbxxBean = requestGson.fromJson(dataJsonString, PkhjbxxBean.class);
                         EventBus.getDefault().post(pkhjbxxBean);
                     }
                 });
@@ -115,9 +115,9 @@ public class PkhJbxxPage extends PkhBasePage {
         jhsyh.setText(DictionaryUtil.getValueName(pkhjbxxBean.getJhsyh()));
         // 贫困户状态
         pkhzt.setText(pkhjbxxBean.getPkhzt());
-        sbbz.setText(DictionaryUtil.getValueName("PKBZ",pkhjbxxBean.getPksbbz()));
+        sbbz.setText(DictionaryUtil.getValueName("PKBZ", pkhjbxxBean.getPksbbz()));
         tpnf.setText(pkhjbxxBean.getTpnf());
-        pkhsx.setText(DictionaryUtil.getValueName("PKHSX",pkhjbxxBean.getPkhsx()));
+        pkhsx.setText(DictionaryUtil.getValueName("PKHSX", pkhjbxxBean.getPkhsx()));
         mHasData = true;
     }
 
