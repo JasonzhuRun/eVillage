@@ -26,19 +26,19 @@ import de.greenrobot.event.EventBus;
 /**
  * 收支情况
  */
-public class PkhSzqkPage extends BasePage {
+public class PkhszqkPage extends BasePage {
 
     private PkhszqkRecyclerAdapter mPkhszqkRecyclerAdapter;
 
-    public PkhSzqkPage(Context context) {
+    public PkhszqkPage(Context context) {
         this(context, null);
     }
 
-    public PkhSzqkPage(Context context, AttributeSet attrs) {
+    public PkhszqkPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhSzqkPage(Context context, AttributeSet attrs, int defStyle) {
+    public PkhszqkPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhszqk, this);
         initView();

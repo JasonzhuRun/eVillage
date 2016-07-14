@@ -20,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 参与产业化组织情况
  */
-public class PkhCyhPage extends BasePage {
+public class PkhcyhPage extends BasePage {
 
     private EditText tjnd;
     private EditText cylx;
@@ -31,15 +31,15 @@ public class PkhCyhPage extends BasePage {
     private EditText cynyhzzz;
     private EditText ltqyddsy;
 
-    public PkhCyhPage(Context context) {
+    public PkhcyhPage(Context context) {
         this(context, null);
     }
 
-    public PkhCyhPage(Context context, AttributeSet attrs) {
+    public PkhcyhPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhCyhPage(Context context, AttributeSet attrs, int defStyle) {
+    public PkhcyhPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhcyhqk, this);
         initView();

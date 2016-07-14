@@ -36,14 +36,14 @@ import cn.deepai.evillage.view.JdShtjPage;
 import cn.deepai.evillage.view.JdSzqkPage;
 import cn.deepai.evillage.view.JdZfqkPage;
 import cn.deepai.evillage.view.BasePage;
-import cn.deepai.evillage.view.PkhCyhPage;
+import cn.deepai.evillage.view.PkhcyhPage;
 import cn.deepai.evillage.view.JbxxPage;
-import cn.deepai.evillage.view.PkhJtcyPage;
-import cn.deepai.evillage.view.PkhJtqkzpPage;
-import cn.deepai.evillage.view.PkhSctjPage;
-import cn.deepai.evillage.view.PkhShtjPage;
-import cn.deepai.evillage.view.PkhSzqkPage;
-import cn.deepai.evillage.view.PkhZfqkPage;
+import cn.deepai.evillage.view.PkhjtcyPage;
+import cn.deepai.evillage.view.PkhjtqkzpPage;
+import cn.deepai.evillage.view.PkhsctjPage;
+import cn.deepai.evillage.view.PkhshtjPage;
+import cn.deepai.evillage.view.PkhszqkPage;
+import cn.deepai.evillage.view.PkhzfqkPage;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -171,13 +171,13 @@ public class PkhxqActivity extends BaseActivity {
             viewContainter.add(new JdJtqkzpPage(this));
         } else {
             viewContainter.add(new JbxxPage(this));
-            viewContainter.add(new PkhJtcyPage(this));
-            viewContainter.add(new PkhSzqkPage(this));
-            viewContainter.add(new PkhZfqkPage(this));
-            viewContainter.add(new PkhShtjPage(this));
-            viewContainter.add(new PkhSctjPage(this));
-            viewContainter.add(new PkhCyhPage(this));
-            viewContainter.add(new PkhJtqkzpPage(this));
+            viewContainter.add(new PkhjtcyPage(this));
+            viewContainter.add(new PkhszqkPage(this));
+            viewContainter.add(new PkhzfqkPage(this));
+            viewContainter.add(new PkhshtjPage(this));
+            viewContainter.add(new PkhsctjPage(this));
+            viewContainter.add(new PkhcyhPage(this));
+            viewContainter.add(new PkhjtqkzpPage(this));
         }
     }
 

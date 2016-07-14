@@ -20,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class PkhZfqkPage extends BasePage {
+public class PkhzfqkPage extends BasePage {
 
     // 住房面积
     private EditText zfmj;
@@ -33,15 +33,15 @@ public class PkhZfqkPage extends BasePage {
     // 异地搬迁扶贫情况
     private EditText ydfpbqqk;
 
-    public PkhZfqkPage(Context context) {
+    public PkhzfqkPage(Context context) {
         this(context, null);
     }
 
-    public PkhZfqkPage(Context context, AttributeSet attrs) {
+    public PkhzfqkPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhZfqkPage(Context context, AttributeSet attrs, int defStyle) {
+    public PkhzfqkPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhzfqk, this);
         initView();
