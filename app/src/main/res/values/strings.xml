@@ -206,6 +206,15 @@
     <string name="tz_zcmx_zcyf">支出月份</string>
     <string name="tz_zcmx_zcjey">支出金额(元)</string>
 
+    <string name="tz_zfqk_xmmc">措施名称</string>
+    <string name="tz_zfqk_jhny">计划年月</string>
+    <string name="tz_zfqk_jhnr">计划内容</string>
+    <string name="tz_zfqk_zfsj">走访时间</string>
+    <string name="tz_zfqk_lsqk">落实情况</string>
+    <string name="tz_zfqk_bfcx">帮扶成效</string>
+    <string name="tz_zfqk_sfzsy">是否增收(元)</string>
+
+
     <!--我的页面-->
     <string name="mine_clean_success">清除缓存成功</string>
     <string name="mine_clean">清除缓存</string>

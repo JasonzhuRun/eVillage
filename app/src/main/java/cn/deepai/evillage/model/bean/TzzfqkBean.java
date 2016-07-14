@@ -2,20 +2,47 @@ package cn.deepai.evillage.model.bean;
 
 /**
  * @author GaoYixuan
- *         工作台账走访情况
+ *         工作台账计划和走访情况
  */
 public class TzzfqkBean {
 
     private String id;
+    private String xmmc;
+    private String jhny;
+    private String jhnr;
     private String hid;
     private String tzid;
     private String zrrid;
     private String xmid;
-    private String bfcshdjd;
+    private String bfcsjhid;
     private String zfsj;
     private String lsqk;
     private String bfcx;
     private String sfzsy;
+
+    public String getXmmc() {
+        return xmmc;
+    }
+
+    public void setXmmc(String xmmc) {
+        this.xmmc = xmmc;
+    }
+
+    public String getJhny() {
+        return jhny;
+    }
+
+    public void setJhny(String jhny) {
+        this.jhny = jhny;
+    }
+
+    public String getJhnr() {
+        return jhnr;
+    }
+
+    public void setJhnr(String jhnr) {
+        this.jhnr = jhnr;
+    }
 
     public String getId() {
         return id;
@@ -57,12 +84,12 @@ public class TzzfqkBean {
         this.xmid = xmid;
     }
 
-    public String getBfcshdjd() {
-        return bfcshdjd;
+    public String getBfcsjhid() {
+        return bfcsjhid;
     }
 
-    public void setBfcshdjd(String bfcshdjd) {
-        this.bfcshdjd = bfcshdjd;
+    public void setBfcsjhid(String bfcsjhid) {
+        this.bfcsjhid = bfcsjhid;
     }
 
     public String getZfsj() {
