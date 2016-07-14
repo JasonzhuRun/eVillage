@@ -6,9 +6,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
-import cn.deepai.evillage.viewholder.PkhViewHolder;
 import cn.deepai.evillage.viewholder.TzViewHolder;
 
 /**

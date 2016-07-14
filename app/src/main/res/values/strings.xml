@@ -39,6 +39,10 @@
 
     <string name="req_code_getTzList">zyfp03001</string>
     <string name="req_code_getTzjbxx">zyfp03002</string>
+    <string name="req_code_getTzJtcyList">zyfp03003</string>
+    <string name="req_code_getTzSrmx">zyfp03004</string>
+    <string name="req_code_getTzZcmx">zyfp03005</string>
+    <string name="req_code_getTzBfjh">zyfp03006</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
     <string name="tab_pkh">帮扶对象</string>
@@ -184,10 +188,29 @@
     <string name="tz_jbxx_sftds">是否通电视</string>
     <string name="tz_jbxx_sftkd">是否通宽带</string>
 
+    <string name="tz_jtcy_xm">姓名</string>
+    <string name="tz_jtcy_xb">性别</string>
+    <string name="tz_jtcy_yhzgx">与户主关系</string>
+    <string name="tz_jtcy_jkqk">健康情况</string>
+    <string name="tz_jtcy_whcd">文化程度</string>
+    <string name="tz_jtcy_zy">职业</string>
+    <string name="tz_jtcy_zwjn">掌握技能</string>
+
+    <string name="tz_srmx_xmmc">项目名称</string>
+    <string name="tz_srmx_xmgm">项目规模</string>
+    <string name="tz_srmx_clgj">数量</string>
+    <string name="tz_srmx_nsry">年收入(元)</string>
+
+    <string name="tz_zcmx_xmmc">项目名称</string>
+    <string name="tz_zcmx_dkyt">贷款用途</string>
+    <string name="tz_zcmx_zcyf">支出月份</string>
+    <string name="tz_zcmx_zcjey">支出金额(元)</string>
+
     <!--我的页面-->
     <string name="mine_clean_success">清除缓存成功</string>
     <string name="mine_clean">清除缓存</string>
     <string name="mine_about">关于</string>
     <string name="mine_logout">注销</string>
     <string name="mine_logout_success">您已经成功注销！</string>
+
 </resources>

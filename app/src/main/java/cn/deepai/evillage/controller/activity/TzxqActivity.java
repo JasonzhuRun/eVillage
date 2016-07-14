@@ -14,6 +14,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
+import butterknife.OnClick;
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
@@ -38,6 +39,13 @@ public class TzxqActivity extends BaseActivity {
     private ArrayList<BasePage> viewContainter = new ArrayList<>();
     private String tzId;
     private String tznd;
+
+
+    @OnClick(R.id.detail_back)
+    public void onBackBtnClick(){
+        this.onBackPressed();
+    }
+
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {
         switch (event.getRspCode()) {

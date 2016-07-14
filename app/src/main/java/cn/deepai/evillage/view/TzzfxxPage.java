@@ -6,13 +6,19 @@ import android.view.LayoutInflater;
 
 import com.google.gson.Gson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.bean.TzbfjhList;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
+import cn.deepai.evillage.utils.LogUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -45,30 +51,39 @@ public class TzzfxxPage extends BasePage {
 
     @Override
     public void registeEventBus() {
-//        EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void unRegisteEventBus() {
-//        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().unregister(this);
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread() {
+    public void onEventMainThread(TzbfjhList event) {
         bindData();
     }
 
     @Override
     public void requestData() {
+        JSONObject jsonObject = new JSONObject();
 
+        try {
+            String hid = SettingManager.getCurrentPkh().getHid();
+            jsonObject.put("hid",hid);
+            jsonObject.put("tznd", tznd);
+        } catch (JSONException e) {
+            LogUtil.e(EVRequest.class, "Illegal json format:" + e.toString());
+            return;
+        }
         final Gson requestGson = new Gson();
-        EVRequest.request(Action.ACTION_GET_TZJBXX,
-                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getTzjbxx)),
-                requestGson.toJson(new PkhRequestBean(true)),
+        EVRequest.request(Action.ACTION_GET_TZBFJHLIST,
+                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getTzBfjh)),
+                jsonObject.toString(),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        TzjbxxBean responseEvent = requestGson.fromJson(dataJsonString, TzjbxxBean.class);
+                        TzbfjhList responseEvent = requestGson.fromJson(dataJsonString, TzbfjhList.class);
                         EventBus.getDefault().post(responseEvent);
                     }
                 });

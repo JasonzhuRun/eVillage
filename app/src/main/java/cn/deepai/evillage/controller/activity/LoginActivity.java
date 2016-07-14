@@ -109,7 +109,7 @@ public class LoginActivity extends BaseActivity{
 
         String strName = username.getText().toString();
         String strPasswd = password.getText().toString();
-        strPasswd = "12ab!@";
+//        strPasswd = "12ab!@";
         if (TextUtils.isEmpty(strName)) {
             ToastUtil.shortToast(getString(R.string.username_empyt));
             tryToHideProcessDialog();

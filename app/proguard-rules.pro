@@ -15,3 +15,44 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+# butterKnife
+-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewBinder { *; }
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
+
+# v4 包的混淆
+
+#-libraryjars ./libs/android-support-v4.jar
+
+#-dontwarn android.support.**
+
+-dontwarn android.support.v4.**
+
+-dontwarn **CompatHoneycomb
+
+-dontwarn **CompatHoneycombMR2
+
+-dontwarn **CompatCreatorHoneycombMR2
+
+-keep interface android.support.v4.app.** { *; }
+
+-keep class android.support.v4.** { *; }
+
+-keep public class * extends android.support.v4.**
+
+-keep public class * extends android.app.Fragment
+
+# universal-image-loader 混淆
+
+-dontwarn com.nostra13.universalimageloader.**
+
+-keep class com.nostra13.universalimageloader.** { *; }
+
