@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".controller.activity.PkhxqActivity">
+    tools:context=".controller.activity.TzxqActivity">
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"

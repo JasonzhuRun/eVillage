@@ -35,9 +35,9 @@ import cn.deepai.evillage.view.JdSctjPage;
 import cn.deepai.evillage.view.JdShtjPage;
 import cn.deepai.evillage.view.JdSzqkPage;
 import cn.deepai.evillage.view.JdZfqkPage;
-import cn.deepai.evillage.view.PkhBasePage;
+import cn.deepai.evillage.view.BasePage;
 import cn.deepai.evillage.view.PkhCyhPage;
-import cn.deepai.evillage.view.PkhJbxxPage;
+import cn.deepai.evillage.view.JbxxPage;
 import cn.deepai.evillage.view.PkhJtcyPage;
 import cn.deepai.evillage.view.PkhJtqkzpPage;
 import cn.deepai.evillage.view.PkhSctjPage;
@@ -53,7 +53,7 @@ public class PkhxqActivity extends BaseActivity {
 
     private boolean editable = false;
     private int selectedIndex = 0;
-    private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();
+    private ArrayList<BasePage> viewContainter = new ArrayList<>();
 
     @OnClick(R.id.detail_back)
     public void onBackBtnClick(){
@@ -111,7 +111,7 @@ public class PkhxqActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         EventBus.getDefault().register(this);
-        for (PkhBasePage page:viewContainter) {
+        for (BasePage page:viewContainter) {
             page.registeEventBus();
         }
         onPageShow();
@@ -121,7 +121,7 @@ public class PkhxqActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
         EventBus.getDefault().unregister(this);
-        for (PkhBasePage page:viewContainter) {
+        for (BasePage page:viewContainter) {
             page.unRegisteEventBus();
         }
     }
@@ -170,7 +170,7 @@ public class PkhxqActivity extends BaseActivity {
             viewContainter.add(new JdCyhPage(this));
             viewContainter.add(new JdJtqkzpPage(this));
         } else {
-            viewContainter.add(new PkhJbxxPage(this));
+            viewContainter.add(new JbxxPage(this));
             viewContainter.add(new PkhJtcyPage(this));
             viewContainter.add(new PkhSzqkPage(this));
             viewContainter.add(new PkhZfqkPage(this));
@@ -266,7 +266,7 @@ public class PkhxqActivity extends BaseActivity {
 
     private void onPageShow() {
 
-        for (PkhBasePage page:viewContainter) {
+        for (BasePage page:viewContainter) {
             page.setSelected(false);
         }
         viewContainter.get(selectedIndex).setSelected(true);

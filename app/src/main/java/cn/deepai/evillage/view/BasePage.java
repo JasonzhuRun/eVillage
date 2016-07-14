@@ -7,21 +7,21 @@ import android.widget.FrameLayout;
 /**
  * @author GaoYixuan
  */
-public abstract class PkhBasePage  extends FrameLayout {
+public abstract class BasePage extends FrameLayout {
 
     private boolean isSelected;
     protected Context mContext;
     protected boolean mHasData = false;
 
-    public PkhBasePage(Context context) {
+    public BasePage(Context context) {
         this(context, null);
     }
 
-    public PkhBasePage(Context context, AttributeSet attrs) {
+    public BasePage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhBasePage(Context context, AttributeSet attrs, int defStyle) {
+    public BasePage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
     }

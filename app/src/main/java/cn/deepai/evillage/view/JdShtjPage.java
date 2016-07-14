@@ -20,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 生活条件
  */
-public class JdShtjPage extends PkhBasePage {
+public class JdShtjPage extends BasePage {
 
     private EditText tjnd;
     private EditText tshyd;

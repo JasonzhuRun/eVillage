@@ -26,10 +26,10 @@ import okhttp3.Response;
 public class EVRequest {
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
-//    private static final String URL = "http://192.168.101.18:8080/zyfp-web/inter/";
+    private static final String URL = "http://192.168.101.18:8080/zyfp-web/inter/";
 //    private static final String URL = "http://192.168.212.35:8888/zyfp-web/inter/";
 //    private static final String URL = "http://10.108.6.45:8080/zyfp-web/inter/";
-    private static final String URL = "http://124.65.186.26:8973/zyfp-web/inter/";
+//    private static final String URL = "http://124.65.186.26:8973/zyfp-web/inter/";
 
     private static OkHttpClient client = new OkHttpClient();
 

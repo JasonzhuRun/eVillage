@@ -8,8 +8,8 @@ import com.google.gson.Gson;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
-import cn.deepai.evillage.model.bean.PkhcyhqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -18,19 +18,28 @@ import de.greenrobot.event.EventBus;
 /**
  * 台账走访信息
  */
-public class TzzfxxPage extends PkhBasePage {
+public class TzzfxxPage extends BasePage {
+
+    private String tzId;
+    private String tznd;
 
     public TzzfxxPage(Context context) {
-        this(context, null);
+        this(context, null, null, null);
     }
 
-    public TzzfxxPage(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+    public TzzfxxPage(Context context, String id, String nd) {
+        this(context, null, id, nd);
     }
 
-    public TzzfxxPage(Context context, AttributeSet attrs, int defStyle) {
+    public TzzfxxPage(Context context, AttributeSet attrs, String id, String nd) {
+        this(context, attrs, 0, id, nd);
+    }
+
+    public TzzfxxPage(Context context, AttributeSet attrs, int defStyle, String id, String nd) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.page_tzjbxx, this);
+        LayoutInflater.from(context).inflate(R.layout.page_tzzfxx, this);
+        tzId = id;
+        tznd = nd;
         initView();
     }
 
@@ -53,13 +62,13 @@ public class TzzfxxPage extends PkhBasePage {
     public void requestData() {
 
         final Gson requestGson = new Gson();
-        EVRequest.request(Action.ACTION_GET_PKHCYHZZJBXX,
-                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhCyhzzJbxx)),
+        EVRequest.request(Action.ACTION_GET_TZJBXX,
+                requestGson.toJson(new RequestHeaderBean(R.string.req_code_getTzjbxx)),
                 requestGson.toJson(new PkhRequestBean(true)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        PkhcyhqkBean responseEvent = requestGson.fromJson(dataJsonString, PkhcyhqkBean.class);
+                        TzjbxxBean responseEvent = requestGson.fromJson(dataJsonString, TzjbxxBean.class);
                         EventBus.getDefault().post(responseEvent);
                     }
                 });
@@ -72,12 +81,10 @@ public class TzzfxxPage extends PkhBasePage {
 
     private void bindData() {
 
-
         mHasData = true;
     }
 
     private void initView() {
-
 
         mHasData = false;
     }

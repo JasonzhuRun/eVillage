@@ -19,7 +19,7 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class JdSctjPage extends PkhBasePage {
+public class JdSctjPage extends BasePage {
 
     private EditText tjnd;
     private EditText gdmj;

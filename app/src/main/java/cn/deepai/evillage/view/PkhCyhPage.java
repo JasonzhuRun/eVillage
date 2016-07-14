@@ -20,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 参与产业化组织情况
  */
-public class PkhCyhPage extends PkhBasePage {
+public class PkhCyhPage extends BasePage {
 
     private EditText tjnd;
     private EditText cylx;

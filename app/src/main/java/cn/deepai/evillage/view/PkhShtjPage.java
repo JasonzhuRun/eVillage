@@ -1,7 +1,6 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -21,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 生活条件
  */
-public class PkhShtjPage extends PkhBasePage {
+public class PkhShtjPage extends BasePage {
 
     private EditText tjnd;
     private EditText tshyd;

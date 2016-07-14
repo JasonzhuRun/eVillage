@@ -26,7 +26,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 收支情况
  */
-public class PkhSzqkPage extends PkhBasePage {
+public class PkhSzqkPage extends BasePage {
 
     private PkhszqkRecyclerAdapter mPkhszqkRecyclerAdapter;
 

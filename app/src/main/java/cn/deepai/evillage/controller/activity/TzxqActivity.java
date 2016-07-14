@@ -21,7 +21,7 @@ import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
-import cn.deepai.evillage.view.PkhBasePage;
+import cn.deepai.evillage.view.BasePage;
 import cn.deepai.evillage.view.TzjbxxPage;
 import cn.deepai.evillage.view.TzjtcyPage;
 import cn.deepai.evillage.view.TzsrmxPage;
@@ -35,7 +35,7 @@ import de.greenrobot.event.EventBus;
 public class TzxqActivity extends BaseActivity {
 
     private static int selectedIndex = 0;
-    private ArrayList<PkhBasePage> viewContainter = new ArrayList<>();
+    private ArrayList<BasePage> viewContainter = new ArrayList<>();
     private String tzId;
     private String tznd;
     @SuppressWarnings("all")
@@ -60,6 +60,11 @@ public class TzxqActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xq);
+        Intent intent = getIntent();
+        if (null != intent) {
+            tzId = intent.getStringExtra("tzId");
+            tznd = intent.getStringExtra("tznd");
+        }
         initView();
     }
 
@@ -67,7 +72,7 @@ public class TzxqActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         EventBus.getDefault().register(this);
-        for (PkhBasePage page:viewContainter) {
+        for (BasePage page:viewContainter) {
             page.registeEventBus();
         }
         onPageShow();
@@ -77,7 +82,7 @@ public class TzxqActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
         EventBus.getDefault().unregister(this);
-        for (PkhBasePage page:viewContainter) {
+        for (BasePage page:viewContainter) {
             page.unRegisteEventBus();
         }
     }
@@ -89,11 +94,11 @@ public class TzxqActivity extends BaseActivity {
 
     private void initPagerContent() {
 
-        viewContainter.add(new TzjbxxPage(this));
-        viewContainter.add(new TzjtcyPage(this));
-        viewContainter.add(new TzsrmxPage(this));
-        viewContainter.add(new TzzcmxPage(this));
-        viewContainter.add(new TzzfxxPage(this));
+        viewContainter.add(new TzjbxxPage(this,tzId,tznd));
+        viewContainter.add(new TzjtcyPage(this,tzId,tznd));
+        viewContainter.add(new TzsrmxPage(this,tzId,tznd));
+        viewContainter.add(new TzzcmxPage(this,tzId,tznd));
+        viewContainter.add(new TzzfxxPage(this,tzId,tznd));
     }
 
     private void initTitle() {
@@ -178,7 +183,7 @@ public class TzxqActivity extends BaseActivity {
 
     private void onPageShow() {
 
-        for (PkhBasePage page:viewContainter) {
+        for (BasePage page:viewContainter) {
             page.setSelected(false);
         }
         viewContainter.get(selectedIndex).setSelected(true);

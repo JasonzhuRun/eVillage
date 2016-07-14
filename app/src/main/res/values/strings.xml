@@ -166,12 +166,12 @@
     <string name="tz_zfxx">走访信息</string>
     <string name="tz_tznd">年度台账</string>
 
-    <string name="tz_jbxx_nrjcsr">年人均纯收入</string>
-    <string name="tz_jbxx_nsrhj">年收入合计</string>
-    <string name="tz_jbxx_nzchj">年支出合计</string>
-    <string name="tz_jbxx_dkje">贷款合计</string>
+    <string name="tz_jbxx_nrjcsr">年人均纯收入(元)</string>
+    <string name="tz_jbxx_nsrhj">年收入合计(元)</string>
+    <string name="tz_jbxx_nzchj">年支出合计(元)</string>
+    <string name="tz_jbxx_dkje">贷款合计(元)</string>
     <string name="tz_jbxx_zfjg">住房结构</string>
-    <string name="tz_jbxx_zfmj">住房面积</string>
+    <string name="tz_jbxx_zfmj">住房面积(平方米)</string>
     <string name="tz_jbxx_sfwf">是否危房</string>
     <string name="tz_jbxx_gdtian">耕地田(亩)</string>
     <string name="tz_jbxx_gdtu">耕地土(亩)</string>

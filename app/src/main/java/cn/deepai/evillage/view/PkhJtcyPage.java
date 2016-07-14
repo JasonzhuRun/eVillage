@@ -8,15 +8,10 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtcyRecyclerAdapter;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
-import cn.deepai.evillage.model.bean.ListBean;
-import cn.deepai.evillage.model.bean.PkhjtcyBean;
 import cn.deepai.evillage.model.bean.PkhjtcyList;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.net.Action;
@@ -27,7 +22,7 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class PkhJtcyPage extends PkhBasePage {
+public class PkhJtcyPage extends BasePage {
 
     private PkhjtcyRecyclerAdapter mPkhjtcyRecyclerAdapter;
 

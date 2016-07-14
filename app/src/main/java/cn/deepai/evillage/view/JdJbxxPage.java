@@ -20,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 贫困户基本信息
  */
-public class JdJbxxPage extends PkhBasePage {
+public class JdJbxxPage extends BasePage {
 
     // 户主姓名
     private EditText hzxm;

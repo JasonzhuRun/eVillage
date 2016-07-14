@@ -22,7 +22,7 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class JdJtcyPage extends PkhBasePage {
+public class JdJtcyPage extends BasePage {
 
     private PkhjtcyRecyclerAdapter mPkhjtcyRecyclerAdapter;
 

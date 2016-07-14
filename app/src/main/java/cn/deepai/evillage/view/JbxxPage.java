@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
@@ -21,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 贫困户基本信息
  */
-public class PkhJbxxPage extends PkhBasePage {
+public class JbxxPage extends BasePage {
 
     // 户主姓名
     private EditText hzxm;
@@ -46,15 +45,15 @@ public class PkhJbxxPage extends PkhBasePage {
     // 脱贫年份
     private EditText tpnf;
 
-    public PkhJbxxPage(Context context) {
+    public JbxxPage(Context context) {
         this(context, null);
     }
 
-    public PkhJbxxPage(Context context, AttributeSet attrs) {
+    public JbxxPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PkhJbxxPage(Context context, AttributeSet attrs, int defStyle) {
+    public JbxxPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhjbxx, this);
         initView();

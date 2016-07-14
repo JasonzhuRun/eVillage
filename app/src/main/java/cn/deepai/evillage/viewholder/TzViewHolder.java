@@ -48,7 +48,7 @@ public class TzViewHolder extends BaseViewHolder {
 
         Intent intent = new Intent(mContext, TzxqActivity.class);
         intent.putExtra("tznd", mTzjbxxBean.getTznd());
-        intent.putExtra("tzid", mTzjbxxBean.getId());
+        intent.putExtra("tzId", mTzjbxxBean.getId());
         mContext.startActivity(intent);
         ((Activity) mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }

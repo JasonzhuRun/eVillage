@@ -20,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class PkhZfqkPage extends PkhBasePage {
+public class PkhZfqkPage extends BasePage {
 
     // 住房面积
     private EditText zfmj;
@@ -32,7 +32,6 @@ public class PkhZfqkPage extends PkhBasePage {
     private EditText zyzfsfwf;
     // 异地搬迁扶贫情况
     private EditText ydfpbqqk;
-
 
     public PkhZfqkPage(Context context) {
         this(context, null);
