@@ -11,6 +11,7 @@
     <string name="login_overdue">登录信息失效，请重新登录</string>
     <string name="pkh_selected">当前帮扶对象：</string>
     <string name="cache_text">text</string>
+    <string name="save_content">保存</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>
     <string name="req_code_getPkhJbxxList">zyfp01002</string>

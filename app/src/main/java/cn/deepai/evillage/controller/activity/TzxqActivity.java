@@ -35,7 +35,7 @@ import de.greenrobot.event.EventBus;
  */
 public class TzxqActivity extends BaseActivity {
 
-    private static int selectedIndex = 0;
+    private int selectedIndex = 0;
     private ArrayList<BasePage> viewContainter = new ArrayList<>();
     private String tzId;
     private String tznd;
@@ -44,6 +44,12 @@ public class TzxqActivity extends BaseActivity {
     @OnClick(R.id.detail_back)
     public void onBackBtnClick(){
         this.onBackPressed();
+    }
+
+    @OnClick(R.id.detail_save)
+    public void onSaveBtnClick(){
+        //todo 上传上传列表中的所有内容
+
     }
 
     @SuppressWarnings("all")
@@ -120,6 +126,7 @@ public class TzxqActivity extends BaseActivity {
         pkhName.setText(pkh.getHzxm());
         pkhAddress.setText(pkh.getJzdz());
         pkhPhone.setText(pkh.getLxdh());
+        findViewById(R.id.detail_save).setVisibility(View.VISIBLE);
     }
 
     private void initView() {

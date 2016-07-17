@@ -60,6 +60,11 @@ public class PkhxqActivity extends BaseActivity {
         this.onBackPressed();
     }
 
+    @OnClick(R.id.detail_save)
+    public void onSaveBtnClick(){
+        //todo 上传上传列表中的所有内容
+
+    }
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {
         switch (event.getRspCode()) {
@@ -185,6 +190,7 @@ public class PkhxqActivity extends BaseActivity {
         PkhjbxxBean pkh;
         if (editable) {
             pkh = SettingManager.getCurrentJdPkh();
+            findViewById(R.id.detail_save).setVisibility(View.VISIBLE);
         } else {
             pkh = SettingManager.getCurrentPkh();
         }

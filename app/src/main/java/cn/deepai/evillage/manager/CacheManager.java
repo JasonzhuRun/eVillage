@@ -1,5 +1,7 @@
 package cn.deepai.evillage.manager;
 
+import android.text.TextUtils;
+
 import com.jakewharton.disklrucache.DiskLruCache;
 
 import org.apache.commons.io.IOUtils;
@@ -12,6 +14,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cn.deepai.evillage.R;
@@ -26,19 +30,57 @@ public class CacheManager {
 
     private static final int TEXT_CACHE_SIZE = 10 * 1024 * 1024;
 
-    public static final int CACHE_DETAIL = 0x01;   // 贫困户详情缓存
+    public static final String UPLOAD_CACHE_KEY = "upload_cache_data";
 
     private static CacheManager instance;
     private DiskLruCache mDiskLruCache;
+    private static ArrayList<String> uploadList;
+    private static String uploadListString;
 
     static {
         instance = new CacheManager();
+        String staffId = SettingManager.getInstance().getStaffId();
+        if (!TextUtils.isEmpty(staffId)) {
+            uploadListString = getInstance().getCacheData(UPLOAD_CACHE_KEY+":"+staffId);
+            if (TextUtils.isEmpty(uploadListString)) {
+                uploadListString = "";
+                uploadList = new ArrayList<>();
+            } else {
+                List<String> tempList = Arrays.asList(uploadListString.split(";"));
+                uploadList = new ArrayList<>(tempList);
+            }
+        }
     }
 
     public static CacheManager getInstance() {
         return instance;
     }
 
+    public void addToUploadList(String request,String data) {
+        String staffId = SettingManager.getInstance().getStaffId();
+        if (!TextUtils.isEmpty(staffId)) {
+            cacheData(request,data);
+            uploadList.add(request);
+            if (!TextUtils.isEmpty(uploadListString)) {
+                uploadListString += ";";
+            }
+            uploadListString += request;
+            cacheData(UPLOAD_CACHE_KEY+":"+staffId,uploadListString);
+        }
+    }
+
+    public List getUploadList() {
+        return uploadList;
+    }
+
+    public void clearUploadList() {
+        uploadListString = "";
+        uploadList = new ArrayList<>();
+        String staffId = SettingManager.getInstance().getStaffId();
+        if (!TextUtils.isEmpty(staffId)) {
+            removeCacheData(UPLOAD_CACHE_KEY + ":" + staffId);
+        }
+    }
     /**
      * 缓存请求数据
      */
@@ -80,7 +122,7 @@ public class CacheManager {
         return null;
     }
 
-    public synchronized void removeCacheData(String request) {
+    private synchronized void removeCacheData(String request) {
         try {
             String key = EncryptionUtil.getMD5(request);
             mDiskLruCache.remove(key);

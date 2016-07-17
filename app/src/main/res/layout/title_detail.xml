@@ -10,6 +10,17 @@
         android:background="@drawable/arrow_back"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/detail_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_content"
+        android:textColor="@color/text_white"
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"/>
     <ImageView
         android:id="@+id/detail_photo"
         android:layout_width="101dp"

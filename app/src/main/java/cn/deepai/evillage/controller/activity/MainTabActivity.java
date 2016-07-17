@@ -26,6 +26,7 @@ import cn.deepai.evillage.controller.fragment.MineFragment;
 import cn.deepai.evillage.controller.fragment.NewsFragment;
 import cn.deepai.evillage.controller.fragment.PkhFragment;
 import cn.deepai.evillage.controller.fragment.TzFragment;
+import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxList;
 import cn.deepai.evillage.model.event.PkhSelectedEvent;
@@ -123,6 +124,11 @@ public class MainTabActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        CacheManager.getInstance().addToUploadList("aa","111");
+        CacheManager.getInstance().addToUploadList("bb","222");
+        CacheManager.getInstance().addToUploadList("cc","333");
+        CacheManager.getInstance().addToUploadList("dd","444");
+        CacheManager.getInstance().addToUploadList("ee","555");
     }
 
     private void initView() {
