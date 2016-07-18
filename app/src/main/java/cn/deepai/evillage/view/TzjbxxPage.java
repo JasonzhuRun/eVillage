@@ -1,21 +1,20 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.bean.PkhRequestBean;
+import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.model.event.TzDataSaveEvent;
@@ -34,23 +33,23 @@ public class TzjbxxPage extends BasePage {
     private String tzId;
     private String tznd;
 
-    private EditText nrjcsr;
-    private EditText nsrhj;
-    private EditText nzchj;
-    private EditText dkje;
-    private EditText zfjg;
-    private EditText zfmj;
-    private EditText sfwf;
-    private EditText gdtian;
-    private EditText gdtu;
-    private EditText gdldm;
-    private EditText gdhjm;
-    private EditText sfts;
-    private EditText sftd;
-    private EditText sftl;
-    private EditText sftx;
-    private EditText sftds;
-    private EditText sftkd;
+    private TextView nrjcsr;
+    private TextView nsrhj;
+    private TextView nzchj;
+    private TextView dkje;
+    private TextView zfjg;
+    private TextView zfmj;
+    private TextView sfwf;
+    private TextView gdtian;
+    private TextView gdtu;
+    private TextView gdldm;
+    private TextView gdhjm;
+    private TextView sfts;
+    private TextView sftd;
+    private TextView sftl;
+    private TextView sftx;
+    private TextView sftds;
+    private TextView sftkd;
 
     private TzjbxxBean serverData;
     private TzjbxxBean localData;
@@ -70,6 +69,7 @@ public class TzjbxxPage extends BasePage {
     public TzjbxxPage(Context context, AttributeSet attrs, int defStyle, String id, String nd) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_tzjbxx, this);
+        ButterKnife.bind(this);
         tzId = id;
         tznd = nd;
         initView();
@@ -125,6 +125,41 @@ public class TzjbxxPage extends BasePage {
         return getResources().getString(R.string.tz_jbxx);
     }
 
+    @OnClick(R.id.jbxx_nrjcsr_view)
+    public void onNrjcsrClick() {
+        DialogManager.showEditTextDialog(getContext(),getContext().getString(R.string.tz_jbxx_nrjcsr), new DialogManager.IOnDialogFinished() {
+            @Override
+            public void returnData(String data) {
+                if (!TextUtils.isEmpty(data)) {
+                    nrjcsr.setText(data);
+                    localData.setNrjcsr(data);
+                }
+            }
+        });
+    }
+
+    private void initView() {
+
+        nrjcsr = (TextView) findViewById(R.id.jbxx_nrjcsr);
+        nsrhj = (TextView) findViewById(R.id.jbxx_nsrhj);
+        nzchj = (TextView) findViewById(R.id.jbxx_nzchj);
+        dkje = (TextView) findViewById(R.id.jbxx_dkje);
+        zfjg = (TextView) findViewById(R.id.jbxx_zfjg);
+        zfmj = (TextView) findViewById(R.id.jbxx_zfmj);
+        sfwf = (TextView) findViewById(R.id.jbxx_sfwf);
+        gdtian = (TextView) findViewById(R.id.jbxx_gdtian);
+        gdtu = (TextView) findViewById(R.id.jbxx_gdtu);
+        gdldm = (TextView) findViewById(R.id.jbxx_gdldm);
+        gdhjm = (TextView) findViewById(R.id.jbxx_gdhjm);
+        sfts = (TextView) findViewById(R.id.jbxx_sfts);
+        sftd = (TextView) findViewById(R.id.jbxx_sftd);
+        sftl = (TextView) findViewById(R.id.jbxx_sftl);
+        sftx = (TextView) findViewById(R.id.jbxx_sftx);
+        sftds = (TextView) findViewById(R.id.jbxx_sftds);
+        sftkd = (TextView) findViewById(R.id.jbxx_sftkd);
+        mHasData = false;
+    }
+
     private void bindData(TzjbxxBean tzjbxxBean) {
 
         this.serverData = tzjbxxBean;
@@ -147,28 +182,6 @@ public class TzjbxxPage extends BasePage {
         sftds.setText(DictionaryUtil.getValueName(tzjbxxBean.getSftds()));
         sftkd.setText(DictionaryUtil.getValueName(tzjbxxBean.getSftkd()));
         mHasData = true;
-    }
-
-    private void initView() {
-
-        nrjcsr = (EditText) findViewById(R.id.jbxx_nrjcsr);
-        nsrhj = (EditText) findViewById(R.id.jbxx_nsrhj);
-        nzchj = (EditText) findViewById(R.id.jbxx_nzchj);
-        dkje = (EditText) findViewById(R.id.jbxx_dkje);
-        zfjg = (EditText) findViewById(R.id.jbxx_zfjg);
-        zfmj = (EditText) findViewById(R.id.jbxx_zfmj);
-        sfwf = (EditText) findViewById(R.id.jbxx_sfwf);
-        gdtian = (EditText) findViewById(R.id.jbxx_gdtian);
-        gdtu = (EditText) findViewById(R.id.jbxx_gdtu);
-        gdldm = (EditText) findViewById(R.id.jbxx_gdldm);
-        gdhjm = (EditText) findViewById(R.id.jbxx_gdhjm);
-        sfts = (EditText) findViewById(R.id.jbxx_sfts);
-        sftd = (EditText) findViewById(R.id.jbxx_sftd);
-        sftl = (EditText) findViewById(R.id.jbxx_sftl);
-        sftx = (EditText) findViewById(R.id.jbxx_sftx);
-        sftds = (EditText) findViewById(R.id.jbxx_sftds);
-        sftkd = (EditText) findViewById(R.id.jbxx_sftkd);
-        mHasData = false;
     }
 
 

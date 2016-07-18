@@ -14,7 +14,7 @@
         android:id="@+id/detail_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/save_content"
+        android:text="@string/upload_content"
         android:textColor="@color/text_white"
         android:textSize="18sp"
         android:layout_alignParentRight="true"
