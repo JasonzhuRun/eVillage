@@ -14,6 +14,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
@@ -21,6 +22,7 @@ import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
+import cn.deepai.evillage.model.event.TzDataSaveEvent;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.BasePage;
 import cn.deepai.evillage.view.TzjbxxPage;
@@ -49,7 +51,7 @@ public class TzxqActivity extends BaseActivity {
     @OnClick(R.id.detail_save)
     public void onSaveBtnClick(){
         //todo 上传上传列表中的所有内容
-
+        EventBus.getDefault().post(new TzDataSaveEvent());
     }
 
     @SuppressWarnings("all")
@@ -74,6 +76,7 @@ public class TzxqActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xq);
+        ButterKnife.bind(this);
         Intent intent = getIntent();
         if (null != intent) {
             tzId = intent.getStringExtra("tzId");

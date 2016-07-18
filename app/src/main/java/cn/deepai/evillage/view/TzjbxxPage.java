@@ -1,8 +1,12 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
@@ -14,6 +18,7 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
+import cn.deepai.evillage.model.event.TzDataSaveEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -46,6 +51,9 @@ public class TzjbxxPage extends BasePage {
     private EditText sftx;
     private EditText sftds;
     private EditText sftkd;
+
+    private TzjbxxBean serverData;
+    private TzjbxxBean localData;
 
     public TzjbxxPage(Context context) {
         this(context, null, null, null);
@@ -82,6 +90,12 @@ public class TzjbxxPage extends BasePage {
         bindData(event);
     }
 
+    @SuppressWarnings("all")
+    public void onEventMainThread(TzDataSaveEvent event) {
+
+
+    }
+
     @Override
     public void requestData() {
 
@@ -113,6 +127,8 @@ public class TzjbxxPage extends BasePage {
 
     private void bindData(TzjbxxBean tzjbxxBean) {
 
+        this.serverData = tzjbxxBean;
+        this.localData = tzjbxxBean;
         nrjcsr.setText(tzjbxxBean.getNrjcsr());
         nsrhj.setText(tzjbxxBean.getNsrhj());
         nzchj.setText(tzjbxxBean.getNzchj());
@@ -154,4 +170,6 @@ public class TzjbxxPage extends BasePage {
         sftkd = (EditText) findViewById(R.id.jbxx_sftkd);
         mHasData = false;
     }
+
+
 }
