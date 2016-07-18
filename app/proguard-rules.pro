@@ -56,3 +56,6 @@
 
 -keep class com.nostra13.universalimageloader.** { *; }
 
+-dontwarn com.squareup.okhttp.**
+-keep class com.squareup.okhttp.** { *;}
+-dontwarn okio.**
