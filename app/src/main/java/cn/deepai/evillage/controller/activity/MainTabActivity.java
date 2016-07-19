@@ -124,11 +124,11 @@ public class MainTabActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        CacheManager.getInstance().addToUploadList("aa","111");
-        CacheManager.getInstance().addToUploadList("bb","222");
-        CacheManager.getInstance().addToUploadList("cc","333");
-        CacheManager.getInstance().addToUploadList("dd","444");
-        CacheManager.getInstance().addToUploadList("ee","555");
+//        CacheManager.getInstance().addToUploadList("aa","111");
+//        CacheManager.getInstance().addToUploadList("bb","222");
+//        CacheManager.getInstance().addToUploadList("cc","333");
+//        CacheManager.getInstance().addToUploadList("dd","444");
+//        CacheManager.getInstance().addToUploadList("ee","555");
     }
 
     private void initView() {
