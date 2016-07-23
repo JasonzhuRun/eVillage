@@ -11,7 +11,7 @@
     <string name="login_overdue">登录信息失效，请重新登录</string>
     <string name="pkh_selected">当前帮扶对象：</string>
     <string name="cache_text">text</string>
-    <string name="upload_content">上传</string>
+    <string name="upload_content">保存</string>
     <string name="cancel">取消</string>
     <string name="insure">确定</string>
     <!--reqCode-->

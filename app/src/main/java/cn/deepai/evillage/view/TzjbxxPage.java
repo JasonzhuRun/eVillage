@@ -125,18 +125,18 @@ public class TzjbxxPage extends BasePage {
         return getResources().getString(R.string.tz_jbxx);
     }
 
-    @OnClick(R.id.jbxx_nrjcsr_view)
-    public void onNrjcsrClick() {
-        DialogManager.showEditTextDialog(getContext(),getContext().getString(R.string.tz_jbxx_nrjcsr), new DialogManager.IOnDialogFinished() {
-            @Override
-            public void returnData(String data) {
-                if (!TextUtils.isEmpty(data)) {
-                    nrjcsr.setText(data);
-                    localData.setNrjcsr(data);
-                }
-            }
-        });
-    }
+//    @OnClick(R.id.jbxx_nrjcsr_view)
+//    public void onNrjcsrClick() {
+//        DialogManager.showEditTextDialog(getContext(),getContext().getString(R.string.tz_jbxx_nrjcsr), new DialogManager.IOnDialogFinished() {
+//            @Override
+//            public void returnData(String data) {
+//                if (!TextUtils.isEmpty(data)) {
+//                    nrjcsr.setText(data);
+//                    localData.setNrjcsr(data);
+//                }
+//            }
+//        });
+//    }
 
     private void initView() {
 
