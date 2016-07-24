@@ -12,20 +12,25 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.model.bean.TzjbxxList;
+import cn.deepai.evillage.model.event.TzxgjgEvent;
+import cn.deepai.evillage.utils.LogUtil;
 import de.greenrobot.event.EventBus;
 
 /**
  * 台账列表
  */
 public class TzListRequest extends EVRequest {
-
-    public static void request(String userId,String hid) {
+    /**
+     * 数据请求
+     */
+    public static void request(String staffId,String hid) {
 
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("hid", hid);
-            jsonObject.put("userId", userId);
+            jsonObject.put("userId", staffId);
         }catch (JSONException e) {
             return;
         }
@@ -40,5 +45,27 @@ public class TzListRequest extends EVRequest {
                         EventBus.getDefault().post(jbxxList);
                     }
              });
+    }
+    /**
+     * 新建数据请求
+     */
+    public static void request(String staffId,String hid,String tznd) {
+
+        final TzjbxxBean tzjbxxBean = new TzjbxxBean();
+        tzjbxxBean.setZrrid(staffId);
+        tzjbxxBean.setHid(hid);
+        tzjbxxBean.setTznd(tznd);
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addTz);
+
+        final Gson gson = new Gson();
+        EVRequest.request(Action.ACTION_ADD_TZ, gson.toJson(header), gson.toJson(tzjbxxBean),
+                new ResponseCallback() {
+                    @Override
+                    public void onDataResponse(String dataJsonString) {
+                        TzxgjgEvent xgjg = gson.fromJson(dataJsonString,TzxgjgEvent.class);
+                        xgjg.tzjbxxBean = tzjbxxBean;
+                        EventBus.getDefault().post(xgjg);
+                    }
+                });
     }
 }

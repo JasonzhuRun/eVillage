@@ -46,6 +46,7 @@
     <string name="req_code_getTzSrmx">zyfp03004</string>
     <string name="req_code_getTzZcmx">zyfp03005</string>
     <string name="req_code_getTzBfjh">zyfp03006</string>
+    <string name="req_code_addTz">zyfp03007</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
     <string name="tab_pkh">帮扶对象</string>
@@ -166,6 +167,8 @@
 
     <!--台账页面-->
     <string name="tz_none_hid">请先选择要查看的贫困户</string>
+    <string name="tz_new_ndtz">新建</string>
+    <string name="tz_new_ndtz_tip">请输入要新建的台账年份:</string>
     <string name="tz_jbxx">基本信息</string>
     <string name="tz_jtcy">家庭成员</string>
     <string name="tz_srmx">收入明细</string>

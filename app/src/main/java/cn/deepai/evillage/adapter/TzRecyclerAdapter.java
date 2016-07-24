@@ -14,6 +14,8 @@ import cn.deepai.evillage.viewholder.TzViewHolder;
  */
 public class TzRecyclerAdapter extends RecyclerView.Adapter {
 
+    public static final int ADD_MORE = 0;
+    public static final int CONTENT = 1;
     private List<TzjbxxBean> mTzjbxxList = new ArrayList<>();
 
     public void notifyResult(boolean isFirstPage, List<TzjbxxBean> tzjbxxList) {
@@ -32,19 +34,22 @@ public class TzRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
         if (holder instanceof TzViewHolder) {
-            ((TzViewHolder) holder).onBindData(mTzjbxxList.get(position));
+            if (mTzjbxxList == null||position == mTzjbxxList.size()) ((TzViewHolder) holder).onBindData(null);
+            else ((TzViewHolder) holder).onBindData(mTzjbxxList.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mTzjbxxList == null?0: mTzjbxxList.size();
+        return mTzjbxxList == null?1: mTzjbxxList.size()+1;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        if (position == mTzjbxxList.size()) return ADD_MORE;
+        else return CONTENT;
     }
 
 }
