@@ -15,10 +15,14 @@ import cn.deepai.evillage.utils.PhoneInfoUtil;
 
 public class DialogManager {
 
+    public static void showYesOrNoChoiceDialog(Context context, String title, final IOnDialogFinished onDialogFinished) {
+        showSingleChoiceDialog(context,title,new String[]{context.getString(R.string.no),context.getString(R.string.yes)},onDialogFinished);
+    }
+
     public static void showSingleChoiceDialog(Context context, String title, final String[] choices, final IOnDialogFinished onDialogFinished) {
         new AlertDialog.Builder(context)
                 .setTitle(title)
-                .setSingleChoiceItems(choices, 0, new DialogInterface.OnClickListener() {
+                .setSingleChoiceItems(choices, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

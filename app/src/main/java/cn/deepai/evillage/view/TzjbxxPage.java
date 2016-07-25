@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.google.gson.Gson;
 
@@ -33,23 +33,23 @@ public class TzjbxxPage extends BasePage {
     private String tzId;
     private String tznd;
 
-    private TextView nrjcsr;
-    private TextView nsrhj;
-    private TextView nzchj;
-    private TextView dkje;
-    private TextView zfjg;
-    private TextView zfmj;
-    private TextView sfwf;
-    private TextView gdtian;
-    private TextView gdtu;
-    private TextView gdldm;
-    private TextView gdhjm;
-    private TextView sfts;
-    private TextView sftd;
-    private TextView sftl;
-    private TextView sftx;
-    private TextView sftds;
-    private TextView sftkd;
+    private EditText nrjcsr;
+    private EditText nsrhj;
+    private EditText nzchj;
+    private EditText dkje;
+    private EditText zfjg;
+    private EditText zfmj;
+    private EditText sfwf;
+    private EditText gdtian;
+    private EditText gdtu;
+    private EditText gdldm;
+    private EditText gdhjm;
+    private EditText sfts;
+    private EditText sftd;
+    private EditText sftl;
+    private EditText sftx;
+    private EditText sftds;
+    private EditText sftkd;
 
     private TzjbxxBean serverData;
     private TzjbxxBean localData;
@@ -84,16 +84,33 @@ public class TzjbxxPage extends BasePage {
     public void unRegisteEventBus() {
         EventBus.getDefault().unregister(this);
     }
-
+    // 返回了页面信息
     @SuppressWarnings("all")
     public void onEventMainThread(TzjbxxBean event) {
         bindData(event);
     }
-
+    // 点击保存按钮
     @SuppressWarnings("all")
     public void onEventMainThread(TzDataSaveEvent event) {
-
-
+        localData.setNrjcsr(nrjcsr.getText().toString());
+        localData.setNsrhj(nsrhj.getText().toString());
+        localData.setNzchj(nzchj.getText().toString());
+        localData.setDkje(dkje.getText().toString());
+        localData.setZfjg(zfjg.getText().toString());
+        localData.setZfmj(zfmj.getText().toString());
+        localData.setGdtian(gdtian.getText().toString());
+        localData.setGdtu(gdtu.getText().toString());
+        localData.setGdldm(gdldm.getText().toString());
+        localData.setGdhjm(gdhjm.getText().toString());
+        // 选择项在选择时已经赋过值
+//      DictionaryUtil.getValueName(localData.getSfwf())
+//      DictionaryUtil.getValueName(localData.getSfts())
+//      DictionaryUtil.getValueName(localData.getSftd())
+//      DictionaryUtil.getValueName(localData.getSftl())
+//      DictionaryUtil.getValueName(localData.getSftx())
+//      DictionaryUtil.getValueName(localData.getSftds())
+//      DictionaryUtil.getValueName(localData.getSftkd())
+        //todo 修改接口写好以后上传
     }
 
     @Override
@@ -125,38 +142,124 @@ public class TzjbxxPage extends BasePage {
         return getResources().getString(R.string.tz_jbxx);
     }
 
-//    @OnClick(R.id.jbxx_nrjcsr_view)
-//    public void onNrjcsrClick() {
-//        DialogManager.showEditTextDialog(getContext(),getContext().getString(R.string.tz_jbxx_nrjcsr), new DialogManager.IOnDialogFinished() {
-//            @Override
-//            public void returnData(String data) {
-//                if (!TextUtils.isEmpty(data)) {
-//                    nrjcsr.setText(data);
-//                    localData.setNrjcsr(data);
-//                }
-//            }
-//        });
-//    }
+    @OnClick(R.id.jbxx_sfwf)
+    public void onSfwfClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.tz_jbxx_sfwf),
+                new DialogManager.IOnDialogFinished() {
+            @Override
+            public void returnData(String data) {
+                sfwf.setText(data);
+                if (mContext.getString(R.string.no).equals(data)) {
+                    localData.setNrjcsr("0");
+                } else localData.setNrjcsr("1");
+            }
+        });
+    }
+
+    @OnClick(R.id.jbxx_sfts)
+    public void onSftsClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.tz_jbxx_sfts),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        sfts.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setNrjcsr("0");
+                        } else localData.setNrjcsr("1");
+                    }
+                });
+    }
+
+    @OnClick(R.id.jbxx_sftd)
+    public void onSftdClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.tz_jbxx_sftd),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        sftd.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setNrjcsr("0");
+                        } else localData.setNrjcsr("1");
+                    }
+                });
+    }
+
+    @OnClick(R.id.jbxx_sftl)
+    public void onSftlClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.tz_jbxx_sftl),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        sftl.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setNrjcsr("0");
+                        } else localData.setNrjcsr("1");
+                    }
+                });
+    }
+
+    @OnClick(R.id.jbxx_sftx)
+    public void onSftxClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.tz_jbxx_sftx),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        sftx.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setNrjcsr("0");
+                        } else localData.setNrjcsr("1");
+                    }
+                });
+    }
+
+    @OnClick(R.id.jbxx_sftds)
+    public void onSftdsClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.tz_jbxx_sftds),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        sftds.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setNrjcsr("0");
+                        } else localData.setNrjcsr("1");
+                    }
+                });
+    }
+
+    @OnClick(R.id.jbxx_sftkd)
+    public void onSftkdClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.tz_jbxx_sftkd),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        sftkd.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setNrjcsr("0");
+                        } else localData.setNrjcsr("1");
+                    }
+                });
+    }
 
     private void initView() {
 
-        nrjcsr = (TextView) findViewById(R.id.jbxx_nrjcsr);
-        nsrhj = (TextView) findViewById(R.id.jbxx_nsrhj);
-        nzchj = (TextView) findViewById(R.id.jbxx_nzchj);
-        dkje = (TextView) findViewById(R.id.jbxx_dkje);
-        zfjg = (TextView) findViewById(R.id.jbxx_zfjg);
-        zfmj = (TextView) findViewById(R.id.jbxx_zfmj);
-        sfwf = (TextView) findViewById(R.id.jbxx_sfwf);
-        gdtian = (TextView) findViewById(R.id.jbxx_gdtian);
-        gdtu = (TextView) findViewById(R.id.jbxx_gdtu);
-        gdldm = (TextView) findViewById(R.id.jbxx_gdldm);
-        gdhjm = (TextView) findViewById(R.id.jbxx_gdhjm);
-        sfts = (TextView) findViewById(R.id.jbxx_sfts);
-        sftd = (TextView) findViewById(R.id.jbxx_sftd);
-        sftl = (TextView) findViewById(R.id.jbxx_sftl);
-        sftx = (TextView) findViewById(R.id.jbxx_sftx);
-        sftds = (TextView) findViewById(R.id.jbxx_sftds);
-        sftkd = (TextView) findViewById(R.id.jbxx_sftkd);
+        nrjcsr = (EditText) findViewById(R.id.jbxx_nrjcsr);
+        nsrhj = (EditText) findViewById(R.id.jbxx_nsrhj);
+        nzchj = (EditText) findViewById(R.id.jbxx_nzchj);
+        dkje = (EditText) findViewById(R.id.jbxx_dkje);
+        zfjg = (EditText) findViewById(R.id.jbxx_zfjg);
+        zfmj = (EditText) findViewById(R.id.jbxx_zfmj);
+        gdtian = (EditText) findViewById(R.id.jbxx_gdtian);
+        gdtu = (EditText) findViewById(R.id.jbxx_gdtu);
+        gdldm = (EditText) findViewById(R.id.jbxx_gdldm);
+        gdhjm = (EditText) findViewById(R.id.jbxx_gdhjm);
+        // yes or no
+        sfwf = (EditText) findViewById(R.id.jbxx_sfwf);
+        sfts = (EditText) findViewById(R.id.jbxx_sfts);
+        sftd = (EditText) findViewById(R.id.jbxx_sftd);
+        sftl = (EditText) findViewById(R.id.jbxx_sftl);
+        sftx = (EditText) findViewById(R.id.jbxx_sftx);
+        sftds = (EditText) findViewById(R.id.jbxx_sftds);
+        sftkd = (EditText) findViewById(R.id.jbxx_sftkd);
         mHasData = false;
     }
 

@@ -3,6 +3,8 @@
     <string name="app_name">数字农村</string>
     <!--公共模块-->
     <string name="dialog_loading">请稍后&#8230;</string>
+    <string name="no">否</string>
+    <string name="yes">是</string>
     <string name="back_pressed">再按一次退出程序</string>
     <string name="username_empyt">用户名不能为空</string>
     <string name="password_empyt">密码不能为空</string>

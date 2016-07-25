@@ -212,7 +212,7 @@
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
-                    android:focusable="true"/>
+                    android:focusable="false"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -357,7 +357,7 @@
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
-                    android:focusable="true"/>
+                    android:focusable="false"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -386,7 +386,7 @@
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
-                    android:focusable="true"/>
+                    android:focusable="false"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -415,7 +415,7 @@
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
-                    android:focusable="true"/>
+                    android:focusable="false"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -444,7 +444,7 @@
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
-                    android:focusable="true"/>
+                    android:focusable="false"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -473,7 +473,7 @@
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
-                    android:focusable="true"/>
+                    android:focusable="false"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -502,7 +502,7 @@
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
                     android:background="@drawable/edit_text_backgroud"
-                    android:focusable="true"/>
+                    android:focusable="false"/>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
