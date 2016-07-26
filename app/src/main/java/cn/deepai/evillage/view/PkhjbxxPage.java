@@ -20,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 贫困户基本信息
  */
-public class JbxxPage extends BasePage {
+public class PkhjbxxPage extends BasePage {
 
     // 户主姓名
     private EditText hzxm;
@@ -45,15 +45,15 @@ public class JbxxPage extends BasePage {
     // 脱贫年份
     private EditText tpnf;
 
-    public JbxxPage(Context context) {
+    public PkhjbxxPage(Context context) {
         this(context, null);
     }
 
-    public JbxxPage(Context context, AttributeSet attrs) {
+    public PkhjbxxPage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public JbxxPage(Context context, AttributeSet attrs, int defStyle) {
+    public PkhjbxxPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_pkhjbxx, this);
         initView();

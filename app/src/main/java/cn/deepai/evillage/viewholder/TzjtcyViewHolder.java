@@ -2,13 +2,17 @@ package cn.deepai.evillage.viewholder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.TzjtcyBean;
+import cn.deepai.evillage.model.event.TzjtcyClickEvent;
 import cn.deepai.evillage.utils.DictionaryUtil;
+import cn.deepai.evillage.utils.LogUtil;
+import de.greenrobot.event.EventBus;
 
 /**
  * 台账家庭成员
@@ -31,8 +35,11 @@ public class TzjtcyViewHolder extends BaseViewHolder {
                 inflate(R.layout.item_tzjtcy, parent, false));
         mContext = parent.getContext();
         xm = (EditText) itemView.findViewById(R.id.jtcy_xm);
+        xm.setOnClickListener(this);
         xb = (EditText) itemView.findViewById(R.id.jtcy_xb);
+        xb.setOnClickListener(this);
         yhzgx = (EditText) itemView.findViewById(R.id.jtcy_yhzgx);
+        yhzgx.setOnClickListener(this);
         jkqk = (EditText) itemView.findViewById(R.id.jtcy_jkqk);
         whcd = (EditText) itemView.findViewById(R.id.jtcy_whcd);
         zy = (EditText) itemView.findViewById(R.id.jtcy_zy);
@@ -48,5 +55,15 @@ public class TzjtcyViewHolder extends BaseViewHolder {
         whcd.setText(DictionaryUtil.getValueName("WHCD",tzjtcyBean.getJkqk()));
         zy.setText(tzjtcyBean.getZy());
         zwjn.setText(tzjtcyBean.getZwjn());
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        TzjtcyClickEvent event = new TzjtcyClickEvent();
+        event.cyId = mPkhjtcyBean.getId();
+        event.viewId = v.getId();
+        EventBus.getDefault().post(event);
+        LogUtil.d(TzjtcyViewHolder.class,v.toString()+" is onClick");
     }
 }

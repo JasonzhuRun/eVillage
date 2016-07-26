@@ -37,7 +37,7 @@ import cn.deepai.evillage.view.JdSzqkPage;
 import cn.deepai.evillage.view.JdZfqkPage;
 import cn.deepai.evillage.view.BasePage;
 import cn.deepai.evillage.view.PkhcyhPage;
-import cn.deepai.evillage.view.JbxxPage;
+import cn.deepai.evillage.view.PkhjbxxPage;
 import cn.deepai.evillage.view.PkhjtcyPage;
 import cn.deepai.evillage.view.PkhjtqkzpPage;
 import cn.deepai.evillage.view.PkhsctjPage;
@@ -175,7 +175,7 @@ public class PkhxqActivity extends BaseActivity {
             viewContainter.add(new JdCyhPage(this));
             viewContainter.add(new JdJtqkzpPage(this));
         } else {
-            viewContainter.add(new JbxxPage(this));
+            viewContainter.add(new PkhjbxxPage(this));
             viewContainter.add(new PkhjtcyPage(this));
             viewContainter.add(new PkhszqkPage(this));
             viewContainter.add(new PkhzfqkPage(this));

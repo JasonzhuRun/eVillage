@@ -12,10 +12,14 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzjtcyRecyclerAdapter;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.bean.TzjbxxBean;
+import cn.deepai.evillage.model.bean.TzjtcyBean;
 import cn.deepai.evillage.model.bean.TzjtcyList;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -30,7 +34,7 @@ public class TzjtcyPage extends BasePage {
 
     private String tzId;
     private String tznd;
-
+    private List<TzjtcyBean> mTzjtcyList;
     private TzjtcyRecyclerAdapter mTzjtcyRecyclerAdapter;
 
     public TzjtcyPage(Context context) {
@@ -66,6 +70,7 @@ public class TzjtcyPage extends BasePage {
     @SuppressWarnings("all")
     public void onEventMainThread(TzjtcyList event) {
         if (isSelected()) {
+            this.mTzjtcyList = event.list;
             mTzjtcyRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
         }
