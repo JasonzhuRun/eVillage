@@ -50,7 +50,6 @@ public class TzxqActivity extends BaseActivity {
 
     @OnClick(R.id.detail_save)
     public void onSaveBtnClick(){
-        //todo 上传上传列表中的所有内容
         EventBus.getDefault().post(new TzDataSaveEvent());
     }
 

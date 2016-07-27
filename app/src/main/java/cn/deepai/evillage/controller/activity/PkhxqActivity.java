@@ -24,6 +24,7 @@ import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.ToastUtil;
@@ -62,8 +63,7 @@ public class PkhxqActivity extends BaseActivity {
 
     @OnClick(R.id.detail_save)
     public void onSaveBtnClick(){
-        //todo 上传上传列表中的所有内容
-
+        EventBus.getDefault().post(new JdDataSaveEvent());
     }
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {

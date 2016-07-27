@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.deepai.evillage.EVApplication;
+import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.DictionaryDomainBean;
 import cn.deepai.evillage.model.bean.DictionaryValueBean;
 
@@ -62,9 +63,9 @@ public class DictionaryUtil {
         if (null == valueCode) return null;
         switch (valueCode) {
             case "0":
-                return "否";
+                return EVApplication.getApplication().getString(R.string.no);
             case "1":
-                return "是";
+                return EVApplication.getApplication().getString(R.string.yes);
             default:
                 return valueCode;
         }

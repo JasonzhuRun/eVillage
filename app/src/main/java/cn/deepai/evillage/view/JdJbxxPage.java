@@ -7,10 +7,16 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.bean.TzjbxxBean;
+import cn.deepai.evillage.model.event.JdDataSaveEvent;
+import cn.deepai.evillage.model.event.TzDataSaveEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -22,6 +28,8 @@ import de.greenrobot.event.EventBus;
  */
 public class JdJbxxPage extends BasePage {
 
+    private PkhjbxxBean serverData;
+    private PkhjbxxBean localData;
     // 户主姓名
     private EditText hzxm;
     // 居住地址
@@ -56,6 +64,7 @@ public class JdJbxxPage extends BasePage {
     public JdJbxxPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_jdjbxx, this);
+        ButterKnife.bind(this);
         initView();
     }
 
@@ -74,6 +83,73 @@ public class JdJbxxPage extends BasePage {
         if (isSelected()) {
             bindData(event);
         }
+    }
+    // 点击保存按钮
+    @SuppressWarnings("all")
+    public void onEventMainThread(JdDataSaveEvent event) {
+        localData.setHzxm(hzxm.getText().toString());
+        localData.setJzdz(jzdz.getText().toString());
+        localData.setLxdh(lxdh.getText().toString());
+        localData.setHzsfz(hzsfz.getText().toString());
+        localData.setHkhyx(hkhyx.getText().toString());
+        localData.setYxzh(yxzh.getText().toString());
+        localData.setPkhzt(pkhzt.getText().toString());
+        localData.setTpnf(tpnf.getText().toString());
+        // 选择项在选择时已经赋过值
+//        // 计划生育户
+//        jhsyh.setText(DictionaryUtil.getValueName(pkhjbxxBean.getJhsyh()));
+//        sbbz.setText(DictionaryUtil.getValueName("PKBZ",pkhjbxxBean.getPksbbz()));
+//        pkhsx.setText(DictionaryUtil.getValueName("PKHSX",pkhjbxxBean.getPkhsx()));
+    }
+    @OnClick(R.id.jbxx_jhsyh)
+    public void onJhsyhClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_jhsyh),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        jhsyh.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setJhsyh("0");
+                        } else localData.setJhsyh("1");
+                    }
+                });
+    }
+
+    @OnClick(R.id.jbxx_pkhsx)
+    public void onPkhsxClick() {
+        final String[] values = new String[]{
+                DictionaryUtil.getValueName("PKHSX","1"),
+                DictionaryUtil.getValueName("PKHSX","2"),
+                DictionaryUtil.getValueName("PKHSX","3"),
+                DictionaryUtil.getValueName("PKHSX","4")
+        };
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_pkhsx),
+                values,
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        pkhsx.setText(data);
+                        localData.setPkhsx("1");
+                        for (int i = 0;i < 4;i++) {
+                            if (data.equals(values[i])) localData.setPkhsx(String.valueOf(i+1));
+                        }
+                    }
+                });
+    }
+
+    @OnClick(R.id.jbxx_sbbz)
+    public void onSbbzClick() {
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_sbbz),
+                new String[]{mContext.getString(R.string.pkh_jbxx_sbbz_gjbz),mContext.getString(R.string.pkh_jbxx_sbbz_sdbz)},
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        sbbz.setText(data);
+                        if (mContext.getString(R.string.pkh_jbxx_sbbz_gjbz).equals(data)) {
+                            localData.setPksbbz("G");
+                        } else localData.setPksbbz("S");
+                    }
+                });
     }
 
     @Override
@@ -99,6 +175,9 @@ public class JdJbxxPage extends BasePage {
     }
 
     private void bindData(PkhjbxxBean pkhjbxxBean) {
+        // todo 如果做对比优化这里应该加深度拷贝
+        this.localData = pkhjbxxBean;
+        this.serverData = pkhjbxxBean;
         hzxm.setText(pkhjbxxBean.getHzxm());
         // 地址
         jzdz.setText(pkhjbxxBean.getJzdz());
