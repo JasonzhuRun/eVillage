@@ -83,7 +83,7 @@ public class JdJtcyPage extends BasePage {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_pkh_jtcy);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mPkhjtcyRecyclerAdapter = new PkhjtcyRecyclerAdapter();
+        mPkhjtcyRecyclerAdapter = new PkhjtcyRecyclerAdapter(true);
         recyclerView.setAdapter(mPkhjtcyRecyclerAdapter);
         mHasData = false;
     }

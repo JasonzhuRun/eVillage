@@ -6,7 +6,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.deepai.evillage.model.bean.ItemType;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
+import cn.deepai.evillage.viewholder.BaseViewHolder;
 import cn.deepai.evillage.viewholder.PkhjtcyViewHolder;
 
 /**
@@ -15,6 +17,16 @@ import cn.deepai.evillage.viewholder.PkhjtcyViewHolder;
 public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
 
     private List<PkhjtcyBean> mPkhjtcyBeans = new ArrayList<>();
+    private boolean mEditable;
+
+    public PkhjtcyRecyclerAdapter() {
+        this(false);
+    }
+
+    public PkhjtcyRecyclerAdapter(boolean editable) {
+        super();
+        this.mEditable = editable;
+    }
 
     public void notifyResult(boolean isFirstPage, List<PkhjtcyBean> pkhjtcyBean) {
         if (isFirstPage) {
@@ -26,7 +38,6 @@ public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public PkhjtcyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         return new PkhjtcyViewHolder(parent,viewType);
     }
 
@@ -39,12 +50,14 @@ public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return mPkhjtcyBeans == null?0: mPkhjtcyBeans.size();
+        int itemCount = mPkhjtcyBeans == null?0: mPkhjtcyBeans.size();
+        if (mEditable) itemCount++;
+        return itemCount;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        if (mEditable&&position == 0) return ItemType.ADD_MORE;
+        return ItemType.NORMAL;
     }
-
 }

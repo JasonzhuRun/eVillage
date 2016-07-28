@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhjtcyActivity;
+import cn.deepai.evillage.model.bean.ItemType;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
 import cn.deepai.evillage.utils.DictionaryUtil;
 
@@ -21,25 +22,21 @@ public class PkhjtcyViewHolder extends BaseViewHolder {
     private Context mContext;
     private PkhjtcyBean mPkhjtcyBean;
     private TextView xm;
-//    private TextView xb;
-//    private TextView id;
     private TextView gx;
 
     public PkhjtcyViewHolder(ViewGroup parent, int viewType) {
         super(LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.item_pkhjtcy,parent,false));
+                inflate(viewType == ItemType.ADD_MORE?R.layout.item_add_more:R.layout.item_pkhjtcy,parent,false));
+        if (viewType == ItemType.NORMAL) {
+            xm = (TextView)itemView.findViewById(R.id.item_pkhjtcy_xm);
+            gx = (TextView)itemView.findViewById(R.id.item_pkhjtcy_gx);
+        }
         mContext = parent.getContext();
-        xm = (TextView)itemView.findViewById(R.id.item_pkhjtcy_xm);
-//        xb = (TextView)itemView.findViewById(R.id.item_pkhjtcy_xb);
-//        id = (TextView)itemView.findViewById(R.id.item_pkhjtcy_id);
-        gx = (TextView)itemView.findViewById(R.id.item_pkhjtcy_gx);
     }
 
     public void onBindData(PkhjtcyBean pkhjtcyBean) {
         this.mPkhjtcyBean = pkhjtcyBean;
         xm.setText(pkhjtcyBean.getXm());
-//        xb.setText(pkhjtcyBean.getXb());
-//        id.setText(pkhjtcyBean.getSfzhm());
         gx.setText(DictionaryUtil.getValueName("YHZGX",pkhjtcyBean.getYhzgx()));
     }
 
