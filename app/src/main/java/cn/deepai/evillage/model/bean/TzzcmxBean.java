@@ -5,15 +5,27 @@ package cn.deepai.evillage.model.bean;
  */
 public class TzzcmxBean {
 
-    private String xmmc;
+    // 唯一标识收支项目
+    private String id;
+    // 通过tzid找到收支列表
     private String tzid;
+    // 数据字典
     private String szxmid;
+    private String xmmc;
     private String zcyf;
     private String dkyt;
     private String zcjey;
     private String jlsj;
     private String jlr;
     private String bz;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getXmmc() {
         return xmmc;

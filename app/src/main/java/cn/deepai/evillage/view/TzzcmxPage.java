@@ -12,14 +12,15 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.adapter.TzjtcyRecyclerAdapter;
 import cn.deepai.evillage.adapter.TzzcmxRecyclerAdapter;
-import cn.deepai.evillage.model.bean.PkhRequestBean;
+import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.bean.TzjbxxBean;
+import cn.deepai.evillage.model.bean.TzsrmxBean;
+import cn.deepai.evillage.model.bean.TzzcmxBean;
 import cn.deepai.evillage.model.bean.TzzcmxList;
-import cn.deepai.evillage.model.event.TzsrmxClickEvent;
 import cn.deepai.evillage.model.event.TzzcmxClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -35,6 +36,7 @@ public class TzzcmxPage extends BasePage {
 
     private String tzId;
     private String tznd;
+    private List<TzzcmxBean> mTzzcmxList;
     private TzzcmxRecyclerAdapter mTzzcmxRecyclerAdapter;
     public TzzcmxPage(Context context) {
         this(context, null, null, null);
@@ -69,23 +71,72 @@ public class TzzcmxPage extends BasePage {
     @SuppressWarnings("all")
     public void onEventMainThread(TzzcmxList event) {
         if (isSelected()) {
+            this.mTzzcmxList = event.list;
             mTzzcmxRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
         }
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(TzzcmxClickEvent event) {
+    public void onEventMainThread(final TzzcmxClickEvent event) {
         if (isSelected()) {
             switch (event.viewId) {
                 case R.id.zcmx_xmmc:
-                    ToastUtil.shortToast("xmmc");
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_zcmx_xmmc)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzzcmxBean bean: mTzzcmxList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setXmmc(data);
+                                        }
+                                    }
+                                    mTzzcmxRecyclerAdapter.notifyResult(true, mTzzcmxList);
+                                }
+                            });
+                    break;
                 case R.id.zcmx_dkyt:
-                    ToastUtil.shortToast("dkyt");
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_zcmx_dkyt)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzzcmxBean bean: mTzzcmxList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setDkyt(data);
+                                        }
+                                    }
+                                    mTzzcmxRecyclerAdapter.notifyResult(true, mTzzcmxList);
+                                }
+                            });
+                    break;
                 case R.id.zcmx_zcyf:
-                    ToastUtil.shortToast("zcyf");
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_zcmx_zcyf)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzzcmxBean bean: mTzzcmxList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setZcyf(data);
+                                        }
+                                    }
+                                    mTzzcmxRecyclerAdapter.notifyResult(true, mTzzcmxList);
+                                }
+                            });
+                    break;
                 case R.id.zcmx_zcjey:
-                    ToastUtil.shortToast("zcjey");
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_zcmx_zcjey)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzzcmxBean bean: mTzzcmxList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setZcjey(data);
+                                        }
+                                    }
+                                    mTzzcmxRecyclerAdapter.notifyResult(true, mTzzcmxList);
+                                }
+                            });
+                    break;
             }
         }
     }

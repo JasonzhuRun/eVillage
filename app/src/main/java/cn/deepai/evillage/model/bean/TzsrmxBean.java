@@ -4,10 +4,12 @@ package cn.deepai.evillage.model.bean;
  * @author GaoYixuan
  */
 public class TzsrmxBean {
-
+    // 唯一标识收支项目
+    private String id;
+    // 通过tzid找到收支列表
     private String tzid;
-    private String xmid;
-    private String srxmid;
+    // 数据字典
+    private String szxmid;
     private String xmmc;
     private String xmgm;
     private String clgj;
@@ -32,20 +34,20 @@ public class TzsrmxBean {
         this.tzid = tzid;
     }
 
-    public String getXmid() {
-        return xmid;
+    public String getSzxmid() {
+        return szxmid;
     }
 
-    public void setXmid(String xmid) {
-        this.xmid = xmid;
+    public void setSzxmid(String szxmid) {
+        this.szxmid = szxmid;
     }
 
-    public String getSrxmid() {
-        return srxmid;
+    public String getId() {
+        return id;
     }
 
-    public void setSrxmid(String srxmid) {
-        this.srxmid = srxmid;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getXmgm() {

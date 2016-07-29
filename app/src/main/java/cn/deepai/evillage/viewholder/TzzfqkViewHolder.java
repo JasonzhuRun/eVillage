@@ -63,7 +63,7 @@ public class TzzfqkViewHolder extends BaseViewHolder {
     public void onClick(View v) {
         super.onClick(v);
         TzjtcyClickEvent event = new TzjtcyClickEvent();
-        event.cyId = mTzzfqkBean.getXmid();
+        event.id = mTzzfqkBean.getId();
         event.viewId = v.getId();
         EventBus.getDefault().post(event);
         LogUtil.d(TzzfqkViewHolder.class,v.toString()+" is onClick");

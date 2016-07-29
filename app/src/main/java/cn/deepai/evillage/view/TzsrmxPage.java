@@ -6,21 +6,20 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.EditText;
 
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.adapter.TzjtcyRecyclerAdapter;
 import cn.deepai.evillage.adapter.TzsrmxRecyclerAdapter;
-import cn.deepai.evillage.model.bean.PkhRequestBean;
+import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.bean.TzjbxxBean;
+import cn.deepai.evillage.model.bean.TzsrmxBean;
 import cn.deepai.evillage.model.bean.TzsrmxList;
-import cn.deepai.evillage.model.event.TzjtcyClickEvent;
 import cn.deepai.evillage.model.event.TzsrmxClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -36,6 +35,7 @@ public class TzsrmxPage extends BasePage {
 
     private String tzId;
     private String tznd;
+    private List<TzsrmxBean> mTzsrmxList;
     private TzsrmxRecyclerAdapter mTzsrmxRecyclerAdapter;
 
     public TzsrmxPage(Context context) {
@@ -71,23 +71,72 @@ public class TzsrmxPage extends BasePage {
     @SuppressWarnings("all")
     public void onEventMainThread(TzsrmxList event) {
         if (isSelected()) {
+            this.mTzsrmxList = event.list;
             mTzsrmxRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
         }
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(TzsrmxClickEvent event) {
+    public void onEventMainThread(final TzsrmxClickEvent event) {
         if (isSelected()) {
             switch (event.viewId) {
                 case R.id.srmx_xmmc:
-                    ToastUtil.shortToast("xmmc");
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_srmx_xmmc)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzsrmxBean bean:mTzsrmxList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setXmmc(data);
+                                        }
+                                    }
+                                    mTzsrmxRecyclerAdapter.notifyResult(true, mTzsrmxList);
+                                }
+                            });
+                    break;
                 case R.id.srmx_xmgm:
-                    ToastUtil.shortToast("xmgm");
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_srmx_xmgm)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzsrmxBean bean:mTzsrmxList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setXmgm(data);
+                                        }
+                                    }
+                                    mTzsrmxRecyclerAdapter.notifyResult(true, mTzsrmxList);
+                                }
+                            });
+                    break;
                 case R.id.srmx_clgj:
-                    ToastUtil.shortToast("clgj");
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_srmx_clgj)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzsrmxBean bean:mTzsrmxList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setClgj(data);
+                                        }
+                                    }
+                                    mTzsrmxRecyclerAdapter.notifyResult(true, mTzsrmxList);
+                                }
+                            });
+                    break;
                 case R.id.srmx_nsry:
-                    ToastUtil.shortToast("nsry");
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_srmx_nsry)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzsrmxBean bean:mTzsrmxList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setNsry(data);
+                                        }
+                                    }
+                                    mTzsrmxRecyclerAdapter.notifyResult(true, mTzsrmxList);
+                                }
+                            });
+                    break;
             }
         }
     }

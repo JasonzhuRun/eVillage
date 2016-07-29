@@ -54,6 +54,7 @@ public class TzsrmxViewHolder extends BaseViewHolder {
         super.onClick(v);
         TzsrmxClickEvent event = new TzsrmxClickEvent();
         event.viewId = v.getId();
+        event.id = mTzsrmxBean.getId();
         EventBus.getDefault().post(event);
         LogUtil.d(TzsrmxViewHolder.class,v.toString()+" is onClick");
     }

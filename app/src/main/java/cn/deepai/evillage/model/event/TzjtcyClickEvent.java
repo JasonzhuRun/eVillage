@@ -6,5 +6,5 @@ package cn.deepai.evillage.model.event;
 
 public class TzjtcyClickEvent {
     public int viewId;
-    public String cyId;
+    public String id;
 }
