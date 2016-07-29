@@ -56,15 +56,20 @@ public class Action {
     public static final Action ACTION_GET_TZLIST = new Action("termPkhGztz!getPkhGztzList.action",Type.downstream);
     public static final Action ACTION_ADD_TZ = new Action("termPkhGztz!addPkhGztz.action",Type.upstream);
     public static final Action ACTION_GET_TZJBXX = new Action("termPkhGztz!getPkhGztzJbxx.action",Type.downstream);
+    public static final Action ACTION_UPDATE_TZJBXX = new Action("termPkhGztz!updatePkhGztzJbxx.action",Type.upstream);
     public static final Action ACTION_GET_TZJTCYLIST = new Action("termPkhGztz!getPkhGztzJtcyList.action",Type.downstream);
+    public static final Action ACTION_UPDATE_TZJTCY = new Action("termPkhGztz!updatePkhGztzJtcy.action",Type.downstream);
     public static final Action ACTION_GET_TZSRMX = new Action("termPkhGztz!getPkhGztzSrmx.action",Type.downstream);
     public static final Action ACTION_ADD_TZSRMX = new Action("termPkhGztz!addPkhGztzSrmx.action",Type.upstream);
+    public static final Action ACTION_UPDATE_TZSRMX = new Action("termPkhGztz!updatePkhGztzSrmx.action",Type.upstream);
     public static final Action ACTION_GET_TZZCMX = new Action("termPkhGztz!getPkhGztzZcmx.action",Type.downstream);
     public static final Action ACTION_ADD_TZZCMX = new Action("termPkhGztz!addPkhGztzZcmx.action",Type.upstream);
+    public static final Action ACTION_UPDATE_TZZCMX = new Action("termPkhGztz!updatePkhGztzZcmx.action",Type.upstream);
     public static final Action ACTION_GET_TZBFJHLIST = new Action("termPkhGztz!getPkhGztzBfjhList.action",Type.downstream);
     public static final Action ACTION_GET_TZJHLSLIST = new Action("termPkhGztz!getPkhGztzJhlsList.action",Type.downstream);
     public static final Action ACTION_ADD_TZZFQK = new Action("termPkhGztz!addPkhGztzZfqk.action",Type.upstream);
     public static final Action ACTION_UPDATE_TZZFQK = new Action("termPkhGztz!updatePkhGztzZfqk.action",Type.upstream);
+
     // 资讯
 
     private String name;
