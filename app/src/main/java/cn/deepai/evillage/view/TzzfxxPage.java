@@ -18,10 +18,13 @@ import cn.deepai.evillage.adapter.TzzfqkRecyclerAdapter;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzzfqkList;
+import cn.deepai.evillage.model.event.TzsrmxClickEvent;
+import cn.deepai.evillage.model.event.TzzfqkClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -68,6 +71,28 @@ public class TzzfxxPage extends BasePage {
         if (isSelected()) {
             mTzzfqkRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
+        }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(TzzfqkClickEvent event) {
+        if (isSelected()) {
+            switch (event.viewId) {
+                case R.id.jtcy_xm:
+                    ToastUtil.shortToast("xm");
+                case R.id.jtcy_xb:
+                    ToastUtil.shortToast("xb");
+                case R.id.jtcy_yhzgx:
+                    ToastUtil.shortToast("yhzgx");
+                case R.id.jtcy_jkqk:
+                    ToastUtil.shortToast("jkqk");
+                case R.id.jtcy_whcd:
+                    ToastUtil.shortToast("whcd");
+                case R.id.jtcy_zy:
+                    ToastUtil.shortToast("zy");
+                case R.id.jtcy_zwjn:
+                    ToastUtil.shortToast("zwjn");
+            }
         }
     }
 

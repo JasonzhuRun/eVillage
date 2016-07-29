@@ -41,9 +41,13 @@ public class TzjtcyViewHolder extends BaseViewHolder {
         yhzgx = (EditText) itemView.findViewById(R.id.jtcy_yhzgx);
         yhzgx.setOnClickListener(this);
         jkqk = (EditText) itemView.findViewById(R.id.jtcy_jkqk);
+        jkqk.setOnClickListener(this);
         whcd = (EditText) itemView.findViewById(R.id.jtcy_whcd);
+        whcd.setOnClickListener(this);
         zy = (EditText) itemView.findViewById(R.id.jtcy_zy);
+        zy.setOnClickListener(this);
         zwjn = (EditText) itemView.findViewById(R.id.jtcy_zwjn);
+        zwjn.setOnClickListener(this);
     }
 
     public void onBindData(TzjtcyBean tzjtcyBean) {

@@ -19,10 +19,13 @@ import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.model.bean.TzzcmxList;
+import cn.deepai.evillage.model.event.TzsrmxClickEvent;
+import cn.deepai.evillage.model.event.TzzcmxClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -68,6 +71,22 @@ public class TzzcmxPage extends BasePage {
         if (isSelected()) {
             mTzzcmxRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
+        }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(TzzcmxClickEvent event) {
+        if (isSelected()) {
+            switch (event.viewId) {
+                case R.id.zcmx_xmmc:
+                    ToastUtil.shortToast("xmmc");
+                case R.id.zcmx_dkyt:
+                    ToastUtil.shortToast("dkyt");
+                case R.id.zcmx_zcyf:
+                    ToastUtil.shortToast("zcyf");
+                case R.id.zcmx_zcjey:
+                    ToastUtil.shortToast("zcjey");
+            }
         }
     }
 

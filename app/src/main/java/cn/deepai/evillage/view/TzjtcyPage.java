@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.EditText;
 
 import com.google.gson.Gson;
 
@@ -16,15 +17,19 @@ import java.util.List;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzjtcyRecyclerAdapter;
+import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.model.bean.TzjtcyBean;
 import cn.deepai.evillage.model.bean.TzjtcyList;
+import cn.deepai.evillage.model.event.TzjtcyClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
+import cn.deepai.evillage.utils.DictionaryUtil;
 import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -73,6 +78,140 @@ public class TzjtcyPage extends BasePage {
             this.mTzjtcyList = event.list;
             mTzjtcyRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
+        }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(final TzjtcyClickEvent event) {
+        if (isSelected()) {
+            switch (event.viewId) {
+                case R.id.jtcy_xm:
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_xm)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzjtcyBean bean:mTzjtcyList) {
+                                        if (event.cyId.equals(bean.getId())) {
+                                            bean.setXm(data);
+                                        }
+                                    }
+                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+                                }
+                            });
+                    break;
+                case R.id.jtcy_xb:
+                    final String[] xbValues = new String[]{
+                            DictionaryUtil.getValueName("COMMON.GENDER","M"),
+                            DictionaryUtil.getValueName("COMMON.GENDER","F")
+                    };
+                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_xb),
+                            xbValues, new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzjtcyBean bean:mTzjtcyList) {
+                                        if (event.cyId.equals(bean.getId())) {
+                                            bean.setXb(data.equals(xbValues[0])?"M":"F");
+                                        }
+                                    }
+                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+                                }
+                            });
+                    break;
+                case R.id.jtcy_yhzgx:
+                    final String[] gxValues = new String[21];
+                    for (int i = 0;i < 21;i++) {
+                        gxValues[i] = DictionaryUtil.getValueName("YHZGX",String.valueOf(i+1));
+                    }
+                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_yhzgx),
+                            gxValues, new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzjtcyBean bean:mTzjtcyList) {
+                                        if (event.cyId.equals(bean.getId())) {
+                                            for (int i = 0;i < 21;i++) {
+                                                if (data.equals(gxValues[i])) {
+                                                    bean.setYhzgx(String.valueOf(i+1));
+                                                }
+                                            }
+                                        }
+                                    }
+                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+                                }
+                            });
+                    break;
+                case R.id.jtcy_jkqk:
+                    final String[] jkValues = new String[5];
+                    for (int i = 0;i < 5;i++) {
+                        jkValues[i] = DictionaryUtil.getValueName("JKQK",String.valueOf(i+1));
+                    }
+                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_jkqk),
+                            jkValues, new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzjtcyBean bean:mTzjtcyList) {
+                                        if (event.cyId.equals(bean.getId())) {
+                                            for (int i = 0;i < 5;i++) {
+                                                if (data.equals(jkValues[i])) {
+                                                    bean.setJkqk(String.valueOf(i+1));
+                                                }
+                                            }
+                                        }
+                                    }
+                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+                                }
+                            });
+                    break;
+                case R.id.jtcy_whcd:
+                    final String[] whValues = new String[10];
+                    for (int i = 0;i < 10;i++) {
+                        whValues[i] = DictionaryUtil.getValueName("WHCD",String.valueOf(i+1));
+                    }
+                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_whcd),
+                            whValues, new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzjtcyBean bean:mTzjtcyList) {
+                                        if (event.cyId.equals(bean.getId())) {
+                                            for (int i = 0;i < 10;i++) {
+                                                if (data.equals(whValues[i])) {
+                                                    bean.setWhcd(String.valueOf(i+1));
+                                                }
+                                            }
+                                        }
+                                    }
+                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+                                }
+                            });
+                    break;
+                case R.id.jtcy_zy:
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_zy)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzjtcyBean bean:mTzjtcyList) {
+                                        if (event.cyId.equals(bean.getId())) {
+                                            bean.setZy(data);
+                                        }
+                                    }
+                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+                                }
+                            });
+                    break;
+                case R.id.jtcy_zwjn:
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_zwjn)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzjtcyBean bean:mTzjtcyList) {
+                                        if (event.cyId.equals(bean.getId())) {
+                                            bean.setZwjn(data);
+                                        }
+                                    }
+                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+                                }
+                            });
+                    break;
+            }
         }
     }
 

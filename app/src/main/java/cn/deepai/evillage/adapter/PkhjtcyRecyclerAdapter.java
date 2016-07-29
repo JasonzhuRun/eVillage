@@ -17,7 +17,7 @@ import cn.deepai.evillage.viewholder.PkhjtcyViewHolder;
 public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
 
     private List<PkhjtcyBean> mPkhjtcyBeans = new ArrayList<>();
-    private boolean mEditable;
+    private boolean mEditable = false;
 
     public PkhjtcyRecyclerAdapter() {
         this(false);
@@ -25,7 +25,7 @@ public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
 
     public PkhjtcyRecyclerAdapter(boolean editable) {
         super();
-        this.mEditable = editable;
+//        this.mEditable = editable;
     }
 
     public void notifyResult(boolean isFirstPage, List<PkhjtcyBean> pkhjtcyBean) {

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.TzsrmxBean;
 import cn.deepai.evillage.model.event.TzjtcyClickEvent;
+import cn.deepai.evillage.model.event.TzsrmxClickEvent;
 import cn.deepai.evillage.utils.LogUtil;
 import de.greenrobot.event.EventBus;
 
@@ -30,9 +31,13 @@ public class TzsrmxViewHolder extends BaseViewHolder {
                 inflate(R.layout.item_tzsrmx, parent, false));
         mContext = parent.getContext();
         xmmc = (EditText) itemView.findViewById(R.id.srmx_xmmc);
+        xmmc.setOnClickListener(this);
         xmgm = (EditText) itemView.findViewById(R.id.srmx_xmgm);
+        xmgm.setOnClickListener(this);
         clgjxsn = (EditText) itemView.findViewById(R.id.srmx_clgj);
+        clgjxsn.setOnClickListener(this);
         nsry = (EditText) itemView.findViewById(R.id.srmx_nsry);
+        nsry.setOnClickListener(this);
     }
 
     public void onBindData(TzsrmxBean tzsrmxBean) {
@@ -47,10 +52,9 @@ public class TzsrmxViewHolder extends BaseViewHolder {
     @Override
     public void onClick(View v) {
         super.onClick(v);
-//        TzjtcyClickEvent event = new TzjtcyClickEvent();
-//        event.cyId = mTzsrmxBean.getId();
-//        event.viewId = v.getId();
-//        EventBus.getDefault().post(event);
+        TzsrmxClickEvent event = new TzsrmxClickEvent();
+        event.viewId = v.getId();
+        EventBus.getDefault().post(event);
         LogUtil.d(TzsrmxViewHolder.class,v.toString()+" is onClick");
     }
 }

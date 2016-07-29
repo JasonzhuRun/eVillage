@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.EditText;
 
 import com.google.gson.Gson;
 
@@ -19,10 +20,13 @@ import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.model.bean.TzsrmxList;
+import cn.deepai.evillage.model.event.TzjtcyClickEvent;
+import cn.deepai.evillage.model.event.TzsrmxClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -69,6 +73,22 @@ public class TzsrmxPage extends BasePage {
         if (isSelected()) {
             mTzsrmxRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
+        }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(TzsrmxClickEvent event) {
+        if (isSelected()) {
+            switch (event.viewId) {
+                case R.id.srmx_xmmc:
+                    ToastUtil.shortToast("xmmc");
+                case R.id.srmx_xmgm:
+                    ToastUtil.shortToast("xmgm");
+                case R.id.srmx_clgj:
+                    ToastUtil.shortToast("clgj");
+                case R.id.srmx_nsry:
+                    ToastUtil.shortToast("nsry");
+            }
         }
     }
 
