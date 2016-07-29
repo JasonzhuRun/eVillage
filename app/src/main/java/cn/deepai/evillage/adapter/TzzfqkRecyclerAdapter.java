@@ -6,8 +6,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.deepai.evillage.model.bean.ItemType;
 import cn.deepai.evillage.model.bean.TzzcmxBean;
 import cn.deepai.evillage.model.bean.TzzfqkBean;
+import cn.deepai.evillage.viewholder.AddMoreViewHolder;
+import cn.deepai.evillage.viewholder.BaseViewHolder;
 import cn.deepai.evillage.viewholder.TzzcmxViewHolder;
 import cn.deepai.evillage.viewholder.TzzfqkViewHolder;
 
@@ -27,26 +30,28 @@ public class TzzfqkRecyclerAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public TzzfqkViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        return new TzzfqkViewHolder(parent,viewType);
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == ItemType.ADD_MORE) return new AddMoreViewHolder(parent);
+        else return new TzzfqkViewHolder(parent,viewType);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TzzfqkViewHolder) {
-            ((TzzfqkViewHolder) holder).onBindData(mTzzfqkBeans.get(position));
+            ((TzzfqkViewHolder) holder).onBindData(mTzzfqkBeans.get(position - 1));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mTzzfqkBeans == null?0: mTzzfqkBeans.size();
+        int count = mTzzfqkBeans == null?0: mTzzfqkBeans.size();
+        return count + 1;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        if (position == 0) return ItemType.ADD_MORE;
+        return ItemType.NORMAL;
     }
 
 }

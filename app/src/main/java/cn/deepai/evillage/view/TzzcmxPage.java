@@ -18,7 +18,6 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzzcmxRecyclerAdapter;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.bean.TzsrmxBean;
 import cn.deepai.evillage.model.bean.TzzcmxBean;
 import cn.deepai.evillage.model.bean.TzzcmxList;
 import cn.deepai.evillage.model.event.TzzcmxClickEvent;
@@ -26,7 +25,6 @@ import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.LogUtil;
-import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -170,7 +168,7 @@ public class TzzcmxPage extends BasePage {
     }
 
     private void initView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_page);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mTzzcmxRecyclerAdapter = new TzzcmxRecyclerAdapter();

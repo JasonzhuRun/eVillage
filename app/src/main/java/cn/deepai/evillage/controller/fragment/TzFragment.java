@@ -9,26 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzRecyclerAdapter;
+import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
-import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.model.bean.TzjbxxList;
 import cn.deepai.evillage.model.event.PkhSelectedEvent;
-import cn.deepai.evillage.model.event.TzXjNdtzEvent;
+import cn.deepai.evillage.model.event.TzxjtzEvent;
 import cn.deepai.evillage.model.event.TzxgjgEvent;
-import cn.deepai.evillage.net.Action;
-import cn.deepai.evillage.net.EVRequest;
-import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.net.TzListRequest;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -71,15 +63,22 @@ public class TzFragment extends BaseFragment {
         loadData();
     }
     @SuppressWarnings("all")
-    public void onEventMainThread(TzXjNdtzEvent event) {
+    public void onEventMainThread(TzxjtzEvent event) {
         tryToShowProcessDialog();
-        String staffId = SettingManager.getInstance().getStaffId();
-        String hid = SettingManager.getCurrentPkh().getHid();
+        final String staffId = SettingManager.getInstance().getStaffId();
+        final String hid = SettingManager.getCurrentPkh().getHid();
         if (TextUtils.isEmpty(hid)) {
             ToastUtil.shortToast(getString(R.string.tz_none_hid));
             tryToHideProcessDialog();
         } else {
-            TzListRequest.request(staffId,hid,event.tznd);
+            DialogManager.showEditTextDialog(getContext(),getContext().getString(R.string.tz_new_ndtz_tip), new DialogManager.IOnDialogFinished() {
+                @Override
+                public void returnData(String data) {
+                    if (!TextUtils.isEmpty(data)) {
+                        TzListRequest.request(staffId,hid,data);
+                    }
+                }
+            });
         }
     }
 
@@ -101,8 +100,10 @@ public class TzFragment extends BaseFragment {
         String hid = SettingManager.getCurrentPkh().getHid();
         if (TextUtils.isEmpty(hid)) {
             ToastUtil.shortToast(getString(R.string.tz_none_hid));
+            mTzRecyclerAdapter.beMute(true);
             tryToHideProcessDialog();
         } else {
+            mTzRecyclerAdapter.beMute(false);
             TzListRequest.request(staffId,hid);
         }
     }
@@ -114,7 +115,7 @@ public class TzFragment extends BaseFragment {
 
     private void initView() {
         if (mRecyclerView == null) return;
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mTzRecyclerAdapter = new TzRecyclerAdapter();
         mRecyclerView.setAdapter(mTzRecyclerAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

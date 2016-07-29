@@ -9,6 +9,7 @@ import android.widget.EditText;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.TzzfqkBean;
 import cn.deepai.evillage.model.event.TzjtcyClickEvent;
+import cn.deepai.evillage.model.event.TzzfqkClickEvent;
 import cn.deepai.evillage.utils.LogUtil;
 import de.greenrobot.event.EventBus;
 
@@ -32,12 +33,12 @@ public class TzzfqkViewHolder extends BaseViewHolder {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_tzzfqk, parent, false));
         mContext = parent.getContext();
-//        xmmc = (EditText) itemView.findViewById(R.id.zfqk_xmmc);
-        xmmc.setOnClickListener(this);
-//        jhny = (EditText) itemView.findViewById(R.id.zfqk_jhny);
-        jhny.setOnClickListener(this);
-//        jhnr = (EditText) itemView.findViewById(R.id.zfqk_jhnr);
-        jhnr.setOnClickListener(this);
+        xmmc = (EditText) itemView.findViewById(R.id.zfqk_xmmc);
+//        xmmc.setOnClickListener(this);
+        jhny = (EditText) itemView.findViewById(R.id.zfqk_jhny);
+//        jhny.setOnClickListener(this);
+        jhnr = (EditText) itemView.findViewById(R.id.zfqk_jhnr);
+//        jhnr.setOnClickListener(this);
         zfsj = (EditText) itemView.findViewById(R.id.zfqk_zfsj);
         zfsj.setOnClickListener(this);
         lsqk = (EditText) itemView.findViewById(R.id.zfqk_lsqk);
@@ -62,7 +63,7 @@ public class TzzfqkViewHolder extends BaseViewHolder {
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        TzjtcyClickEvent event = new TzjtcyClickEvent();
+        TzzfqkClickEvent event = new TzzfqkClickEvent();
         event.id = mTzzfqkBean.getId();
         event.viewId = v.getId();
         EventBus.getDefault().post(event);

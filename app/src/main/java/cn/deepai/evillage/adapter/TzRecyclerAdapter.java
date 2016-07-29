@@ -6,7 +6,12 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.ItemType;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
+import cn.deepai.evillage.view.BasePage;
+import cn.deepai.evillage.viewholder.AddMoreViewHolder;
+import cn.deepai.evillage.viewholder.BaseViewHolder;
 import cn.deepai.evillage.viewholder.TzViewHolder;
 
 /**
@@ -14,10 +19,8 @@ import cn.deepai.evillage.viewholder.TzViewHolder;
  */
 public class TzRecyclerAdapter extends RecyclerView.Adapter {
 
-    public static final int ADD_MORE = 0;
-    public static final int CONTENT = 1;
     private List<TzjbxxBean> mTzjbxxList = new ArrayList<>();
-
+    private boolean isMute;
     public void notifyResult(boolean isFirstPage, List<TzjbxxBean> tzjbxxList) {
         if (isFirstPage) {
             mTzjbxxList.clear();
@@ -26,30 +29,33 @@ public class TzRecyclerAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    @Override
-    public TzViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public void beMute(boolean isMute) {
+        this.isMute = isMute;
+    }
 
-        return new TzViewHolder(parent,viewType);
+    @Override
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == ItemType.ADD_MORE) return new AddMoreViewHolder(parent);
+        return new TzViewHolder(parent);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
         if (holder instanceof TzViewHolder) {
-            if (mTzjbxxList == null||position == mTzjbxxList.size()) ((TzViewHolder) holder).onBindData(null);
-            else ((TzViewHolder) holder).onBindData(mTzjbxxList.get(position));
+            ((TzViewHolder) holder).onBindData(mTzjbxxList.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
+        if (isMute) return 0;
         return mTzjbxxList == null?1: mTzjbxxList.size()+1;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == mTzjbxxList.size()) return ADD_MORE;
-        else return CONTENT;
+        if (position == mTzjbxxList.size()) return ItemType.ADD_MORE;
+        else return ItemType.NORMAL;
     }
 
 }

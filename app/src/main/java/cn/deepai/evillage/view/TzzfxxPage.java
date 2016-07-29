@@ -12,19 +12,20 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.adapter.TzzcmxRecyclerAdapter;
 import cn.deepai.evillage.adapter.TzzfqkRecyclerAdapter;
+import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.bean.TzzfqkBean;
 import cn.deepai.evillage.model.bean.TzzfqkList;
-import cn.deepai.evillage.model.event.TzsrmxClickEvent;
 import cn.deepai.evillage.model.event.TzzfqkClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.LogUtil;
-import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -34,6 +35,7 @@ public class TzzfxxPage extends BasePage {
 
     private String tzId;
     private String tznd;
+    private List<TzzfqkBean> mTzzfqkList;
     private TzzfqkRecyclerAdapter mTzzfqkRecyclerAdapter;
 
     public TzzfxxPage(Context context) {
@@ -69,29 +71,72 @@ public class TzzfxxPage extends BasePage {
     @SuppressWarnings("all")
     public void onEventMainThread(TzzfqkList event) {
         if (isSelected()) {
+            this.mTzzfqkList = event.list;
             mTzzfqkRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
         }
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(TzzfqkClickEvent event) {
+    public void onEventMainThread(final TzzfqkClickEvent event) {
         if (isSelected()) {
             switch (event.viewId) {
-                case R.id.jtcy_xm:
-                    ToastUtil.shortToast("xm");
-                case R.id.jtcy_xb:
-                    ToastUtil.shortToast("xb");
-                case R.id.jtcy_yhzgx:
-                    ToastUtil.shortToast("yhzgx");
-                case R.id.jtcy_jkqk:
-                    ToastUtil.shortToast("jkqk");
-                case R.id.jtcy_whcd:
-                    ToastUtil.shortToast("whcd");
-                case R.id.jtcy_zy:
-                    ToastUtil.shortToast("zy");
-                case R.id.jtcy_zwjn:
-                    ToastUtil.shortToast("zwjn");
+                case R.id.zfqk_zfsj:
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_zfqk_zfsj)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzzfqkBean bean: mTzzfqkList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setZfsj(data);
+                                        }
+                                    }
+                                    mTzzfqkRecyclerAdapter.notifyResult(true, mTzzfqkList);
+                                }
+                            });
+                    break;
+                case R.id.zfqk_lsqk:
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_zfqk_lsqk)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzzfqkBean bean: mTzzfqkList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setLsqk(data);
+                                        }
+                                    }
+                                    mTzzfqkRecyclerAdapter.notifyResult(true, mTzzfqkList);
+                                }
+                            });
+                    break;
+                case R.id.zfqk_bfcx:
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_zfqk_bfcx)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzzfqkBean bean: mTzzfqkList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setBfcx(data);
+                                        }
+                                    }
+                                    mTzzfqkRecyclerAdapter.notifyResult(true, mTzzfqkList);
+                                }
+                            });
+                    break;
+                case R.id.zfqk_sfzsy:
+                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_zfqk_sfzsy)
+                            ,new DialogManager.IOnDialogFinished() {
+                                @Override
+                                public void returnData(String data) {
+                                    for (TzzfqkBean bean: mTzzfqkList) {
+                                        if (event.id.equals(bean.getId())) {
+                                            bean.setSfzsy(data);
+                                        }
+                                    }
+                                    mTzzfqkRecyclerAdapter.notifyResult(true, mTzzfqkList);
+                                }
+                            });
+                    break;
             }
         }
     }
@@ -128,7 +173,7 @@ public class TzzfxxPage extends BasePage {
     }
 
     private void initView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_page);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mTzzfqkRecyclerAdapter = new TzzfqkRecyclerAdapter();

@@ -10,7 +10,7 @@
         android:layout_height="1px"
         android:background="@color/cut_off_line"/>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/recyclerview_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

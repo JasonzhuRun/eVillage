@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhRecyclerAdapter;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxList;
+import cn.deepai.evillage.model.event.PkhSelectedEvent;
 import cn.deepai.evillage.net.PkhJbxxListRequest;
 import de.greenrobot.event.EventBus;
 
@@ -46,6 +48,9 @@ public class PkhFragment extends BaseFragment {
     @SuppressWarnings("all")
     public void onEventMainThread(PkhjbxxList event) {
         mPkhRecyclerAdapter.notifyResult(true, event.list);
+        if (event.list.size() > 0&& EVApplication.isDebug()) {
+            SettingManager.setCurrentPkh(event.list.get(0));
+        }
         tryToHideProcessDialog();
     }
 

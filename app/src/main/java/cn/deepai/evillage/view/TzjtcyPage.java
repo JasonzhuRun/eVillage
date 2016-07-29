@@ -6,13 +6,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.EditText;
 
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.deepai.evillage.R;
@@ -20,16 +20,15 @@ import cn.deepai.evillage.adapter.TzjtcyRecyclerAdapter;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.model.bean.TzjtcyBean;
 import cn.deepai.evillage.model.bean.TzjtcyList;
+import cn.deepai.evillage.model.event.PagexjItemEvent;
 import cn.deepai.evillage.model.event.TzjtcyClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.DictionaryUtil;
 import cn.deepai.evillage.utils.LogUtil;
-import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -41,6 +40,7 @@ public class TzjtcyPage extends BasePage {
     private String tznd;
     private List<TzjtcyBean> mTzjtcyList;
     private TzjtcyRecyclerAdapter mTzjtcyRecyclerAdapter;
+    private RecyclerView mRecyclerView;
 
     public TzjtcyPage(Context context) {
         this(context, null, null, null);
@@ -77,6 +77,17 @@ public class TzjtcyPage extends BasePage {
         if (isSelected()) {
             this.mTzjtcyList = event.list;
             mTzjtcyRecyclerAdapter.notifyResult(true, event.list);
+            mHasData = true;
+        }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PagexjItemEvent event) {
+        if (isSelected()) {
+            List<TzjtcyBean> itemList = new ArrayList<>();
+            itemList.add(new TzjtcyBean());
+            mTzjtcyRecyclerAdapter.notifyResult(false, itemList);
+            mRecyclerView.scrollToPosition(mTzjtcyRecyclerAdapter.getItemCount() - 1);
             mHasData = true;
         }
     }
@@ -247,11 +258,11 @@ public class TzjtcyPage extends BasePage {
     }
 
     private void initView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_page);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mTzjtcyRecyclerAdapter = new TzjtcyRecyclerAdapter();
-        recyclerView.setAdapter(mTzjtcyRecyclerAdapter);
+        mRecyclerView.setAdapter(mTzjtcyRecyclerAdapter);
         mHasData = false;
     }
 }

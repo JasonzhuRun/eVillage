@@ -6,7 +6,10 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.deepai.evillage.model.bean.ItemType;
 import cn.deepai.evillage.model.bean.TzjtcyBean;
+import cn.deepai.evillage.viewholder.AddMoreViewHolder;
+import cn.deepai.evillage.viewholder.BaseViewHolder;
 import cn.deepai.evillage.viewholder.TzjtcyViewHolder;
 
 /**
@@ -25,26 +28,28 @@ public class TzjtcyRecyclerAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public TzjtcyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        return new TzjtcyViewHolder(parent,viewType);
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == ItemType.ADD_MORE) return new AddMoreViewHolder(parent);
+        else return new TzjtcyViewHolder(parent,viewType);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TzjtcyViewHolder) {
-            ((TzjtcyViewHolder) holder).onBindData(mTzjtcyBeans.get(position));
+            ((TzjtcyViewHolder) holder).onBindData(mTzjtcyBeans.get(position - 1));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mTzjtcyBeans == null?0: mTzjtcyBeans.size();
+        int count = mTzjtcyBeans == null?0: mTzjtcyBeans.size();
+        return count + 1;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        if (position == 0) return ItemType.ADD_MORE;
+        return ItemType.NORMAL;
     }
 
 }
