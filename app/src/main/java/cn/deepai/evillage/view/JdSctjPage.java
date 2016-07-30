@@ -7,8 +7,10 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 
+import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
+import cn.deepai.evillage.model.bean.PkhcyhqkBean;
 import cn.deepai.evillage.model.bean.PkhsctjBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.event.JdDataSaveEvent;
@@ -21,6 +23,8 @@ import de.greenrobot.event.EventBus;
  * @author GaoYixuan
  */
 public class JdSctjPage extends BasePage {
+
+    private PkhsctjBean localData;
 
     private EditText tjnd;
     private EditText gdmj;
@@ -45,7 +49,9 @@ public class JdSctjPage extends BasePage {
 
     public JdSctjPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.page_pkhsctj, this);
+        LayoutInflater.from(context).inflate(R.layout.page_jdsctj, this);
+        ButterKnife.bind(this);
+        localData = new PkhsctjBean();
         initView();
     }
 
@@ -94,6 +100,7 @@ public class JdSctjPage extends BasePage {
     }
 
     private void bindData(PkhsctjBean pkhsctjBean) {
+        this.localData = pkhsctjBean;
         tjnd.setText(pkhsctjBean.getTjnd());
         gdmj.setText(pkhsctjBean.getGdmj());
         xyggdgdmj.setText(pkhsctjBean.getXyggdgdmj());

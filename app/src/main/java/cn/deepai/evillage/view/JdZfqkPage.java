@@ -7,7 +7,10 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhzfqkBean;
@@ -48,8 +51,69 @@ public class JdZfqkPage extends BasePage {
 
     public JdZfqkPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.page_pkhzfqk, this);
+        LayoutInflater.from(context).inflate(R.layout.page_jdzfqk, this);
+        ButterKnife.bind(this);
+        localData = new PkhzfqkBean();
         initView();
+    }
+
+    @OnClick(R.id.zfqk_fwjg_layout)
+    public void onFwzyjgClick() {
+        final String[] jgValues = new String[7];
+        for (int i = 0;i < 7;i++) {
+            jgValues[i] = DictionaryUtil.getValueName("FWJG",String.valueOf(i));
+        }
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_zfqk_fwjg),
+                jgValues,
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        fwzyjg.setText(data);
+                        for (int i = 0;i < 7;i++) {
+                            if (data.equals(jgValues[i])) {
+                                localData.setFwzyjg(String.valueOf(i));
+                            }
+                        }
+                    }
+                });
+    }
+
+    @OnClick(R.id.zfqk_sfwf_layout)
+    public void onSfwfClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_zfqk_sfwf),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        zyzfsfwf.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setZyzfsfwf("0");
+                        } else localData.setZyzfsfwf("1");
+                    }
+                });
+    }
+
+    @OnClick(R.id.zfqk_ydfpbqqk_layout)
+    public void onBqqkClick() {
+        final String[] bqValues = new String[]{
+                DictionaryUtil.getValueName("YDBQQK","Y"),
+                DictionaryUtil.getValueName("YDBQQK","X"),
+                DictionaryUtil.getValueName("YDBQQK","Q"),
+        };
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_zfqk_ydfpbqqk),
+                bqValues,
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        ydfpbqqk.setText(data);
+                        if (data.equals(bqValues[0])) {
+                                localData.setFwzyjg("Y");
+                        } else if (data.equals(bqValues[1])) {
+                            localData.setFwzyjg("X");
+                        } else if (data.equals(bqValues[2])) {
+                            localData.setFwzyjg("Q");
+                        }
+                    }
+                });
     }
 
     @Override
@@ -72,14 +136,8 @@ public class JdZfqkPage extends BasePage {
     // 点击保存按钮
     @SuppressWarnings("all")
     public void onEvent(JdDataSaveEvent event) {
-//        localData.setHzxm(hzxm.getText().toString());
-//        localData.setJzdz(jzdz.getText().toString());
-//        localData.setLxdh(lxdh.getText().toString());
-//        localData.setHzsfz(hzsfz.getText().toString());
-//        localData.setHkhyx(hkhyx.getText().toString());
-//        localData.setYxzh(yxzh.getText().toString());
-//        localData.setPkhzt(pkhzt.getText().toString());
-//        localData.setTpnf(tpnf.getText().toString());
+        localData.setZfmj(zfmj.getText().toString());
+        localData.setJfsj(jfsj.getText().toString());
     }
 
     @Override

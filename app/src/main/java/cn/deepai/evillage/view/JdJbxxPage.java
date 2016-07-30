@@ -65,6 +65,7 @@ public class JdJbxxPage extends BasePage {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_jdjbxx, this);
         ButterKnife.bind(this);
+        localData = new PkhjbxxBean();
         initView();
     }
 

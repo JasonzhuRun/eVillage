@@ -7,9 +7,11 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 
+import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhcyhqkBean;
+import cn.deepai.evillage.model.bean.PkhzfqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -21,6 +23,9 @@ import de.greenrobot.event.EventBus;
  * 参与产业化组织情况
  */
 public class JdCyhPage extends BasePage {
+
+    private PkhcyhqkBean serverData;
+    private PkhcyhqkBean localData;
 
     private EditText tjnd;
     private EditText cylx;
@@ -41,7 +46,9 @@ public class JdCyhPage extends BasePage {
 
     public JdCyhPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.page_pkhcyhqk, this);
+        LayoutInflater.from(context).inflate(R.layout.page_jdcyhqk, this);
+        ButterKnife.bind(this);
+        localData = new PkhcyhqkBean();
         initView();
     }
 
@@ -84,6 +91,7 @@ public class JdCyhPage extends BasePage {
     }
 
     private void bindData(PkhcyhqkBean pkhcyhqkBean) {
+        this.localData = pkhcyhqkBean;
         tjnd.setText(pkhcyhqkBean.getTjnd());
         cylx.setText(DictionaryUtil.getValueName("ZDCYLX",pkhcyhqkBean.getCylx()));
         cyzzlx.setText(DictionaryUtil.getValueName("CYZZLX",pkhcyhqkBean.getCyzzlx()));

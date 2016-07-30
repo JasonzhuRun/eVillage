@@ -7,8 +7,10 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 
+import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
+import cn.deepai.evillage.model.bean.PkhsctjBean;
 import cn.deepai.evillage.model.bean.PkhshtjBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.event.JdDataSaveEvent;
@@ -22,6 +24,8 @@ import de.greenrobot.event.EventBus;
  * 生活条件
  */
 public class JdShtjPage extends BasePage {
+
+    private PkhshtjBean localData;
 
     private EditText tjnd;
     private EditText tshyd;
@@ -47,7 +51,9 @@ public class JdShtjPage extends BasePage {
 
     public JdShtjPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.page_pkhshtj, this);
+        LayoutInflater.from(context).inflate(R.layout.page_jdshtj, this);
+        ButterKnife.bind(this);
+        localData = new PkhshtjBean();
         initView();
     }
 
@@ -70,14 +76,8 @@ public class JdShtjPage extends BasePage {
     // 点击保存按钮
     @SuppressWarnings("all")
     public void onEvent(JdDataSaveEvent event) {
-//        localData.setHzxm(hzxm.getText().toString());
-//        localData.setJzdz(jzdz.getText().toString());
-//        localData.setLxdh(lxdh.getText().toString());
-//        localData.setHzsfz(hzsfz.getText().toString());
-//        localData.setHkhyx(hkhyx.getText().toString());
-//        localData.setYxzh(yxzh.getText().toString());
-//        localData.setPkhzt(pkhzt.getText().toString());
-//        localData.setTpnf(tpnf.getText().toString());
+        localData.setTjnd(tjnd.getText().toString());
+        localData.setJlczgl(jlczgl.getText().toString());
     }
     @Override
     public void requestData() {
@@ -100,6 +100,7 @@ public class JdShtjPage extends BasePage {
     }
 
     private void bindData(PkhshtjBean pkhshtjBean) {
+        this.localData = pkhshtjBean;
         tjnd.setText(pkhshtjBean.getTjnd());
         tshyd.setText(DictionaryUtil.getValueName(pkhshtjBean.getTshyd()));
         String[] rllxCodes = pkhshtjBean.getZyrllx().split(",");
@@ -113,8 +114,8 @@ public class JdShtjPage extends BasePage {
         cslx.setText(DictionaryUtil.getValueName("CSLX",pkhshtjBean.getCslx()));
         String[] nypxfCodes = pkhshtjBean.getNyxfpqk().split(",");
         String nypxfValue = "";
-        for (String code:rllxCodes) {
-            rllxValue += DictionaryUtil.getValueName("NYXFP",code) + ";";
+        for (String code:nypxfCodes) {
+            nypxfValue += DictionaryUtil.getValueName("NYXFP",code) + ";";
         }
         nyxfpqk.setText(nypxfValue);
         yskn.setText(DictionaryUtil.getValueName(pkhshtjBean.getYskn()));
