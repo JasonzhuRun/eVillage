@@ -9,11 +9,17 @@ import android.view.LayoutInflater;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtcyRecyclerAdapter;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhjtcyList;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.bean.TzjtcyBean;
+import cn.deepai.evillage.model.event.JdDataSaveEvent;
+import cn.deepai.evillage.model.event.PagexjItemEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -56,6 +62,30 @@ public class JdJtcyPage extends BasePage {
             mPkhjtcyRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
         }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PagexjItemEvent event) {
+        if (isSelected()) {
+            // todo:跳转新页面？
+//            List<TzjtcyBean> itemList = new ArrayList<>();
+//            itemList.add(new TzjtcyBean());
+//            mTzjtcyRecyclerAdapter.notifyResult(false, itemList);
+//            mRecyclerView.scrollToPosition(mTzjtcyRecyclerAdapter.getItemCount() - 1);
+            mHasData = true;
+        }
+    }
+    // 点击保存按钮
+    @SuppressWarnings("all")
+    public void onEvent(JdDataSaveEvent event) {
+//        localData.setHzxm(hzxm.getText().toString());
+//        localData.setJzdz(jzdz.getText().toString());
+//        localData.setLxdh(lxdh.getText().toString());
+//        localData.setHzsfz(hzsfz.getText().toString());
+//        localData.setHkhyx(hkhyx.getText().toString());
+//        localData.setYxzh(yxzh.getText().toString());
+//        localData.setPkhzt(pkhzt.getText().toString());
+//        localData.setTpnf(tpnf.getText().toString());
     }
 
     @Override

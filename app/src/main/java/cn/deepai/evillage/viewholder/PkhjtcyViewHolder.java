@@ -24,14 +24,11 @@ public class PkhjtcyViewHolder extends BaseViewHolder {
     private TextView xm;
     private TextView gx;
 
-    public PkhjtcyViewHolder(ViewGroup parent, int viewType) {
+    public PkhjtcyViewHolder(ViewGroup parent) {
         super(LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.item_add_more,parent,false));
-//                inflate(viewType == ItemType.ADD_MORE?R.layout.item_add_more:R.layout.item_pkhjtcy,parent,false));
-        if (viewType == ItemType.NORMAL) {
-            xm = (TextView)itemView.findViewById(R.id.item_pkhjtcy_xm);
-            gx = (TextView)itemView.findViewById(R.id.item_pkhjtcy_gx);
-        }
+                inflate(R.layout.item_pkhjtcy,parent,false));
+        xm = (TextView)itemView.findViewById(R.id.item_pkhjtcy_xm);
+        gx = (TextView)itemView.findViewById(R.id.item_pkhjtcy_gx);
         mContext = parent.getContext();
     }
 

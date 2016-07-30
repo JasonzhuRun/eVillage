@@ -18,6 +18,7 @@ import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
+import cn.deepai.evillage.model.bean.ItemType;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
 
 /**
@@ -40,7 +41,7 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
         initPopupWindow();
         zp = (ImageView) itemView.findViewById(R.id.item_jtqkzp_zp);
         this.viewType = viewType;
-        if (viewType == PkhjtqkzpRecyclerAdapter.TYPT_ADD_MORE) {
+        if (viewType == ItemType.ADD_MORE) {
             zp.setImageResource(R.drawable.add_photo);
         }
     }
@@ -54,7 +55,7 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
     @Override
     public void onClick(View v) {
         // 点击添加
-        if (viewType == PkhjtqkzpRecyclerAdapter.TYPT_ADD_MORE) {
+        if (viewType == ItemType.ADD_MORE) {
             getImageFromCamera();
         } else {
             showWindow();
@@ -64,7 +65,7 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
     @Override
     public boolean onLongClick(View v) {
         // 长按删除
-        if (viewType == PkhjtqkzpRecyclerAdapter.TYPT_IMAGE) {
+        if (viewType == ItemType.NORMAL) {
             mParent.notify();
             return true;
         }

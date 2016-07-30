@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.deepai.evillage.R;
@@ -21,6 +22,8 @@ import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzzfqkBean;
 import cn.deepai.evillage.model.bean.TzzfqkList;
+import cn.deepai.evillage.model.event.PagexjItemEvent;
+import cn.deepai.evillage.model.event.TzDataSaveEvent;
 import cn.deepai.evillage.model.event.TzzfqkClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -37,6 +40,7 @@ public class TzzfxxPage extends BasePage {
     private String tznd;
     private List<TzzfqkBean> mTzzfqkList;
     private TzzfqkRecyclerAdapter mTzzfqkRecyclerAdapter;
+    private RecyclerView mRecyclerView;
 
     public TzzfxxPage(Context context) {
         this(context, null, null, null);
@@ -68,6 +72,19 @@ public class TzzfxxPage extends BasePage {
         EventBus.getDefault().unregister(this);
     }
 
+    /**
+     * 保存信息
+     */
+    @SuppressWarnings("all")
+    public void onEventMainThread(TzDataSaveEvent event) {
+        if (isSelected()) {
+
+        }
+    }
+
+    /**
+     * 获取到页面信息
+     */
     @SuppressWarnings("all")
     public void onEventMainThread(TzzfqkList event) {
         if (isSelected()) {
@@ -77,6 +94,23 @@ public class TzzfxxPage extends BasePage {
         }
     }
 
+    /**
+     * 新建新条目
+     */
+    @SuppressWarnings("all")
+    public void onEventMainThread(PagexjItemEvent event) {
+        if (isSelected()) {
+            List<TzzfqkBean> itemList = new ArrayList<>();
+            itemList.add(new TzzfqkBean());
+            mTzzfqkRecyclerAdapter.notifyResult(false, itemList);
+            mRecyclerView.scrollToPosition(mTzzfqkRecyclerAdapter.getItemCount() - 1);
+            mHasData = true;
+        }
+    }
+
+    /**
+     * 点击某个条目
+     */
     @SuppressWarnings("all")
     public void onEventMainThread(final TzzfqkClickEvent event) {
         if (isSelected()) {
@@ -173,11 +207,11 @@ public class TzzfxxPage extends BasePage {
     }
 
     private void initView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_page);
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_page);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mTzzfqkRecyclerAdapter = new TzzfqkRecyclerAdapter();
-        recyclerView.setAdapter(mTzzfqkRecyclerAdapter);
+        mRecyclerView.setAdapter(mTzzfqkRecyclerAdapter);
         mHasData = false;
     }
 }

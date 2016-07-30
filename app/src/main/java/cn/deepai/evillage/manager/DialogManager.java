@@ -55,9 +55,6 @@ public class DialogManager {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         PhoneInfoUtil.hideSoftInput(context,editText);
-                        if (null != onDialogFinished) {
-                            onDialogFinished.returnData(null);
-                        }
                     }
                 }).show();
     }

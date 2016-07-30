@@ -12,14 +12,17 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzsrmxRecyclerAdapter;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.bean.TzjtcyBean;
 import cn.deepai.evillage.model.bean.TzsrmxBean;
 import cn.deepai.evillage.model.bean.TzsrmxList;
+import cn.deepai.evillage.model.event.PagexjItemEvent;
 import cn.deepai.evillage.model.event.TzsrmxClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -36,6 +39,7 @@ public class TzsrmxPage extends BasePage {
     private String tznd;
     private List<TzsrmxBean> mTzsrmxList;
     private TzsrmxRecyclerAdapter mTzsrmxRecyclerAdapter;
+    private RecyclerView mRecyclerView;
 
     public TzsrmxPage(Context context) {
         this(context, null, null, null);
@@ -72,6 +76,17 @@ public class TzsrmxPage extends BasePage {
         if (isSelected()) {
             this.mTzsrmxList = event.list;
             mTzsrmxRecyclerAdapter.notifyResult(true, event.list);
+            mHasData = true;
+        }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PagexjItemEvent event) {
+        if (isSelected()) {
+            List<TzsrmxBean> itemList = new ArrayList<>();
+            itemList.add(new TzsrmxBean());
+            mTzsrmxRecyclerAdapter.notifyResult(false, itemList);
+            mRecyclerView.scrollToPosition(mTzsrmxRecyclerAdapter.getItemCount() - 1);
             mHasData = true;
         }
     }
@@ -170,11 +185,11 @@ public class TzsrmxPage extends BasePage {
 
 
     private void initView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_page);
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_page);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mTzsrmxRecyclerAdapter = new TzsrmxRecyclerAdapter();
-        recyclerView.setAdapter(mTzsrmxRecyclerAdapter);
+        mRecyclerView.setAdapter(mTzsrmxRecyclerAdapter);
         mHasData = false;
     }
 }

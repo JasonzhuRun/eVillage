@@ -11,6 +11,7 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhshtjBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -66,7 +67,18 @@ public class JdShtjPage extends BasePage {
             bindData(event);
         }
     }
-
+    // 点击保存按钮
+    @SuppressWarnings("all")
+    public void onEvent(JdDataSaveEvent event) {
+//        localData.setHzxm(hzxm.getText().toString());
+//        localData.setJzdz(jzdz.getText().toString());
+//        localData.setLxdh(lxdh.getText().toString());
+//        localData.setHzsfz(hzsfz.getText().toString());
+//        localData.setHkhyx(hkhyx.getText().toString());
+//        localData.setYxzh(yxzh.getText().toString());
+//        localData.setPkhzt(pkhzt.getText().toString());
+//        localData.setTpnf(tpnf.getText().toString());
+    }
     @Override
     public void requestData() {
         final Gson requestGson = new Gson();

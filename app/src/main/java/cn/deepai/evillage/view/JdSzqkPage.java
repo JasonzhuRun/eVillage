@@ -18,6 +18,7 @@ import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhszqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.event.PagexjItemEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -62,6 +63,18 @@ public class JdSzqkPage extends BasePage {
         }
     }
 
+    @SuppressWarnings("all")
+    public void onEventMainThread(PagexjItemEvent event) {
+        if (isSelected()) {
+            // todo:跳转新页面？
+//            List<TzjtcyBean> itemList = new ArrayList<>();
+//            itemList.add(new TzjtcyBean());
+//            mTzjtcyRecyclerAdapter.notifyResult(false, itemList);
+//            mRecyclerView.scrollToPosition(mTzjtcyRecyclerAdapter.getItemCount() - 1);
+            mHasData = true;
+        }
+    }
+
     @Override
     public void requestData() {
         final Gson requestGson = new Gson();
@@ -88,7 +101,7 @@ public class JdSzqkPage extends BasePage {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_pkh_szqk);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mPkhszqkRecyclerAdapter = new PkhszqkRecyclerAdapter();
+        mPkhszqkRecyclerAdapter = new PkhszqkRecyclerAdapter(true);
         recyclerView.setAdapter(mPkhszqkRecyclerAdapter);
         mHasData = false;
     }

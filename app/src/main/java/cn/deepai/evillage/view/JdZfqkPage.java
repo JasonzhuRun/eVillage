@@ -9,8 +9,10 @@ import com.google.gson.Gson;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhzfqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -22,6 +24,8 @@ import de.greenrobot.event.EventBus;
  */
 public class JdZfqkPage extends BasePage {
 
+    private PkhzfqkBean serverData;
+    private PkhzfqkBean localData;
     // 住房面积
     private EditText zfmj;
     // 主要结构
@@ -65,6 +69,19 @@ public class JdZfqkPage extends BasePage {
         }
     }
 
+    // 点击保存按钮
+    @SuppressWarnings("all")
+    public void onEvent(JdDataSaveEvent event) {
+//        localData.setHzxm(hzxm.getText().toString());
+//        localData.setJzdz(jzdz.getText().toString());
+//        localData.setLxdh(lxdh.getText().toString());
+//        localData.setHzsfz(hzsfz.getText().toString());
+//        localData.setHkhyx(hkhyx.getText().toString());
+//        localData.setYxzh(yxzh.getText().toString());
+//        localData.setPkhzt(pkhzt.getText().toString());
+//        localData.setTpnf(tpnf.getText().toString());
+    }
+
     @Override
     public void requestData() {
 
@@ -87,6 +104,8 @@ public class JdZfqkPage extends BasePage {
     }
 
     private void bindData(PkhzfqkBean pkhzfqkBean) {
+        this.localData = pkhzfqkBean;
+        this.serverData = pkhzfqkBean;
         zfmj.setText(pkhzfqkBean.getZfmj());
         fwzyjg.setText(DictionaryUtil.getValueName("FWJG",pkhzfqkBean.getFwzyjg()));
         jfsj.setText(pkhzfqkBean.getJfsj());

@@ -86,7 +86,7 @@ public class JdJbxxPage extends BasePage {
     }
     // 点击保存按钮
     @SuppressWarnings("all")
-    public void onEventMainThread(JdDataSaveEvent event) {
+    public void onEvent(JdDataSaveEvent event) {
         localData.setHzxm(hzxm.getText().toString());
         localData.setJzdz(jzdz.getText().toString());
         localData.setLxdh(lxdh.getText().toString());
@@ -101,6 +101,7 @@ public class JdJbxxPage extends BasePage {
 //        sbbz.setText(DictionaryUtil.getValueName("PKBZ",pkhjbxxBean.getPksbbz()));
 //        pkhsx.setText(DictionaryUtil.getValueName("PKHSX",pkhjbxxBean.getPkhsx()));
     }
+
     @OnClick(R.id.jbxx_jhsyh)
     public void onJhsyhClick() {
         DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_jhsyh),

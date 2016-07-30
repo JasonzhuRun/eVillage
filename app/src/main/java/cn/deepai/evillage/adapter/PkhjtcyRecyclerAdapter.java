@@ -8,6 +8,7 @@ import java.util.List;
 
 import cn.deepai.evillage.model.bean.ItemType;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
+import cn.deepai.evillage.viewholder.AddMoreViewHolder;
 import cn.deepai.evillage.viewholder.BaseViewHolder;
 import cn.deepai.evillage.viewholder.PkhjtcyViewHolder;
 
@@ -17,7 +18,7 @@ import cn.deepai.evillage.viewholder.PkhjtcyViewHolder;
 public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
 
     private List<PkhjtcyBean> mPkhjtcyBeans = new ArrayList<>();
-    private boolean mEditable = false;
+    private boolean mEditable;
 
     public PkhjtcyRecyclerAdapter() {
         this(false);
@@ -25,7 +26,7 @@ public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
 
     public PkhjtcyRecyclerAdapter(boolean editable) {
         super();
-//        this.mEditable = editable;
+        this.mEditable = editable;
     }
 
     public void notifyResult(boolean isFirstPage, List<PkhjtcyBean> pkhjtcyBean) {
@@ -37,13 +38,15 @@ public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public PkhjtcyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new PkhjtcyViewHolder(parent,viewType);
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == ItemType.ADD_MORE) return new AddMoreViewHolder(parent);
+        else return new PkhjtcyViewHolder(parent);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof PkhjtcyViewHolder) {
+            if (mEditable) position--;
             ((PkhjtcyViewHolder) holder).onBindData(mPkhjtcyBeans.get(position));
         }
     }

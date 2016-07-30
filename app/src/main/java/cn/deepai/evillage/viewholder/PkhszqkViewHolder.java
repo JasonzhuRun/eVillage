@@ -24,14 +24,11 @@ public class PkhszqkViewHolder extends BaseViewHolder {
 //    private TextView jtcsr;
 //    private TextView rjcsr;
 
-    public PkhszqkViewHolder(ViewGroup parent, int viewType) {
+    public PkhszqkViewHolder(ViewGroup parent) {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_pkhszqk,parent,false));
         mContext = parent.getContext();
         sznd = (TextView)itemView.findViewById(R.id.item_szqk_sznd);
-//        jtzsr = (TextView)itemView.findViewById(R.id.item_szqk_jtzsr);
-//        jtcsr = (TextView)itemView.findViewById(R.id.item_szqk_jtcsr);
-//        rjcsr = (TextView)itemView.findViewById(R.id.item_szqk_rjcsr);
     }
 
     public void onBindData(PkhszqkBean pkhszqkBean) {

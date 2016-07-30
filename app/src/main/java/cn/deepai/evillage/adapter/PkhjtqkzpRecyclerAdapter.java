@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.deepai.evillage.model.bean.ItemType;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.viewholder.PkhjtqkzpViewHolder;
 
@@ -13,9 +14,6 @@ import cn.deepai.evillage.viewholder.PkhjtqkzpViewHolder;
  * 贫困户家庭情况照片适配器
  */
 public class PkhjtqkzpRecyclerAdapter extends RecyclerView.Adapter {
-
-    public static final int TYPT_ADD_MORE = 0;
-    public static final int TYPT_IMAGE = 1;
 
     private boolean mEditable;
     private List<PkhjtqkzpBean> mPkhjtqkzpBeans = new ArrayList<>();
@@ -51,19 +49,17 @@ public class PkhjtqkzpRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        if (mEditable) {
-            return mPkhjtqkzpBeans == null?1: (mPkhjtqkzpBeans.size() + 1);
-        } else {
-            return mPkhjtqkzpBeans == null?0: (mPkhjtqkzpBeans.size());
-        }
+        int itemCount = mPkhjtqkzpBeans == null?0: mPkhjtqkzpBeans.size();
+        if (mEditable) itemCount++;
+        return itemCount;
     }
 
     @Override
     public int getItemViewType(int position) {
         if (mEditable&&(mPkhjtqkzpBeans == null||position == mPkhjtqkzpBeans.size())) {
-            return TYPT_ADD_MORE;
+            return ItemType.ADD_MORE;
         }
-        return TYPT_IMAGE;
+        return ItemType.NORMAL;
     }
 
 }
