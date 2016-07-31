@@ -64,17 +64,16 @@ public class TzFragment extends BaseFragment {
     }
     @SuppressWarnings("all")
     public void onEventMainThread(TzxjtzEvent event) {
-        tryToShowProcessDialog();
         final String staffId = SettingManager.getInstance().getStaffId();
         final String hid = SettingManager.getCurrentPkh().getHid();
         if (TextUtils.isEmpty(hid)) {
             ToastUtil.shortToast(getString(R.string.tz_none_hid));
-            tryToHideProcessDialog();
         } else {
             DialogManager.showEditTextDialog(getContext(),getContext().getString(R.string.tz_new_ndtz_tip), new DialogManager.IOnDialogFinished() {
                 @Override
                 public void returnData(String data) {
                     if (!TextUtils.isEmpty(data)) {
+                        tryToShowProcessDialog();
                         TzListRequest.request(staffId,hid,data);
                     }
                 }
