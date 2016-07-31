@@ -41,7 +41,7 @@ public class JdSzqkPage extends BasePage {
 
     public JdSzqkPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.page_pkhszqk, this);
+        LayoutInflater.from(context).inflate(R.layout.page_recycerview, this);
         initView();
     }
 
@@ -98,7 +98,7 @@ public class JdSzqkPage extends BasePage {
     }
 
     private void initView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_pkh_szqk);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_page);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mPkhszqkRecyclerAdapter = new PkhszqkRecyclerAdapter(true);

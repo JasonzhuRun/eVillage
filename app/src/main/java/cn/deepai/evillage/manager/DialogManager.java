@@ -17,8 +17,27 @@ import cn.deepai.evillage.utils.StringUtil;
 
 public class DialogManager {
 
-    public static void showYesOrNoChoiceDialog(Context context, String title, final IOnDialogFinished onDialogFinished) {
-        showSingleChoiceDialog(context,title,new String[]{context.getString(R.string.no),context.getString(R.string.yes)},onDialogFinished);
+    public static void showYesOrNoChoiceDialog(final Context context, String title, final IOnDialogFinished onDialogFinished) {
+        new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        if (null != onDialogFinished) {
+                            onDialogFinished.returnData(context.getString(R.string.yes));
+                        }
+                    }
+                })
+                .setNegativeButton(context.getString(R.string.no), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        if (null != onDialogFinished) {
+                            onDialogFinished.returnData(context.getString(R.string.no));
+                        }
+                    }
+                }).show();
     }
 
     public static void showSingleChoiceDialog(Context context, String title, final String[] choices, final IOnDialogFinished onDialogFinished) {

@@ -40,7 +40,7 @@ public class PkhjtcyRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ItemType.ADD_MORE) return new AddMoreViewHolder(parent);
-        else return new PkhjtcyViewHolder(parent);
+        else return new PkhjtcyViewHolder(parent,mEditable);
     }
 
     @Override

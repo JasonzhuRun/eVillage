@@ -52,10 +52,10 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhxqActivity extends BaseActivity {
 
-    private boolean editable = false;
-    private int selectedIndex = 0;
+    private boolean mEditable = false;
+    private static int selectedIndex = 0;
     private ArrayList<BasePage> viewContainter = new ArrayList<>();
-
+    private ViewPager mPager;
     @OnClick(R.id.detail_back)
     public void onBackBtnClick(){
         this.onBackPressed();
@@ -101,7 +101,7 @@ public class PkhxqActivity extends BaseActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         if (null != intent) {
-            editable = intent.getBooleanExtra("editable",false);
+            mEditable = intent.getBooleanExtra("editable",false);
         }
         initView();
     }
@@ -165,7 +165,7 @@ public class PkhxqActivity extends BaseActivity {
     }
 
     private void initPagerContent() {
-        if (editable) {
+        if (mEditable) {
             viewContainter.add(new JdJbxxPage(this));
             viewContainter.add(new JdJtcyPage(this));
             viewContainter.add(new JdSzqkPage(this));
@@ -188,7 +188,7 @@ public class PkhxqActivity extends BaseActivity {
 
     private void initTitle() {
         PkhjbxxBean pkh;
-        if (editable) {
+        if (mEditable) {
             pkh = SettingManager.getCurrentJdPkh();
             findViewById(R.id.detail_save).setVisibility(View.VISIBLE);
         } else {
@@ -206,8 +206,8 @@ public class PkhxqActivity extends BaseActivity {
 
     private void initView() {
         initTitle();
-        ViewPager pager = (ViewPager) this.findViewById(R.id.view_pager);
-        if (pager == null) return;
+        mPager = (ViewPager) this.findViewById(R.id.view_pager);
+        if (mPager == null) return;
         PagerTabStrip tabStrip = (PagerTabStrip) this.findViewById(R.id.view_pager_tabstrip);
         if (tabStrip != null) {
             //取消tab下面的长横线
@@ -219,7 +219,7 @@ public class PkhxqActivity extends BaseActivity {
             tabStrip.setTextSpacing(200);
         }
         initPagerContent();
-        pager.setAdapter(new PagerAdapter() {
+        mPager.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
                 return viewContainter.size();
@@ -251,7 +251,7 @@ public class PkhxqActivity extends BaseActivity {
             }
         });
 
-        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrollStateChanged(int arg0) {
 
@@ -276,9 +276,11 @@ public class PkhxqActivity extends BaseActivity {
             page.setSelected(false);
         }
         viewContainter.get(selectedIndex).setSelected(true);
-        if (!viewContainter.get(selectedIndex).hasData()) {
+        // 如果没有数据或者数据也可编辑时返回刷新
+        if (!viewContainter.get(selectedIndex).hasData()||mEditable) {
             tryToShowProcessDialog();
             viewContainter.get(selectedIndex).requestData();
         }
+        mPager.setCurrentItem(selectedIndex);
     }
 }
