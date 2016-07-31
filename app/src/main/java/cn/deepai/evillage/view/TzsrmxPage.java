@@ -83,9 +83,7 @@ public class TzsrmxPage extends BasePage {
     @SuppressWarnings("all")
     public void onEventMainThread(PagexjItemEvent event) {
         if (isSelected()) {
-            List<TzsrmxBean> itemList = new ArrayList<>();
-            itemList.add(new TzsrmxBean());
-            mTzsrmxRecyclerAdapter.notifyResult(false, itemList);
+            mTzsrmxRecyclerAdapter.notifyResult(false, new TzsrmxBean());
             mRecyclerView.scrollToPosition(mTzsrmxRecyclerAdapter.getItemCount() - 1);
             mHasData = true;
         }

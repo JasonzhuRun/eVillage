@@ -29,6 +29,14 @@ public class TzsrmxRecyclerAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public void notifyResult(boolean isFirstPage, TzsrmxBean tzsrmxBean) {
+        if (isFirstPage) {
+            mTzsrmxBeans.clear();
+        }
+        mTzsrmxBeans.add(tzsrmxBean);
+        notifyDataSetChanged();
+    }
+
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ItemType.ADD_MORE) return new AddMoreViewHolder(parent);

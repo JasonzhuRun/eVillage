@@ -52,4 +52,20 @@ public class FileUtil {
         }
         return file.getPath();
     }
+
+
+    public static File getPicCacheDir() {
+        Context context = EVApplication.getApplication();
+        String cachePath;
+        if (context.getExternalCacheDir() != null) {
+            cachePath = context.getExternalCacheDir().getPath();
+        } else {
+            cachePath = context.getCacheDir().getPath();
+        }
+        File file = new File(cachePath + File.separator + "pic");
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return file;
+    }
 }

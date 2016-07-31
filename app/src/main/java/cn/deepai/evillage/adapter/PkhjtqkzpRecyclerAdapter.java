@@ -31,6 +31,14 @@ public class PkhjtqkzpRecyclerAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public void notifyResult(boolean isFirstPage, PkhjtqkzpBean pkhjtqkzpBean) {
+        if (isFirstPage) {
+            mPkhjtqkzpBeans.clear();
+        }
+        mPkhjtqkzpBeans.add(pkhjtqkzpBean);
+        notifyDataSetChanged();
+    }
+
     @Override
     public PkhjtqkzpViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 

@@ -14,6 +14,7 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhcyhqkBean;
+import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.model.bean.PkhzfqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.event.JdDataSaveEvent;
@@ -140,6 +141,13 @@ public class JdCyhPage extends BasePage {
                         } else localData.setCynyhzzz("1");
                     }
                 });
+    }
+    @SuppressWarnings("all")
+    public void onEventMainThread(PkhjtqkzpBean event) {
+        if (isSelected()) {
+//            mPkhjtqkzpRecyclerAdapter.notifyResult(false, event);
+            mHasData = true;
+        }
     }
     // 点击保存按钮
     @SuppressWarnings("all")

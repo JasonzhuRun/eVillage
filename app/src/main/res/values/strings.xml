@@ -17,6 +17,7 @@
     <string name="cancel">取消</string>
     <string name="insure">确定</string>
     <string name="save_info">是否保存并上传数据?</string>
+    <string name="no_sdcard">请确认存储设备状态后重试</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>
     <string name="req_code_getPkhJbxxList">zyfp01002</string>

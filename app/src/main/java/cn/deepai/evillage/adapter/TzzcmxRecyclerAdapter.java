@@ -28,6 +28,14 @@ public class TzzcmxRecyclerAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public void notifyResult(boolean isFirstPage, TzzcmxBean tzjtcyBean) {
+        if (isFirstPage) {
+            mTzzcmxBeans.clear();
+        }
+        mTzzcmxBeans.add(tzjtcyBean);
+        notifyDataSetChanged();
+    }
+
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ItemType.ADD_MORE) return new AddMoreViewHolder(parent);

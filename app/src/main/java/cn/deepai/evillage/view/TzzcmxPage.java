@@ -83,9 +83,7 @@ public class TzzcmxPage extends BasePage {
     @SuppressWarnings("all")
     public void onEventMainThread(PagexjItemEvent event) {
         if (isSelected()) {
-            List<TzzcmxBean> itemList = new ArrayList<>();
-            itemList.add(new TzzcmxBean());
-            mTzzcmxRecyclerAdapter.notifyResult(false, itemList);
+            mTzzcmxRecyclerAdapter.notifyResult(false, new TzzcmxBean());
             mRecyclerView.scrollToPosition(mTzzcmxRecyclerAdapter.getItemCount() - 1);
             mHasData = true;
         }

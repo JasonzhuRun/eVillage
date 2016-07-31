@@ -16,7 +16,13 @@ import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,9 +30,14 @@ import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
+import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
+import cn.deepai.evillage.utils.EncryptionUtil;
+import cn.deepai.evillage.utils.FileUtil;
+import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.StringUtil;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.JdCyhPage;
 import cn.deepai.evillage.view.JdJbxxPage;
@@ -135,9 +146,7 @@ public class PkhxqActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == 0) {
-                Uri uri = data.getData();
-                //to do find the path of pic by uri
-
+                //todo 获取相册中的照片
             } else if (requestCode == 1 ) {
                 Uri uri = data.getData();
                 if(uri == null){
@@ -145,15 +154,15 @@ public class PkhxqActivity extends BaseActivity {
                     Bundle bundle = data.getExtras();
                     if (bundle != null) {
                         Bitmap photo = (Bitmap) bundle.get("data"); //get bitmap
-                        Toast.makeText(getApplicationContext(), "err****", Toast.LENGTH_LONG).show();
-
-                        //spath :生成图片取个名字和路径包含类型
-                    } else {
-                        Toast.makeText(getApplicationContext(), "err****", Toast.LENGTH_LONG).show();
-                        return;
+                        PkhjtqkzpBean bean = new PkhjtqkzpBean();
+                        bean.setTpdz(saveBitmap(EncryptionUtil.getMD5(new Date().toString()),photo));
+                        EventBus.getDefault().post(bean);
                     }
+
                 }else{
-                    //to do find the path of pic by uri
+                    PkhjtqkzpBean bean = new PkhjtqkzpBean();
+                    bean.setTpdz(uri.toString());
+                    EventBus.getDefault().post(bean);
                 }
             }
         }
@@ -277,10 +286,43 @@ public class PkhxqActivity extends BaseActivity {
         }
         viewContainter.get(selectedIndex).setSelected(true);
         // 如果没有数据或者数据也可编辑时返回刷新
-        if (!viewContainter.get(selectedIndex).hasData()||mEditable) {
+        if (!viewContainter.get(selectedIndex).hasData()) {
             tryToShowProcessDialog();
             viewContainter.get(selectedIndex).requestData();
         }
         mPager.setCurrentItem(selectedIndex);
+    }
+
+    private String saveBitmap(String picName,Bitmap bitmap){
+        File f = new File(FileUtil.getPicCacheDirPath()+ File.separator + picName + ".png");
+        try {
+            if (!f.createNewFile()) {
+                LogUtil.e(PkhxqActivity.class,"Can't creat pic file");
+            }
+        } catch (IOException e) {
+
+            LogUtil.e(PkhxqActivity.class,"Save Bitmap error:"+e.toString());
+        }
+        FileOutputStream fOut;
+        try {
+            fOut = new FileOutputStream(f);
+        } catch (FileNotFoundException e) {
+            LogUtil.e(PkhxqActivity.class,"Save Bitmap error:"+e.toString());
+            return null;
+        }
+
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+
+        try {
+            fOut.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            fOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "file://" + f.getPath();
     }
 }

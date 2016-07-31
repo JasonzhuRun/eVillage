@@ -7,7 +7,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -16,10 +15,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.model.bean.ItemType;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
+import cn.deepai.evillage.utils.ToastUtil;
 
 /**
  * 贫困户家庭情况照片
@@ -101,12 +100,12 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
         mPopupWindow.showAtLocation(mParent, Gravity.CENTER,0,0);
     }
 
-
-    private void getImageFromAlbum() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");//相片类型
-        ((PkhxqActivity)mContext).startActivityForResult(intent, 0);
-    }
+//
+//    private void getImageFromAlbum() {
+//        Intent intent = new Intent(Intent.ACTION_PICK);
+//        intent.setType("image/*");//相片类型
+//        ((PkhxqActivity)mContext).startActivityForResult(intent, 0);
+//    }
 
     private void getImageFromCamera() {
         String state = Environment.getExternalStorageState();
@@ -115,7 +114,7 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
             ((PkhxqActivity)mContext).startActivityForResult(getImageByCamera, 1);
         }
         else {
-//            Toast.makeText(getApplicationContext(), "请确认已经插入SD卡", Toast.LENGTH_LONG).show();
+            ToastUtil.shortToast(mContext.getString(R.string.no_sdcard));
         }
     }
 
