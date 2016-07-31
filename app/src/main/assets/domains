@@ -772,6 +772,28 @@
     ]
   },
   {
+      "domainCode": "PKHZT",
+      "domainName": "贫困户状态",
+      "domainValue": [
+        {
+          "valueCode": "1",
+          "valueName": "贫困"
+        },
+        {
+          "valueCode": "2",
+          "valueName": "返贫"
+        },
+        {
+          "valueCode": "3",
+          "valueName": "脱贫"
+        },
+        {
+          "valueCode": "4",
+          "valueName": "待建卡"
+        }
+      ]
+    },
+  {
     "domainCode": "NATION",
     "domainName": "民族",
     "domainValue": [

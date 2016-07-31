@@ -15,6 +15,7 @@ import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.DictionaryUtil;
+import cn.deepai.evillage.utils.StringUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -22,7 +23,6 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhshtjPage extends BasePage {
 
-    private EditText tjnd;
     private EditText tshyd;
     private EditText zyrllx;
     private EditText ysqk;
@@ -88,29 +88,33 @@ public class PkhshtjPage extends BasePage {
     }
 
     private void bindData(PkhshtjBean pkhshtjBean) {
-        tjnd.setText(pkhshtjBean.getTjnd());
+
         tshyd.setText(DictionaryUtil.getValueName(pkhshtjBean.getTshyd()));
-        String[] rllxCodes = pkhshtjBean.getZyrllx().split(",");
-        String rllxValue = "";
-        for (String code:rllxCodes) {
-            rllxValue += DictionaryUtil.getValueName("RLLX",code);
-        }
-        zyrllx.setText(rllxValue);
+
+        String[] rllxCodes = StringUtil.splitCode(pkhshtjBean.getZyrllx());
+        zyrllx.setText(StringUtil.appendText(rllxCodes,"RLLX"));
+
         ysqk.setText(DictionaryUtil.getValueName("WaterCon",pkhshtjBean.getYsqk()));
+
         hqyysdzykn.setText(DictionaryUtil.getValueName("YYSZYKN",pkhshtjBean.getHqyysdzykn()));
+
         cslx.setText(DictionaryUtil.getValueName("CSLX",pkhshtjBean.getCslx()));
-        String[] nypxfCodes = pkhshtjBean.getNyxfpqk().split(",");
-        String nypxfValue = "";
-        for (String code:rllxCodes) {
-            rllxValue += DictionaryUtil.getValueName("NYXFP",code) + ";";
-        }
-        nyxfpqk.setText(nypxfValue);
+
+        String[] nypxfCodes = StringUtil.splitCode(pkhshtjBean.getNyxfpqk());
+        nyxfpqk.setText(StringUtil.appendText(nypxfCodes,"NYXFP"));
+
         yskn.setText(DictionaryUtil.getValueName(pkhshtjBean.getYskn()));
+
         ysaq.setText(DictionaryUtil.getValueName(pkhshtjBean.getYsaq()));
+
         jlczgl.setText(pkhshtjBean.getJlczgl());
+
         rullx.setText(DictionaryUtil.getValueName("RHLLX",pkhshtjBean.getRullx()));
+
         wscs.setText(DictionaryUtil.getValueName(pkhshtjBean.getWscs()));
+
         tgbds.setText(DictionaryUtil.getValueName(pkhshtjBean.getTgbds()));
+
         mHasData = true;
     }
 
@@ -120,7 +124,7 @@ public class PkhshtjPage extends BasePage {
     }
 
     private void initView() {
-        tjnd = (EditText) findViewById(R.id.shtj_tjnd);
+
         tshyd = (EditText) findViewById(R.id.shtj_shyd);
         zyrllx = (EditText) findViewById(R.id.shtj_zyrl);
         ysqk = (EditText) findViewById(R.id.shtj_ysqk);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -43,13 +44,13 @@ public class JdJbxxPage extends BasePage {
     // 银行账号
     private EditText yxzh;
     // 贫困识别标准
-    private EditText sbbz;
+    private TextView sbbz;
     // 计划生育户
-    private EditText jhsyh;
+    private TextView jhsyh;
     // 贫困户属性
-    private EditText pkhsx;
+    private TextView pkhsx;
     // 贫困户状态
-    private EditText pkhzt;
+    private TextView pkhzt;
     // 脱贫年份
     private EditText tpnf;
 
@@ -94,16 +95,10 @@ public class JdJbxxPage extends BasePage {
         localData.setHzsfz(hzsfz.getText().toString());
         localData.setHkhyx(hkhyx.getText().toString());
         localData.setYxzh(yxzh.getText().toString());
-        localData.setPkhzt(pkhzt.getText().toString());
         localData.setTpnf(tpnf.getText().toString());
-        // 选择项在选择时已经赋过值
-//        // 计划生育户
-//        jhsyh.setText(DictionaryUtil.getValueName(pkhjbxxBean.getJhsyh()));
-//        sbbz.setText(DictionaryUtil.getValueName("PKBZ",pkhjbxxBean.getPksbbz()));
-//        pkhsx.setText(DictionaryUtil.getValueName("PKHSX",pkhjbxxBean.getPkhsx()));
     }
 
-    @OnClick(R.id.jbxx_jhsyh)
+    @OnClick(R.id.jbxx_jhsyh_layout)
     public void onJhsyhClick() {
         DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_jhsyh),
                 new DialogManager.IOnDialogFinished() {
@@ -117,7 +112,7 @@ public class JdJbxxPage extends BasePage {
                 });
     }
 
-    @OnClick(R.id.jbxx_pkhsx)
+    @OnClick(R.id.jbxx_pkhsx_layout)
     public void onPkhsxClick() {
         final String[] values = new String[]{
                 DictionaryUtil.getValueName("PKHSX","1"),
@@ -131,15 +126,41 @@ public class JdJbxxPage extends BasePage {
                     @Override
                     public void returnData(String data) {
                         pkhsx.setText(data);
-                        localData.setPkhsx("1");
                         for (int i = 0;i < 4;i++) {
-                            if (data.equals(values[i])) localData.setPkhsx(String.valueOf(i+1));
+                            if (data.equals(values[i])){
+                                localData.setPkhsx(String.valueOf(i+1));
+                                break;
+                            }
                         }
                     }
                 });
     }
 
-    @OnClick(R.id.jbxx_sbbz)
+    @OnClick(R.id.jbxx_pkhzt_layout)
+    public void onPkztClick() {
+        final String[] values = new String[]{
+                DictionaryUtil.getValueName("PKHZT","1"),
+                DictionaryUtil.getValueName("PKHZT","2"),
+                DictionaryUtil.getValueName("PKHZT","3"),
+                DictionaryUtil.getValueName("PKHZT","4")
+        };
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_pkzt),
+                values,
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        pkhzt.setText(data);
+                        for (int i = 0;i < values.length;i++) {
+                            if (data.equals(values[i])) {
+                                localData.setPkhzt(String.valueOf(i+1));
+                                break;
+                            }
+                        }
+                    }
+                });
+    }
+
+    @OnClick(R.id.jbxx_sbbz_layout)
     public void onSbbzClick() {
         DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_sbbz),
                 new String[]{mContext.getString(R.string.pkh_jbxx_sbbz_gjbz),mContext.getString(R.string.pkh_jbxx_sbbz_sdbz)},
@@ -194,7 +215,7 @@ public class JdJbxxPage extends BasePage {
         // 计划生育户
         jhsyh.setText(DictionaryUtil.getValueName(pkhjbxxBean.getJhsyh()));
         // 贫困户状态
-        pkhzt.setText(pkhjbxxBean.getPkhzt());
+        pkhzt.setText(DictionaryUtil.getValueName("PKHZT",pkhjbxxBean.getPkhzt()));
         sbbz.setText(DictionaryUtil.getValueName("PKBZ",pkhjbxxBean.getPksbbz()));
         tpnf.setText(pkhjbxxBean.getTpnf());
         pkhsx.setText(DictionaryUtil.getValueName("PKHSX",pkhjbxxBean.getPkhsx()));
@@ -208,11 +229,11 @@ public class JdJbxxPage extends BasePage {
         hzsfz = (EditText) findViewById(R.id.jbxx_sfzh);
         hkhyx = (EditText) findViewById(R.id.jbxx_khyh);
         yxzh = (EditText) findViewById(R.id.jbxx_yhzh);
-        jhsyh = (EditText) findViewById(R.id.jbxx_jhsyh);
-        pkhzt = (EditText) findViewById(R.id.jbxx_pkhzt);
-        sbbz = (EditText) findViewById(R.id.jbxx_sbbz);
+        jhsyh = (TextView) findViewById(R.id.jbxx_jhsyh);
+        pkhzt = (TextView) findViewById(R.id.jbxx_pkhzt);
+        sbbz = (TextView) findViewById(R.id.jbxx_sbbz);
         tpnf = (EditText) findViewById(R.id.jbxx_tpnf);
-        pkhsx = (EditText) findViewById(R.id.jbxx_pkhsx);
+        pkhsx = (TextView) findViewById(R.id.jbxx_pkhsx);
         mHasData = false;
     }
 }

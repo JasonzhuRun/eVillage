@@ -60,15 +60,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pkh_zfqk_fwjg"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
-                <EditText
+                <TextView
                     android:id="@+id/zfqk_fwjg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/zfqk_fwjg_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:background="@drawable/edit_text_backgroud"
-                    android:focusable="false"/>
+                    android:textColor="@color/text_main"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -119,15 +118,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pkh_zfqk_sfwf"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
-                <EditText
+                <TextView
                     android:id="@+id/zfqk_sfwf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/zfqk_sfwf_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:background="@drawable/edit_text_backgroud"
-                    android:focusable="false"/>
+                    android:textColor="@color/text_main"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -149,15 +147,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pkh_zfqk_ydfpbqqk"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
-                <EditText
+                <TextView
                     android:id="@+id/zfqk_ydfpbqqk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/zfqk_ydfpbqqk_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:background="@drawable/edit_text_backgroud"
-                    android:focusable="false"/>
+                    android:textColor="@color/text_main"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"

@@ -4,11 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import org.w3c.dom.Text;
+
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhsctjBean;
 import cn.deepai.evillage.model.bean.PkhshtjBean;
@@ -18,6 +24,7 @@ import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.DictionaryUtil;
+import cn.deepai.evillage.utils.StringUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -27,19 +34,19 @@ public class JdShtjPage extends BasePage {
 
     private PkhshtjBean localData;
 
-    private EditText tjnd;
-    private EditText tshyd;
-    private EditText zyrllx;
-    private EditText ysqk;
-    private EditText hqyysdzykn;
-    private EditText cslx;
-    private EditText nyxfpqk;
-    private EditText yskn;
-    private EditText ysaq;
+//    private TextView tjnd;
+    private TextView tshyd;
+    private TextView zyrllx;
+    private TextView ysqk;
+    private TextView hqyysdzykn;
+    private TextView cslx;
+    private TextView nyxfpqk;
+    private TextView yskn;
+    private TextView ysaq;
     private EditText jlczgl;
-    private EditText rullx;
-    private EditText wscs;
-    private EditText tgbds;
+    private TextView rullx;
+    private TextView wscs;
+    private TextView tgbds;
 
     public JdShtjPage(Context context) {
         this(context, null);
@@ -66,6 +73,240 @@ public class JdShtjPage extends BasePage {
     public void unRegisteEventBus() {
         EventBus.getDefault().unregister(this);
     }
+    // 生活用电
+    @OnClick(R.id.shtj_shyd_layout)
+    public void onShydClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_shtj_shyd),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        tshyd.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setTshyd("0");
+                        } else localData.setTshyd("1");
+                    }
+                });
+    }
+    // 饮水困难
+    @OnClick(R.id.shtj_yskn_layout)
+    public void onYsknClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_shtj_yskn),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        yskn.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setYskn("0");
+                        } else localData.setYskn("1");
+                    }
+                });
+    }
+    // 饮水安全
+    @OnClick(R.id.shtj_ysaq_layout)
+    public void onYsaqClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_shtj_ysqk),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        ysaq.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setYsaq("0");
+                        } else localData.setYsaq("1");
+                    }
+                });
+    }
+    // 卫生厕所
+    @OnClick(R.id.shtj_wscs_layout)
+    public void onWscsClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_shtj_wscs),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        wscs.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setWscs("0");
+                        } else localData.setWscs("1");
+                    }
+                });
+    }
+    // 通广播电视
+    @OnClick(R.id.shtj_gbds_layout)
+    public void onGbdsClick() {
+        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_shtj_gbds),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        tgbds.setText(data);
+                        if (mContext.getString(R.string.no).equals(data)) {
+                            localData.setTgbds("0");
+                        } else localData.setTgbds("1");
+                    }
+                });
+    }
+    // 燃料类型
+    @OnClick(R.id.shtj_zyrl_layout)
+    public void onRllxClick() {
+        final String[] lxValues = new String[10];
+        boolean[] lxSelected = new boolean[10];
+        String[] rllxCodes = StringUtil.splitCode(localData.getZyrllx());
+        for (String code:rllxCodes) {
+            lxSelected[Integer.valueOf(code) - 1] = true;
+        }
+        for (int i = 0;i < lxValues.length;i++) {
+            lxValues[i] =  DictionaryUtil.getValueName("RLLX",String.valueOf(i+1));
+        }
+        DialogManager.showMultiChoiceDialog(mContext, mContext.getString(R.string.pkh_shtj_zyrl),
+                lxValues,
+                lxSelected,
+                new DialogManager.IOnMultiDialogFinished() {
+                    @Override
+                    public void returnData(String code, String text) {
+                        zyrllx.setText(text);
+                        localData.setZyrllx(code);
+                    }
+                });
+    }
+    // 饮水情况
+    @OnClick(R.id.shtj_ysqk_layout)
+    public void onYsqkClick() {
+        final String[] ysValues = new String[]{
+                DictionaryUtil.getValueName("WaterCon","J"),
+                DictionaryUtil.getValueName("WaterCon","B"),
+                DictionaryUtil.getValueName("WaterCon","N"),
+                DictionaryUtil.getValueName("WaterCon","R"),
+                DictionaryUtil.getValueName("WaterCon","S"),
+                DictionaryUtil.getValueName("WaterCon","T"),
+                DictionaryUtil.getValueName("WaterCon","Q")
+        };
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_shtj_ysqk),
+                ysValues,
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        ysqk.setText(data);
+                        if (data.equals(ysValues[0])) {
+                            localData.setYsqk("J");
+                        } else if (data.equals(ysValues[1])) {
+                            localData.setYsqk("B");
+                        } else if (data.equals(ysValues[2])) {
+                            localData.setYsqk("N");
+                        } else if (data.equals(ysValues[3])) {
+                            localData.setYsqk("R");
+                        } else if (data.equals(ysValues[4])) {
+                            localData.setYsqk("S");
+                        } else if (data.equals(ysValues[5])) {
+                            localData.setYsqk("T");
+                        } else {
+                            localData.setYsqk("Q");
+                        }
+                    }
+                });
+    }
+    // 饮水主要困难
+    @OnClick(R.id.shtj_hqyskn_layout)
+    public void onYszyknClick() {
+        final String[] ysValues = new String[]{
+                DictionaryUtil.getValueName("YYSZYKN","N"),
+                DictionaryUtil.getValueName("YYSZYKN","H"),
+                DictionaryUtil.getValueName("YYSZYKN","J"),
+                DictionaryUtil.getValueName("YYSZYKN","F"),
+                DictionaryUtil.getValueName("YYSZYKN","Q")
+        };
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_shtj_hqyskn),
+                ysValues,
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        hqyysdzykn.setText(data);
+                        if (data.equals(ysValues[0])) {
+                            localData.setHqyysdzykn("N");
+                        } else if (data.equals(ysValues[1])) {
+                            localData.setHqyysdzykn("H");
+                        } else if (data.equals(ysValues[2])) {
+                            localData.setHqyysdzykn("J");
+                        } else if (data.equals(ysValues[3])) {
+                            localData.setHqyysdzykn("F");
+                        } else {
+                            localData.setHqyysdzykn("Q");
+                        }
+                    }
+                });
+    }
+    // 厕所类型
+    @OnClick(R.id.shtj_cslx_layout)
+    public void onCslxClick() {
+        final String[] csValues = new String[5];
+        for (int i = 0;i < csValues.length;i++) {
+            csValues[i] =  DictionaryUtil.getValueName("CSLX",String.valueOf(i+1));
+        }
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_shtj_cslx),
+                csValues,
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        cslx.setText(data);
+                        for (int i = 0;i < csValues.length;i++) {
+                            if (data.equals(csValues[i])) {
+                                localData.setCslx(String.valueOf(i + 1));
+                                break;
+                            }
+                        }
+                    }
+                });
+    }
+    // 耐用消费品
+    @OnClick(R.id.shtj_nyxfp_layout)
+    public void onNyxfpClick() {
+        final String[] nypValues = new String[13];
+        boolean[] nypSelected = new boolean[13];
+        String[] nypCodes = StringUtil.splitCode(localData.getNyxfpqk());
+        for (String code:nypCodes) {
+            nypSelected[Integer.valueOf(code) - 1] = true;
+        }
+        for (int i = 0;i < nypValues.length;i++) {
+            nypValues[i] =  DictionaryUtil.getValueName("NYXFP",String.valueOf(i+1));
+        }
+        DialogManager.showMultiChoiceDialog(mContext, mContext.getString(R.string.pkh_shtj_zyrl),
+                nypValues,
+                nypSelected,
+                new DialogManager.IOnMultiDialogFinished() {
+                    @Override
+                    public void returnData(String code, String text) {
+                        nyxfpqk.setText(text);
+                        localData.setNyxfpqk(code);
+                    }
+                });
+    }
+    // 入户路类型
+    @OnClick(R.id.shtj_rhllx_layout)
+    public void onRhllxClick() {
+        final String[] lxValues = new String[]{
+                DictionaryUtil.getValueName("RHLLX","R"),
+                DictionaryUtil.getValueName("RHLLX","N"),
+                DictionaryUtil.getValueName("RHLLX","S"),
+                DictionaryUtil.getValueName("RHLLX","L"),
+                DictionaryUtil.getValueName("RHLLX","Q")
+        };
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_shtj_rhllx),
+                lxValues,
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        rullx.setText(data);
+                        if (data.equals(lxValues[0])) {
+                            localData.setRullx("R");
+                        } else if (data.equals(lxValues[1])) {
+                            localData.setRullx("N");
+                        } else if (data.equals(lxValues[2])) {
+                            localData.setRullx("S");
+                        } else if (data.equals(lxValues[3])) {
+                            localData.setRullx("L");
+                        } else {
+                            localData.setRullx("Q");
+                        }
+                    }
+                });
+    }
 
     @SuppressWarnings("all")
     public void onEventMainThread(PkhshtjBean event) {
@@ -76,7 +317,6 @@ public class JdShtjPage extends BasePage {
     // 点击保存按钮
     @SuppressWarnings("all")
     public void onEvent(JdDataSaveEvent event) {
-        localData.setTjnd(tjnd.getText().toString());
         localData.setJlczgl(jlczgl.getText().toString());
     }
     @Override
@@ -101,29 +341,33 @@ public class JdShtjPage extends BasePage {
 
     private void bindData(PkhshtjBean pkhshtjBean) {
         this.localData = pkhshtjBean;
-        tjnd.setText(pkhshtjBean.getTjnd());
+
         tshyd.setText(DictionaryUtil.getValueName(pkhshtjBean.getTshyd()));
-        String[] rllxCodes = pkhshtjBean.getZyrllx().split(",");
-        String rllxValue = "";
-        for (String code:rllxCodes) {
-            rllxValue += DictionaryUtil.getValueName("RLLX",code);
-        }
-        zyrllx.setText(rllxValue);
+
+        String[] rllxCodes = StringUtil.splitCode(pkhshtjBean.getZyrllx());
+        zyrllx.setText(StringUtil.appendText(rllxCodes,"RLLX"));
+
         ysqk.setText(DictionaryUtil.getValueName("WaterCon",pkhshtjBean.getYsqk()));
+
         hqyysdzykn.setText(DictionaryUtil.getValueName("YYSZYKN",pkhshtjBean.getHqyysdzykn()));
+
         cslx.setText(DictionaryUtil.getValueName("CSLX",pkhshtjBean.getCslx()));
-        String[] nypxfCodes = pkhshtjBean.getNyxfpqk().split(",");
-        String nypxfValue = "";
-        for (String code:nypxfCodes) {
-            nypxfValue += DictionaryUtil.getValueName("NYXFP",code) + ";";
-        }
-        nyxfpqk.setText(nypxfValue);
+
+        String[] nypxfCodes = StringUtil.splitCode(pkhshtjBean.getNyxfpqk());
+        nyxfpqk.setText(StringUtil.appendText(nypxfCodes,"NYXFP"));
+
         yskn.setText(DictionaryUtil.getValueName(pkhshtjBean.getYskn()));
+
         ysaq.setText(DictionaryUtil.getValueName(pkhshtjBean.getYsaq()));
+
         jlczgl.setText(pkhshtjBean.getJlczgl());
+
         rullx.setText(DictionaryUtil.getValueName("RHLLX",pkhshtjBean.getRullx()));
+
         wscs.setText(DictionaryUtil.getValueName(pkhshtjBean.getWscs()));
+
         tgbds.setText(DictionaryUtil.getValueName(pkhshtjBean.getTgbds()));
+
         mHasData = true;
     }
 
@@ -133,19 +377,19 @@ public class JdShtjPage extends BasePage {
     }
 
     private void initView() {
-        tjnd = (EditText) findViewById(R.id.shtj_tjnd);
-        tshyd = (EditText) findViewById(R.id.shtj_shyd);
-        zyrllx = (EditText) findViewById(R.id.shtj_zyrl);
-        ysqk = (EditText) findViewById(R.id.shtj_ysqk);
-        hqyysdzykn = (EditText) findViewById(R.id.shtj_hqyskn);
-        cslx = (EditText) findViewById(R.id.shtj_cslx);
-        nyxfpqk = (EditText) findViewById(R.id.shtj_nyxfp);
-        yskn = (EditText) findViewById(R.id.shtj_yskn);
-        ysaq = (EditText) findViewById(R.id.shtj_ysaq);
+//        tjnd = (TextView) findViewById(R.id.shtj_tjnd);
+        tshyd = (TextView) findViewById(R.id.shtj_shyd);
+        zyrllx = (TextView) findViewById(R.id.shtj_zyrl);
+        ysqk = (TextView) findViewById(R.id.shtj_ysqk);
+        hqyysdzykn = (TextView) findViewById(R.id.shtj_hqyskn);
+        cslx = (TextView) findViewById(R.id.shtj_cslx);
+        nyxfpqk = (TextView) findViewById(R.id.shtj_nyxfp);
+        yskn = (TextView) findViewById(R.id.shtj_yskn);
+        ysaq = (TextView) findViewById(R.id.shtj_ysaq);
         jlczgl = (EditText) findViewById(R.id.shtj_jlzgl);
-        rullx = (EditText) findViewById(R.id.shtj_rhllx);
-        wscs = (EditText) findViewById(R.id.shtj_wscs);
-        tgbds = (EditText) findViewById(R.id.shtj_gbds);
+        rullx = (TextView) findViewById(R.id.shtj_rhllx);
+        wscs = (TextView) findViewById(R.id.shtj_wscs);
+        tgbds = (TextView) findViewById(R.id.shtj_gbds);
         mHasData = false;
     }
 }

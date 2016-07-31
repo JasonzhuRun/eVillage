@@ -113,7 +113,7 @@ public class PkhjbxxPage extends BasePage {
         // 计划生育户
         jhsyh.setText(DictionaryUtil.getValueName(pkhjbxxBean.getJhsyh()));
         // 贫困户状态
-        pkhzt.setText(pkhjbxxBean.getPkhzt());
+        pkhzt.setText(DictionaryUtil.getValueName("PKHZT",pkhjbxxBean.getPkhzt()));
         sbbz.setText(DictionaryUtil.getValueName("PKBZ", pkhjbxxBean.getPksbbz()));
         tpnf.setText(pkhjbxxBean.getTpnf());
         pkhsx.setText(DictionaryUtil.getValueName("PKHSX", pkhjbxxBean.getPkhsx()));

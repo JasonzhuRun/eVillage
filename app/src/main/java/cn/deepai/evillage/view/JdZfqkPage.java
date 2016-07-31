@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -32,13 +33,13 @@ public class JdZfqkPage extends BasePage {
     // 住房面积
     private EditText zfmj;
     // 主要结构
-    private EditText fwzyjg;
+    private TextView fwzyjg;
     // 建房时间
     private EditText jfsj;
     // 是否危房
-    private EditText zyzfsfwf;
+    private TextView zyzfsfwf;
     // 异地搬迁扶贫情况
-    private EditText ydfpbqqk;
+    private TextView ydfpbqqk;
 
 
     public JdZfqkPage(Context context) {
@@ -60,7 +61,7 @@ public class JdZfqkPage extends BasePage {
     @OnClick(R.id.zfqk_fwjg_layout)
     public void onFwzyjgClick() {
         final String[] jgValues = new String[7];
-        for (int i = 0;i < 7;i++) {
+        for (int i = 0;i < jgValues.length;i++) {
             jgValues[i] = DictionaryUtil.getValueName("FWJG",String.valueOf(i));
         }
         DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_zfqk_fwjg),
@@ -69,9 +70,10 @@ public class JdZfqkPage extends BasePage {
                     @Override
                     public void returnData(String data) {
                         fwzyjg.setText(data);
-                        for (int i = 0;i < 7;i++) {
+                        for (int i = 0;i < jgValues.length;i++) {
                             if (data.equals(jgValues[i])) {
                                 localData.setFwzyjg(String.valueOf(i));
+                                break;
                             }
                         }
                     }
@@ -174,10 +176,10 @@ public class JdZfqkPage extends BasePage {
 
     private void initView() {
         zfmj = (EditText) findViewById(R.id.zfqk_zfmj);
-        fwzyjg = (EditText) findViewById(R.id.zfqk_fwjg);
+        fwzyjg = (TextView) findViewById(R.id.zfqk_fwjg);
         jfsj = (EditText) findViewById(R.id.zfqk_jfsj);
-        zyzfsfwf = (EditText) findViewById(R.id.zfqk_sfwf);
-        ydfpbqqk = (EditText) findViewById(R.id.zfqk_ydfpbqqk);
+        zyzfsfwf = (TextView) findViewById(R.id.zfqk_sfwf);
+        ydfpbqqk = (TextView) findViewById(R.id.zfqk_ydfpbqqk);
         mHasData = false;
     }
 }

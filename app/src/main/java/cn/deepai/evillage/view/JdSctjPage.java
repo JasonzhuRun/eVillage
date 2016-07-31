@@ -26,7 +26,6 @@ public class JdSctjPage extends BasePage {
 
     private PkhsctjBean localData;
 
-    private EditText tjnd;
     private EditText gdmj;
     private EditText xyggdgdmj;
     private EditText tian;
@@ -74,14 +73,17 @@ public class JdSctjPage extends BasePage {
     // 点击保存按钮
     @SuppressWarnings("all")
     public void onEvent(JdDataSaveEvent event) {
-//        localData.setHzxm(hzxm.getText().toString());
-//        localData.setJzdz(jzdz.getText().toString());
-//        localData.setLxdh(lxdh.getText().toString());
-//        localData.setHzsfz(hzsfz.getText().toString());
-//        localData.setHkhyx(hkhyx.getText().toString());
-//        localData.setYxzh(yxzh.getText().toString());
-//        localData.setPkhzt(pkhzt.getText().toString());
-//        localData.setTpnf(tpnf.getText().toString());
+        localData.setGdmj(gdmj.getText().toString());
+        localData.setXyggdgdmj(xyggdgdmj.getText().toString());
+        localData.setTian(tian.getText().toString());
+        localData.setTu(tu.getText().toString());
+        localData.setLscgymj(lscgymj.getText().toString());
+        localData.setTghlmj(tghlmj.getText().toString());
+        localData.setMcdmj(mcdmj.getText().toString());
+        localData.setSmmj(smmj.getText().toString());
+        localData.setSyjjzwmj(syjjzwmj.getText().toString());
+        localData.setScyfmj(scyfmj.getText().toString());
+        localData.setSxsl(sxsl.getText().toString());
     }
 
     @Override
@@ -101,7 +103,6 @@ public class JdSctjPage extends BasePage {
 
     private void bindData(PkhsctjBean pkhsctjBean) {
         this.localData = pkhsctjBean;
-        tjnd.setText(pkhsctjBean.getTjnd());
         gdmj.setText(pkhsctjBean.getGdmj());
         xyggdgdmj.setText(pkhsctjBean.getXyggdgdmj());
         tian.setText(pkhsctjBean.getTian());
@@ -122,7 +123,6 @@ public class JdSctjPage extends BasePage {
     }
 
     private void initView() {
-        tjnd = (EditText) findViewById(R.id.sctj_tjnd);
         gdmj = (EditText) findViewById(R.id.sctj_gdmj);
         xyggdgdmj = (EditText) findViewById(R.id.sctj_yxgggdmj);
         tian = (EditText) findViewById(R.id.sctj_tian);
