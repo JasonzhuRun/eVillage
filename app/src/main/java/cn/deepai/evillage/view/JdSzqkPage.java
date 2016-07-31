@@ -1,6 +1,8 @@
 package cn.deepai.evillage.view;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +16,8 @@ import java.lang.reflect.Type;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhszqkRecyclerAdapter;
+import cn.deepai.evillage.controller.activity.PkhjtcyActivity;
+import cn.deepai.evillage.controller.activity.PkhszqkActivity;
 import cn.deepai.evillage.model.bean.ListBean;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhszqkBean;
@@ -66,11 +70,10 @@ public class JdSzqkPage extends BasePage {
     @SuppressWarnings("all")
     public void onEventMainThread(PagexjItemEvent event) {
         if (isSelected()) {
-            // todo:跳转新页面？
-//            List<TzjtcyBean> itemList = new ArrayList<>();
-//            itemList.add(new TzjtcyBean());
-//            mTzjtcyRecyclerAdapter.notifyResult(false, itemList);
-//            mRecyclerView.scrollToPosition(mTzjtcyRecyclerAdapter.getItemCount() - 1);
+            Intent intent = new Intent(mContext, PkhszqkActivity.class);
+            intent.putExtra("editable",true);
+            mContext.startActivity(intent);
+            ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
             mHasData = true;
         }
     }

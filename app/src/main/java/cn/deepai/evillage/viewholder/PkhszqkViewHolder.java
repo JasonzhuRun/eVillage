@@ -20,13 +20,12 @@ public class PkhszqkViewHolder extends BaseViewHolder {
     private Context mContext;
     private PkhszqkBean mPkhszqkBean;
     private TextView sznd;
-//    private TextView jtzsr;
-//    private TextView jtcsr;
-//    private TextView rjcsr;
+    private boolean mEditable;
 
-    public PkhszqkViewHolder(ViewGroup parent) {
+    public PkhszqkViewHolder(ViewGroup parent,boolean editable) {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_pkhszqk,parent,false));
+        this.mEditable = editable;
         mContext = parent.getContext();
         sznd = (TextView)itemView.findViewById(R.id.item_szqk_sznd);
     }
@@ -34,17 +33,14 @@ public class PkhszqkViewHolder extends BaseViewHolder {
     public void onBindData(PkhszqkBean pkhszqkBean) {
         this.mPkhszqkBean = pkhszqkBean;
         sznd.setText(String.valueOf(pkhszqkBean.getTjnd()));
-//        jtzsr.setText(String.valueOf(pkhszqkBean.getJtzsr()));
-//        jtcsr.setText(String.valueOf(pkhszqkBean.getJtcsr()));
-//        rjcsr.setText(String.valueOf(pkhszqkBean.getJtnrjcsr()));
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        mPkhszqkBean.getId();
         Intent intent = new Intent(mContext, PkhszqkActivity.class);
         intent.putExtra("id",mPkhszqkBean.getId());
+        intent.putExtra("editable",mEditable);
         mContext.startActivity(intent);
         ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }

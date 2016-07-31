@@ -1,12 +1,17 @@
 package cn.deepai.evillage.controller.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.manager.DialogManager;
+import cn.deepai.evillage.model.bean.PkhjtcyBean;
 import cn.deepai.evillage.model.bean.PkhszqkBean;
+import cn.deepai.evillage.net.PkhJtcyRequest;
 import cn.deepai.evillage.net.PkhSzqkRequest;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -16,7 +21,10 @@ import de.greenrobot.event.EventBus;
  */
 public class PkhszqkActivity extends BaseActivity {
 
-    private String id;
+    private boolean mEditable;
+    private Context mContext;
+    private PkhszqkBean localData;
+
     private EditText tjnd;
     private EditText jtzsr;
     private EditText wgsr;
@@ -35,7 +43,46 @@ public class PkhszqkActivity extends BaseActivity {
     private EditText deylbz;
     private EditText stbcj;
 
+    @Override
+    public void onBackPressed() {
+        if (mEditable) {
+            DialogManager.showYesOrNoChoiceDialog(this,this.getString(R.string.save_info),
+                    new DialogManager.IOnDialogFinished() {
+                        @Override
+                        public void returnData(String data) {
+                            if (data.equals(PkhszqkActivity.this.getString(R.string.yes))) {
+                                localData.setTjnd(tjnd.getText().toString());
+                                localData.setJtzsr(jtzsr.getText().toString());
+                                localData.setWgsr(wgsr.getText().toString());
+                                localData.setScjyxsr(scjyxsr.getText().toString());
+                                localData.setZyxsr(zyxsr.getText().toString());
+                                localData.setCcxsr(ccxsr.getText().toString());
+                                localData.setDk(dk.getText().toString());
+                                localData.setScjyzcfy(scjyzcfy.getText().toString());
+                                localData.setJtcsr(jtcsr.getText().toString());
+                                localData.setJtnrjcsr(jtnrjcsr.getText().toString());
+                                localData.setGlbt(glbt.getText().toString());
+                                localData.setJhsyj(jhsyj.getText().toString());
+                                localData.setDbj(dbj.getText().toString());
+                                localData.setCxjmjbylbx(cxjmjbylbx.getText().toString());
+                                localData.setYlbx(ylbx.getText().toString());
+                                localData.setDeylbz(deylbz.getText().toString());
+                                localData.setStbcj(stbcj.getText().toString());
+                                PkhszqkActivity.super.onBackPressed();
+                            } else {
+                                PkhszqkActivity.super.onBackPressed();
+                            }
+                        }
+                    });
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     public void onBindData(PkhszqkBean pkhszqkBean) {
+
+        this.localData = pkhszqkBean;
+
         tjnd.setText(String.valueOf(pkhszqkBean.getTjnd()));
         jtzsr.setText(String.valueOf(pkhszqkBean.getJtzsr()));
         wgsr.setText(String.valueOf(pkhszqkBean.getWgsr()));
@@ -65,18 +112,34 @@ public class PkhszqkActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pkhszqk);
-        initView();
-        id = getIntent().getStringExtra("id");
-        if (id == null) {
-            ToastUtil.shortToast(getResources().getString(R.string.pkh_szqk_none));
-            finish();
-        } else {
+        localData = new PkhszqkBean();
+        String id = getIntent().getStringExtra("id");
+        mEditable = getIntent().getBooleanExtra("editable",false);
+        EventBus.getDefault().register(this);
+        mContext = this;
+        if (mEditable) {
+            ButterKnife.bind(this);
             initView();
-            EventBus.getDefault().register(this);
+            if (id != null) {
+                PkhSzqkRequest.request(id);
+            }
+        } else {
+            if (id == null) {
+                ToastUtil.shortToast(getResources().getString(R.string.pkh_szqk_none));
+                finish();
+            }
+            initView();
             PkhSzqkRequest.request(id);
         }
+
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+        ButterKnife.unbind(this);
+    }
 
     @Override
     protected String getActivityName() {
@@ -102,6 +165,24 @@ public class PkhszqkActivity extends BaseActivity {
         ylbx = (EditText) findViewById(R.id.szqk_ylbx);
         deylbz = (EditText) findViewById(R.id.szqk_deylbz);
         stbcj = (EditText) findViewById(R.id.szqk_stbcj);
+
+        tjnd.setFocusable(mEditable);
+        jtzsr.setFocusable(mEditable);
+        wgsr.setFocusable(mEditable);
+        scjyxsr.setFocusable(mEditable);
+        zyxsr.setFocusable(mEditable);
+        ccxsr.setFocusable(mEditable);
+        dk.setFocusable(mEditable);
+        scjyzcfy.setFocusable(mEditable);
+        jtcsr.setFocusable(mEditable);
+        jtnrjcsr.setFocusable(mEditable);
+        glbt.setFocusable(mEditable);
+        jhsyj.setFocusable(mEditable);
+        dbj.setFocusable(mEditable);
+        cxjmjbylbx.setFocusable(mEditable);
+        ylbx.setFocusable(mEditable);
+        deylbz.setFocusable(mEditable);
+        stbcj.setFocusable(mEditable);
 
         TextView title = (TextView)findViewById(R.id.title_text);
         if (null != title) {

@@ -58,7 +58,12 @@ public class PkhjtcyActivity extends BaseActivity {
                         @Override
                         public void returnData(String data) {
                             if (data.equals(PkhjtcyActivity.this.getString(R.string.yes))) {
-
+                                localData.setXm(xm.getText().toString());
+                                localData.setSfzhm(sfzhm.getText().toString());
+                                localData.setWgsj(wgsj.getText().toString());
+                                localData.setZdxx(zdxx.getText().toString());
+                                localData.setZtbhsj(ztbhsj.getText().toString());
+                                PkhjtcyActivity.super.onBackPressed();
                             } else {
                                 PkhjtcyActivity.super.onBackPressed();
                             }
