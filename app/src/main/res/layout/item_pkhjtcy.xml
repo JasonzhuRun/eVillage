@@ -22,6 +22,7 @@
             android:layout_toRightOf="@id/item_pkhjtcy_gx"
             android:layout_marginLeft="10dp"
             android:textSize="16sp"
+            android:textColor="@color/text_main"
             android:gravity="center"/>
 
         <TextView

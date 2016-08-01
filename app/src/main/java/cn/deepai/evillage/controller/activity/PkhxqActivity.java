@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
@@ -217,16 +218,6 @@ public class PkhxqActivity extends BaseActivity {
         initTitle();
         mPager = (ViewPager) this.findViewById(R.id.view_pager);
         if (mPager == null) return;
-        PagerTabStrip tabStrip = (PagerTabStrip) this.findViewById(R.id.view_pager_tabstrip);
-        if (tabStrip != null) {
-            //取消tab下面的长横线
-            tabStrip.setDrawFullUnderline(false);
-            //设置tab的背景色
-            tabStrip.setBackgroundColor(this.getResources().getColor(R.color.text_white));
-            //设置当前tab页签的下划线颜色
-            tabStrip.setTabIndicatorColor(this.getResources().getColor(R.color.title_backgroud));
-            tabStrip.setTextSpacing(200);
-        }
         initPagerContent();
         mPager.setAdapter(new PagerAdapter() {
             @Override
@@ -277,6 +268,14 @@ public class PkhxqActivity extends BaseActivity {
                 onPageShow();
             }
         });
+        TabLayout tabStrip = (TabLayout) this.findViewById(R.id.view_pager_tabstrip);
+        if (tabStrip != null) {
+            tabStrip.setTabMode(TabLayout.MODE_SCROLLABLE);
+            for (BasePage view :viewContainter) {
+                tabStrip.addTab(tabStrip.newTab().setText(view.getPageName()));
+            }
+            tabStrip.setupWithViewPager(mPager);
+        }
     }
 
     private void onPageShow() {
