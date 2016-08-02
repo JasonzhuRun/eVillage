@@ -124,11 +124,6 @@ public class MainTabActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-//        CacheManager.getInstance().addToUploadList("aa","111");
-//        CacheManager.getInstance().addToUploadList("bb","222");
-//        CacheManager.getInstance().addToUploadList("cc","333");
-//        CacheManager.getInstance().addToUploadList("dd","444");
-//        CacheManager.getInstance().addToUploadList("ee","555");
     }
 
     private void initView() {
@@ -153,6 +148,16 @@ public class MainTabActivity extends BaseActivity implements
         mDrawerLayout = (DrawerLayout)findViewById(R.id.main_drawerlayout);
         if (mDrawerLayout != null) {
             mDrawerLayout.setActivated(false);
+        }
+        View menuBtn = findViewById(R.id.normal_title_drawer);
+        if (menuBtn != null) {
+            menuBtn.setVisibility(View.VISIBLE);
+            menuBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onMenuOpened(0,null);
+                }
+            });
         }
     }
 

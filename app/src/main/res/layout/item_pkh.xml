@@ -8,10 +8,10 @@
         android:id="@+id/item_person_photo"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/background_title"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:contentDescription="@string/app_name"/>
     <LinearLayout
         android:id="@+id/pkh_text"
