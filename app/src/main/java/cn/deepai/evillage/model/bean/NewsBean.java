@@ -1,9 +1,11 @@
 package cn.deepai.evillage.model.bean;
 
+import java.io.Serializable;
+
 /**
  * 资讯内容
  */
-public class NewsBean {
+public class NewsBean implements Serializable{
 
     private String id;
     private String title;
@@ -12,9 +14,17 @@ public class NewsBean {
     private String attachement;
     private String keyword;
     private String policyDate;
+    private String policy;
     private String origin;
     private String bz;
 
+    public String getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(String policy) {
+        this.policy = policy;
+    }
     public String getId() {
         return id;
     }

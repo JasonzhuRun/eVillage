@@ -38,8 +38,12 @@ public class EVRequest {
         JSONObject jsonObject = new JSONObject();
 
         try {
-            jsonObject.put("reqHeader", jsonHeader);
-            jsonObject.put("data", jsonData);
+            if (!TextUtils.isEmpty(jsonHeader)) {
+                jsonObject.put("reqHeader", jsonHeader);
+            }
+            if (!TextUtils.isEmpty(jsonData)) {
+                jsonObject.put("data", jsonData);
+            }
         } catch (JSONException e) {
             LogUtil.e(EVRequest.class, "Illegal json format:" + e.toString());
             return;
@@ -63,7 +67,7 @@ public class EVRequest {
                 headerEvent.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
                 headerEvent.setRspDesc(RspCode.RSP_CODE_NO_CONNECTION_DSC);
                 EventBus.getDefault().post(headerEvent);
-                // 获取缓存数据
+                // 获取缓存数据(除登录)
                 if (Action.ACTION_LOGIN.getName().equals(action.getName())) return;
                 String dataString = CacheManager.getInstance().getCacheData(action.toString());
                 if (!isEmptyBody(dataString)) {

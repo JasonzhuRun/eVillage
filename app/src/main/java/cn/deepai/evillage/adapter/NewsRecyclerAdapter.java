@@ -14,31 +14,31 @@ import cn.deepai.evillage.viewholder.NewsViewHolder;
  */
 public class NewsRecyclerAdapter extends RecyclerView.Adapter {
 
-    private List<NewsBean> mNewsBeen = new ArrayList<>();
+    private List<NewsBean> mNewsBean = new ArrayList<>();
 
     public void notifyResult(boolean isFirstPage, List<NewsBean> newsBeen) {
         if (isFirstPage) {
-            mNewsBeen.clear();
+            mNewsBean.clear();
         }
-        mNewsBeen.addAll(newsBeen);
+        mNewsBean.addAll(newsBeen);
     }
 
     @Override
     public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        return new NewsViewHolder(parent,viewType);
+        return new NewsViewHolder(parent);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof NewsViewHolder) {
-            ((NewsViewHolder) holder).onBindData(mNewsBeen.get(position));
+            ((NewsViewHolder) holder).onBindData(mNewsBean.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mNewsBeen == null?0: mNewsBeen.size();
+        return mNewsBean == null?0: mNewsBean.size();
     }
 
     @Override

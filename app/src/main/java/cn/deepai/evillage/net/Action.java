@@ -71,6 +71,8 @@ public class Action {
     public static final Action ACTION_UPDATE_TZZFQK = new Action("termPkhGztz!updatePkhGztzZfqk.action",Type.upstream);
 
     // 资讯
+    public static final Action ACTION_GET_NEWS_LIST = new Action("termLogin!getZxList.action",Type.downstream);
+    public static final Action ACTION_GET_NEWS_DETAIL = new Action("termLogin!getZxXq.action",Type.downstream);
 
     private String name;
     private Type type;
