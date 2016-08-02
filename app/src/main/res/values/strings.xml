@@ -1,6 +1,6 @@
 <resources>
     <!--系统自动生成-->
-    <string name="app_name">数字农村</string>
+    <string name="app_name">精准扶贫</string>
     <!--公共模块-->
     <string name="dialog_loading">请稍后&#8230;</string>
     <string name="no">否</string>

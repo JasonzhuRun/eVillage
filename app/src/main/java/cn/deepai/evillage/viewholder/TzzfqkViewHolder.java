@@ -34,11 +34,8 @@ public class TzzfqkViewHolder extends BaseViewHolder {
                 inflate(R.layout.item_tzzfqk, parent, false));
         mContext = parent.getContext();
         xmmc = (EditText) itemView.findViewById(R.id.zfqk_xmmc);
-//        xmmc.setOnClickListener(this);
         jhny = (EditText) itemView.findViewById(R.id.zfqk_jhny);
-//        jhny.setOnClickListener(this);
         jhnr = (EditText) itemView.findViewById(R.id.zfqk_jhnr);
-//        jhnr.setOnClickListener(this);
         zfsj = (EditText) itemView.findViewById(R.id.zfqk_zfsj);
         zfsj.setOnClickListener(this);
         lsqk = (EditText) itemView.findViewById(R.id.zfqk_lsqk);

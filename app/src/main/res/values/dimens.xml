@@ -5,8 +5,9 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="tab_height">48dp</dimen>
     <!--基本信息-->
-    <dimen name="pkhxq_title_textsize">18sp</dimen>
-    <dimen name="pkhxq_content_textsize">18sp</dimen>
+    <dimen name="pkhxq_title_textsize">14sp</dimen>
+    <dimen name="pkhxq_content_textsize">14sp</dimen>
+
     <dimen name="pkhxq_top_gap">16dp</dimen>
     <dimen name="pkhxq_bottom_gap">16dp</dimen>
     <dimen name="pkhxq_left_gap">20dp</dimen>

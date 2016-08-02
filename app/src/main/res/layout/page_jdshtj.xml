@@ -7,7 +7,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/cut_off_line"/>
+        android:background="@color/background_cutoff"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -38,14 +38,14 @@
                     android:layout_toRightOf="@id/shtj_shyd_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_zyrl_layout"
                 android:layout_width="match_parent"
@@ -67,14 +67,14 @@
                     android:layout_toRightOf="@id/shtj_zyrl_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_ysqk_layout"
                 android:layout_width="match_parent"
@@ -96,14 +96,14 @@
                     android:layout_toRightOf="@id/shtj_ysqk_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_hqyskn_layout"
                 android:layout_width="match_parent"
@@ -125,14 +125,14 @@
                     android:layout_toRightOf="@id/shtj_hqyskn_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_cslx_layout"
                 android:layout_width="match_parent"
@@ -154,14 +154,14 @@
                     android:layout_toRightOf="@id/shtj_cslx_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_nyxfp_layout"
                 android:layout_width="match_parent"
@@ -183,14 +183,14 @@
                     android:layout_toRightOf="@id/shtj_nyxfp_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_yskn_layout"
                 android:layout_width="match_parent"
@@ -212,14 +212,14 @@
                     android:layout_toRightOf="@id/shtj_yskn_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_ysaq_layout"
                 android:layout_width="match_parent"
@@ -241,14 +241,14 @@
                     android:layout_toRightOf="@id/shtj_ysaq_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -277,7 +277,7 @@
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_rhllx_layout"
                 android:layout_width="match_parent"
@@ -299,14 +299,14 @@
                     android:layout_toRightOf="@id/shtj_rhllx_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_wscs_layout"
                 android:layout_width="match_parent"
@@ -328,14 +328,14 @@
                     android:layout_toRightOf="@id/shtj_wscs_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
             <RelativeLayout
                 android:id="@+id/shtj_gbds_layout"
                 android:layout_width="match_parent"
@@ -357,14 +357,14 @@
                     android:layout_toRightOf="@id/shtj_gbds_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:textColor="@color/text_main"/>
+                    android:textColor="@color/text_black"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="@dimen/pkhxq_left_gap"
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
-                android:background="@color/cut_off_line"/>
+                android:background="@color/background_cutoff"/>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

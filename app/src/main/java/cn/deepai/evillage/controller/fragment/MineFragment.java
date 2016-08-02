@@ -1,5 +1,6 @@
 package cn.deepai.evillage.controller.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.controller.activity.LoginActivity;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.utils.ToastUtil;
 
@@ -21,13 +23,15 @@ public class MineFragment extends BaseFragment {
     @OnClick(R.id.mine_clean)
     public void onCleanUpClick() {
         tryToShowProcessDialog();
+
         tryToHideProcessDialog();
-        ToastUtil.shortToast(getResources().getString(R.string.mine_logout_success));
     }
+
     @OnClick(R.id.mine_about)
     public void onAboutClick() {
 
     }
+
     @OnClick(R.id.mine_logout)
     public void onLogoutClick() {
         titleDetailView.setVisibility(View.GONE);
@@ -35,6 +39,8 @@ public class MineFragment extends BaseFragment {
         SettingManager.setCurrentJdPkh(null);
         SettingManager.getInstance().clearUserInfo();
         ToastUtil.shortToast(getResources().getString(R.string.mine_logout_success));
+        Intent intent = new Intent(getContext(),LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override

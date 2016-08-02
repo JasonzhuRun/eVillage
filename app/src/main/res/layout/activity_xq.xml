@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
-        app:tabIndicatorColor="@color/tab_backgroud"
-        app:tabSelectedTextColor="@color/text_main"
-        app:tabTextColor="@color/text_main" />
+        app:tabIndicatorColor="@color/background_title"
+        app:tabSelectedTextColor="@color/background_title"
+        app:tabTextColor="@color/text_black" />
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_below="@id/view_pager_tabstrip"

@@ -26,10 +26,10 @@ import okhttp3.Response;
 public class EVRequest {
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
-//    private static final String URL = "http://192.168.101.18:8080/zyfp-web/inter/";
+    private static final String URL = "http://192.168.101.18:8080/zyfp-web/inter/";
 //    private static final String URL = "http://192.168.212.35:8888/zyfp-web/inter/";
 //    private static final String URL = "http://10.108.6.45:8080/zyfp-web/inter/";
-    private static final String URL = "http://124.65.186.26:8973/zyfp-web/inter/";
+//    private static final String URL = "http://124.65.186.26:8973/zyfp-web/inter/";
 
     private static OkHttpClient client = new OkHttpClient();
 
@@ -64,6 +64,7 @@ public class EVRequest {
                 headerEvent.setRspDesc(RspCode.RSP_CODE_NO_CONNECTION_DSC);
                 EventBus.getDefault().post(headerEvent);
                 // 获取缓存数据
+                if (Action.ACTION_LOGIN.getName().equals(action.getName())) return;
                 String dataString = CacheManager.getInstance().getCacheData(action.toString());
                 if (!isEmptyBody(dataString)) {
                     callback.onDataResponse(dataString);
@@ -89,7 +90,9 @@ public class EVRequest {
                     }
                     if (!isEmptyBody(dataString)) {
                         callback.onDataResponse(dataString);
-                        CacheManager.getInstance().cacheData(action.toString(),dataString);
+                        if (!Action.ACTION_LOGIN.getName().equals(action.getName())) {
+                            CacheManager.getInstance().cacheData(action.toString(),dataString);
+                        }
                     }
                 }
             }

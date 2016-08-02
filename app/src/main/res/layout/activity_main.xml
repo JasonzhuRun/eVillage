@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:background="@color/tab_backgroud"
+                    android:background="@color/background_tab"
                     android:minHeight="@dimen/tab_height"
                     android:orientation="horizontal"
                     android:divider="@null"/>
@@ -61,7 +61,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/cut_off_line"/>
+            android:background="@color/background_cutoff"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/drawer_recyclerview"
             android:layout_width="match_parent"

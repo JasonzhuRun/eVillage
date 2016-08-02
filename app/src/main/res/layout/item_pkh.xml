@@ -2,31 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_person_layout"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:background="@color/white">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/item_person_photo"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/text_white"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/background_title"
         android:contentDescription="@string/app_name"/>
     <LinearLayout
         android:id="@+id/pkh_text"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/item_person_photo"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_alignTop="@id/item_person_photo"
+        android:layout_alignBottom="@id/item_person_photo"
+        android:layout_marginLeft="20dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/item_person_name"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textColor="@color/text_main"
+            android:layout_weight="2"
+            android:textColor="@color/text_black"
             android:textSize="16sp"
             android:maxLines="1"
             android:text="@string/pkh_bfdx"/>
@@ -35,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:textColor="@color/text_main"
-            android:textSize="16sp"
+            android:textColor="@color/text_gray"
+            android:textSize="12sp"
             android:maxLines="1"
             android:text="@string/pkh_jbxx_lxdh"/>
         <TextView
@@ -44,23 +45,16 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:textColor="@color/text_main"
-            android:textSize="16sp"
+            android:layout_marginRight="40dp"
+            android:textColor="@color/text_gray"
+            android:textSize="12sp"
             android:maxLines="2"
             android:text="@string/pkh_jbxx_jzdz"/>
     </LinearLayout>
-    <RadioButton
-        android:id="@+id/item_person_selected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="20dp"
-        android:visibility="invisible"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/cut_off_line"
+        android:background="@color/background_cutoff"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_alignParentBottom="true"/>

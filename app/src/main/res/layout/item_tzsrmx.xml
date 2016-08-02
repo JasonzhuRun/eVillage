@@ -32,7 +32,7 @@
         android:layout_height="1px"
         android:layout_marginLeft="@dimen/pkhxq_left_gap"
         android:layout_marginRight="@dimen/pkhxq_right_gap"
-        android:background="@color/cut_off_line"/>
+        android:background="@color/background_cutoff"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
         android:layout_height="1px"
         android:layout_marginLeft="@dimen/pkhxq_left_gap"
         android:layout_marginRight="@dimen/pkhxq_right_gap"
-        android:background="@color/cut_off_line"/>
+        android:background="@color/background_cutoff"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
         android:layout_height="1px"
         android:layout_marginLeft="@dimen/pkhxq_left_gap"
         android:layout_marginRight="@dimen/pkhxq_right_gap"
-        android:background="@color/cut_off_line"/>
+        android:background="@color/background_cutoff"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -117,10 +117,10 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/cut_off_line"/>
+        android:background="@color/background_cutoff"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_marginTop="2dp"
-        android:background="@color/cut_off_line"/>
+        android:background="@color/background_cutoff"/>
 </LinearLayout>
