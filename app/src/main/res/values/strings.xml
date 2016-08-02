@@ -72,6 +72,7 @@
     <string name="pkh_cyh">产业化情况</string>
     <string name="pkh_jtqkzp">家庭情况照片</string>
     <string name="pkh_error_id">没有查询到该贫困户相关信息</string>
+    <string name="pkh_detail">详情</string>
     <!--基本信息页面-->
     <string name="pkh_jbxx_hzxx">户主姓名</string>
     <string name="pkh_jbxx_lxdh">联系电话</string>
