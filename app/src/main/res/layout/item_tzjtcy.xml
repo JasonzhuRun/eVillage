@@ -11,7 +11,7 @@
         android:paddingBottom="@dimen/pkhxq_bottom_gap"
         android:paddingLeft="@dimen/pkhxq_left_gap"
         android:paddingRight="@dimen/pkhxq_right_gap">
-        <TextView
+        <TextView    android:minEms="6"
             android:id="@+id/jtcy_xm_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         android:paddingBottom="@dimen/pkhxq_bottom_gap"
         android:paddingLeft="@dimen/pkhxq_left_gap"
         android:paddingRight="@dimen/pkhxq_right_gap">
-        <TextView
+        <TextView    android:minEms="6"
             android:id="@+id/jtcy_xb_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
         android:paddingBottom="@dimen/pkhxq_bottom_gap"
         android:paddingLeft="@dimen/pkhxq_left_gap"
         android:paddingRight="@dimen/pkhxq_right_gap">
-        <TextView
+        <TextView    android:minEms="6"
             android:id="@+id/jtcy_yhzgx_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
         android:paddingBottom="@dimen/pkhxq_bottom_gap"
         android:paddingLeft="@dimen/pkhxq_left_gap"
         android:paddingRight="@dimen/pkhxq_right_gap">
-        <TextView
+        <TextView    android:minEms="6"
             android:id="@+id/jtcy_jkqk_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
         android:paddingBottom="@dimen/pkhxq_bottom_gap"
         android:paddingLeft="@dimen/pkhxq_left_gap"
         android:paddingRight="@dimen/pkhxq_right_gap">
-        <TextView
+        <TextView    android:minEms="6"
             android:id="@+id/jtcy_whcd_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
         android:paddingBottom="@dimen/pkhxq_bottom_gap"
         android:paddingLeft="@dimen/pkhxq_left_gap"
         android:paddingRight="@dimen/pkhxq_right_gap">
-        <TextView
+        <TextView    android:minEms="6"
             android:id="@+id/jtcy_zy_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
         android:paddingBottom="@dimen/pkhxq_bottom_gap"
         android:paddingLeft="@dimen/pkhxq_left_gap"
         android:paddingRight="@dimen/pkhxq_right_gap">
-        <TextView
+        <TextView    android:minEms="6"
             android:id="@+id/jtcy_zwjn_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

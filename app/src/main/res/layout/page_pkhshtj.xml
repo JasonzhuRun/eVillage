@@ -22,7 +22,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_tjnd_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_shyd_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_zyrl_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_ysqk_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_hqyskn_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_cslx_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_nyxfp_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -225,7 +225,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_yskn_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -254,7 +254,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_ysaq_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -283,7 +283,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_jlzgl_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -312,7 +312,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_rhllx_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -341,7 +341,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_wscs_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -370,7 +370,7 @@
                 android:paddingBottom="@dimen/pkhxq_bottom_gap"
                 android:paddingLeft="@dimen/pkhxq_left_gap"
                 android:paddingRight="@dimen/pkhxq_right_gap">
-                <TextView
+                <TextView    android:minEms="6"
                     android:id="@+id/shtj_gbds_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
