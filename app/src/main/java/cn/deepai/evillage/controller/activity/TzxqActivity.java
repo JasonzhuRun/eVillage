@@ -43,7 +43,7 @@ public class TzxqActivity extends BaseActivity {
     private ArrayList<BasePage> viewContainter = new ArrayList<>();
     private String tzId;
     private String tznd;
-
+    private ViewPager mPager;
 
     @OnClick(R.id.detail_back)
     public void onBackBtnClick(){
@@ -150,8 +150,8 @@ public class TzxqActivity extends BaseActivity {
     private void initView() {
 
         initTitle();
-        ViewPager pager = (ViewPager) this.findViewById(R.id.view_pager);
-        if (pager == null) return;
+        mPager = (ViewPager) this.findViewById(R.id.view_pager);
+        if (mPager == null) return;
 //        PagerTabStrip tabStrip = (PagerTabStrip) this.findViewById(R.id.view_pager_tabstrip);
 //        if (tabStrip != null) {
 //            //取消tab下面的长横线
@@ -163,7 +163,7 @@ public class TzxqActivity extends BaseActivity {
 //            tabStrip.setTextSpacing(200);
 //        }
         initPagerContent();
-        pager.setAdapter(new PagerAdapter() {
+        mPager.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
                 return viewContainter.size();
@@ -195,7 +195,7 @@ public class TzxqActivity extends BaseActivity {
             }
         });
 
-        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrollStateChanged(int arg0) {
 
@@ -219,7 +219,7 @@ public class TzxqActivity extends BaseActivity {
             for (BasePage view :viewContainter) {
                 tabStrip.addTab(tabStrip.newTab().setText(view.getPageName()));
             }
-            tabStrip.setupWithViewPager(pager);
+            tabStrip.setupWithViewPager(mPager);
         }
     }
 
@@ -233,5 +233,6 @@ public class TzxqActivity extends BaseActivity {
             tryToShowProcessDialog();
             viewContainter.get(selectedIndex).requestData();
         }
+        mPager.setCurrentItem(selectedIndex);
     }
 }

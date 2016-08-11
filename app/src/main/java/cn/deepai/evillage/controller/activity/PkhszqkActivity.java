@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.DialogManager;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
 import cn.deepai.evillage.model.bean.PkhszqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
@@ -84,7 +85,7 @@ public class PkhszqkActivity extends BaseActivity {
                                 if (TextUtils.isEmpty(localData.getId())) {
                                     final Gson gson = new Gson();
                                     RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addPkhSzqkJbxx);
-
+                                    szqkBean.setHid(SettingManager.getCurrentJdPkh().getHid());
                                     EVRequest.request(Action.ACTION_ADD_PKHZFJBXX, gson.toJson(header), gson.toJson(szqkBean),
                                             new ResponseCallback() {
                                                 @Override

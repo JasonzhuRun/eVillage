@@ -297,7 +297,7 @@ public class PkhxqActivity extends BaseActivity {
         }
         viewContainter.get(selectedIndex).setSelected(true);
         // 如果没有数据或者数据也可编辑时返回刷新
-        if (!viewContainter.get(selectedIndex).hasData()) {
+        if (!viewContainter.get(selectedIndex).hasData()||mEditable) {
             tryToShowProcessDialog();
             viewContainter.get(selectedIndex).requestData();
         }
