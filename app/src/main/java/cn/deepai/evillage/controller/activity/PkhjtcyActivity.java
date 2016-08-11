@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.DialogManager;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
@@ -79,7 +80,7 @@ public class PkhjtcyActivity extends BaseActivity {
                                 if (TextUtils.isEmpty(localData.getId())) {
                                     final Gson gson = new Gson();
                                     RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addPkhJtcy);
-
+                                    jtcyBean.setHid(SettingManager.getCurrentJdPkh().getHid());
                                     EVRequest.request(Action.ACTION_ADD_JTCYJBXX, gson.toJson(header), gson.toJson(jtcyBean),
                                             new ResponseCallback() {
                                                 @Override
