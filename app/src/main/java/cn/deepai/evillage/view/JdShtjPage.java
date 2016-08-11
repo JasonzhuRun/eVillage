@@ -5,21 +5,16 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
-
-import org.w3c.dom.Text;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
-import cn.deepai.evillage.model.bean.PkhsctjBean;
 import cn.deepai.evillage.model.bean.PkhshtjBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -30,7 +25,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 生活条件
  */
-public class JdShtjPage extends BasePage {
+public class JdShtjPage extends BasePage implements BasePage.IDataEdit{
 
     private PkhshtjBean localData;
 
@@ -314,11 +309,12 @@ public class JdShtjPage extends BasePage {
             bindData(event);
         }
     }
-    // 点击保存按钮
-    @SuppressWarnings("all")
-    public void onEvent(JdDataSaveEvent event) {
+
+    @Override
+    public void saveData() {
         localData.setJlczgl(jlczgl.getText().toString());
     }
+
     @Override
     public void requestData() {
         final Gson requestGson = new Gson();

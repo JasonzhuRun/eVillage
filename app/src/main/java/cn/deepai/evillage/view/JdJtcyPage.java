@@ -11,18 +11,12 @@ import android.view.LayoutInflater;
 
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtcyRecyclerAdapter;
 import cn.deepai.evillage.controller.activity.PkhjtcyActivity;
-import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
-import cn.deepai.evillage.model.bean.PkhjtcyBean;
 import cn.deepai.evillage.model.bean.PkhjtcyList;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.model.event.PagexjItemEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -78,18 +72,7 @@ public class JdJtcyPage extends BasePage {
             mHasData = true;
         }
     }
-    // 点击保存按钮
-    @SuppressWarnings("all")
-    public void onEvent(JdDataSaveEvent event) {
-//        localData.setHzxm(hzxm.getText().toString());
-//        localData.setJzdz(jzdz.getText().toString());
-//        localData.setLxdh(lxdh.getText().toString());
-//        localData.setHzsfz(hzsfz.getText().toString());
-//        localData.setHkhyx(hkhyx.getText().toString());
-//        localData.setYxzh(yxzh.getText().toString());
-//        localData.setPkhzt(pkhzt.getText().toString());
-//        localData.setTpnf(tpnf.getText().toString());
-    }
+
 
     @Override
     public void requestData() {

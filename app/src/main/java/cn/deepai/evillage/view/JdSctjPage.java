@@ -10,10 +10,8 @@ import com.google.gson.Gson;
 import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
-import cn.deepai.evillage.model.bean.PkhcyhqkBean;
 import cn.deepai.evillage.model.bean.PkhsctjBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -22,7 +20,7 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class JdSctjPage extends BasePage {
+public class JdSctjPage extends BasePage implements BasePage.IDataEdit{
 
     private PkhsctjBean localData;
 
@@ -71,8 +69,8 @@ public class JdSctjPage extends BasePage {
         }
     }
     // 点击保存按钮
-    @SuppressWarnings("all")
-    public void onEvent(JdDataSaveEvent event) {
+    @Override
+    public void saveData() {
         localData.setGdmj(gdmj.getText().toString());
         localData.setXyggdgdmj(xyggdgdmj.getText().toString());
         localData.setTian(tian.getText().toString());

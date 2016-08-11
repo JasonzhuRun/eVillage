@@ -30,6 +30,7 @@ public class Action {
     // 贫困户
     public static final Action ACTION_GET_PKHLIST = new Action("termLogin!getPkhList.action",Type.downstream);
     public static final Action ACTION_GET_PKHJBXX = new Action("termLogin!getPkhJbxx.action",Type.downstream);
+    public static final Action ACTION_UPDATE_PKHJBXX = new Action("termLogin!updatePkhJbxx.action",Type.upstream);
     public static final Action ACTION_GET_PKHJTCYLIST = new Action("termLogin!getPkhJtcyList.action",Type.downstream);
     public static final Action ACTION_GET_JTCYJBXX = new Action("termLogin!getPkhJtcyJbxx.action",Type.downstream);
     public static final Action ACTION_ADD_JTCYJBXX = new Action("termLogin!addPkhJtcyJbxx.action",Type.upstream);
@@ -46,7 +47,7 @@ public class Action {
     public static final Action ACTION_ADD_PKHSCTJJBXX = new Action("termLogin!addPkhSctjJbxx.action",Type.upstream);
     public static final Action ACTION_GET_PKHSHQKJBXX = new Action("termLogin!getPkhShqkJbxx.action",Type.downstream);
     public static final Action ACTION_UPDATE_PKHSHQKJNXX = new Action("termLogin!updatePkhShqkJbxx.action",Type.upstream);
-    public static final Action ACTION_ADD_PKHSGQKJBXX = new Action("termLogin!addPkhShqkJbxx.action",Type.upstream);
+    public static final Action ACTION_ADD_PKHSHQKJBXX = new Action("termLogin!addPkhShqkJbxx.action",Type.upstream);
     public static final Action ACTION_GET_PKHCYHZZJBXX = new Action("termLogin!getPkhCyhzzJbxx.action",Type.downstream);
     public static final Action ACTION_UPDATE_PKHCYHZZJBXX = new Action("termLogin!updatePkhCyhzzJbxx.action",Type.upstream);
     public static final Action ACTION_ADD_PKHCYHZZJBXX = new Action("termLogin!addPkhCyhzzJbxx.action",Type.upstream);

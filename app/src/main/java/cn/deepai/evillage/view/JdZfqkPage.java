@@ -13,10 +13,8 @@ import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
-import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhzfqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -26,7 +24,7 @@ import de.greenrobot.event.EventBus;
 /**
  * @author GaoYixuan
  */
-public class JdZfqkPage extends BasePage {
+public class JdZfqkPage extends BasePage implements BasePage.IDataEdit{
 
     private PkhzfqkBean serverData;
     private PkhzfqkBean localData;
@@ -136,8 +134,8 @@ public class JdZfqkPage extends BasePage {
     }
 
     // 点击保存按钮
-    @SuppressWarnings("all")
-    public void onEvent(JdDataSaveEvent event) {
+    @Override
+    public void saveData() {
         localData.setZfmj(zfmj.getText().toString());
         localData.setJfsj(jfsj.getText().toString());
     }

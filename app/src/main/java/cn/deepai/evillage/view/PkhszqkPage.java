@@ -8,15 +8,11 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhszqkRecyclerAdapter;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
-import cn.deepai.evillage.model.bean.ListBean;
-import cn.deepai.evillage.model.bean.PkhszqkBean;
+import cn.deepai.evillage.model.bean.PkhszqkList;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -55,7 +51,7 @@ public class PkhszqkPage extends BasePage {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(ListBean<PkhszqkBean> event) {
+    public void onEventMainThread(PkhszqkList event) {
         if (isSelected()) {
             mPkhszqkRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
@@ -71,9 +67,7 @@ public class PkhszqkPage extends BasePage {
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
-                        Type type = new TypeToken<ListBean<PkhszqkBean>>() {
-                        }.getType();
-                        ListBean<PkhszqkBean> responseEvent = requestGson.fromJson(dataJsonString, type);
+                        PkhszqkList responseEvent = requestGson.fromJson(dataJsonString, PkhszqkList.class);
                         EventBus.getDefault().post(responseEvent);
                     }
                 });

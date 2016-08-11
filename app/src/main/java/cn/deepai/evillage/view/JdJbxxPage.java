@@ -15,7 +15,8 @@ import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.event.JdDataSaveEvent;
+import cn.deepai.evillage.model.bean.TzjbxxBean;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -25,7 +26,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 贫困户基本信息
  */
-public class JdJbxxPage extends BasePage {
+public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
 
     private PkhjbxxBean serverData;
     private PkhjbxxBean localData;
@@ -83,17 +84,6 @@ public class JdJbxxPage extends BasePage {
         if (isSelected()) {
             bindData(event);
         }
-    }
-    // 点击保存按钮
-    @SuppressWarnings("all")
-    public void onEvent(JdDataSaveEvent event) {
-        localData.setHzxm(hzxm.getText().toString());
-        localData.setJzdz(jzdz.getText().toString());
-        localData.setLxdh(lxdh.getText().toString());
-        localData.setHzsfz(hzsfz.getText().toString());
-        localData.setHkhyx(hkhyx.getText().toString());
-        localData.setYxzh(yxzh.getText().toString());
-        localData.setTpnf(tpnf.getText().toString());
     }
 
     @OnClick(R.id.jbxx_jhsyh_layout)
@@ -169,6 +159,31 @@ public class JdJbxxPage extends BasePage {
                         if (mContext.getString(R.string.pkh_jbxx_sbbz_gjbz).equals(data)) {
                             localData.setPksbbz("G");
                         } else localData.setPksbbz("S");
+                    }
+                });
+    }
+
+    @Override
+    public void saveData() {
+
+        localData.setHzxm(hzxm.getText().toString());
+        localData.setJzdz(jzdz.getText().toString());
+        localData.setLxdh(lxdh.getText().toString());
+        localData.setHzsfz(hzsfz.getText().toString());
+        localData.setHkhyx(hkhyx.getText().toString());
+        localData.setYxzh(yxzh.getText().toString());
+        localData.setTpnf(tpnf.getText().toString());
+
+        final PkhjbxxBean jbxxBean = localData;
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updatePkhJbxx);
+
+        final Gson gson = new Gson();
+        EVRequest.request(Action.ACTION_UPDATE_PKHJBXX, gson.toJson(header), gson.toJson(jbxxBean),
+                new ResponseCallback() {
+                    @Override
+                    public void onDataResponse(String dataJsonString) {
+                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                        EventBus.getDefault().post(returnValueEvent);
                     }
                 });
     }

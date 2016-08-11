@@ -6,14 +6,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -23,7 +21,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -32,14 +29,13 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
-import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.EncryptionUtil;
 import cn.deepai.evillage.utils.FileUtil;
 import cn.deepai.evillage.utils.LogUtil;
-import cn.deepai.evillage.utils.StringUtil;
 import cn.deepai.evillage.utils.ToastUtil;
+import cn.deepai.evillage.view.BasePage;
 import cn.deepai.evillage.view.JdCyhPage;
 import cn.deepai.evillage.view.JdJbxxPage;
 import cn.deepai.evillage.view.JdJtcyPage;
@@ -48,7 +44,6 @@ import cn.deepai.evillage.view.JdSctjPage;
 import cn.deepai.evillage.view.JdShtjPage;
 import cn.deepai.evillage.view.JdSzqkPage;
 import cn.deepai.evillage.view.JdZfqkPage;
-import cn.deepai.evillage.view.BasePage;
 import cn.deepai.evillage.view.PkhcyhPage;
 import cn.deepai.evillage.view.PkhjbxxPage;
 import cn.deepai.evillage.view.PkhjtcyPage;
@@ -75,7 +70,11 @@ public class PkhxqActivity extends BaseActivity {
 
     @OnClick(R.id.detail_save)
     public void onSaveBtnClick(){
-        EventBus.getDefault().post(new JdDataSaveEvent());
+        BasePage page = viewContainter.get(selectedIndex);
+        if (page instanceof BasePage.IDataEdit) {
+            tryToShowProcessDialog();
+            ((BasePage.IDataEdit)page).saveData();
+        }
     }
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {

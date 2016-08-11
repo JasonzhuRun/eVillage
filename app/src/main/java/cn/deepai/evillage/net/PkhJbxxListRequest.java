@@ -1,16 +1,11 @@
 package cn.deepai.evillage.net;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
-
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.bean.ListBean;
-import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhjbxxList;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import de.greenrobot.event.EventBus;

@@ -15,9 +15,7 @@ import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhcyhqkBean;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
-import cn.deepai.evillage.model.bean.PkhzfqkBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.event.JdDataSaveEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -148,21 +146,6 @@ public class JdCyhPage extends BasePage {
 //            mPkhjtqkzpRecyclerAdapter.notifyResult(false, event);
             mHasData = true;
         }
-    }
-    // 点击保存按钮
-    @SuppressWarnings("all")
-    public void onEvent(JdDataSaveEvent event) {
-//        localData.setGdmj(gdmj.getText().toString());
-//        localData.setXyggdgdmj(xyggdgdmj.getText().toString());
-//        localData.setTian(tian.getText().toString());
-//        localData.setTu(tu.getText().toString());
-//        localData.setLscgymj(lscgymj.getText().toString());
-//        localData.setTghlmj(tghlmj.getText().toString());
-//        localData.setMcdmj(mcdmj.getText().toString());
-//        localData.setSmmj(smmj.getText().toString());
-//        localData.setSyjjzwmj(syjjzwmj.getText().toString());
-//        localData.setScyfmj(scyfmj.getText().toString());
-//        localData.setSxsl(sxsl.getText().toString());
     }
 
     @Override

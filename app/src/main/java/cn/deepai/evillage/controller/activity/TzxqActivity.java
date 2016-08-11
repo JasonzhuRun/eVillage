@@ -57,7 +57,6 @@ public class TzxqActivity extends BaseActivity {
             tryToShowProcessDialog();
             ((BasePage.IDataEdit)page).saveData();
         }
-
     }
 
     @SuppressWarnings("all")
