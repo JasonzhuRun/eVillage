@@ -52,16 +52,24 @@ public class TzFragment extends BaseFragment {
         EventBus.getDefault().unregister(this);
     }
 
+    /**
+     * 获取台账列表
+     */
     @SuppressWarnings("all")
     public void onEventMainThread(TzjbxxList event) {
         mTzRecyclerAdapter.notifyResult(true, event.list);
         tryToHideProcessDialog();
     }
-
+    /**
+     * 选择贫困户后加载贫困户信息
+     */
     @SuppressWarnings("all")
     public void onEventMainThread(PkhSelectedEvent event) {
         loadData();
     }
+    /**
+     * 新建台账
+     */
     @SuppressWarnings("all")
     public void onEventMainThread(TzxjtzEvent event) {
         final String staffId = SettingManager.getInstance().getStaffId();
@@ -80,7 +88,9 @@ public class TzFragment extends BaseFragment {
             });
         }
     }
-
+    /**
+     * 新建台账返回消息
+     */
     @SuppressWarnings("all")
     public void onEventMainThread(TzxgjgEvent event) {
         if (event.returnValue == 1) {

@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.LogUtil;
 import de.greenrobot.event.EventBus;
@@ -26,10 +27,10 @@ import okhttp3.Response;
 public class EVRequest {
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
-    private static final String URL = "http://192.168.101.18:8080/zyfp-web/inter/";
+//    private static final String URL = "http://192.168.101.18:8080/zyfp-web/inter/";
 //    private static final String URL = "http://192.168.212.35:8888/zyfp-web/inter/";
 //    private static final String URL = "http://10.108.6.45:8080/zyfp-web/inter/";
-//    private static final String URL = "http://124.65.186.26:8973/zyfp-web/inter/";
+    private static final String URL = "http://124.65.186.26:8973/zyfp-web/inter/";
 
     private static OkHttpClient client = new OkHttpClient();
 
@@ -67,11 +68,15 @@ public class EVRequest {
                 headerEvent.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
                 headerEvent.setRspDesc(RspCode.RSP_CODE_NO_CONNECTION_DSC);
                 EventBus.getDefault().post(headerEvent);
-                // 获取缓存数据(除登录)
-                if (Action.ACTION_LOGIN.getName().equals(action.getName())) return;
-                String dataString = CacheManager.getInstance().getCacheData(action.toString());
-                if (!isEmptyBody(dataString)) {
-                    callback.onDataResponse(dataString);
+                if (action.getType() == Action.Type.upstream) {
+                    // 数据上传失败加入上传队列
+
+                } else if (action.getType() == Action.Type.downstream) {
+                    // 数据下载失败读取缓存
+                    String dataString = CacheManager.getInstance().getCacheData(action.toString());
+                    if (!isEmptyBody(dataString)) {
+                        callback.onDataResponse(dataString);
+                    }
                 }
             }
 
@@ -94,9 +99,11 @@ public class EVRequest {
                     }
                     if (!isEmptyBody(dataString)) {
                         callback.onDataResponse(dataString);
-                        if (!Action.ACTION_LOGIN.getName().equals(action.getName())) {
+                        if (action.getType() == Action.Type.downstream) {
+                            // 数据下载成功加入缓存
                             CacheManager.getInstance().cacheData(action.toString(),dataString);
                         }
+                        // 这种上传失败情况是服务器返回的失败，不进行缓存
                     }
                 }
             }

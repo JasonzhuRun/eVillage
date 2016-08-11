@@ -1,10 +1,10 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -17,7 +17,7 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
-import cn.deepai.evillage.model.event.TzDataSaveEvent;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -28,7 +28,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 台账基本信息
  */
-public class TzjbxxPage extends BasePage {
+public class TzjbxxPage extends BasePage implements BasePage.IDataEdit{
 
     private String tzId;
     private String tznd;
@@ -37,7 +37,7 @@ public class TzjbxxPage extends BasePage {
     private EditText nsrhj;
     private EditText nzchj;
     private EditText dkje;
-    private EditText zfjg;
+    private TextView zfjg;
     private EditText zfmj;
     private EditText sfwf;
     private EditText gdtian;
@@ -89,28 +89,32 @@ public class TzjbxxPage extends BasePage {
     public void onEventMainThread(TzjbxxBean event) {
         bindData(event);
     }
+
     // 点击保存按钮
-    @SuppressWarnings("all")
-    public void onEventMainThread(TzDataSaveEvent event) {
+    public void saveData() {
         localData.setNrjcsr(nrjcsr.getText().toString());
         localData.setNsrhj(nsrhj.getText().toString());
         localData.setNzchj(nzchj.getText().toString());
         localData.setDkje(dkje.getText().toString());
-        localData.setZfjg(zfjg.getText().toString());
         localData.setZfmj(zfmj.getText().toString());
         localData.setGdtian(gdtian.getText().toString());
         localData.setGdtu(gdtu.getText().toString());
         localData.setGdldm(gdldm.getText().toString());
         localData.setGdhjm(gdhjm.getText().toString());
-        // 选择项在选择时已经赋过值
-//      DictionaryUtil.getValueName(localData.getSfwf())
-//      DictionaryUtil.getValueName(localData.getSfts())
-//      DictionaryUtil.getValueName(localData.getSftd())
-//      DictionaryUtil.getValueName(localData.getSftl())
-//      DictionaryUtil.getValueName(localData.getSftx())
-//      DictionaryUtil.getValueName(localData.getSftds())
-//      DictionaryUtil.getValueName(localData.getSftkd())
-        //todo 修改接口写好以后上传
+
+        final TzjbxxBean tzjbxxBean = localData;
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updateTzjbxx);
+
+        final Gson gson = new Gson();
+        EVRequest.request(Action.ACTION_UPDATE_TZJBXX, gson.toJson(header), gson.toJson(tzjbxxBean),
+                new ResponseCallback() {
+                    @Override
+                    public void onDataResponse(String dataJsonString) {
+                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                        EventBus.getDefault().post(returnValueEvent);
+                    }
+                });
+
     }
 
     @Override
@@ -240,13 +244,34 @@ public class TzjbxxPage extends BasePage {
                 });
     }
 
+    @OnClick(R.id.jbxx_zfjg)
+    public void onZfjgClick() {
+        final String[] jgValues = new String[7];
+        for (int i = 0;i < jgValues.length;i++) {
+            jgValues[i] = DictionaryUtil.getValueName("FWJG",String.valueOf(i));
+        }
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.tz_jbxx_zfjg),
+                jgValues,
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        zfjg.setText(data);
+                        for (int i = 0;i < jgValues.length;i++) {
+                            if (data.equals(jgValues[i])) {
+                                localData.setZfjg(String.valueOf(i));
+                                break;
+                            }
+                        }
+                    }
+                });
+    }
     private void initView() {
 
         nrjcsr = (EditText) findViewById(R.id.jbxx_nrjcsr);
         nsrhj = (EditText) findViewById(R.id.jbxx_nsrhj);
         nzchj = (EditText) findViewById(R.id.jbxx_nzchj);
         dkje = (EditText) findViewById(R.id.jbxx_dkje);
-        zfjg = (EditText) findViewById(R.id.jbxx_zfjg);
+        zfjg = (TextView) findViewById(R.id.jbxx_zfjg);
         zfmj = (EditText) findViewById(R.id.jbxx_zfmj);
         gdtian = (EditText) findViewById(R.id.jbxx_gdtian);
         gdtu = (EditText) findViewById(R.id.jbxx_gdtu);
@@ -271,7 +296,7 @@ public class TzjbxxPage extends BasePage {
         nsrhj.setText(tzjbxxBean.getNsrhj());
         nzchj.setText(tzjbxxBean.getNzchj());
         dkje.setText(tzjbxxBean.getDkje());
-        zfjg.setText(tzjbxxBean.getZfjg());
+        zfjg.setText(DictionaryUtil.getValueName("FWJG",tzjbxxBean.getZfjg()));
         zfmj.setText(tzjbxxBean.getZfmj());
         sfwf.setText(DictionaryUtil.getValueName(tzjbxxBean.getSfwf()));
         gdtian.setText(tzjbxxBean.getGdtian());

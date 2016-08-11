@@ -19,22 +19,26 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzjtcyRecyclerAdapter;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.BaseBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzjtcyBean;
 import cn.deepai.evillage.model.bean.TzjtcyList;
 import cn.deepai.evillage.model.event.PagexjItemEvent;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.TzjtcyClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.DictionaryUtil;
 import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
+import okhttp3.internal.http.RetryableSink;
 
 /**
  * 台账家庭成员
  */
-public class TzjtcyPage extends BasePage {
+public class TzjtcyPage extends BasePage implements BasePage.IDataEdit{
 
     private String tzId;
     private String tznd;
@@ -82,13 +86,39 @@ public class TzjtcyPage extends BasePage {
     }
 
     @SuppressWarnings("all")
-    public void onEventMainThread(PagexjItemEvent event) {
+    public void onEventMainThread(TzjtcyBean event) {
         if (isSelected()) {
-            List<TzjtcyBean> itemList = new ArrayList<>();
-            itemList.add(new TzjtcyBean());
-            mTzjtcyRecyclerAdapter.notifyResult(false, itemList);
+            this.mTzjtcyList.add(event);
+            mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
             mRecyclerView.scrollToPosition(mTzjtcyRecyclerAdapter.getItemCount() - 1);
             mHasData = true;
+        }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(PagexjItemEvent event) {
+        if (isSelected()) {
+            DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_xm)
+                    ,new DialogManager.IOnDialogFinished() {
+                        @Override
+                        public void returnData(String data) {
+                            final TzjtcyBean bean = new TzjtcyBean();
+                            bean.beanState = BaseBean.NEW;
+                            bean.setXm(data);
+                            final Gson gson = new Gson();
+                            RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addTzjtcy);
+                            EVRequest.request(Action.ACTION_ADD_JTCYJBXX, gson.toJson(header), gson.toJson(bean),
+                                    new ResponseCallback() {
+                                        @Override
+                                        public void onDataResponse(String dataJsonString) {
+                                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                                            if (returnValueEvent.returnValue == ReturnValueEvent.SUCCESS) {
+                                                EventBus.getDefault().post(bean);
+                                            }
+                                        }
+                                    });
+                        }
+                    });
         }
     }
 
@@ -104,6 +134,7 @@ public class TzjtcyPage extends BasePage {
                                     for (TzjtcyBean bean:mTzjtcyList) {
                                         if (event.cyId.equals(bean.getId())) {
                                             bean.setXm(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
@@ -122,6 +153,7 @@ public class TzjtcyPage extends BasePage {
                                     for (TzjtcyBean bean:mTzjtcyList) {
                                         if (event.cyId.equals(bean.getId())) {
                                             bean.setXb(data.equals(xbValues[0])?"M":"F");
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
@@ -142,6 +174,7 @@ public class TzjtcyPage extends BasePage {
                                             for (int i = 0;i < 21;i++) {
                                                 if (data.equals(gxValues[i])) {
                                                     bean.setYhzgx(String.valueOf(i+1));
+                                                    bean.beanState = BaseBean.EDIT;
                                                 }
                                             }
                                         }
@@ -164,6 +197,7 @@ public class TzjtcyPage extends BasePage {
                                             for (int i = 0;i < 5;i++) {
                                                 if (data.equals(jkValues[i])) {
                                                     bean.setJkqk(String.valueOf(i+1));
+                                                    bean.beanState = BaseBean.EDIT;
                                                 }
                                             }
                                         }
@@ -186,6 +220,7 @@ public class TzjtcyPage extends BasePage {
                                             for (int i = 0;i < 10;i++) {
                                                 if (data.equals(whValues[i])) {
                                                     bean.setWhcd(String.valueOf(i+1));
+                                                    bean.beanState = BaseBean.EDIT;
                                                 }
                                             }
                                         }
@@ -202,6 +237,7 @@ public class TzjtcyPage extends BasePage {
                                     for (TzjtcyBean bean:mTzjtcyList) {
                                         if (event.cyId.equals(bean.getId())) {
                                             bean.setZy(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
@@ -216,12 +252,33 @@ public class TzjtcyPage extends BasePage {
                                     for (TzjtcyBean bean:mTzjtcyList) {
                                         if (event.cyId.equals(bean.getId())) {
                                             bean.setZwjn(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
                                 }
                             });
                     break;
+            }
+        }
+    }
+
+    @Override
+    public void saveData() {
+        for (final TzjtcyBean bean:mTzjtcyList) {
+            if (bean.beanState == BaseBean.EDIT) {
+                RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updateTzjtcy);
+
+                final Gson gson = new Gson();
+                EVRequest.request(Action.ACTION_UPDATE_TZJTCY, gson.toJson(header), gson.toJson(bean),
+                        new ResponseCallback() {
+                            @Override
+                            public void onDataResponse(String dataJsonString) {
+                                ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                                if (returnValueEvent.returnValue == ReturnValueEvent.SUCCESS) bean.beanState = BaseBean.NORMAL;
+                                EventBus.getDefault().post(returnValueEvent);
+                            }
+                        });
             }
         }
     }

@@ -56,7 +56,7 @@ public class TzjtcyViewHolder extends BaseViewHolder {
         xb.setText(DictionaryUtil.getValueName("COMMON.GENDER", tzjtcyBean.getXb()));
         yhzgx.setText(DictionaryUtil.getValueName("YHZGX", tzjtcyBean.getYhzgx()));
         jkqk.setText(DictionaryUtil.getValueName("JKQK",tzjtcyBean.getJkqk()));
-        whcd.setText(DictionaryUtil.getValueName("WHCD",tzjtcyBean.getJkqk()));
+        whcd.setText(DictionaryUtil.getValueName("WHCD",tzjtcyBean.getWhcd()));
         zy.setText(tzjtcyBean.getZy());
         zwjn.setText(tzjtcyBean.getZwjn());
     }

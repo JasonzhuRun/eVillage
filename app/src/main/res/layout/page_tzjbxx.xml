@@ -146,15 +146,15 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tz_jbxx_zfjg"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
-                <EditText
+                <TextView
                     android:id="@+id/jbxx_zfjg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/jbxx_zfjg_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:background="@drawable/edit_text_backgroud"
-                    android:focusable="true"/>
+                    android:textColor="@color/text_black"
+                    android:background="@drawable/edit_text_backgroud"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"

@@ -12,6 +12,7 @@ public abstract class BasePage extends FrameLayout {
     private boolean isSelected;
     protected Context mContext;
     protected boolean mHasData = false;
+    protected IDataEdit dataEdit = null;
 
     public BasePage(Context context) {
         this(context, null);
@@ -44,4 +45,8 @@ public abstract class BasePage extends FrameLayout {
 
     public abstract void registeEventBus();
     public abstract void unRegisteEventBus();
+
+    public interface IDataEdit {
+        void saveData();
+    }
 }

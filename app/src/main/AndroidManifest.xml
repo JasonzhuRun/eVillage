@@ -33,7 +33,7 @@
         <activity
             android:name=".controller.activity.PkhxqActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity
             android:name=".controller.activity.PkhjtcyActivity"
             android:screenOrientation="portrait"/>
@@ -43,7 +43,7 @@
         <activity
             android:name=".controller.activity.TzxqActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
     </application>
 
 </manifest>

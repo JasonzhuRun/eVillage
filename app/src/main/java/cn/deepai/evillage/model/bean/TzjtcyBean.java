@@ -3,7 +3,7 @@ package cn.deepai.evillage.model.bean;
 /**
  * @author GaoYixuan
  */
-public class TzjtcyBean {
+public class TzjtcyBean extends BaseBean {
 
     private String id;
     private String xm;

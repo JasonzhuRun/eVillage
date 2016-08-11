@@ -26,12 +26,14 @@ package cn.deepai.evillage.net;
 public class Action {
 
     // 登录
-    public static final Action ACTION_LOGIN = new Action("termLogin!login.action",Type.downstream);
+    public static final Action ACTION_LOGIN = new Action("termLogin!login.action",Type.other);
     // 贫困户
     public static final Action ACTION_GET_PKHLIST = new Action("termLogin!getPkhList.action",Type.downstream);
     public static final Action ACTION_GET_PKHJBXX = new Action("termLogin!getPkhJbxx.action",Type.downstream);
     public static final Action ACTION_GET_PKHJTCYLIST = new Action("termLogin!getPkhJtcyList.action",Type.downstream);
     public static final Action ACTION_GET_JTCYJBXX = new Action("termLogin!getPkhJtcyJbxx.action",Type.downstream);
+    public static final Action ACTION_ADD_JTCYJBXX = new Action("termLogin!addPkhJtcyJbxx.action",Type.upstream);
+    public static final Action ACTION_UPDATE_JTCYJBXX = new Action("termLogin!updatePkhJtcyJbxx.action",Type.upstream);
     public static final Action ACTION_GET_PKHSZQKLIST = new Action("termLogin!getPkhSzqkList.action",Type.downstream);
     public static final Action ACTION_GET_PKHSZQKJBXX = new Action("termLogin!getPkhSzqkJbxx.action",Type.downstream);
     public static final Action ACTION_UPDATE_PKHSZQKJBXX = new Action("termLogin!updatePkhSzqkJbxx.action",Type.upstream);
@@ -58,7 +60,7 @@ public class Action {
     public static final Action ACTION_GET_TZJBXX = new Action("termPkhGztz!getPkhGztzJbxx.action",Type.downstream);
     public static final Action ACTION_UPDATE_TZJBXX = new Action("termPkhGztz!updatePkhGztzJbxx.action",Type.upstream);
     public static final Action ACTION_GET_TZJTCYLIST = new Action("termPkhGztz!getPkhGztzJtcyList.action",Type.downstream);
-    public static final Action ACTION_UPDATE_TZJTCY = new Action("termPkhGztz!updatePkhGztzJtcy.action",Type.downstream);
+    public static final Action ACTION_UPDATE_TZJTCY = new Action("termPkhGztz!updatePkhGztzJtcy.action",Type.upstream);
     public static final Action ACTION_GET_TZSRMX = new Action("termPkhGztz!getPkhGztzSrmx.action",Type.downstream);
     public static final Action ACTION_ADD_TZSRMX = new Action("termPkhGztz!addPkhGztzSrmx.action",Type.upstream);
     public static final Action ACTION_UPDATE_TZSRMX = new Action("termPkhGztz!updatePkhGztzSrmx.action",Type.upstream);
@@ -79,7 +81,7 @@ public class Action {
     private String args;
 
     enum Type{
-        downstream,upstream
+        downstream,upstream,other
     }
 
     public Action(String name,Type type) {

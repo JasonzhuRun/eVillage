@@ -23,7 +23,6 @@ import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzzfqkBean;
 import cn.deepai.evillage.model.bean.TzzfqkList;
 import cn.deepai.evillage.model.event.PagexjItemEvent;
-import cn.deepai.evillage.model.event.TzDataSaveEvent;
 import cn.deepai.evillage.model.event.TzzfqkClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -72,15 +71,6 @@ public class TzzfxxPage extends BasePage {
         EventBus.getDefault().unregister(this);
     }
 
-    /**
-     * 保存信息
-     */
-    @SuppressWarnings("all")
-    public void onEventMainThread(TzDataSaveEvent event) {
-        if (isSelected()) {
-
-        }
-    }
 
     /**
      * 获取到页面信息

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +21,8 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.RspCode;
-import cn.deepai.evillage.model.event.TzDataSaveEvent;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.BasePage;
 import cn.deepai.evillage.view.TzjbxxPage;
@@ -32,6 +31,8 @@ import cn.deepai.evillage.view.TzsrmxPage;
 import cn.deepai.evillage.view.TzzcmxPage;
 import cn.deepai.evillage.view.TzzfxxPage;
 import de.greenrobot.event.EventBus;
+
+import static cn.deepai.evillage.model.event.ReturnValueEvent.SUCCESS;
 
 /**
  * 台账详情页
@@ -51,7 +52,22 @@ public class TzxqActivity extends BaseActivity {
 
     @OnClick(R.id.detail_save)
     public void onSaveBtnClick(){
-        EventBus.getDefault().post(new TzDataSaveEvent());
+        BasePage page = viewContainter.get(selectedIndex);
+        if (page instanceof BasePage.IDataEdit) {
+            tryToShowProcessDialog();
+            ((BasePage.IDataEdit)page).saveData();
+        }
+
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(ReturnValueEvent event) {
+        if (event.returnValue == SUCCESS) {
+            ToastUtil.shortToast(getString(R.string.upload_success));
+        } else {
+            ToastUtil.shortToast(getString(R.string.upload_failed));
+        }
+        tryToHideProcessDialog();
     }
 
     @SuppressWarnings("all")

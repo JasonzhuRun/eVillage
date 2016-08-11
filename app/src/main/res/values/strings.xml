@@ -18,6 +18,8 @@
     <string name="insure">确定</string>
     <string name="save_info">是否保存并上传数据?</string>
     <string name="no_sdcard">请确认存储设备状态后重试</string>
+    <string name="upload_success">上传成功</string>
+    <string name="upload_failed">上传失败，请确认网络连接后重试</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>
     <string name="req_code_getPkhJbxxList">zyfp01002</string>
@@ -51,6 +53,9 @@
     <string name="req_code_getTzZcmx">zyfp03005</string>
     <string name="req_code_getTzBfjh">zyfp03006</string>
     <string name="req_code_addTz">zyfp03007</string>
+    <string name="req_code_updateTzjbxx">zyfp03008</string>
+    <string name="req_code_addTzjtcy">zyfp03009</string>
+    <string name="req_code_updateTzjtcy">zyfp03010</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
     <string name="tab_pkh">帮扶对象</string>
