@@ -3,7 +3,7 @@ package cn.deepai.evillage.model.bean;
 /**
  * @author GaoYixuan
  */
-public class TzzcmxBean {
+public class TzzcmxBean extends BaseBean{
 
     // 唯一标识收支项目
     private String id;

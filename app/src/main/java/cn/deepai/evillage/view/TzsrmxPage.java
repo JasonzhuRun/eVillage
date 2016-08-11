@@ -18,22 +18,25 @@ import java.util.List;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzsrmxRecyclerAdapter;
 import cn.deepai.evillage.manager.DialogManager;
+import cn.deepai.evillage.model.bean.BaseBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzjtcyBean;
 import cn.deepai.evillage.model.bean.TzsrmxBean;
 import cn.deepai.evillage.model.bean.TzsrmxList;
 import cn.deepai.evillage.model.event.PagexjItemEvent;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.TzsrmxClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.LogUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
  * 台账收入明细
  */
-public class TzsrmxPage extends BasePage {
+public class TzsrmxPage extends BasePage implements BasePage.IDataEdit{
 
     private String tzId;
     private String tznd;
@@ -83,9 +86,7 @@ public class TzsrmxPage extends BasePage {
     @SuppressWarnings("all")
     public void onEventMainThread(PagexjItemEvent event) {
         if (isSelected()) {
-            mTzsrmxRecyclerAdapter.notifyResult(false, new TzsrmxBean());
-            mRecyclerView.scrollToPosition(mTzsrmxRecyclerAdapter.getItemCount() - 1);
-            mHasData = true;
+            ToastUtil.shortToast("项目管理功能正在开发中...");
         }
     }
 
@@ -101,6 +102,7 @@ public class TzsrmxPage extends BasePage {
                                     for (TzsrmxBean bean:mTzsrmxList) {
                                         if (event.id.equals(bean.getId())) {
                                             bean.setXmmc(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzsrmxRecyclerAdapter.notifyResult(true, mTzsrmxList);
@@ -115,6 +117,7 @@ public class TzsrmxPage extends BasePage {
                                     for (TzsrmxBean bean:mTzsrmxList) {
                                         if (event.id.equals(bean.getId())) {
                                             bean.setXmgm(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzsrmxRecyclerAdapter.notifyResult(true, mTzsrmxList);
@@ -129,6 +132,7 @@ public class TzsrmxPage extends BasePage {
                                     for (TzsrmxBean bean:mTzsrmxList) {
                                         if (event.id.equals(bean.getId())) {
                                             bean.setClgj(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzsrmxRecyclerAdapter.notifyResult(true, mTzsrmxList);
@@ -143,12 +147,33 @@ public class TzsrmxPage extends BasePage {
                                     for (TzsrmxBean bean:mTzsrmxList) {
                                         if (event.id.equals(bean.getId())) {
                                             bean.setNsry(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzsrmxRecyclerAdapter.notifyResult(true, mTzsrmxList);
                                 }
                             });
                     break;
+            }
+        }
+    }
+
+    @Override
+    public void saveData() {
+        for (final TzsrmxBean bean:mTzsrmxList) {
+            if (bean.beanState == BaseBean.EDIT) {
+                RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updateTzsrmx);
+
+                final Gson gson = new Gson();
+                EVRequest.request(Action.ACTION_UPDATE_TZSRMX, gson.toJson(header), gson.toJson(bean),
+                        new ResponseCallback() {
+                            @Override
+                            public void onDataResponse(String dataJsonString) {
+                                ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                                if (returnValueEvent.returnValue == ReturnValueEvent.SUCCESS) bean.beanState = BaseBean.NORMAL;
+                                EventBus.getDefault().post(returnValueEvent);
+                            }
+                        });
             }
         }
     }

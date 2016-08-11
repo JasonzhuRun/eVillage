@@ -3,7 +3,7 @@ package cn.deepai.evillage.model.bean;
 /**
  * @author GaoYixuan
  */
-public class TzsrmxBean {
+public class TzsrmxBean extends BaseBean{
     // 唯一标识收支项目
     private String id;
     // 通过tzid找到收支列表

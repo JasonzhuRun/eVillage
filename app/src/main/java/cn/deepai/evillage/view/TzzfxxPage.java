@@ -19,10 +19,13 @@ import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzzfqkRecyclerAdapter;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.BaseBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.bean.TzzcmxBean;
 import cn.deepai.evillage.model.bean.TzzfqkBean;
 import cn.deepai.evillage.model.bean.TzzfqkList;
 import cn.deepai.evillage.model.event.PagexjItemEvent;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.TzzfqkClickEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -33,7 +36,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 台账走访信息
  */
-public class TzzfxxPage extends BasePage {
+public class TzzfxxPage extends BasePage implements BasePage.IDataEdit{
 
     private String tzId;
     private String tznd;
@@ -113,6 +116,7 @@ public class TzzfxxPage extends BasePage {
                                     for (TzzfqkBean bean: mTzzfqkList) {
                                         if (event.id.equals(bean.getId())) {
                                             bean.setZfsj(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzzfqkRecyclerAdapter.notifyResult(true, mTzzfqkList);
@@ -127,6 +131,7 @@ public class TzzfxxPage extends BasePage {
                                     for (TzzfqkBean bean: mTzzfqkList) {
                                         if (event.id.equals(bean.getId())) {
                                             bean.setLsqk(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzzfqkRecyclerAdapter.notifyResult(true, mTzzfqkList);
@@ -141,6 +146,7 @@ public class TzzfxxPage extends BasePage {
                                     for (TzzfqkBean bean: mTzzfqkList) {
                                         if (event.id.equals(bean.getId())) {
                                             bean.setBfcx(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzzfqkRecyclerAdapter.notifyResult(true, mTzzfqkList);
@@ -155,12 +161,33 @@ public class TzzfxxPage extends BasePage {
                                     for (TzzfqkBean bean: mTzzfqkList) {
                                         if (event.id.equals(bean.getId())) {
                                             bean.setSfzsy(data);
+                                            bean.beanState = BaseBean.EDIT;
                                         }
                                     }
                                     mTzzfqkRecyclerAdapter.notifyResult(true, mTzzfqkList);
                                 }
                             });
                     break;
+            }
+        }
+    }
+
+    @Override
+    public void saveData() {
+        for (final TzzfqkBean bean: mTzzfqkList) {
+            if (bean.beanState == BaseBean.EDIT) {
+                RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updateTzzfxx);
+
+                final Gson gson = new Gson();
+                EVRequest.request(Action.ACTION_UPDATE_TZZFQK, gson.toJson(header), gson.toJson(bean),
+                        new ResponseCallback() {
+                            @Override
+                            public void onDataResponse(String dataJsonString) {
+                                ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                                if (returnValueEvent.returnValue == ReturnValueEvent.SUCCESS) bean.beanState = BaseBean.NORMAL;
+                                EventBus.getDefault().post(returnValueEvent);
+                            }
+                        });
             }
         }
     }

@@ -4,7 +4,7 @@ package cn.deepai.evillage.model.bean;
  * @author GaoYixuan
  *         工作台账计划和走访情况
  */
-public class TzzfqkBean {
+public class TzzfqkBean extends BaseBean{
 
     private String id;
     private String xmmc;
