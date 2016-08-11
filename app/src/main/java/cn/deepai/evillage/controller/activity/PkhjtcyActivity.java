@@ -7,17 +7,27 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import org.w3c.dom.Text;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.DialogManager;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
+import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
+import cn.deepai.evillage.net.Action;
+import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.PkhJtcyRequest;
+import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.DictionaryUtil;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
+
+import static cn.deepai.evillage.model.event.ReturnValueEvent.SUCCESS;
 
 /**
  * 家庭成员信息详情
@@ -63,7 +73,34 @@ public class PkhjtcyActivity extends BaseActivity {
                                 localData.setWgsj(wgsj.getText().toString());
                                 localData.setZdxx(zdxx.getText().toString());
                                 localData.setZtbhsj(ztbhsj.getText().toString());
-                                PkhjtcyActivity.super.onBackPressed();
+
+                                final PkhjtcyBean jtcyBean = localData;
+                                tryToShowProcessDialog();
+                                if (TextUtils.isEmpty(localData.getId())) {
+                                    final Gson gson = new Gson();
+                                    RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addPkhJtcy);
+
+                                    EVRequest.request(Action.ACTION_ADD_JTCYJBXX, gson.toJson(header), gson.toJson(jtcyBean),
+                                            new ResponseCallback() {
+                                                @Override
+                                                public void onDataResponse(String dataJsonString) {
+                                                    ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                                                    EventBus.getDefault().post(returnValueEvent);
+                                                }
+                                            });
+                                } else {
+                                    final Gson gson = new Gson();
+                                    RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updatePkhJtcy);
+
+                                    EVRequest.request(Action.ACTION_UPDATE_JTCYJBXX, gson.toJson(header), gson.toJson(jtcyBean),
+                                            new ResponseCallback() {
+                                                @Override
+                                                public void onDataResponse(String dataJsonString) {
+                                                    ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                                                    EventBus.getDefault().post(returnValueEvent);
+                                                }
+                                            });
+                                }
                             } else {
                                 PkhjtcyActivity.super.onBackPressed();
                             }
@@ -72,6 +109,17 @@ public class PkhjtcyActivity extends BaseActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(ReturnValueEvent event) {
+        if (event.returnValue == SUCCESS) {
+            ToastUtil.shortToast(getString(R.string.upload_success));
+            super.onBackPressed();
+        } else {
+            ToastUtil.shortToast(getString(R.string.upload_failed));
+        }
+        tryToHideProcessDialog();
     }
 
     @OnClick(R.id.jtcy_xb_layout)

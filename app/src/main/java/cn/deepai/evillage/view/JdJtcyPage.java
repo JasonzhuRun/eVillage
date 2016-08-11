@@ -3,6 +3,7 @@ package cn.deepai.evillage.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,12 +22,13 @@ import cn.deepai.evillage.model.event.PagexjItemEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
  * @author GaoYixuan
  */
-public class JdJtcyPage extends BasePage {
+public class JdJtcyPage extends BasePage implements BasePage.IDataEdit{
 
     private PkhjtcyRecyclerAdapter mPkhjtcyRecyclerAdapter;
     private RecyclerView mRecyclerView;
@@ -73,6 +75,10 @@ public class JdJtcyPage extends BasePage {
         }
     }
 
+    @Override
+    public void saveData() {
+        ToastUtil.shortToast(mContext.getString(R.string.save_success));
+    }
 
     @Override
     public void requestData() {

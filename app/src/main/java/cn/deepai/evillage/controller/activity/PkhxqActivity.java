@@ -30,6 +30,7 @@ import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.RspCode;
 import cn.deepai.evillage.utils.EncryptionUtil;
 import cn.deepai.evillage.utils.FileUtil;
@@ -54,6 +55,8 @@ import cn.deepai.evillage.view.PkhszqkPage;
 import cn.deepai.evillage.view.PkhzfqkPage;
 import de.greenrobot.event.EventBus;
 
+import static cn.deepai.evillage.model.event.ReturnValueEvent.SUCCESS;
+
 /**
  * 贫困户详情页
  */
@@ -72,10 +75,20 @@ public class PkhxqActivity extends BaseActivity {
     public void onSaveBtnClick(){
         BasePage page = viewContainter.get(selectedIndex);
         if (page instanceof BasePage.IDataEdit) {
-            tryToShowProcessDialog();
             ((BasePage.IDataEdit)page).saveData();
         }
     }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(ReturnValueEvent event) {
+        if (event.returnValue == SUCCESS) {
+            ToastUtil.shortToast(getString(R.string.upload_success));
+        } else {
+            ToastUtil.shortToast(getString(R.string.upload_failed));
+        }
+        tryToHideProcessDialog();
+    }
+
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {
         switch (event.getRspCode()) {

@@ -2,19 +2,29 @@ package cn.deepai.evillage.controller.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhjtcyBean;
 import cn.deepai.evillage.model.bean.PkhszqkBean;
+import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
+import cn.deepai.evillage.net.Action;
+import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.PkhJtcyRequest;
 import cn.deepai.evillage.net.PkhSzqkRequest;
+import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
+
+import static cn.deepai.evillage.model.event.ReturnValueEvent.SUCCESS;
 
 /**
  * 收支情况详情页
@@ -68,7 +78,34 @@ public class PkhszqkActivity extends BaseActivity {
                                 localData.setYlbx(ylbx.getText().toString());
                                 localData.setDeylbz(deylbz.getText().toString());
                                 localData.setStbcj(stbcj.getText().toString());
-                                PkhszqkActivity.super.onBackPressed();
+
+                                final PkhszqkBean szqkBean = localData;
+                                tryToShowProcessDialog();
+                                if (TextUtils.isEmpty(localData.getId())) {
+                                    final Gson gson = new Gson();
+                                    RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addPkhSzqkJbxx);
+
+                                    EVRequest.request(Action.ACTION_ADD_PKHZFJBXX, gson.toJson(header), gson.toJson(szqkBean),
+                                            new ResponseCallback() {
+                                                @Override
+                                                public void onDataResponse(String dataJsonString) {
+                                                    ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                                                    EventBus.getDefault().post(returnValueEvent);
+                                                }
+                                            });
+                                } else {
+                                    final Gson gson = new Gson();
+                                    RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updatePkhSzqkJbxx);
+
+                                    EVRequest.request(Action.ACTION_UPDATE_PKHSZQKJBXX, gson.toJson(header), gson.toJson(szqkBean),
+                                            new ResponseCallback() {
+                                                @Override
+                                                public void onDataResponse(String dataJsonString) {
+                                                    ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                                                    EventBus.getDefault().post(returnValueEvent);
+                                                }
+                                            });
+                                }
                             } else {
                                 PkhszqkActivity.super.onBackPressed();
                             }
@@ -100,6 +137,17 @@ public class PkhszqkActivity extends BaseActivity {
         ylbx.setText(String.valueOf(pkhszqkBean.getYlbx()));
         deylbz.setText(String.valueOf(pkhszqkBean.getDeylbz()));
         stbcj.setText(String.valueOf(pkhszqkBean.getStbcj()));
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(ReturnValueEvent event) {
+        if (event.returnValue == SUCCESS) {
+            ToastUtil.shortToast(getString(R.string.upload_success));
+            super.onBackPressed();
+        } else {
+            ToastUtil.shortToast(getString(R.string.upload_failed));
+        }
+        tryToHideProcessDialog();
     }
 
     @SuppressWarnings("all")

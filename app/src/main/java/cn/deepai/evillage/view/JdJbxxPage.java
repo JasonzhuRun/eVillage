@@ -11,11 +11,11 @@ import com.google.gson.Gson;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
-import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
@@ -178,6 +178,7 @@ public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
         RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updatePkhJbxx);
 
         final Gson gson = new Gson();
+        ((PkhxqActivity)mContext).tryToShowProcessDialog();
         EVRequest.request(Action.ACTION_UPDATE_PKHJBXX, gson.toJson(header), gson.toJson(jbxxBean),
                 new ResponseCallback() {
                     @Override

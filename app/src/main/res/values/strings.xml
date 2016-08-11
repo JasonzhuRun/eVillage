@@ -19,6 +19,7 @@
     <string name="save_info">是否保存并上传数据?</string>
     <string name="no_sdcard">请确认存储设备状态后重试</string>
     <string name="upload_success">上传成功</string>
+    <string name="save_success">保存成功</string>
     <string name="upload_failed">上传失败，请确认网络连接后重试</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>
@@ -43,7 +44,9 @@
     <string name="req_code_updatePkhCyhzzJbxx">zyfp01020</string>
     <string name="req_code_addPkhCyhzzJbxx">zyfp01021</string>
     <string name="req_code_getPkhJtqkzpList">zyfp01022</string>
-    <string name="req_code_updatePkhJbxx">zyfp01024</string>
+    <string name="req_code_updatePkhJbxx">zyfp01023</string>
+    <string name="req_code_updatePkhJtcy">zyfp01024</string>
+    <string name="req_code_addPkhJtcy">zyfp01025</string>
 
     <string name="req_code_getJdList">zyfp02001</string>
 
