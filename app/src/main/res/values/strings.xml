@@ -63,6 +63,8 @@
     <string name="req_code_updateTzsrmx">zyfp03011</string>
     <string name="req_code_updateTzzcmx">zyfp03012</string>
     <string name="req_code_updateTzzfxx">zyfp03013</string>
+
+    <string name="req_code_getZxList">zyfp04001</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
     <string name="tab_pkh">帮扶对象</string>

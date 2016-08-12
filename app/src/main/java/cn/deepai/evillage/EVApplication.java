@@ -58,7 +58,7 @@ public class EVApplication extends Application {
                 // .preProcessor(BitmapProcessor preProcessor)
                 .resetViewBeforeLoading(true)// 设置图片在下载前是否重置，复位
 //                .displayer(new RoundedBitmapDisplayer(20))//是否设置为圆角，弧度为多少
-//                .displayer(new FadeInBitmapDisplayer(100))// 淡入
+                .displayer(new FadeInBitmapDisplayer(100))// 淡入
                 .build();
     }
 

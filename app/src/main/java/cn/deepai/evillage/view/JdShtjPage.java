@@ -1,6 +1,7 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.manager.DialogManager;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhshtjBean;
 import cn.deepai.evillage.model.bean.PkhzfqkBean;
@@ -322,14 +324,27 @@ public class JdShtjPage extends BasePage implements BasePage.IDataEdit{
 
         final Gson gson = new Gson();
         ((PkhxqActivity)mContext).tryToShowProcessDialog();
-        EVRequest.request(Action.ACTION_UPDATE_PKHSHQKJBXX, gson.toJson(header), gson.toJson(shtjBean),
-                new ResponseCallback() {
-                    @Override
-                    public void onDataResponse(String dataJsonString) {
-                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
-                        EventBus.getDefault().post(returnValueEvent);
-                    }
-                });
+        if (TextUtils.isEmpty(localData.getId())) {
+            shtjBean.setHid(SettingManager.getCurrentJdPkh().getHid());
+            shtjBean.setTjnd(SettingManager.getCurrentJdPkh().getJdnf());
+            EVRequest.request(Action.ACTION_ADD_PKHSHQKJBXX, gson.toJson(header), gson.toJson(shtjBean),
+                    new ResponseCallback() {
+                        @Override
+                        public void onDataResponse(String dataJsonString) {
+                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString, ReturnValueEvent.class);
+                            EventBus.getDefault().post(returnValueEvent);
+                        }
+                    });
+        }else {
+            EVRequest.request(Action.ACTION_UPDATE_PKHSHQKJBXX, gson.toJson(header), gson.toJson(shtjBean),
+                    new ResponseCallback() {
+                        @Override
+                        public void onDataResponse(String dataJsonString) {
+                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString, ReturnValueEvent.class);
+                            EventBus.getDefault().post(returnValueEvent);
+                        }
+                    });
+        }
     }
 
     @Override

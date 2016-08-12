@@ -68,7 +68,7 @@ public class PkhzfqkPage extends BasePage {
     public void requestData() {
 
         final Gson requestGson = new Gson();
-        EVRequest.request(Action.ACTION_GET_PKHZFQJBXX,
+        EVRequest.request(Action.ACTION_GET_PKHZFQKJBXX,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhZfqkJbxx)),
                 requestGson.toJson(new PkhRequestBean()),
                 new ResponseCallback() {

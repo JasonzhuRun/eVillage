@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v7.app.AlertDialog;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import butterknife.OnClick;
@@ -16,6 +17,28 @@ import cn.deepai.evillage.utils.StringUtil;
  */
 
 public class DialogManager {
+
+    public static void showDateDialog(final Context context, String title, final IOnDialogFinished onDialogFinished) {
+        final DatePicker datePicker = new DatePicker(context);
+        new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setView(datePicker)
+                .setPositiveButton(context.getString(R.string.insure), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        if (null != onDialogFinished) {
+                            onDialogFinished.returnData(datePicker.getYear()+"-"+datePicker.getMonth()+"-"+datePicker.getDayOfMonth());
+                        }
+                    }
+                })
+                .setNegativeButton(context.getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+    }
 
     public static void showYesOrNoChoiceDialog(final Context context, String title, final IOnDialogFinished onDialogFinished) {
         new AlertDialog.Builder(context)

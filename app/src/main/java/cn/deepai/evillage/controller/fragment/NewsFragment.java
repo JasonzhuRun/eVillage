@@ -75,7 +75,7 @@ public class NewsFragment extends BaseFragment {
 
     private void loadData() {
         tryToShowProcessDialog();
-        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getJdList);
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getZxList);
 
         final Gson gson = new Gson();
         EVRequest.request(Action.ACTION_GET_NEWS_LIST, gson.toJson(header), "{}",

@@ -1,6 +1,7 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.manager.DialogManager;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhcyhqkBean;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
@@ -88,7 +90,7 @@ public class JdCyhPage extends BasePage  implements BasePage.IDataEdit{
                         cylx.setText(data);
                         for (int i = 0;i < lxValues.length;i++) {
                             if (data.equals(lxValues[i])) {
-                                localData.setCylx(String.valueOf(i));
+                                localData.setCylx(String.valueOf(i + 1));
                                 break;
                             }
                         }
@@ -156,14 +158,27 @@ public class JdCyhPage extends BasePage  implements BasePage.IDataEdit{
 
         final Gson gson = new Gson();
         ((PkhxqActivity)mContext).tryToShowProcessDialog();
-        EVRequest.request(Action.ACTION_UPDATE_PKHSCTJJBXX, gson.toJson(header), gson.toJson(cyhqkBean),
-                new ResponseCallback() {
-                    @Override
-                    public void onDataResponse(String dataJsonString) {
-                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
-                        EventBus.getDefault().post(returnValueEvent);
-                    }
-                });
+        if (TextUtils.isEmpty(localData.getId())) {
+            cyhqkBean.setHid(SettingManager.getCurrentJdPkh().getHid());
+            cyhqkBean.setTjnd(SettingManager.getCurrentJdPkh().getJdnf());
+            EVRequest.request(Action.ACTION_ADD_PKHCYHZZJBXX, gson.toJson(header), gson.toJson(cyhqkBean),
+                    new ResponseCallback() {
+                        @Override
+                        public void onDataResponse(String dataJsonString) {
+                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString, ReturnValueEvent.class);
+                            EventBus.getDefault().post(returnValueEvent);
+                        }
+                    });
+        }else {
+            EVRequest.request(Action.ACTION_UPDATE_PKHCYHZZJBXX, gson.toJson(header), gson.toJson(cyhqkBean),
+                    new ResponseCallback() {
+                        @Override
+                        public void onDataResponse(String dataJsonString) {
+                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString, ReturnValueEvent.class);
+                            EventBus.getDefault().post(returnValueEvent);
+                        }
+                    });
+        }
     }
 
     @Override

@@ -76,6 +76,7 @@
                 android:layout_marginRight="@dimen/pkhxq_right_gap"
                 android:background="@color/background_cutoff"/>
             <RelativeLayout
+                android:id="@+id/zfqk_jfsj_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/pkhxq_top_gap"
@@ -88,15 +89,15 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pkh_zfqk_jfsj"
                     android:textSize="@dimen/pkhxq_title_textsize"/>
-                <EditText
+                <TextView
                     android:id="@+id/zfqk_jfsj"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/zfqk_jfsj_title"
                     android:layout_marginLeft="@dimen/pkhxq_text_gap"
                     android:textSize="@dimen/pkhxq_content_textsize"
-                    android:background="@drawable/edit_text_backgroud"
-                    android:focusable="true"/>
+                    android:textColor="@color/text_black"
+                    android:background="@drawable/edit_text_backgroud"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"

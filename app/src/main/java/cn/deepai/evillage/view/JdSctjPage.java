@@ -1,6 +1,7 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import com.google.gson.Gson;
 import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhsctjBean;
 import cn.deepai.evillage.model.bean.PkhshtjBean;
@@ -91,14 +93,27 @@ public class JdSctjPage extends BasePage implements BasePage.IDataEdit{
 
         final Gson gson = new Gson();
         ((PkhxqActivity)mContext).tryToShowProcessDialog();
-        EVRequest.request(Action.ACTION_UPDATE_PKHSCTJJBXX, gson.toJson(header), gson.toJson(sctjBean),
-                new ResponseCallback() {
-                    @Override
-                    public void onDataResponse(String dataJsonString) {
-                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
-                        EventBus.getDefault().post(returnValueEvent);
-                    }
-                });
+        if (TextUtils.isEmpty(localData.getId())) {
+            sctjBean.setHid(SettingManager.getCurrentJdPkh().getHid());
+            sctjBean.setTjnd(SettingManager.getCurrentJdPkh().getJdnf());
+            EVRequest.request(Action.ACTION_ADD_PKHSCTJJBXX, gson.toJson(header), gson.toJson(sctjBean),
+                    new ResponseCallback() {
+                        @Override
+                        public void onDataResponse(String dataJsonString) {
+                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString, ReturnValueEvent.class);
+                            EventBus.getDefault().post(returnValueEvent);
+                        }
+                    });
+        }else {
+            EVRequest.request(Action.ACTION_UPDATE_PKHSCTJJBXX, gson.toJson(header), gson.toJson(sctjBean),
+                    new ResponseCallback() {
+                        @Override
+                        public void onDataResponse(String dataJsonString) {
+                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString, ReturnValueEvent.class);
+                            EventBus.getDefault().post(returnValueEvent);
+                        }
+                    });
+        }
     }
 
     @Override

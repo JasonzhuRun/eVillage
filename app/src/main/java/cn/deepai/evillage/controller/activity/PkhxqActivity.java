@@ -83,6 +83,7 @@ public class PkhxqActivity extends BaseActivity {
     public void onEventMainThread(ReturnValueEvent event) {
         if (event.returnValue == SUCCESS) {
             ToastUtil.shortToast(getString(R.string.upload_success));
+            onPageShow();
         } else {
             ToastUtil.shortToast(getString(R.string.upload_failed));
         }

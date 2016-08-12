@@ -6,6 +6,7 @@ package cn.deepai.evillage.model.bean;
 public class PkhsctjBean {
 
     private String id;
+    private String hid;
     private String tjnd;
     private String gdmj;
     private String xyggdgdmj;
@@ -21,6 +22,14 @@ public class PkhsctjBean {
     private String jlsj;
     private String jlr;
     private String bz;
+
+    public String getHid() {
+        return hid;
+    }
+
+    public void setHid(String hid) {
+        this.hid = hid;
+    }
 
     public String getId() {
         return id;

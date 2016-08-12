@@ -59,7 +59,7 @@ public class PkhjtcyActivity extends BaseActivity {
     private TextView sfczzgylbx;
     private EditText zdxx;
     private TextView cyzt;
-    private EditText ztbhsj;
+    private TextView ztbhsj;
 
     @Override
     public void onBackPressed() {
@@ -73,7 +73,7 @@ public class PkhjtcyActivity extends BaseActivity {
                                 localData.setSfzhm(sfzhm.getText().toString());
                                 localData.setWgsj(wgsj.getText().toString());
                                 localData.setZdxx(zdxx.getText().toString());
-                                localData.setZtbhsj(ztbhsj.getText().toString());
+//                                localData.setZtbhsj(ztbhsj.getText().toString());
 
                                 final PkhjtcyBean jtcyBean = localData;
                                 tryToShowProcessDialog();
@@ -408,6 +408,20 @@ public class PkhjtcyActivity extends BaseActivity {
                     }
                 });
     }
+
+    @OnClick(R.id.jtcy_ztbhsj_layout)
+    public void onZtbhsjClick() {
+
+        DialogManager.showDateDialog(mContext,mContext.getString(R.string.pkh_jtcy_ztbhsj),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        ztbhsj.setText(data);
+                        localData.setZtbhsj(data);
+                    }
+                });
+    }
+
     @SuppressWarnings("all")
     public void onEventMainThread(PkhjtcyBean event) {
         onBindData(event);
@@ -498,7 +512,7 @@ public class PkhjtcyActivity extends BaseActivity {
         sfczzgylbx = (TextView) findViewById(R.id.jtcy_sfczzgylbx);
         zdxx = (EditText) findViewById(R.id.jtcy_zdxx);
         cyzt = (TextView) findViewById(R.id.jtcy_cyzt);
-        ztbhsj = (EditText) findViewById(R.id.jtcy_ztbhsj);
+        ztbhsj = (TextView) findViewById(R.id.jtcy_ztbhsj);
         xm.setFocusable(mEditable);
         sfzhm.setFocusable(mEditable);
         wgsj.setFocusable(mEditable);

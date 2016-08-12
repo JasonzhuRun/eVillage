@@ -1,6 +1,7 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import butterknife.OnClick;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.manager.DialogManager;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.PkhzfqkBean;
@@ -36,7 +38,7 @@ public class JdZfqkPage extends BasePage implements BasePage.IDataEdit{
     // 主要结构
     private TextView fwzyjg;
     // 建房时间
-    private EditText jfsj;
+    private TextView jfsj;
     // 是否危房
     private TextView zyzfsfwf;
     // 异地搬迁扶贫情况
@@ -119,6 +121,19 @@ public class JdZfqkPage extends BasePage implements BasePage.IDataEdit{
                 });
     }
 
+    @OnClick(R.id.zfqk_jfsj_layout)
+    public void onJfsjClick() {
+
+        DialogManager.showDateDialog(mContext,mContext.getString(R.string.pkh_zfqk_jfsj),
+                new DialogManager.IOnDialogFinished() {
+                    @Override
+                    public void returnData(String data) {
+                        jfsj.setText(data);
+                        localData.setJfsj(data);
+                    }
+                });
+    }
+
     @Override
     public void registeEventBus() {
         EventBus.getDefault().register(this);
@@ -140,21 +155,33 @@ public class JdZfqkPage extends BasePage implements BasePage.IDataEdit{
     @Override
     public void saveData() {
         localData.setZfmj(zfmj.getText().toString());
-        localData.setJfsj(jfsj.getText().toString());
 
         final PkhzfqkBean zfqkBean = localData;
         RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updatePkhZfqkJbxx);
 
         final Gson gson = new Gson();
         ((PkhxqActivity)mContext).tryToShowProcessDialog();
-        EVRequest.request(Action.ACTION_UPDATE_PKHZFQKJBXX, gson.toJson(header), gson.toJson(zfqkBean),
-                new ResponseCallback() {
-                    @Override
-                    public void onDataResponse(String dataJsonString) {
-                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
-                        EventBus.getDefault().post(returnValueEvent);
-                    }
-                });
+        if (TextUtils.isEmpty(localData.getId())) {
+            zfqkBean.setHid(SettingManager.getCurrentJdPkh().getHid());
+            zfqkBean.setTjnd(SettingManager.getCurrentJdPkh().getJdnf());
+            EVRequest.request(Action.ACTION_ADD_PKHZFQKJBXX, gson.toJson(header), gson.toJson(zfqkBean),
+                    new ResponseCallback() {
+                        @Override
+                        public void onDataResponse(String dataJsonString) {
+                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                            EventBus.getDefault().post(returnValueEvent);
+                        }
+                    });
+        } else {
+            EVRequest.request(Action.ACTION_UPDATE_PKHZFQKJBXX, gson.toJson(header), gson.toJson(zfqkBean),
+                    new ResponseCallback() {
+                        @Override
+                        public void onDataResponse(String dataJsonString) {
+                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                            EventBus.getDefault().post(returnValueEvent);
+                        }
+                    });
+        }
     }
 
     @Override
@@ -192,7 +219,7 @@ public class JdZfqkPage extends BasePage implements BasePage.IDataEdit{
     private void initView() {
         zfmj = (EditText) findViewById(R.id.zfqk_zfmj);
         fwzyjg = (TextView) findViewById(R.id.zfqk_fwjg);
-        jfsj = (EditText) findViewById(R.id.zfqk_jfsj);
+        jfsj = (TextView) findViewById(R.id.zfqk_jfsj);
         zyzfsfwf = (TextView) findViewById(R.id.zfqk_sfwf);
         ydfpbqqk = (TextView) findViewById(R.id.zfqk_ydfpbqqk);
         mHasData = false;

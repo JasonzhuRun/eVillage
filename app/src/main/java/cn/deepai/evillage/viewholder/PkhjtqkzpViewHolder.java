@@ -2,6 +2,7 @@ package cn.deepai.evillage.viewholder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Environment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
@@ -47,7 +50,7 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
 
     public void onBindData(PkhjtqkzpBean pkhjtqkzpBean) {
         this.mPkhjtqkzpBean = pkhjtqkzpBean;
-        ImageLoader.getInstance().displayImage(pkhjtqkzpBean.getTpdz(),zp, EVApplication.getDisplayImageOptions());
+        ImageLoader.getInstance().displayImage(pkhjtqkzpBean.getTpdz(), zp, EVApplication.getDisplayImageOptions());
         ImageLoader.getInstance().displayImage(pkhjtqkzpBean.getTpdz(), mPopZp, EVApplication.getDisplayImageOptions());
     }
 
@@ -63,11 +66,11 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
 
     @Override
     public boolean onLongClick(View v) {
-        // 长按删除
-        if (viewType == ItemType.NORMAL) {
-            mParent.notify();
-            return true;
-        }
+//        // 长按删除
+//        if (viewType == ItemType.NORMAL) {
+//            mParent.notify();
+//            return true;
+//        }
         return false;
     }
 
