@@ -11,11 +11,14 @@ import com.google.gson.Gson;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhcyhqkBean;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
+import cn.deepai.evillage.model.bean.PkhsctjBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -25,7 +28,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 参与产业化组织情况
  */
-public class JdCyhPage extends BasePage {
+public class JdCyhPage extends BasePage  implements BasePage.IDataEdit{
 
     private PkhcyhqkBean serverData;
     private PkhcyhqkBean localData;
@@ -140,12 +143,27 @@ public class JdCyhPage extends BasePage {
                     }
                 });
     }
-    @SuppressWarnings("all")
-    public void onEventMainThread(PkhjtqkzpBean event) {
-        if (isSelected()) {
-//            mPkhjtqkzpRecyclerAdapter.notifyResult(false, event);
-            mHasData = true;
-        }
+
+    @Override
+    public void saveData() {
+
+        localData.setCyzsy(cyzsy.getText().toString());
+        localData.setTrhzzzje(trhzzzje.getText().toString());
+        localData.setLtqyddsy(ltqyddsy.getText().toString());
+
+        final PkhcyhqkBean cyhqkBean = localData;
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updatePkhCyhzzJbxx);
+
+        final Gson gson = new Gson();
+        ((PkhxqActivity)mContext).tryToShowProcessDialog();
+        EVRequest.request(Action.ACTION_UPDATE_PKHSCTJJBXX, gson.toJson(header), gson.toJson(cyhqkBean),
+                new ResponseCallback() {
+                    @Override
+                    public void onDataResponse(String dataJsonString) {
+                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                        EventBus.getDefault().post(returnValueEvent);
+                    }
+                });
     }
 
     @Override

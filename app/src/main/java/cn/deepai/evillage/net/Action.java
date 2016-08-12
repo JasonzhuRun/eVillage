@@ -39,14 +39,14 @@ public class Action {
     public static final Action ACTION_GET_PKHSZQKJBXX = new Action("termLogin!getPkhSzqkJbxx.action",Type.downstream);
     public static final Action ACTION_UPDATE_PKHSZQKJBXX = new Action("termLogin!updatePkhSzqkJbxx.action",Type.upstream);
     public static final Action ACTION_ADD_PKHZFJBXX = new Action("termLogin!addPkhSzqkJbxx.action",Type.upstream);
-    public static final Action ACTION_GET_PKHZFQJBXX = new Action("termLogin!getPkhZfqkJbxx.action",Type.downstream);
+    public static final Action ACTION_GET_PKHZFQKJBXX = new Action("termLogin!getPkhZfqkJbxx.action",Type.downstream);
     public static final Action ACTION_UPDATE_PKHZFQKJBXX = new Action("termLogin!updatePkhZfqkJbxx.action",Type.upstream);
     public static final Action ACTION_ADD_PKHZFQKJBXX = new Action("termLogin!addPkhZfqkJbxx.action",Type.upstream);
     public static final Action ACTION_GET_PKHSCTJJBXX = new Action("termLogin!getPkhSctjJbxx.action",Type.downstream);
     public static final Action ACTION_UPDATE_PKHSCTJJBXX = new Action("termLogin!updatePkhSctjJbxx.action",Type.upstream);
     public static final Action ACTION_ADD_PKHSCTJJBXX = new Action("termLogin!addPkhSctjJbxx.action",Type.upstream);
     public static final Action ACTION_GET_PKHSHQKJBXX = new Action("termLogin!getPkhShqkJbxx.action",Type.downstream);
-    public static final Action ACTION_UPDATE_PKHSHQKJNXX = new Action("termLogin!updatePkhShqkJbxx.action",Type.upstream);
+    public static final Action ACTION_UPDATE_PKHSHQKJBXX = new Action("termLogin!updatePkhShqkJbxx.action",Type.upstream);
     public static final Action ACTION_ADD_PKHSHQKJBXX = new Action("termLogin!addPkhShqkJbxx.action",Type.upstream);
     public static final Action ACTION_GET_PKHCYHZZJBXX = new Action("termLogin!getPkhCyhzzJbxx.action",Type.downstream);
     public static final Action ACTION_UPDATE_PKHCYHZZJBXX = new Action("termLogin!updatePkhCyhzzJbxx.action",Type.upstream);

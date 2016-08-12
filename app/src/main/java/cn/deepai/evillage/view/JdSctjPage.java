@@ -9,9 +9,12 @@ import com.google.gson.Gson;
 
 import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.controller.activity.PkhxqActivity;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhsctjBean;
+import cn.deepai.evillage.model.bean.PkhshtjBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
@@ -82,6 +85,20 @@ public class JdSctjPage extends BasePage implements BasePage.IDataEdit{
         localData.setSyjjzwmj(syjjzwmj.getText().toString());
         localData.setScyfmj(scyfmj.getText().toString());
         localData.setSxsl(sxsl.getText().toString());
+
+        final PkhsctjBean sctjBean = localData;
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updatePkhSctjJbxx);
+
+        final Gson gson = new Gson();
+        ((PkhxqActivity)mContext).tryToShowProcessDialog();
+        EVRequest.request(Action.ACTION_UPDATE_PKHSCTJJBXX, gson.toJson(header), gson.toJson(sctjBean),
+                new ResponseCallback() {
+                    @Override
+                    public void onDataResponse(String dataJsonString) {
+                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+                        EventBus.getDefault().post(returnValueEvent);
+                    }
+                });
     }
 
     @Override
