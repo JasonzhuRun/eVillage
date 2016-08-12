@@ -1,1536 +1,1794 @@
 [
-  {
-    "domainCode": "DOMAIN.DOMAIN_TYPE",
-    "domainName": "值域类型",
-    "domainValue": [
-      {
-        "valueCode": "E",
-        "valueName": "枚举型"
-      },
-      {
-        "valueCode": "I",
-        "valueName": "输入型"
-      }
-    ]
-  },
-  {
-    "domainCode": "COMMON.STS",
-    "domainName": "数据状态",
-    "domainValue": [
-      {
-        "valueCode": "A",
-        "valueName": "在用"
-      },
-      {
-        "valueCode": "P",
-        "valueName": "历史"
-      },
-      {
-        "valueCode": "D",
-        "valueName": "作废"
-      }
-    ]
-  },
-  {
-    "domainCode": "COMMON.ENABLED_FLAG",
-    "domainName": "启用标识",
-    "domainValue": [
-      {
-        "valueCode": "T",
-        "valueName": "启用"
-      },
-      {
-        "valueCode": "F",
-        "valueName": "停用"
-      }
-    ]
-  },
-  {
-    "domainCode": "COMMON.GENDER",
-    "domainName": "性别",
-    "domainValue": [
-      {
-        "valueCode": "M",
-        "valueName": "男"
-      },
-      {
-        "valueCode": "F",
-        "valueName": "女"
-      }
-    ]
-  },
-  {
-    "domainCode": "COMMON.OPER_TYPE",
-    "domainName": "操作类型",
-    "domainValue": [
-      {
-        "valueCode": "C",
-        "valueName": "新增"
-      },
-      {
-        "valueCode": "R",
-        "valueName": "查询"
-      },
-      {
-        "valueCode": "U",
-        "valueName": "更新"
-      },
-      {
-        "valueCode": "D",
-        "valueName": "删除"
-      }
-    ]
-  },
-  {
-    "domainCode": "SYS_USER.USER_TYPE",
-    "domainName": "系统用户类型",
-    "domainValue": [
-      {
-        "valueCode": "C",
-        "valueName": "普通用户"
-      },
-      {
-        "valueCode": "S",
-        "valueName": "超级用户"
-      }
-    ]
-  },
-  {
-    "domainCode": "ADMIN_DIVISION.DIVISION_LEVEL",
-    "domainName": "行政区划级别",
-    "domainValue": [
-      {
-        "valueCode": "A",
-        "valueName": "省级"
-      },
-      {
-        "valueCode": "B",
-        "valueName": "地级"
-      },
-      {
-        "valueCode": "C",
-        "valueName": "县级"
-      },
-      {
-        "valueCode": "D",
-        "valueName": "乡镇级"
-      },
-      {
-        "valueCode": "E",
-        "valueName": "村级"
-      }
-    ]
-  },
-  {
-    "domainCode": "CUSTOMIZE_AREA.AREA_LEVEL",
-    "domainName": "自定义区域级别",
-    "domainValue": [
-      {
-        "valueCode": "A",
-        "valueName": "一级"
-      },
-      {
-        "valueCode": "B",
-        "valueName": "二级"
-      },
-      {
-        "valueCode": "C",
-        "valueName": "三级"
-      },
-      {
-        "valueCode": "D",
-        "valueName": "四级"
-      },
-      {
-        "valueCode": "E",
-        "valueName": "五级"
-      }
-    ]
-  },
-  {
-    "domainCode": "SYS_LOG.LOG_LEVEL",
-    "domainName": "日志级别",
-    "domainValue": [
-      {
-        "valueCode": "I",
-        "valueName": "INFO"
-      },
-      {
-        "valueCode": "D",
-        "valueName": "DEBUG"
-      },
-      {
-        "valueCode": "W",
-        "valueName": "WARN"
-      },
-      {
-        "valueCode": "E",
-        "valueName": "ERROR"
-      },
-      {
-        "valueCode": "F",
-        "valueName": "FATAL"
-      }
-    ]
-  },
-  {
-    "domainCode": "COMMON.YESNO",
-    "domainName": "是否",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "是"
-      },
-      {
-        "valueCode": "0",
-        "valueName": "否"
-      }
-    ]
-  },
-  {
-    "domainCode": "SYS_LOG.LOG_CATEGORY",
-    "domainName": "日志类型",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "登录日志"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "登出日志"
-      }
-    ]
-  },
-  {
-    "domainCode": "SYS_USER.OWNER_TYPE",
-    "domainName": "用户所有者类型",
-    "domainValue": [
-      {
-        "valueCode": "S",
-        "valueName": "员工"
-      },
-      {
-        "valueCode": "D",
-        "valueName": "部门"
-      }
-    ]
-  },
-  {
-    "domainCode": "STAFF.STS",
-    "domainName": "员工状态",
-    "domainValue": [
-      {
-        "valueCode": "A",
-        "valueName": "在职"
-      },
-      {
-        "valueCode": "R",
-        "valueName": "停薪留职"
-      },
-      {
-        "valueCode": "P",
-        "valueName": "离职"
-      }
-    ]
-  },
-  {
-    "domainCode": "COMMON.PRIORITY",
-    "domainName": "优先级",
-    "domainValue": [
-      {
-        "valueCode": "L",
-        "valueName": "低"
-      },
-      {
-        "valueCode": "M",
-        "valueName": "中"
-      },
-      {
-        "valueCode": "U",
-        "valueName": "高"
-      }
-    ]
-  },
-  {
-    "domainCode": "COMMON.RESULT",
-    "domainName": "结果",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "成功"
-      },
-      {
-        "valueCode": "0",
-        "valueName": "失败"
-      }
-    ]
-  },
-  {
-    "domainCode": "STS",
-    "domainName": "通用状态",
-    "domainValue": [
-      {
-        "valueCode": "A",
-        "valueName": "在用"
-      },
-      {
-        "valueCode": "P",
-        "valueName": "作废"
-      }
-    ]
-  },
-  {
-    "domainCode": "RHLLX",
-    "domainName": "入户路类型",
-    "domainValue": [
-      {
-        "valueCode": "R",
-        "valueName": "普通人行道路"
-      },
-      {
-        "valueCode": "N",
-        "valueName": "普通泥土土地"
-      },
-      {
-        "valueCode": "S",
-        "valueName": "砂石公路"
-      },
-      {
-        "valueCode": "L",
-        "valueName": "水泥路面公路"
-      },
-      {
-        "valueCode": "Q",
-        "valueName": "沥青路面公路"
-      }
-    ]
-  },
-  {
-    "domainCode": "C110b",
-    "domainName": "单位性质",
-    "domainValue": [
-      {
-        "valueCode": "P",
-        "valueName": "党政机关"
-      },
-      {
-        "valueCode": "S",
-        "valueName": "事业单位"
-      },
-      {
-        "valueCode": "G",
-        "valueName": "国有企业"
-      },
-      {
-        "valueCode": "M",
-        "valueName": "民营企业"
-      },
-      {
-        "valueCode": "Z",
-        "valueName": "社会组织"
-      },
-      {
-        "valueCode": "O",
-        "valueName": "其他"
-      }
-    ]
-  },
-  {
-    "domainCode": "C110a",
-    "domainName": "单位级别",
-    "domainValue": [
-      {
-        "valueCode": "C",
-        "valueName": "国家级"
-      },
-      {
-        "valueCode": "P",
-        "valueName": "省级"
-      },
-      {
-        "valueCode": "S",
-        "valueName": "市级"
-      },
-      {
-        "valueCode": "X",
-        "valueName": "县级"
-      },
-      {
-        "valueCode": "O",
-        "valueName": "其他"
-      }
-    ]
-  },
-  {
-    "domainCode": "CSLX",
-    "domainName": "厕所类型",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "水冲式卫生厕所（冲入下水道、化粪池和厕坑）"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "水冲式卫生厕所（冲入其他地方）"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "卫生旱厕"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "普通旱厕"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "无厕所"
-      }
-    ]
-  },
-  {
-    "domainCode": "TERRAIN",
-    "domainName": "地势",
-    "domainValue": [
-      {
-        "valueCode": "P",
-        "valueName": "平原"
-      },
-      {
-        "valueCode": "Q",
-        "valueName": "丘陵"
-      },
-      {
-        "valueCode": "M",
-        "valueName": "山区"
-      }
-    ]
-  },
-  {
-    "domainCode": "DFBLX",
-    "domainName": "地方病类型",
-    "domainValue": [
-      {
-        "valueCode": "L",
-        "valueName": "克山病"
-      },
-      {
-        "valueCode": "G",
-        "valueName": "大骨节病"
-      },
-      {
-        "valueCode": "D",
-        "valueName": "碘缺乏病"
-      },
-      {
-        "valueCode": "F",
-        "valueName": "地方性氟中毒"
-      },
-      {
-        "valueCode": "K",
-        "valueName": "地方性坤中毒"
-      },
-      {
-        "valueCode": "Q",
-        "valueName": "其他"
-      },
-      {
-        "valueCode": "N",
-        "valueName": "无地方病"
-      }
-    ]
-  },
-  {
-    "domainCode": "YDBQQK",
-    "domainName": "异地搬迁情况",
-    "domainValue": [
-      {
-        "valueCode": "Y",
-        "valueName": "已搬迁"
-      },
-      {
-        "valueCode": "X",
-        "valueName": "需搬迁"
-      },
-      {
-        "valueCode": "Q",
-        "valueName": "其它"
-      }
-    ]
-  },
-  {
-    "domainCode": "FWJG",
-    "domainName": "房屋结构",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "钢筋混凝土"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "砖混材料"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "砖瓦砖木"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "砖、石窑洞"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "竹草土坯、土窑洞"
-      },
-      {
-        "valueCode": "6",
-        "valueName": "其它"
-      },
-      {
-        "valueCode": "0",
-        "valueName": "无住房"
-      }
-    ]
-  },
-  {
-    "domainCode": "SZLX",
-    "domainName": "收支类型",
-    "domainValue": [
-      {
-        "valueCode": "S",
-        "valueName": "收入类"
-      },
-      {
-        "valueCode": "Z",
-        "valueName": "支出类"
-      }
-    ]
-  },
-  {
-    "domainCode": "ZZMM",
-    "domainName": "政治面貌",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "党员"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "团员"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "群众"
-      }
-    ]
-  },
-  {
-    "domainCode": "PKBZ",
-    "domainName": "贫困标准",
-    "domainValue": [
-      {
-        "valueCode": "G",
-        "valueName": "国家标准"
-      },
-      {
-        "valueCode": "S",
-        "valueName": "省定标准"
-      }
-    ]
-  },
-  {
-    "domainCode": "PKZT",
-    "domainName": "贫困状态",
-    "domainValue": [
-      {
-        "valueCode": "P",
-        "valueName": "贫困"
-      },
-      {
-        "valueCode": "F",
-        "valueName": "返贫"
-      }
-    ]
-  },
-  {
-    "domainCode": "XMLB",
-    "domainName": "项目类别",
-    "domainValue": [
-      {
-        "valueCode": "Z",
-        "valueName": "整村推进"
-      },
-      {
-        "valueCode": "F",
-        "valueName": "扶贫搬迁"
-      },
-      {
-        "valueCode": "K",
-        "valueName": "科技扶贫"
-      },
-      {
-        "valueCode": "C",
-        "valueName": "产业扶贫"
-      },
-      {
-        "valueCode": "D",
-        "valueName": "贷款贴息"
-      },
-      {
-        "valueCode": "H",
-        "valueName": "到户增收"
-      },
-      {
-        "valueCode": "J",
-        "valueName": "互助资金"
-      },
-      {
-        "valueCode": "X",
-        "valueName": "小额信贷"
-      },
-      {
-        "valueCode": "Y",
-        "valueName": "雨露计划"
-      },
-      {
-        "valueCode": "Q",
-        "valueName": "其它"
-      }
-    ]
-  },
-  {
-    "domainCode": "WaterCon",
-    "domainName": "饮水情况",
-    "domainValue": [
-      {
-        "valueCode": "J",
-        "valueName": "经过净化处理的自来水"
-      },
-      {
-        "valueCode": "B",
-        "valueName": "受保护的井水和泉水"
-      },
-      {
-        "valueCode": "N",
-        "valueName": "不受保护的井水和泉水"
-      },
-      {
-        "valueCode": "R",
-        "valueName": "江河湖泊水"
-      },
-      {
-        "valueCode": "S",
-        "valueName": "收集雨水"
-      },
-      {
-        "valueCode": "T",
-        "valueName": "桶装水"
-      },
-      {
-        "valueCode": "Q",
-        "valueName": "其他水源"
-      }
-    ]
-  },
-  {
-    "domainCode": "YYSZYKN",
-    "domainName": "饮用水主要困难",
-    "domainValue": [
-      {
-        "valueCode": "N",
-        "valueName": "无困难"
-      },
-      {
-        "valueCode": "H",
-        "valueName": "单次取水往返时间超过半小时"
-      },
-      {
-        "valueCode": "J",
-        "valueName": "间断或定时供水 "
-      },
-      {
-        "valueCode": "F",
-        "valueName": "当年连续缺水时间超过15天"
-      },
-      {
-        "valueCode": "Q",
-        "valueName": "其他困难"
-      }
-    ]
-  },
-  {
-    "domainCode": "ZDCYLX",
-    "domainName": "主导产业类型",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "农业"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "畜牧业"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "林果业"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "渔业"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "手工业"
-      },
-      {
-        "valueCode": "6",
-        "valueName": "工业"
-      },
-      {
-        "valueCode": "7",
-        "valueName": "建筑业"
-      },
-      {
-        "valueCode": "8",
-        "valueName": "服务业"
-      },
-      {
-        "valueCode": "9",
-        "valueName": "其他"
-      }
-    ]
-  },
-  {
-    "domainCode": "ZPYY",
-    "domainName": "致贫原因",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "因灾"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "因病"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "因残"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "因学"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "缺技术"
-      },
-      {
-        "valueCode": "6",
-        "valueName": "缺劳力"
-      },
-      {
-        "valueCode": "7",
-        "valueName": "缺发展资金"
-      },
-      {
-        "valueCode": "8",
-        "valueName": "缺土地"
-      },
-      {
-        "valueCode": "9",
-        "valueName": "交通条件落后"
-      },
-      {
-        "valueCode": "10",
-        "valueName": "自身发展动力不足"
-      },
-      {
-        "valueCode": "11",
-        "valueName": "其他"
-      }
-    ]
-  },
-  {
-    "domainCode": "PKHSX",
-    "domainName": "贫困户属性",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "扶贫户"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "扶贫低保户"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "低保户"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "五保户"
-      }
-    ]
-  },
-  {
-      "domainCode": "PKHZT",
-      "domainName": "贫困户状态",
-      "domainValue": [
-        {
-          "valueCode": "1",
-          "valueName": "贫困"
-        },
-        {
-          "valueCode": "2",
-          "valueName": "返贫"
-        },
-        {
-          "valueCode": "3",
-          "valueName": "脱贫"
-        },
-        {
-          "valueCode": "4",
-          "valueName": "待建卡"
-        }
-      ]
+    {
+        "domainCode": "DOMAIN.DOMAIN_TYPE",
+        "domainName": "值域类型",
+        "domainValue ": [
+            {
+                "valueCode": "E",
+                "valueName ": "枚举型"
+            },
+            {
+                "valueCode": "I",
+                "valueName ": "输入型"
+            }
+        ]
     },
-  {
-    "domainCode": "NATION",
-    "domainName": "民族",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "汉族"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "蒙古族"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "回族"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "藏族"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "维吾尔族"
-      },
-      {
-        "valueCode": "6",
-        "valueName": "苗族"
-      },
-      {
-        "valueCode": "7",
-        "valueName": "彝族"
-      },
-      {
-        "valueCode": "8",
-        "valueName": "壮族"
-      },
-      {
-        "valueCode": "9",
-        "valueName": "布依族"
-      },
-      {
-        "valueCode": "10",
-        "valueName": "朝鲜族"
-      },
-      {
-        "valueCode": "11",
-        "valueName": "满族"
-      },
-      {
-        "valueCode": "12",
-        "valueName": "侗族"
-      },
-      {
-        "valueCode": "13",
-        "valueName": "瑶族"
-      },
-      {
-        "valueCode": "14",
-        "valueName": "白族"
-      },
-      {
-        "valueCode": "15",
-        "valueName": "土家族"
-      },
-      {
-        "valueCode": "16",
-        "valueName": "哈尼族"
-      },
-      {
-        "valueCode": "17",
-        "valueName": "哈萨克族"
-      },
-      {
-        "valueCode": "18",
-        "valueName": "傣族"
-      },
-      {
-        "valueCode": "19",
-        "valueName": "黎族"
-      },
-      {
-        "valueCode": "20",
-        "valueName": "傈僳族"
-      },
-      {
-        "valueCode": "21",
-        "valueName": "佤族"
-      },
-      {
-        "valueCode": "22",
-        "valueName": "畲族"
-      },
-      {
-        "valueCode": "23",
-        "valueName": "高山族"
-      },
-      {
-        "valueCode": "24",
-        "valueName": "拉祜族"
-      },
-      {
-        "valueCode": "25",
-        "valueName": "水族"
-      },
-      {
-        "valueCode": "26",
-        "valueName": "东乡族"
-      },
-      {
-        "valueCode": "27",
-        "valueName": "纳西族"
-      },
-      {
-        "valueCode": "28",
-        "valueName": "景颇族"
-      },
-      {
-        "valueCode": "29",
-        "valueName": "柯尔克孜族"
-      },
-      {
-        "valueCode": "30",
-        "valueName": "土族"
-      },
-      {
-        "valueCode": "31",
-        "valueName": "达斡尔族"
-      },
-      {
-        "valueCode": "32",
-        "valueName": "仫佬族"
-      },
-      {
-        "valueCode": "33",
-        "valueName": "羌族"
-      },
-      {
-        "valueCode": "34",
-        "valueName": "布朗族"
-      },
-      {
-        "valueCode": "35",
-        "valueName": "撒拉族"
-      },
-      {
-        "valueCode": "36",
-        "valueName": "毛难族"
-      },
-      {
-        "valueCode": "37",
-        "valueName": "仡佬族"
-      },
-      {
-        "valueCode": "38",
-        "valueName": "锡伯族"
-      },
-      {
-        "valueCode": "39",
-        "valueName": "阿昌族"
-      },
-      {
-        "valueCode": "40",
-        "valueName": "普米族"
-      },
-      {
-        "valueCode": "41",
-        "valueName": "塔吉克族"
-      },
-      {
-        "valueCode": "42",
-        "valueName": "怒族"
-      },
-      {
-        "valueCode": "43",
-        "valueName": "乌孜别克族"
-      },
-      {
-        "valueCode": "44",
-        "valueName": "俄罗斯族"
-      },
-      {
-        "valueCode": "45",
-        "valueName": "鄂温克族"
-      },
-      {
-        "valueCode": "46",
-        "valueName": "崩龙族"
-      },
-      {
-        "valueCode": "47",
-        "valueName": "保安族"
-      },
-      {
-        "valueCode": "48",
-        "valueName": "裕固族"
-      },
-      {
-        "valueCode": "49",
-        "valueName": "京族"
-      },
-      {
-        "valueCode": "50",
-        "valueName": "塔塔尔族"
-      },
-      {
-        "valueCode": "51",
-        "valueName": "独龙族"
-      },
-      {
-        "valueCode": "52",
-        "valueName": "鄂伦春族"
-      },
-      {
-        "valueCode": "53",
-        "valueName": "赫哲族"
-      },
-      {
-        "valueCode": "54",
-        "valueName": "门巴族"
-      },
-      {
-        "valueCode": "55",
-        "valueName": "珞巴族"
-      },
-      {
-        "valueCode": "56",
-        "valueName": "基诺族"
-      }
-    ]
-  },
-  {
-    "domainCode": "YHZGX",
-    "domainName": "与户主关系",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "户主"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "配偶"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "之子"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "之女"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "之儿媳"
-      },
-      {
-        "valueCode": "6",
-        "valueName": "之女婿"
-      },
-      {
-        "valueCode": "7",
-        "valueName": "之孙子"
-      },
-      {
-        "valueCode": "8",
-        "valueName": "之孙女"
-      },
-      {
-        "valueCode": "9",
-        "valueName": "之外孙子"
-      },
-      {
-        "valueCode": "10",
-        "valueName": "之外孙女"
-      },
-      {
-        "valueCode": "11",
-        "valueName": "之父"
-      },
-      {
-        "valueCode": "12",
-        "valueName": "之母"
-      },
-      {
-        "valueCode": "13",
-        "valueName": "之岳父"
-      },
-      {
-        "valueCode": "14",
-        "valueName": "之岳母"
-      },
-      {
-        "valueCode": "15",
-        "valueName": "之公公"
-      },
-      {
-        "valueCode": "16",
-        "valueName": "之婆婆"
-      },
-      {
-        "valueCode": "17",
-        "valueName": "之祖父"
-      },
-      {
-        "valueCode": "18",
-        "valueName": "之祖母"
-      },
-      {
-        "valueCode": "19",
-        "valueName": "之外祖父"
-      },
-      {
-        "valueCode": "20",
-        "valueName": "之外祖母"
-      },
-      {
-        "valueCode": "21",
-        "valueName": "其他"
-      }
-    ]
-  },
-  {
-    "domainCode": "WHCD",
-    "domainName": "文化程度",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "文盲或半文盲"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "学龄前儿童"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "小学"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "初中"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "高中(含职业高中技校)"
-      },
-      {
-        "valueCode": "6",
-        "valueName": "中专(含中等职业学校)"
-      },
-      {
-        "valueCode": "7",
-        "valueName": "大专(含高职或高专)"
-      },
-      {
-        "valueCode": "8",
-        "valueName": "大学本科"
-      },
-      {
-        "valueCode": "9",
-        "valueName": "研究生学历"
-      },
-      {
-        "valueCode": "10",
-        "valueName": "其他"
-      }
-    ]
-  },
-  {
-    "domainCode": "JKQK",
-    "domainName": "健康情况",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "健康"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "体弱多病"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "长期慢性病"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "患有大病"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "残疾人"
-      }
-    ]
-  },
-  {
-    "domainCode": "LDLZK",
-    "domainName": "劳动力状况",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "劳动力"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "丧失劳动力"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "无劳动力"
-      }
-    ]
-  },
-  {
-    "domainCode": "DGZT",
-    "domainName": "打工状态",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "在家务农"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "县内务工"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "县外省内务工"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "省外务工"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "其他"
-      }
-    ]
-  },
-  {
-    "domainCode": "CYZZLX",
-    "domainName": "产业组织类型",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "合作社"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "龙头企业"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "协会"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "其他"
-      }
-    ]
-  },
-  {
-    "domainCode": "RLLX",
-    "domainName": "燃料类型",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "柴草"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "煤炭"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "罐装液化石油气"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "管道液化石油气"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "管道煤气"
-      },
-      {
-        "valueCode": "6",
-        "valueName": "管道天然气"
-      },
-      {
-        "valueCode": "7",
-        "valueName": "电"
-      },
-      {
-        "valueCode": "8",
-        "valueName": "燃料用油"
-      },
-      {
-        "valueCode": "9",
-        "valueName": "沼气"
-      },
-      {
-        "valueCode": "10",
-        "valueName": "其他"
-      }
-    ]
-  },
-  {
-    "domainCode": "NYXFP",
-    "domainName": "耐用消费品",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "洗衣机"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "电冰箱/冰柜"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "彩色电视机"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "空调"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "热水器"
-      },
-      {
-        "valueCode": "6",
-        "valueName": "计算机"
-      },
-      {
-        "valueCode": "7",
-        "valueName": "自行车"
-      },
-      {
-        "valueCode": "8",
-        "valueName": "助力车"
-      },
-      {
-        "valueCode": "9",
-        "valueName": "摩托车"
-      },
-      {
-        "valueCode": "10",
-        "valueName": "三轮或四轮农用车"
-      },
-      {
-        "valueCode": "11",
-        "valueName": "家用汽车"
-      },
-      {
-        "valueCode": "12",
-        "valueName": "固定电话"
-      },
-      {
-        "valueCode": "13",
-        "valueName": "手机"
-      }
-    ]
-  },
-  {
-    "domainCode": "CYZT",
-    "domainName": "成员状态",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "正常"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "死亡"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "已分家"
-      }
-    ]
-  },
-  {
-    "domainCode": "GZJY",
-    "domainName": "工作经验",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "1年以内"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "1~3年"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "3年以上"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "无"
-      }
-    ]
-  },
-  {
-    "domainCode": "NLYQ",
-    "domainName": "年龄要求",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "无要求"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "20~35"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "35~45"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "45~60"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "60以下"
-      }
-    ]
-  },
-  {
-    "domainCode": "YXFW",
-    "domainName": "月薪范围",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "1000以下"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "1000~2000"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "2000~3000"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "3000~4000"
-      },
-      {
-        "valueCode": "5",
-        "valueName": "4000以上"
-      }
-    ]
-  },
-  {
-    "domainCode": "XZCSX",
-    "domainName": "行政村属性",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "少数名族聚居村"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "“十二五”国家整村推进贫困村"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "扶贫互助资金组织的村"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "无上述特征"
-      }
-    ]
-  },
-  {
-    "domainCode": "ZRZH",
-    "domainName": "自然灾害",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "旱灾"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "涝灾"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "病虫害"
-      },
-      {
-        "valueCode": "4",
-        "valueName": "冰冻灾害 "
-      },
-      {
-        "valueCode": "5",
-        "valueName": "干热风灾"
-      },
-      {
-        "valueCode": "6",
-        "valueName": "动物疫情 "
-      },
-      {
-        "valueCode": "7",
-        "valueName": "遭受泥石流或山体滑坡"
-      },
-      {
-        "valueCode": "8",
-        "valueName": "地震"
-      },
-      {
-        "valueCode": "9",
-        "valueName": "其他灾害"
-      },
-      {
-        "valueCode": "10",
-        "valueName": "无灾害"
-      }
-    ]
-  },
-  {
-    "domainCode": "ZCTJZT",
-    "domainName": "整村推进状态",
-    "domainValue": [
-      {
-        "valueCode": "1",
-        "valueName": "已实施"
-      },
-      {
-        "valueCode": "2",
-        "valueName": "正在实施"
-      },
-      {
-        "valueCode": "3",
-        "valueName": "未实施"
-      }
-    ]
-  }
+    {
+        "domainCode": "COMMON.STS",
+        "domainName": "数据状态",
+        "domainValue ": [
+            {
+                "valueCode": "A",
+                "valueName ": "在用"
+            },
+            {
+                "valueCode": "P",
+                "valueName ": "历史"
+            },
+            {
+                "valueCode": "D",
+                "valueName ": "作废"
+            }
+        ]
+    },
+    {
+        "domainCode": "COMMON.ENABLED_FLAG",
+        "domainName": "启用标识",
+        "domainValue ": [
+            {
+                "valueCode": "T",
+                "valueName ": "启用"
+            },
+            {
+                "valueCode": "F",
+                "valueName ": "停用"
+            }
+        ]
+    },
+    {
+        "domainCode": "COMMON.GENDER",
+        "domainName": "性别",
+        "domainValue ": [
+            {
+                "valueCode": "M",
+                "valueName ": "男"
+            },
+            {
+                "valueCode": "F",
+                "valueName ": "女"
+            }
+        ]
+    },
+    {
+        "domainCode": "COMMON.OPER_TYPE",
+        "domainName": "操作类型",
+        "domainValue ": [
+            {
+                "valueCode": "C",
+                "valueName ": "新增"
+            },
+            {
+                "valueCode": "R",
+                "valueName ": "查询"
+            },
+            {
+                "valueCode": "U",
+                "valueName ": "更新"
+            },
+            {
+                "valueCode": "D",
+                "valueName ": "删除"
+            }
+        ]
+    },
+    {
+        "domainCode": "SYS_USER.USER_TYPE",
+        "domainName": "系统用户类型",
+        "domainValue ": [
+            {
+                "valueCode": "C",
+                "valueName ": "普通用户"
+            },
+            {
+                "valueCode": "S",
+                "valueName ": "超级用户"
+            }
+        ]
+    },
+    {
+        "domainCode": "ADMIN_DIVISION.DIVISION_LEVEL",
+        "domainName": "行政区划级别",
+        "domainValue ": [
+            {
+                "valueCode": "A",
+                "valueName ": "省级"
+            },
+            {
+                "valueCode": "B",
+                "valueName ": "地级"
+            },
+            {
+                "valueCode": "C",
+                "valueName ": "县级"
+            },
+            {
+                "valueCode": "D",
+                "valueName ": "乡镇级"
+            },
+            {
+                "valueCode": "E",
+                "valueName ": "村级"
+            }
+        ]
+    },
+    {
+        "domainCode": "CUSTOMIZE_AREA.AREA_LEVEL",
+        "domainName": "自定义区域级别",
+        "domainValue ": [
+            {
+                "valueCode": "A",
+                "valueName ": "一级"
+            },
+            {
+                "valueCode": "B",
+                "valueName ": "二级"
+            },
+            {
+                "valueCode": "C",
+                "valueName ": "三级"
+            },
+            {
+                "valueCode": "D",
+                "valueName ": "四级"
+            },
+            {
+                "valueCode": "E",
+                "valueName ": "五级"
+            }
+        ]
+    },
+    {
+        "domainCode": "SYS_LOG.LOG_LEVEL",
+        "domainName": "日志级别",
+        "domainValue ": [
+            {
+                "valueCode": "I",
+                "valueName ": "INFO"
+            },
+            {
+                "valueCode": "D",
+                "valueName ": "DEBUG"
+            },
+            {
+                "valueCode": "W",
+                "valueName ": "WARN"
+            },
+            {
+                "valueCode": "E",
+                "valueName ": "ERROR"
+            },
+            {
+                "valueCode": "F",
+                "valueName ": "FATAL"
+            }
+        ]
+    },
+    {
+        "domainCode": "COMMON.YESNO",
+        "domainName": "是否",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "是"
+            },
+            {
+                "valueCode": "0",
+                "valueName ": "否"
+            }
+        ]
+    },
+    {
+        "domainCode": "SYS_LOG.LOG_CATEGORY",
+        "domainName": "日志类型",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "登录日志"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "登出日志"
+            }
+        ]
+    },
+    {
+        "domainCode": "SYS_USER.OWNER_TYPE",
+        "domainName": "用户所有者类型",
+        "domainValue ": [
+            {
+                "valueCode": "S",
+                "valueName ": "员工"
+            },
+            {
+                "valueCode": "D",
+                "valueName ": "部门"
+            }
+        ]
+    },
+    {
+        "domainCode": "STAFF.STS",
+        "domainName": "员工状态",
+        "domainValue ": [
+            {
+                "valueCode": "A",
+                "valueName ": "在职"
+            },
+            {
+                "valueCode": "R",
+                "valueName ": "停薪留职"
+            },
+            {
+                "valueCode": "P",
+                "valueName ": "离职"
+            }
+        ]
+    },
+    {
+        "domainCode": "COMMON.PRIORITY",
+        "domainName": "优先级",
+        "domainValue ": [
+            {
+                "valueCode": "L",
+                "valueName ": "低"
+            },
+            {
+                "valueCode": "M",
+                "valueName ": "中"
+            },
+            {
+                "valueCode": "U",
+                "valueName ": "高"
+            }
+        ]
+    },
+    {
+        "domainCode": "COMMON.RESULT",
+        "domainName": "结果",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "成功"
+            },
+            {
+                "valueCode": "0",
+                "valueName ": "失败"
+            }
+        ]
+    },
+    {
+        "domainCode": "STS",
+        "domainName": "通用状态",
+        "domainValue ": [
+            {
+                "valueCode": "A",
+                "valueName ": "在用"
+            },
+            {
+                "valueCode": "P",
+                "valueName ": "作废"
+            }
+        ]
+    },
+    {
+        "domainCode": "RHLLX",
+        "domainName": "入户路类型",
+        "domainValue ": [
+            {
+                "valueCode": "R",
+                "valueName ": "普通人行道路"
+            },
+            {
+                "valueCode": "N",
+                "valueName ": "普通泥土土地"
+            },
+            {
+                "valueCode": "S",
+                "valueName ": "砂石公路"
+            },
+            {
+                "valueCode": "L",
+                "valueName ": "水泥路面公路"
+            },
+            {
+                "valueCode": "Q",
+                "valueName ": "沥青路面公路"
+            }
+        ]
+    },
+    {
+        "domainCode": "C110b",
+        "domainName": "单位性质",
+        "domainValue ": [
+            {
+                "valueCode": "P",
+                "valueName ": "党政机关"
+            },
+            {
+                "valueCode": "S",
+                "valueName ": "事业单位"
+            },
+            {
+                "valueCode": "G",
+                "valueName ": "国有企业"
+            },
+            {
+                "valueCode": "M",
+                "valueName ": "民营企业"
+            },
+            {
+                "valueCode": "Z",
+                "valueName ": "社会组织"
+            },
+            {
+                "valueCode": "O",
+                "valueName ": "其他"
+            }
+        ]
+    },
+    {
+        "domainCode": "C110a",
+        "domainName": "单位级别",
+        "domainValue ": [
+            {
+                "valueCode": "C",
+                "valueName ": "国家级"
+            },
+            {
+                "valueCode": "P",
+                "valueName ": "省级"
+            },
+            {
+                "valueCode": "S",
+                "valueName ": "市级"
+            },
+            {
+                "valueCode": "X",
+                "valueName ": "县级"
+            },
+            {
+                "valueCode": "O",
+                "valueName ": "其他"
+            }
+        ]
+    },
+    {
+        "domainCode": "CSLX",
+        "domainName": "厕所类型",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "水冲式卫生厕所（冲入下水道、化粪池和厕坑）"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "水冲式卫生厕所（冲入其他地方）"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "卫生旱厕"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "普通旱厕"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "无厕所"
+            }
+        ]
+    },
+    {
+        "domainCode": "TERRAIN",
+        "domainName": "地势",
+        "domainValue ": [
+            {
+                "valueCode": "P",
+                "valueName ": "平原"
+            },
+            {
+                "valueCode": "Q",
+                "valueName ": "丘陵"
+            },
+            {
+                "valueCode": "M",
+                "valueName ": "山区"
+            }
+        ]
+    },
+    {
+        "domainCode": "DFBLX",
+        "domainName": "地方病类型",
+        "domainValue ": [
+            {
+                "valueCode": "L",
+                "valueName ": "克山病"
+            },
+            {
+                "valueCode": "G",
+                "valueName ": "大骨节病"
+            },
+            {
+                "valueCode": "D",
+                "valueName ": "碘缺乏病"
+            },
+            {
+                "valueCode": "F",
+                "valueName ": "地方性氟中毒"
+            },
+            {
+                "valueCode": "K",
+                "valueName ": "地方性坤中毒"
+            },
+            {
+                "valueCode": "Q",
+                "valueName ": "其他"
+            },
+            {
+                "valueCode": "N",
+                "valueName ": "无地方病"
+            }
+        ]
+    },
+    {
+        "domainCode": "YDBQQK",
+        "domainName": "异地搬迁情况",
+        "domainValue ": [
+            {
+                "valueCode": "Y",
+                "valueName ": "已搬迁"
+            },
+            {
+                "valueCode": "X",
+                "valueName ": "需搬迁"
+            },
+            {
+                "valueCode": "Q",
+                "valueName ": "其它"
+            }
+        ]
+    },
+    {
+        "domainCode": "FWJG",
+        "domainName": "房屋结构",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "钢筋混凝土"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "砖混材料"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "砖瓦砖木"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "砖、石窑洞"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "竹草土坯、土窑洞"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "其它"
+            },
+            {
+                "valueCode": "0",
+                "valueName ": "无住房"
+            }
+        ]
+    },
+    {
+        "domainCode": "SZLX",
+        "domainName": "收支类型",
+        "domainValue ": [
+            {
+                "valueCode": "S",
+                "valueName ": "收入类"
+            },
+            {
+                "valueCode": "Z",
+                "valueName ": "支出类"
+            }
+        ]
+    },
+    {
+        "domainCode": "ZZMM",
+        "domainName": "政治面貌",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "党员"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "团员"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "群众"
+            }
+        ]
+    },
+    {
+        "domainCode": "PKBZ",
+        "domainName": "贫困标准",
+        "domainValue ": [
+            {
+                "valueCode": "G",
+                "valueName ": "国家标准"
+            },
+            {
+                "valueCode": "S",
+                "valueName ": "省定标准"
+            }
+        ]
+    },
+    {
+        "domainCode": "ZXLX",
+        "domainName": "资讯类型",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "工作动态"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "政策文件"
+            }
+        ]
+    },
+    {
+        "domainCode": "XMLB",
+        "domainName": "项目类别",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "种植业"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "加工业"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "旅游"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "商贸"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "教育转移培训"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "其它"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "产业扶贫"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "人畜饮水"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "电力一表一户"
+            },
+            {
+                "valueCode": "23",
+                "valueName ": ""
+            }
+        ]
+    },
+    {
+        "domainCode": "WaterCon",
+        "domainName": "饮水情况",
+        "domainValue ": [
+            {
+                "valueCode": "J",
+                "valueName ": "自来水"
+            },
+            {
+                "valueCode": "B",
+                "valueName ": "其他水"
+            },
+            {
+                "valueCode": "N",
+                "valueName ": "浅井水"
+            },
+            {
+                "valueCode": "R",
+                "valueName ": "塘水"
+            },
+            {
+                "valueCode": "S",
+                "valueName ": "深井水"
+            },
+            {
+                "valueCode": "T",
+                "valueName ": "江湖河海水"
+            },
+            {
+                "valueCode": "Q",
+                "valueName ": "收集雨水"
+            }
+        ]
+    },
+    {
+        "domainCode": "YYSZYKN",
+        "domainName": "饮用水主要困难",
+        "domainValue ": [
+            {
+                "valueCode": "N",
+                "valueName ": "无困难"
+            },
+            {
+                "valueCode": "H",
+                "valueName ": "单次取水往返时间超过半小时"
+            },
+            {
+                "valueCode": "J",
+                "valueName ": "间断或定时供水 "
+            },
+            {
+                "valueCode": "F",
+                "valueName ": "当年连续缺水时间超过15天"
+            },
+            {
+                "valueCode": "Q",
+                "valueName ": "其他困难"
+            }
+        ]
+    },
+    {
+        "domainCode": "ZDCYLX",
+        "domainName": "主导产业类型",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "农业"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "畜牧业"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "林果业"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "渔业"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "手工业"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "工业"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "建筑业"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "服务业"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "其他"
+            }
+        ]
+    },
+    {
+        "domainCode": "ZPYY",
+        "domainName": "致贫原因",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "因灾"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "因病"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "因残"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "因学"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "缺技术"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "缺劳力"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "缺发展资金"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "缺土地"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "交通条件落后"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "自身发展动力不足"
+            },
+            {
+                "valueCode": "11",
+                "valueName ": "其他"
+            }
+        ]
+    },
+    {
+        "domainCode": "PKHSX",
+        "domainName": "贫困户属性",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": ""
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "一般贫困户"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "低保贫困户"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "五保户"
+            }
+        ]
+    },
+    {
+        "domainCode": "NATION",
+        "domainName": "民族",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "汉族"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "蒙古族"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "回族"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "苗族"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "傣族"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "傈僳族"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "藏族"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "怒族"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "壮族"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "朝鲜族"
+            },
+            {
+                "valueCode": "11",
+                "valueName ": "高山族"
+            },
+            {
+                "valueCode": "12",
+                "valueName ": "纳西族"
+            },
+            {
+                "valueCode": "13",
+                "valueName ": "布朗族"
+            },
+            {
+                "valueCode": "14",
+                "valueName ": "阿昌族"
+            },
+            {
+                "valueCode": "15",
+                "valueName ": "鄂温克族"
+            },
+            {
+                "valueCode": "16",
+                "valueName ": "鄂伦春族"
+            },
+            {
+                "valueCode": "17",
+                "valueName ": "赫哲族"
+            },
+            {
+                "valueCode": "18",
+                "valueName ": "门巴族"
+            },
+            {
+                "valueCode": "19",
+                "valueName ": "白族"
+            },
+            {
+                "valueCode": "20",
+                "valueName ": "保安族"
+            },
+            {
+                "valueCode": "21",
+                "valueName ": "布依族"
+            },
+            {
+                "valueCode": "22",
+                "valueName ": "达斡尔族"
+            },
+            {
+                "valueCode": "23",
+                "valueName ": "德昂族"
+            },
+            {
+                "valueCode": "24",
+                "valueName ": "东乡族"
+            },
+            {
+                "valueCode": "25",
+                "valueName ": "侗族"
+            },
+            {
+                "valueCode": "26",
+                "valueName ": "独龙族"
+            },
+            {
+                "valueCode": "27",
+                "valueName ": "俄罗斯族"
+            },
+            {
+                "valueCode": "28",
+                "valueName ": "哈尼族"
+            },
+            {
+                "valueCode": "29",
+                "valueName ": "哈萨克族"
+            },
+            {
+                "valueCode": "30",
+                "valueName ": "基诺族"
+            },
+            {
+                "valueCode": "31",
+                "valueName ": "京族"
+            },
+            {
+                "valueCode": "32",
+                "valueName ": "景颇族"
+            },
+            {
+                "valueCode": "33",
+                "valueName ": "柯尔克孜族"
+            },
+            {
+                "valueCode": "34",
+                "valueName ": "拉祜族"
+            },
+            {
+                "valueCode": "35",
+                "valueName ": "黎族"
+            },
+            {
+                "valueCode": "36",
+                "valueName ": "珞巴族"
+            },
+            {
+                "valueCode": "37",
+                "valueName ": "满族"
+            },
+            {
+                "valueCode": "38",
+                "valueName ": "毛南族"
+            },
+            {
+                "valueCode": "39",
+                "valueName ": "仫佬族"
+            },
+            {
+                "valueCode": "40",
+                "valueName ": "普米族"
+            },
+            {
+                "valueCode": "41",
+                "valueName ": "羌族"
+            },
+            {
+                "valueCode": "42",
+                "valueName ": "撒拉族"
+            },
+            {
+                "valueCode": "43",
+                "valueName ": "畲族"
+            },
+            {
+                "valueCode": "44",
+                "valueName ": "水族"
+            },
+            {
+                "valueCode": "45",
+                "valueName ": "塔吉克族·"
+            },
+            {
+                "valueCode": "46",
+                "valueName ": "塔塔尔族"
+            },
+            {
+                "valueCode": "47",
+                "valueName ": "土家族"
+            },
+            {
+                "valueCode": "48",
+                "valueName ": "佤族"
+            },
+            {
+                "valueCode": "49",
+                "valueName ": "维吾尔族"
+            },
+            {
+                "valueCode": "50",
+                "valueName ": "乌孜别克族"
+            },
+            {
+                "valueCode": "51",
+                "valueName ": "锡伯族"
+            },
+            {
+                "valueCode": "52",
+                "valueName ": "瑶族"
+            },
+            {
+                "valueCode": "53",
+                "valueName ": "裕固族"
+            },
+            {
+                "valueCode": "54",
+                "valueName ": "彝族"
+            },
+            {
+                "valueCode": "55",
+                "valueName ": "土族·"
+            },
+            {
+                "valueCode": "56",
+                "valueName ": "仡佬族"
+            }
+        ]
+    },
+    {
+        "domainCode": "YHZGX",
+        "domainName": "与户主关系",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "户主"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "配偶"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "之子"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "之女"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "之儿媳"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "之女婿"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "之孙子"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "之孙女"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "之外孙子"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "之外孙女"
+            },
+            {
+                "valueCode": "11",
+                "valueName ": "之父"
+            },
+            {
+                "valueCode": "12",
+                "valueName ": "之母"
+            },
+            {
+                "valueCode": "13",
+                "valueName ": "之岳父"
+            },
+            {
+                "valueCode": "14",
+                "valueName ": "之岳母"
+            },
+            {
+                "valueCode": "15",
+                "valueName ": "之公公"
+            },
+            {
+                "valueCode": "16",
+                "valueName ": "之婆婆"
+            },
+            {
+                "valueCode": "17",
+                "valueName ": "之祖父"
+            },
+            {
+                "valueCode": "18",
+                "valueName ": "之祖母"
+            },
+            {
+                "valueCode": "19",
+                "valueName ": "之外祖父"
+            },
+            {
+                "valueCode": "20",
+                "valueName ": "之外祖母"
+            },
+            {
+                "valueCode": "21",
+                "valueName ": "其他"
+            }
+        ]
+    },
+    {
+        "domainCode": "WHCD",
+        "domainName": "文化程度",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "文盲或半文盲"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "学龄前儿童"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "小学"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "初中"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "高中(含职业高中技校)"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "中专(含中等职业学校)"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "大专(含高职或高专)"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "大学本科"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "研究生学历"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "其他"
+            }
+        ]
+    },
+    {
+        "domainCode": "JKQK",
+        "domainName": "健康情况",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "健康"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "长期慢性病"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "残疾"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "甲状腺功能减退"
+            },
+            {
+                "valueCode": "44",
+                "valueName ": "肾病"
+            }
+        ]
+    },
+    {
+        "domainCode": "LDLZK",
+        "domainName": "劳动力状况",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "普通劳动力"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "无劳动力"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "丧失劳动力"
+            }
+        ]
+    },
+    {
+        "domainCode": "DGZT",
+        "domainName": "打工状态",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "其他"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "省外务工"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "乡(镇)内务工"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "乡(镇)外县内务工"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "县外省内务工"
+            }
+        ]
+    },
+    {
+        "domainCode": "CYZZLX",
+        "domainName": "产业组织类型",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "合作社"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "龙头企业"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "协会"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "其他"
+            }
+        ]
+    },
+    {
+        "domainCode": "RLLX",
+        "domainName": "燃料类型",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "柴草"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "煤炭"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "罐装液化石油气"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "管道液化石油气"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "管道煤气"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "管道天然气"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "电"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "燃料用油"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "沼气"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "其他"
+            }
+        ]
+    },
+    {
+        "domainCode": "NYXFP",
+        "domainName": "耐用消费品",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "彩色电视机"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "电冰箱/冰柜"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "固定电话"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "摩托车"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "农机具"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "热水器"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "三轮或四轮农用车"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "手机"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "洗衣机"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "助力车"
+            },
+            {
+                "valueCode": "11",
+                "valueName ": "自行车"
+            },
+            {
+                "valueCode": "12",
+                "valueName ": "空调"
+            },
+            {
+                "valueCode": "13",
+                "valueName ": "家用汽车"
+            }
+        ]
+    },
+    {
+        "domainCode": "CYZT",
+        "domainName": "成员状态",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "正常"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "死亡"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "已分家"
+            }
+        ]
+    },
+    {
+        "domainCode": "GZJY",
+        "domainName": "工作经验",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "1年以内"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "1~3年"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "3年以上"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "无"
+            }
+        ]
+    },
+    {
+        "domainCode": "NLYQ",
+        "domainName": "年龄要求",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "无要求"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "20~35"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "35~45"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "45~60"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "60以下"
+            }
+        ]
+    },
+    {
+        "domainCode": "YXFW",
+        "domainName": "月薪范围",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "1000以下"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "1000~2000"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "2000~3000"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "3000~4000"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "4000以上"
+            }
+        ]
+    },
+    {
+        "domainCode": "XZCSX",
+        "domainName": "行政村属性",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "少数名族聚居村"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "“十二五”国家整村推进贫困村"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "扶贫互助资金组织的村"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "无上述特征"
+            }
+        ]
+    },
+    {
+        "domainCode": "ZRZH",
+        "domainName": "自然灾害",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "旱灾"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "涝灾"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "病虫害"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "冰冻灾害 "
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "干热风灾"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "动物疫情 "
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "遭受泥石流或山体滑坡"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "地震"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "其他灾害"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "无灾害"
+            }
+        ]
+    },
+    {
+        "domainCode": "ZCTJZT",
+        "domainName": "整村推进状态",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "已实施"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "正在实施"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "未实施"
+            }
+        ]
+    },
+    {
+        "domainCode": "KHH",
+        "domainName": "银行名称",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "贵州省农村信用社"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "无银行信息"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "桐梓县高桥镇农村信用社"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "贵州省农村信用联社"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "中国邮政储蓄银行"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "遵义市桐梓县松坎农村银行"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "中国农业银行"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "桐梓县农村信用社"
+            }
+        ]
+    },
+    {
+        "domainCode": "ZPLX",
+        "domainName": "照片类型",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "建档立卡"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "走访成效"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "脱贫成效"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "户主"
+            }
+        ]
+    },
+    {
+        "domainCode": "DWLSGX",
+        "domainName": "单位隶属关系",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "省直"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "市州"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "县区"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "乡镇"
+            }
+        ]
+    },
+    {
+        "domainCode": "PKZT",
+        "domainName": "贫困状态",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "贫困"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "返贫"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "脱贫"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "待建卡"
+            }
+        ]
+    },
+    {
+        "domainCode": "AZMS",
+        "domainName": "安置模式",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "集中安置"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "分散安置"
+            }
+        ]
+    },
+    {
+        "domainCode": "CYFS",
+        "domainName": "参与方式",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "直接参与"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "入股分红"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "土地流程"
+            }
+        ]
+    },
+    {
+        "domainCode": "ZXSQK",
+        "domainName": "在校生情况",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "非在校生"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "在读"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "学前教育"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "小学在校"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "初中在校"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "七年级"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "八年级"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "九年级"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "高中一年级"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "高中二年级"
+            },
+            {
+                "valueCode": "11",
+                "valueName ": "高中三年级"
+            },
+            {
+                "valueCode": "12",
+                "valueName ": "中职一年级"
+            },
+            {
+                "valueCode": "13",
+                "valueName ": "中职二年级"
+            },
+            {
+                "valueCode": "14",
+                "valueName ": "中职三年级"
+            },
+            {
+                "valueCode": "15",
+                "valueName ": "高职一年级"
+            },
+            {
+                "valueCode": "16",
+                "valueName ": "高职二年级"
+            },
+            {
+                "valueCode": "17",
+                "valueName ": "大专在校"
+            },
+            {
+                "valueCode": "18",
+                "valueName ": "大学在校"
+            }
+        ]
+    },
+    {
+        "domainCode": "SZNJ",
+        "domainName": "所在年级",
+        "domainValue ": [
+            {
+                "valueCode": "1",
+                "valueName ": "幼儿园"
+            },
+            {
+                "valueCode": "2",
+                "valueName ": "一年级"
+            },
+            {
+                "valueCode": "3",
+                "valueName ": "二年级"
+            },
+            {
+                "valueCode": "4",
+                "valueName ": "三年级"
+            },
+            {
+                "valueCode": "5",
+                "valueName ": "四年级"
+            },
+            {
+                "valueCode": "6",
+                "valueName ": "五年级"
+            },
+            {
+                "valueCode": "7",
+                "valueName ": "六年级"
+            },
+            {
+                "valueCode": "8",
+                "valueName ": "七年级"
+            },
+            {
+                "valueCode": "9",
+                "valueName ": "八年级"
+            },
+            {
+                "valueCode": "10",
+                "valueName ": "九年级"
+            },
+            {
+                "valueCode": "11",
+                "valueName ": "高一"
+            },
+            {
+                "valueCode": "12",
+                "valueName ": "高二"
+            },
+            {
+                "valueCode": "13",
+                "valueName ": "高二"
+            },
+            {
+                "valueCode": "14",
+                "valueName ": "中职及以上"
+            },
+            {
+                "valueCode": "15",
+                "valueName ": "无"
+            }
+        ]
+    }
 ]
