@@ -29,7 +29,7 @@ public class TzzfqkViewHolder extends BaseViewHolder {
     private EditText sfzsy;
 
 
-    public TzzfqkViewHolder(ViewGroup parent, int viewType) {
+    public TzzfqkViewHolder(ViewGroup parent) {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_tzzfqk, parent, false));
         mContext = parent.getContext();

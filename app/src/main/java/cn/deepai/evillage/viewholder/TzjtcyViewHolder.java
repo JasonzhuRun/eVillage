@@ -26,28 +26,28 @@ public class TzjtcyViewHolder extends BaseViewHolder {
     private EditText yhzgx;
     private EditText jkqk;
     private EditText whcd;
-    private EditText zy;
-    private EditText zwjn;
+    private TextView zy;
+    private TextView zwjn;
 
 
-    public TzjtcyViewHolder(ViewGroup parent, int viewType) {
+    public TzjtcyViewHolder(ViewGroup parent) {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_tzjtcy, parent, false));
         mContext = parent.getContext();
         xm = (EditText) itemView.findViewById(R.id.jtcy_xm);
-        xm.setOnClickListener(this);
+//        xm.setOnClickListener(this);
         xb = (EditText) itemView.findViewById(R.id.jtcy_xb);
-        xb.setOnClickListener(this);
+//        xb.setOnClickListener(this);
         yhzgx = (EditText) itemView.findViewById(R.id.jtcy_yhzgx);
-        yhzgx.setOnClickListener(this);
+//        yhzgx.setOnClickListener(this);
         jkqk = (EditText) itemView.findViewById(R.id.jtcy_jkqk);
-        jkqk.setOnClickListener(this);
+//        jkqk.setOnClickListener(this);
         whcd = (EditText) itemView.findViewById(R.id.jtcy_whcd);
-        whcd.setOnClickListener(this);
-        zy = (EditText) itemView.findViewById(R.id.jtcy_zy);
-        zy.setOnClickListener(this);
-        zwjn = (EditText) itemView.findViewById(R.id.jtcy_zwjn);
-        zwjn.setOnClickListener(this);
+//        whcd.setOnClickListener(this);
+        zy = (TextView) itemView.findViewById(R.id.jtcy_zy);
+        itemView.findViewById(R.id.jtcy_zy_layout).setOnClickListener(this);
+        zwjn = (TextView) itemView.findViewById(R.id.jtcy_zwjn);
+        itemView.findViewById(R.id.jtcy_zwjn_layout).setOnClickListener(this);
     }
 
     public void onBindData(TzjtcyBean tzjtcyBean) {

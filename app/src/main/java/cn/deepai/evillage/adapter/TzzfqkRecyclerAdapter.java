@@ -15,7 +15,7 @@ import cn.deepai.evillage.viewholder.TzzcmxViewHolder;
 import cn.deepai.evillage.viewholder.TzzfqkViewHolder;
 
 /**
- * 贫困户家庭成员
+ * 贫困户走访情况
  */
 public class TzzfqkRecyclerAdapter extends RecyclerView.Adapter {
 
@@ -32,25 +32,25 @@ public class TzzfqkRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ItemType.ADD_MORE) return new AddMoreViewHolder(parent);
-        else return new TzzfqkViewHolder(parent,viewType);
+        else return new TzzfqkViewHolder(parent);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TzzfqkViewHolder) {
-            ((TzzfqkViewHolder) holder).onBindData(mTzzfqkBeans.get(position - 1));
+            ((TzzfqkViewHolder) holder).onBindData(mTzzfqkBeans.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        int count = mTzzfqkBeans == null?0: mTzzfqkBeans.size();
-        return count + 1;
+//        int count = mTzzfqkBeans == null?0: mTzzfqkBeans.size();
+        return mTzzfqkBeans == null?0: mTzzfqkBeans.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0) return ItemType.ADD_MORE;
+//        if (position == 0) return ItemType.ADD_MORE;
         return ItemType.NORMAL;
     }
 

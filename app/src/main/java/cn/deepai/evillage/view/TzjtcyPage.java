@@ -94,142 +94,142 @@ public class TzjtcyPage extends BasePage implements BasePage.IDataEdit{
             mHasData = true;
         }
     }
-
-    @SuppressWarnings("all")
-    public void onEventMainThread(PagexjItemEvent event) {
-        if (isSelected()) {
-            DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_xm)
-                    ,new DialogManager.IOnDialogFinished() {
-                        @Override
-                        public void returnData(String data) {
-                            final TzjtcyBean bean = new TzjtcyBean();
-                            bean.beanState = BaseBean.NEW;
-                            bean.setXm(data);
-                            final Gson gson = new Gson();
-                            RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addTzjtcy);
-                            EVRequest.request(Action.ACTION_ADD_JTCYJBXX, gson.toJson(header), gson.toJson(bean),
-                                    new ResponseCallback() {
-                                        @Override
-                                        public void onDataResponse(String dataJsonString) {
-                                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
-                                            if (returnValueEvent.returnValue == ReturnValueEvent.SUCCESS) {
-                                                EventBus.getDefault().post(bean);
-                                            }
-                                        }
-                                    });
-                        }
-                    });
-        }
-    }
-
+    // 不进行家庭成员的新建
+//    @SuppressWarnings("all")
+//    public void onEventMainThread(PagexjItemEvent event) {
+//        if (isSelected()) {
+//            DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_xm)
+//                    ,new DialogManager.IOnDialogFinished() {
+//                        @Override
+//                        public void returnData(String data) {
+//                            final TzjtcyBean bean = new TzjtcyBean();
+//                            bean.beanState = BaseBean.NEW;
+//                            bean.setXm(data);
+//                            final Gson gson = new Gson();
+//                            RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addTzjtcy);
+//                            EVRequest.request(Action.ACTION_ADD_JTCYJBXX, gson.toJson(header), gson.toJson(bean),
+//                                    new ResponseCallback() {
+//                                        @Override
+//                                        public void onDataResponse(String dataJsonString) {
+//                                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+//                                            if (returnValueEvent.returnValue == ReturnValueEvent.SUCCESS) {
+//                                                EventBus.getDefault().post(bean);
+//                                            }
+//                                        }
+//                                    });
+//                        }
+//                    });
+//        }
+//    }
+    // 只编辑职业和掌握技能
     @SuppressWarnings("all")
     public void onEventMainThread(final TzjtcyClickEvent event) {
         if (isSelected()) {
             switch (event.viewId) {
-                case R.id.jtcy_xm:
-                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_xm)
-                            ,new DialogManager.IOnDialogFinished() {
-                                @Override
-                                public void returnData(String data) {
-                                    for (TzjtcyBean bean:mTzjtcyList) {
-                                        if (event.cyId.equals(bean.getId())) {
-                                            bean.setXm(data);
-                                            bean.beanState = BaseBean.EDIT;
-                                        }
-                                    }
-                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
-                                }
-                            });
-                    break;
-                case R.id.jtcy_xb:
-                    final String[] xbValues = new String[]{
-                            DictionaryUtil.getValueName("COMMON.GENDER","M"),
-                            DictionaryUtil.getValueName("COMMON.GENDER","F")
-                    };
-                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_xb),
-                            xbValues, new DialogManager.IOnDialogFinished() {
-                                @Override
-                                public void returnData(String data) {
-                                    for (TzjtcyBean bean:mTzjtcyList) {
-                                        if (event.cyId.equals(bean.getId())) {
-                                            bean.setXb(data.equals(xbValues[0])?"M":"F");
-                                            bean.beanState = BaseBean.EDIT;
-                                        }
-                                    }
-                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
-                                }
-                            });
-                    break;
-                case R.id.jtcy_yhzgx:
-                    final String[] gxValues = new String[21];
-                    for (int i = 0;i < 21;i++) {
-                        gxValues[i] = DictionaryUtil.getValueName("YHZGX",String.valueOf(i+1));
-                    }
-                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_yhzgx),
-                            gxValues, new DialogManager.IOnDialogFinished() {
-                                @Override
-                                public void returnData(String data) {
-                                    for (TzjtcyBean bean:mTzjtcyList) {
-                                        if (event.cyId.equals(bean.getId())) {
-                                            for (int i = 0;i < 21;i++) {
-                                                if (data.equals(gxValues[i])) {
-                                                    bean.setYhzgx(String.valueOf(i+1));
-                                                    bean.beanState = BaseBean.EDIT;
-                                                }
-                                            }
-                                        }
-                                    }
-                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
-                                }
-                            });
-                    break;
-                case R.id.jtcy_jkqk:
-                    final String[] jkValues = new String[5];
-                    for (int i = 0;i < 5;i++) {
-                        jkValues[i] = DictionaryUtil.getValueName("JKQK",String.valueOf(i+1));
-                    }
-                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_jkqk),
-                            jkValues, new DialogManager.IOnDialogFinished() {
-                                @Override
-                                public void returnData(String data) {
-                                    for (TzjtcyBean bean:mTzjtcyList) {
-                                        if (event.cyId.equals(bean.getId())) {
-                                            for (int i = 0;i < 5;i++) {
-                                                if (data.equals(jkValues[i])) {
-                                                    bean.setJkqk(String.valueOf(i+1));
-                                                    bean.beanState = BaseBean.EDIT;
-                                                }
-                                            }
-                                        }
-                                    }
-                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
-                                }
-                            });
-                    break;
-                case R.id.jtcy_whcd:
-                    final String[] whValues = new String[10];
-                    for (int i = 0;i < 10;i++) {
-                        whValues[i] = DictionaryUtil.getValueName("WHCD",String.valueOf(i+1));
-                    }
-                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_whcd),
-                            whValues, new DialogManager.IOnDialogFinished() {
-                                @Override
-                                public void returnData(String data) {
-                                    for (TzjtcyBean bean:mTzjtcyList) {
-                                        if (event.cyId.equals(bean.getId())) {
-                                            for (int i = 0;i < 10;i++) {
-                                                if (data.equals(whValues[i])) {
-                                                    bean.setWhcd(String.valueOf(i+1));
-                                                    bean.beanState = BaseBean.EDIT;
-                                                }
-                                            }
-                                        }
-                                    }
-                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
-                                }
-                            });
-                    break;
-                case R.id.jtcy_zy:
+//                case R.id.jtcy_xm:
+//                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_xm)
+//                            ,new DialogManager.IOnDialogFinished() {
+//                                @Override
+//                                public void returnData(String data) {
+//                                    for (TzjtcyBean bean:mTzjtcyList) {
+//                                        if (event.cyId.equals(bean.getId())) {
+//                                            bean.setXm(data);
+//                                            bean.beanState = BaseBean.EDIT;
+//                                        }
+//                                    }
+//                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+//                                }
+//                            });
+//                    break;
+//                case R.id.jtcy_xb:
+//                    final String[] xbValues = new String[]{
+//                            DictionaryUtil.getValueName("COMMON.GENDER","M"),
+//                            DictionaryUtil.getValueName("COMMON.GENDER","F")
+//                    };
+//                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_xb),
+//                            xbValues, new DialogManager.IOnDialogFinished() {
+//                                @Override
+//                                public void returnData(String data) {
+//                                    for (TzjtcyBean bean:mTzjtcyList) {
+//                                        if (event.cyId.equals(bean.getId())) {
+//                                            bean.setXb(data.equals(xbValues[0])?"M":"F");
+//                                            bean.beanState = BaseBean.EDIT;
+//                                        }
+//                                    }
+//                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+//                                }
+//                            });
+//                    break;
+//                case R.id.jtcy_yhzgx:
+//                    final String[] gxValues = new String[21];
+//                    for (int i = 0;i < 21;i++) {
+//                        gxValues[i] = DictionaryUtil.getValueName("YHZGX",String.valueOf(i+1));
+//                    }
+//                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_yhzgx),
+//                            gxValues, new DialogManager.IOnDialogFinished() {
+//                                @Override
+//                                public void returnData(String data) {
+//                                    for (TzjtcyBean bean:mTzjtcyList) {
+//                                        if (event.cyId.equals(bean.getId())) {
+//                                            for (int i = 0;i < 21;i++) {
+//                                                if (data.equals(gxValues[i])) {
+//                                                    bean.setYhzgx(String.valueOf(i+1));
+//                                                    bean.beanState = BaseBean.EDIT;
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+//                                }
+//                            });
+//                    break;
+//                case R.id.jtcy_jkqk:
+//                    final String[] jkValues = new String[5];
+//                    for (int i = 0;i < 5;i++) {
+//                        jkValues[i] = DictionaryUtil.getValueName("JKQK",String.valueOf(i+1));
+//                    }
+//                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_jkqk),
+//                            jkValues, new DialogManager.IOnDialogFinished() {
+//                                @Override
+//                                public void returnData(String data) {
+//                                    for (TzjtcyBean bean:mTzjtcyList) {
+//                                        if (event.cyId.equals(bean.getId())) {
+//                                            for (int i = 0;i < 5;i++) {
+//                                                if (data.equals(jkValues[i])) {
+//                                                    bean.setJkqk(String.valueOf(i+1));
+//                                                    bean.beanState = BaseBean.EDIT;
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+//                                }
+//                            });
+//                    break;
+//                case R.id.jtcy_whcd:
+//                    final String[] whValues = new String[10];
+//                    for (int i = 0;i < 10;i++) {
+//                        whValues[i] = DictionaryUtil.getValueName("WHCD",String.valueOf(i+1));
+//                    }
+//                    DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_jtcy_whcd),
+//                            whValues, new DialogManager.IOnDialogFinished() {
+//                                @Override
+//                                public void returnData(String data) {
+//                                    for (TzjtcyBean bean:mTzjtcyList) {
+//                                        if (event.cyId.equals(bean.getId())) {
+//                                            for (int i = 0;i < 10;i++) {
+//                                                if (data.equals(whValues[i])) {
+//                                                    bean.setWhcd(String.valueOf(i+1));
+//                                                    bean.beanState = BaseBean.EDIT;
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                    mTzjtcyRecyclerAdapter.notifyResult(true, mTzjtcyList);
+//                                }
+//                            });
+//                    break;
+                case R.id.jtcy_zy_layout:
                     DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_zy)
                             ,new DialogManager.IOnDialogFinished() {
                                 @Override
@@ -244,7 +244,7 @@ public class TzjtcyPage extends BasePage implements BasePage.IDataEdit{
                                 }
                             });
                     break;
-                case R.id.jtcy_zwjn:
+                case R.id.jtcy_zwjn_layout:
                     DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_jtcy_zwjn)
                             ,new DialogManager.IOnDialogFinished() {
                                 @Override

@@ -30,25 +30,24 @@ public class TzjtcyRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ItemType.ADD_MORE) return new AddMoreViewHolder(parent);
-        else return new TzjtcyViewHolder(parent,viewType);
+        else return new TzjtcyViewHolder(parent);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TzjtcyViewHolder) {
-            ((TzjtcyViewHolder) holder).onBindData(mTzjtcyBeans.get(position - 1));
+            ((TzjtcyViewHolder) holder).onBindData(mTzjtcyBeans.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        int count = mTzjtcyBeans == null?0: mTzjtcyBeans.size();
-        return count + 1;
+        return mTzjtcyBeans == null?0: mTzjtcyBeans.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0) return ItemType.ADD_MORE;
+//        if (position == 0) return ItemType.ADD_MORE;
         return ItemType.NORMAL;
     }
 
