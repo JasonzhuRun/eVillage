@@ -52,10 +52,10 @@ public class NewsViewHolder extends BaseViewHolder {
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        mNewsBean.getId();
-        Intent intent = new Intent(mContext, PkhjtcyActivity.class);
-        intent.putExtra("news",mNewsBean);
-        mContext.startActivity(intent);
-        ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+//        mNewsBean.getId();
+//        Intent intent = new Intent(mContext, PkhjtcyActivity.class);
+//        intent.putExtra("news",mNewsBean);
+//        mContext.startActivity(intent);
+//        ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }
 }

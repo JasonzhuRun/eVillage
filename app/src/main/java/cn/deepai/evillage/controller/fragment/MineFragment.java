@@ -19,7 +19,8 @@ import cn.deepai.evillage.utils.ToastUtil;
 public class MineFragment extends BaseFragment {
     @Bind(R.id.mine_detail)
     View titleDetailView;
-
+    @Bind(R.id.detail_text_name)
+    TextView titleIdTextView;
     @OnClick(R.id.mine_clean)
     public void onCleanUpClick() {
         tryToShowProcessDialog();
@@ -65,5 +66,6 @@ public class MineFragment extends BaseFragment {
 
     private void initView() {
         titleDetailView.setVisibility(View.VISIBLE);
+        titleIdTextView.setText(SettingManager.getInstance().getCurUser());
     }
 }
