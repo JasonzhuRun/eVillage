@@ -64,7 +64,7 @@ public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
     public JdJbxxPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_jdjbxx, this);
-        ButterKnife.bind(this);
+//        ButterKnife.bind(this); 暂时不进行编辑操作
         localData = new PkhjbxxBean();
         initView();
     }
