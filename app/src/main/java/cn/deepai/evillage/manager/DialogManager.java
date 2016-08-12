@@ -139,6 +139,18 @@ public class DialogManager {
     }
 
 
+    public static void showTextDialog(final Context context, String title, String content) {
+        new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(content)
+                .setPositiveButton(context.getString(R.string.insure), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+    }
+
     public interface IOnDialogFinished {
         void returnData(String data);
     }

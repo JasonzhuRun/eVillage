@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".controller.activity.LoginActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize">
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -17,6 +17,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="36dp"
             android:background="@color/white"
+            android:src="@drawable/morentouxiang"
             android:contentDescription="@string/app_name"/>
         <ImageView
             android:layout_width="100dp"
@@ -39,10 +40,10 @@
     </RelativeLayout>
     <TextView
         android:id="@+id/mine_clean"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:gravity="center_vertical"
-        android:layout_marginLeft="20dp"
+        android:paddingLeft="20dp"
         android:text="@string/mine_clean"
         android:textColor="@color/text_black"
         android:textSize="@dimen/mine_textsize"/>
@@ -54,10 +55,10 @@
         android:background="@color/background_cutoff"/>
     <TextView
         android:id="@+id/mine_about"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:gravity="center_vertical"
-        android:layout_marginLeft="20dp"
+        android:paddingLeft="20dp"
         android:text="@string/mine_about"
         android:textColor="@color/text_black"
         android:textSize="@dimen/mine_textsize"/>

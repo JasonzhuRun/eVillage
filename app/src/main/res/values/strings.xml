@@ -1,6 +1,7 @@
 <resources>
     <!--系统自动生成-->
     <string name="app_name">精准扶贫</string>
+    <string name="app_about">精准扶贫安卓客户端 v1.0</string>
     <!--公共模块-->
     <string name="dialog_loading">请稍后&#8230;</string>
     <string name="no">否</string>
@@ -21,6 +22,9 @@
     <string name="upload_success">上传成功</string>
     <string name="save_success">保存成功</string>
     <string name="upload_failed">上传失败，请确认网络连接后重试</string>
+    <string name="delete">删除了</string>
+    <string name="caches">缓存</string>
+    <string name="no_caches">再使劲儿点也没缓存啦</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>
     <string name="req_code_getPkhJbxxList">zyfp01002</string>
@@ -72,8 +76,8 @@
     <string name="tab_build">建档</string>
     <string name="tab_jd">待建档贫困户</string>
     <string name="tab_mine">我的</string>
-    <string name="login_username">用户名</string>
-    <string name="login_password">密码</string>
+    <string name="login_username">登陆账号</string>
+    <string name="login_password">登陆密码</string>
     <string name="login_ensure">登录</string>
     <!--贫困户页面-->
     <string name="pkh_jbxx">基本信息</string>

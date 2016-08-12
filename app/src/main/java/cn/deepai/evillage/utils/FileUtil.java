@@ -39,18 +39,8 @@ public class FileUtil {
     }
 
     public static String getPicCacheDirPath() {
-        Context context = EVApplication.getApplication();
-        String cachePath;
-        if (context.getExternalCacheDir() != null) {
-            cachePath = context.getExternalCacheDir().getPath();
-        } else {
-            cachePath = context.getCacheDir().getPath();
-        }
-        File file = new File(cachePath + File.separator + "pic");
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        return file.getPath();
+
+        return getPicCacheDir().getPath();
     }
 
 
