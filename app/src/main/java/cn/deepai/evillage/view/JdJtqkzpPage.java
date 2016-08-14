@@ -103,8 +103,6 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
                         });
             }
         }
-
-
     }
 
     @Override
