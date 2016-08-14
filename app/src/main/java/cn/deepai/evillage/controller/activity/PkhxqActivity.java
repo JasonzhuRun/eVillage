@@ -28,7 +28,6 @@ import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhjbxxBean;
-import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.RspCode;
@@ -163,20 +162,20 @@ public class PkhxqActivity extends BaseActivity {
                 //todo 获取相册中的照片
             } else if (requestCode == 1 ) {
                 Uri uri = data.getData();
+                String addr = null;
                 if(uri == null){
                     //use bundle to get data
                     Bundle bundle = data.getExtras();
                     if (bundle != null) {
                         Bitmap photo = (Bitmap) bundle.get("data"); //get bitmap
-                        PkhjtqkzpBean bean = new PkhjtqkzpBean();
-                        bean.setTpdz(saveBitmap(EncryptionUtil.getMD5(new Date().toString()),photo));
-                        EventBus.getDefault().post(bean);
+                        addr = saveBitmap(EncryptionUtil.getMD5(new Date().toString()),photo);
                     }
-
                 }else{
-                    PkhjtqkzpBean bean = new PkhjtqkzpBean();
-                    bean.setTpdz(uri.toString());
-                    EventBus.getDefault().post(bean);
+                    addr = uri.getPath();
+                }
+                BasePage page = viewContainter.get(selectedIndex);
+                if (page instanceof BasePage.IPhotoEdit) {
+                    ((BasePage.IPhotoEdit)page).addPhoto(addr);
                 }
             }
         }
@@ -335,6 +334,6 @@ public class PkhxqActivity extends BaseActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "file://" + f.getPath();
+        return f.getPath();
     }
 }

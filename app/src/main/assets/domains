@@ -2,7 +2,7 @@
     {
         "domainCode": "DOMAIN.DOMAIN_TYPE",
         "domainName": "值域类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "E",
                 "valueName ": "枚举型"
@@ -16,7 +16,7 @@
     {
         "domainCode": "COMMON.STS",
         "domainName": "数据状态",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "A",
                 "valueName ": "在用"
@@ -34,7 +34,7 @@
     {
         "domainCode": "COMMON.ENABLED_FLAG",
         "domainName": "启用标识",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "T",
                 "valueName ": "启用"
@@ -48,7 +48,7 @@
     {
         "domainCode": "COMMON.GENDER",
         "domainName": "性别",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "M",
                 "valueName ": "男"
@@ -62,7 +62,7 @@
     {
         "domainCode": "COMMON.OPER_TYPE",
         "domainName": "操作类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "C",
                 "valueName ": "新增"
@@ -84,7 +84,7 @@
     {
         "domainCode": "SYS_USER.USER_TYPE",
         "domainName": "系统用户类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "C",
                 "valueName ": "普通用户"
@@ -98,7 +98,7 @@
     {
         "domainCode": "ADMIN_DIVISION.DIVISION_LEVEL",
         "domainName": "行政区划级别",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "A",
                 "valueName ": "省级"
@@ -124,7 +124,7 @@
     {
         "domainCode": "CUSTOMIZE_AREA.AREA_LEVEL",
         "domainName": "自定义区域级别",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "A",
                 "valueName ": "一级"
@@ -150,7 +150,7 @@
     {
         "domainCode": "SYS_LOG.LOG_LEVEL",
         "domainName": "日志级别",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "I",
                 "valueName ": "INFO"
@@ -176,7 +176,7 @@
     {
         "domainCode": "COMMON.YESNO",
         "domainName": "是否",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "是"
@@ -190,7 +190,7 @@
     {
         "domainCode": "SYS_LOG.LOG_CATEGORY",
         "domainName": "日志类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "登录日志"
@@ -204,7 +204,7 @@
     {
         "domainCode": "SYS_USER.OWNER_TYPE",
         "domainName": "用户所有者类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "S",
                 "valueName ": "员工"
@@ -218,7 +218,7 @@
     {
         "domainCode": "STAFF.STS",
         "domainName": "员工状态",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "A",
                 "valueName ": "在职"
@@ -236,7 +236,7 @@
     {
         "domainCode": "COMMON.PRIORITY",
         "domainName": "优先级",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "L",
                 "valueName ": "低"
@@ -254,7 +254,7 @@
     {
         "domainCode": "COMMON.RESULT",
         "domainName": "结果",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "成功"
@@ -268,7 +268,7 @@
     {
         "domainCode": "STS",
         "domainName": "通用状态",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "A",
                 "valueName ": "在用"
@@ -282,7 +282,7 @@
     {
         "domainCode": "RHLLX",
         "domainName": "入户路类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "R",
                 "valueName ": "普通人行道路"
@@ -308,7 +308,7 @@
     {
         "domainCode": "C110b",
         "domainName": "单位性质",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "P",
                 "valueName ": "党政机关"
@@ -338,7 +338,7 @@
     {
         "domainCode": "C110a",
         "domainName": "单位级别",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "C",
                 "valueName ": "国家级"
@@ -364,7 +364,7 @@
     {
         "domainCode": "CSLX",
         "domainName": "厕所类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "水冲式卫生厕所（冲入下水道、化粪池和厕坑）"
@@ -390,7 +390,7 @@
     {
         "domainCode": "TERRAIN",
         "domainName": "地势",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "P",
                 "valueName ": "平原"
@@ -408,7 +408,7 @@
     {
         "domainCode": "DFBLX",
         "domainName": "地方病类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "L",
                 "valueName ": "克山病"
@@ -442,7 +442,7 @@
     {
         "domainCode": "YDBQQK",
         "domainName": "异地搬迁情况",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "Y",
                 "valueName ": "已搬迁"
@@ -460,7 +460,7 @@
     {
         "domainCode": "FWJG",
         "domainName": "房屋结构",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "钢筋混凝土"
@@ -494,7 +494,7 @@
     {
         "domainCode": "SZLX",
         "domainName": "收支类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "S",
                 "valueName ": "收入类"
@@ -508,7 +508,7 @@
     {
         "domainCode": "ZZMM",
         "domainName": "政治面貌",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "党员"
@@ -526,7 +526,7 @@
     {
         "domainCode": "PKBZ",
         "domainName": "贫困标准",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "G",
                 "valueName ": "国家标准"
@@ -540,7 +540,7 @@
     {
         "domainCode": "ZXLX",
         "domainName": "资讯类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "工作动态"
@@ -554,7 +554,7 @@
     {
         "domainCode": "XMLB",
         "domainName": "项目类别",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "种植业"
@@ -600,7 +600,7 @@
     {
         "domainCode": "WaterCon",
         "domainName": "饮水情况",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "J",
                 "valueName ": "自来水"
@@ -634,7 +634,7 @@
     {
         "domainCode": "YYSZYKN",
         "domainName": "饮用水主要困难",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "N",
                 "valueName ": "无困难"
@@ -660,7 +660,7 @@
     {
         "domainCode": "ZDCYLX",
         "domainName": "主导产业类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "农业"
@@ -702,7 +702,7 @@
     {
         "domainCode": "ZPYY",
         "domainName": "致贫原因",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "因灾"
@@ -752,7 +752,7 @@
     {
         "domainCode": "PKHSX",
         "domainName": "贫困户属性",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": ""
@@ -774,7 +774,7 @@
     {
         "domainCode": "NATION",
         "domainName": "民族",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "汉族"
@@ -1004,7 +1004,7 @@
     {
         "domainCode": "YHZGX",
         "domainName": "与户主关系",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "户主"
@@ -1094,7 +1094,7 @@
     {
         "domainCode": "WHCD",
         "domainName": "文化程度",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "文盲或半文盲"
@@ -1140,7 +1140,7 @@
     {
         "domainCode": "JKQK",
         "domainName": "健康情况",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "健康"
@@ -1166,7 +1166,7 @@
     {
         "domainCode": "LDLZK",
         "domainName": "劳动力状况",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "普通劳动力"
@@ -1184,7 +1184,7 @@
     {
         "domainCode": "DGZT",
         "domainName": "打工状态",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "其他"
@@ -1210,7 +1210,7 @@
     {
         "domainCode": "CYZZLX",
         "domainName": "产业组织类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "合作社"
@@ -1232,7 +1232,7 @@
     {
         "domainCode": "RLLX",
         "domainName": "燃料类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "柴草"
@@ -1278,7 +1278,7 @@
     {
         "domainCode": "NYXFP",
         "domainName": "耐用消费品",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "彩色电视机"
@@ -1336,7 +1336,7 @@
     {
         "domainCode": "CYZT",
         "domainName": "成员状态",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "正常"
@@ -1354,7 +1354,7 @@
     {
         "domainCode": "GZJY",
         "domainName": "工作经验",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "1年以内"
@@ -1376,7 +1376,7 @@
     {
         "domainCode": "NLYQ",
         "domainName": "年龄要求",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "无要求"
@@ -1402,7 +1402,7 @@
     {
         "domainCode": "YXFW",
         "domainName": "月薪范围",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "1000以下"
@@ -1428,7 +1428,7 @@
     {
         "domainCode": "XZCSX",
         "domainName": "行政村属性",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "少数名族聚居村"
@@ -1450,7 +1450,7 @@
     {
         "domainCode": "ZRZH",
         "domainName": "自然灾害",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "旱灾"
@@ -1496,7 +1496,7 @@
     {
         "domainCode": "ZCTJZT",
         "domainName": "整村推进状态",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "已实施"
@@ -1514,7 +1514,7 @@
     {
         "domainCode": "KHH",
         "domainName": "银行名称",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "贵州省农村信用社"
@@ -1552,7 +1552,7 @@
     {
         "domainCode": "ZPLX",
         "domainName": "照片类型",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "建档立卡"
@@ -1574,7 +1574,7 @@
     {
         "domainCode": "DWLSGX",
         "domainName": "单位隶属关系",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "省直"
@@ -1596,7 +1596,7 @@
     {
         "domainCode": "PKZT",
         "domainName": "贫困状态",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "贫困"
@@ -1618,7 +1618,7 @@
     {
         "domainCode": "AZMS",
         "domainName": "安置模式",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "集中安置"
@@ -1632,7 +1632,7 @@
     {
         "domainCode": "CYFS",
         "domainName": "参与方式",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "直接参与"
@@ -1650,7 +1650,7 @@
     {
         "domainCode": "ZXSQK",
         "domainName": "在校生情况",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "非在校生"
@@ -1728,7 +1728,7 @@
     {
         "domainCode": "SZNJ",
         "domainName": "所在年级",
-        "domainValue ": [
+        "domainValue": [
             {
                 "valueCode": "1",
                 "valueName ": "幼儿园"

@@ -12,7 +12,6 @@ public abstract class BasePage extends FrameLayout {
     private boolean isSelected;
     protected Context mContext;
     protected boolean mHasData = false;
-    protected IDataEdit dataEdit = null;
 
     public BasePage(Context context) {
         this(context, null);
@@ -48,5 +47,9 @@ public abstract class BasePage extends FrameLayout {
 
     public interface IDataEdit {
         void saveData();
+    }
+
+    public interface IPhotoEdit {
+        void addPhoto(String uri);
     }
 }

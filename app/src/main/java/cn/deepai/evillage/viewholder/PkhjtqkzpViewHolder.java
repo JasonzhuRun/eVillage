@@ -50,8 +50,12 @@ public class PkhjtqkzpViewHolder extends BaseViewHolder {
 
     public void onBindData(PkhjtqkzpBean pkhjtqkzpBean) {
         this.mPkhjtqkzpBean = pkhjtqkzpBean;
-        ImageLoader.getInstance().displayImage(pkhjtqkzpBean.getTpdz(), zp, EVApplication.getDisplayImageOptions());
-        ImageLoader.getInstance().displayImage(pkhjtqkzpBean.getTpdz(), mPopZp, EVApplication.getDisplayImageOptions());
+        String path = pkhjtqkzpBean.getTpdz();
+        if (path.startsWith("/")) {
+            path = "file://" + path;
+        }
+        ImageLoader.getInstance().displayImage(path, zp, EVApplication.getDisplayImageOptions());
+        ImageLoader.getInstance().displayImage(path, mPopZp, EVApplication.getDisplayImageOptions());
     }
 
     @Override

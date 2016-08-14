@@ -51,6 +51,7 @@
     <string name="req_code_updatePkhJbxx">zyfp01023</string>
     <string name="req_code_updatePkhJtcy">zyfp01024</string>
     <string name="req_code_addPkhJtcy">zyfp01025</string>
+    <string name="req_code_addPkhJtqkzp">zyfp01026</string>
 
     <string name="req_code_getJdList">zyfp02001</string>
 

@@ -9,10 +9,9 @@ import java.security.NoSuchAlgorithmException;
  * Created by GaoYixuan on 16/5/27.
  */
 public class EncryptionUtil {
-    Base64 base64;
-    public String base64Encode(String input) {
-      //  Base64.decode()
-        return input;
+
+    public static String base64Encode(byte[] input) {
+        return Base64.encodeToString(input,Base64.DEFAULT);
     }
 
     public String base64Decode(String input) {

@@ -10,10 +10,19 @@ public class PkhjtqkzpBean {
     private String zplx;
     private String tpmc;
     private String tpdz;
+    private String tpnr;
     private String jlsj;
     private String jlr;
     private String bz;
     private String zt;
+
+    public String getTpnr() {
+        return tpnr;
+    }
+
+    public void setTpnr(String tpnr) {
+        this.tpnr = tpnr;
+    }
 
     public String getId() {
         return id;
