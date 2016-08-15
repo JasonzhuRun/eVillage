@@ -8,14 +8,20 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzRecyclerAdapter;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.bean.TzjbxxBean;
 import cn.deepai.evillage.model.bean.TzjbxxList;
 import cn.deepai.evillage.model.event.PkhSelectedEvent;
@@ -29,12 +35,21 @@ public class TzFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private TzRecyclerAdapter mTzRecyclerAdapter;
-
+    private ImageView mPkhPhoto;
+    private TextView mPkhName;
+    private TextView mPkhPhone;
+    private TextView mPkhAddress;
+    private View mTitle;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_tz, container, false);
         mRecyclerView = (RecyclerView) root.findViewById(R.id.recyclerview_tz);
+        mTitle = root.findViewById(R.id.tz_title);
+        mPkhPhoto = (ImageView)root.findViewById(R.id.detail_photo);
+        mPkhName = (TextView) root.findViewById(R.id.detail_text_name);
+        mPkhPhone = (TextView) root.findViewById(R.id.detail_text_phone);
+        mPkhAddress = (TextView) root.findViewById(R.id.detail_text_address);
         initView();
         return root;
     }
@@ -103,6 +118,16 @@ public class TzFragment extends BaseFragment {
         tryToHideProcessDialog();
     }
 
+    private void initTitle() {
+
+        mTitle.setVisibility(View.VISIBLE);
+        PkhjbxxBean pkh = SettingManager.getCurrentPkh();
+        ImageLoader.getInstance().displayImage(pkh.getTpdz(), mPkhPhoto, EVApplication.getDisplayImageOptions());
+        mPkhName.setText(pkh.getHzxm());
+        mPkhAddress.setText(pkh.getJzdz());
+        mPkhPhone.setText(pkh.getLxdh());
+    }
+
     private void loadData() {
         tryToShowProcessDialog();
         String staffId = SettingManager.getInstance().getStaffId();
@@ -110,9 +135,11 @@ public class TzFragment extends BaseFragment {
         if (TextUtils.isEmpty(hid)) {
             ToastUtil.shortToast(getString(R.string.tz_none_hid));
             mTzRecyclerAdapter.beMute(true);
+            mTitle.setVisibility(View.GONE);
             tryToHideProcessDialog();
         } else {
             mTzRecyclerAdapter.beMute(false);
+            initTitle();
             TzListRequest.request(staffId,hid);
         }
     }

@@ -48,9 +48,9 @@ public class PkhFragment extends BaseFragment {
     @SuppressWarnings("all")
     public void onEventMainThread(PkhjbxxList event) {
         mPkhRecyclerAdapter.notifyResult(true, event.list);
-        if (event.list.size() > 0&& EVApplication.isDebug()) {
-            SettingManager.setCurrentPkh(event.list.get(0));
-        }
+//        if (event.list.size() > 0&& EVApplication.isDebug()) {
+//            SettingManager.setCurrentPkh(event.list.get(0));
+//        }
         tryToHideProcessDialog();
     }
 
