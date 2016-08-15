@@ -86,88 +86,88 @@ public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
             bindData(event);
         }
     }
-
-    @OnClick(R.id.jbxx_jhsyh_layout)
-    public void onJhsyhClick() {
-        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_jhsyh),
-                new DialogManager.IOnDialogFinished() {
-                    @Override
-                    public void returnData(String data) {
-                        jhsyh.setText(data);
-                        if (mContext.getString(R.string.no).equals(data)) {
-                            localData.setJhsyh("0");
-                        } else localData.setJhsyh("1");
-                    }
-                });
-    }
-
-    @OnClick(R.id.jbxx_pkhsx_layout)
-    public void onPkhsxClick() {
-        final String[] values = new String[]{
-                DictionaryUtil.getValueName("PKHSX","1"),
-                DictionaryUtil.getValueName("PKHSX","2"),
-                DictionaryUtil.getValueName("PKHSX","3"),
-                DictionaryUtil.getValueName("PKHSX","4"),
-                DictionaryUtil.getValueName("PKHSX","5")
-        };
-        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_pkhsx),
-                values,
-                new DialogManager.IOnDialogFinished() {
-                    @Override
-                    public void returnData(String data) {
-                        pkhsx.setText(data);
-                        for (int i = 0;i < 5;i++) {
-                            if (data.equals(values[i])){
-                                localData.setPkhsx(String.valueOf(i+1));
-                                break;
-                            }
-                        }
-                    }
-                });
-    }
-
-    @OnClick(R.id.jbxx_pkhzt_layout)
-    public void onPkztClick() {
-        final String[] values = new String[]{
-                DictionaryUtil.getValueName("PKZT","1"),
-                DictionaryUtil.getValueName("PKZT","2"),
-                DictionaryUtil.getValueName("PKZT","3"),
-                DictionaryUtil.getValueName("PKZT","4")
-        };
-        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_pkzt),
-                values,
-                new DialogManager.IOnDialogFinished() {
-                    @Override
-                    public void returnData(String data) {
-                        pkhzt.setText(data);
-                        for (int i = 0;i < values.length;i++) {
-                            if (data.equals(values[i])) {
-                                localData.setPkhzt(String.valueOf(i+1));
-                                break;
-                            }
-                        }
-                    }
-                });
-    }
-
-    @OnClick(R.id.jbxx_sbbz_layout)
-    public void onSbbzClick() {
-        final String[] values = new String[]{
-                DictionaryUtil.getValueName("PKBZ","G"),
-                DictionaryUtil.getValueName("PKBZ","S")
-        };
-        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_sbbz),
-                values,
-                new DialogManager.IOnDialogFinished() {
-                    @Override
-                    public void returnData(String data) {
-                        sbbz.setText(data);
-                        if (mContext.getString(R.string.pkh_jbxx_sbbz_gjbz).equals(data)) {
-                            localData.setPksbbz("G");
-                        } else localData.setPksbbz("S");
-                    }
-                });
-    }
+//
+//    @OnClick(R.id.jbxx_jhsyh_layout)
+//    public void onJhsyhClick() {
+//        DialogManager.showYesOrNoChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_jhsyh),
+//                new DialogManager.IOnDialogFinished() {
+//                    @Override
+//                    public void returnData(String data) {
+//                        jhsyh.setText(data);
+//                        if (mContext.getString(R.string.no).equals(data)) {
+//                            localData.setJhsyh("0");
+//                        } else localData.setJhsyh("1");
+//                    }
+//                });
+//    }
+//
+//    @OnClick(R.id.jbxx_pkhsx_layout)
+//    public void onPkhsxClick() {
+//        final String[] values = new String[]{
+//                DictionaryUtil.getValueName("PKHSX","1"),
+//                DictionaryUtil.getValueName("PKHSX","2"),
+//                DictionaryUtil.getValueName("PKHSX","3"),
+//                DictionaryUtil.getValueName("PKHSX","4"),
+//                DictionaryUtil.getValueName("PKHSX","5")
+//        };
+//        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_pkhsx),
+//                values,
+//                new DialogManager.IOnDialogFinished() {
+//                    @Override
+//                    public void returnData(String data) {
+//                        pkhsx.setText(data);
+//                        for (int i = 0;i < 5;i++) {
+//                            if (data.equals(values[i])){
+//                                localData.setPkhsx(String.valueOf(i+1));
+//                                break;
+//                            }
+//                        }
+//                    }
+//                });
+//    }
+//
+//    @OnClick(R.id.jbxx_pkhzt_layout)
+//    public void onPkztClick() {
+//        final String[] values = new String[]{
+//                DictionaryUtil.getValueName("PKZT","1"),
+//                DictionaryUtil.getValueName("PKZT","2"),
+//                DictionaryUtil.getValueName("PKZT","3"),
+//                DictionaryUtil.getValueName("PKZT","4")
+//        };
+//        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_pkzt),
+//                values,
+//                new DialogManager.IOnDialogFinished() {
+//                    @Override
+//                    public void returnData(String data) {
+//                        pkhzt.setText(data);
+//                        for (int i = 0;i < values.length;i++) {
+//                            if (data.equals(values[i])) {
+//                                localData.setPkhzt(String.valueOf(i+1));
+//                                break;
+//                            }
+//                        }
+//                    }
+//                });
+//    }
+//
+//    @OnClick(R.id.jbxx_sbbz_layout)
+//    public void onSbbzClick() {
+//        final String[] values = new String[]{
+//                DictionaryUtil.getValueName("PKBZ","G"),
+//                DictionaryUtil.getValueName("PKBZ","S")
+//        };
+//        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_sbbz),
+//                values,
+//                new DialogManager.IOnDialogFinished() {
+//                    @Override
+//                    public void returnData(String data) {
+//                        sbbz.setText(data);
+//                        if (mContext.getString(R.string.pkh_jbxx_sbbz_gjbz).equals(data)) {
+//                            localData.setPksbbz("G");
+//                        } else localData.setPksbbz("S");
+//                    }
+//                });
+//    }
 
     @Override
     public void saveData() {
