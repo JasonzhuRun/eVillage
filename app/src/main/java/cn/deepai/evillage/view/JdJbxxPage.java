@@ -21,6 +21,7 @@ import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.DictionaryUtil;
+import cn.deepai.evillage.utils.ToastUtil;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -106,7 +107,8 @@ public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
                 DictionaryUtil.getValueName("PKHSX","1"),
                 DictionaryUtil.getValueName("PKHSX","2"),
                 DictionaryUtil.getValueName("PKHSX","3"),
-                DictionaryUtil.getValueName("PKHSX","4")
+                DictionaryUtil.getValueName("PKHSX","4"),
+                DictionaryUtil.getValueName("PKHSX","5")
         };
         DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_pkhsx),
                 values,
@@ -114,7 +116,7 @@ public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
                     @Override
                     public void returnData(String data) {
                         pkhsx.setText(data);
-                        for (int i = 0;i < 4;i++) {
+                        for (int i = 0;i < 5;i++) {
                             if (data.equals(values[i])){
                                 localData.setPkhsx(String.valueOf(i+1));
                                 break;
@@ -127,10 +129,10 @@ public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
     @OnClick(R.id.jbxx_pkhzt_layout)
     public void onPkztClick() {
         final String[] values = new String[]{
-                DictionaryUtil.getValueName("PKHZT","1"),
-                DictionaryUtil.getValueName("PKHZT","2"),
-                DictionaryUtil.getValueName("PKHZT","3"),
-                DictionaryUtil.getValueName("PKHZT","4")
+                DictionaryUtil.getValueName("PKZT","1"),
+                DictionaryUtil.getValueName("PKZT","2"),
+                DictionaryUtil.getValueName("PKZT","3"),
+                DictionaryUtil.getValueName("PKZT","4")
         };
         DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_pkzt),
                 values,
@@ -150,8 +152,12 @@ public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
 
     @OnClick(R.id.jbxx_sbbz_layout)
     public void onSbbzClick() {
+        final String[] values = new String[]{
+                DictionaryUtil.getValueName("PKBZ","G"),
+                DictionaryUtil.getValueName("PKBZ","S")
+        };
         DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_jbxx_sbbz),
-                new String[]{mContext.getString(R.string.pkh_jbxx_sbbz_gjbz),mContext.getString(R.string.pkh_jbxx_sbbz_sdbz)},
+                values,
                 new DialogManager.IOnDialogFinished() {
                     @Override
                     public void returnData(String data) {
@@ -166,27 +172,28 @@ public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
     @Override
     public void saveData() {
 
-        localData.setHzxm(hzxm.getText().toString());
-        localData.setJzdz(jzdz.getText().toString());
-        localData.setLxdh(lxdh.getText().toString());
-        localData.setHzsfz(hzsfz.getText().toString());
-        localData.setHkhyx(hkhyx.getText().toString());
-        localData.setYxzh(yxzh.getText().toString());
-        localData.setTpnf(tpnf.getText().toString());
-
-        final PkhjbxxBean jbxxBean = localData;
-        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updatePkhJbxx);
-
-        final Gson gson = new Gson();
-        ((PkhxqActivity)mContext).tryToShowProcessDialog();
-        EVRequest.request(Action.ACTION_UPDATE_PKHJBXX, gson.toJson(header), gson.toJson(jbxxBean),
-                new ResponseCallback() {
-                    @Override
-                    public void onDataResponse(String dataJsonString) {
-                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
-                        EventBus.getDefault().post(returnValueEvent);
-                    }
-                });
+        ToastUtil.shortToast(mContext.getString(R.string.pkh_jbxx_no_change));
+//        localData.setHzxm(hzxm.getText().toString());
+//        localData.setJzdz(jzdz.getText().toString());
+//        localData.setLxdh(lxdh.getText().toString());
+//        localData.setHzsfz(hzsfz.getText().toString());
+//        localData.setHkhyx(hkhyx.getText().toString());
+//        localData.setYxzh(yxzh.getText().toString());
+//        localData.setTpnf(tpnf.getText().toString());
+//
+//        final PkhjbxxBean jbxxBean = localData;
+//        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_updatePkhJbxx);
+//
+//        final Gson gson = new Gson();
+//        ((PkhxqActivity)mContext).tryToShowProcessDialog();
+//        EVRequest.request(Action.ACTION_UPDATE_PKHJBXX, gson.toJson(header), gson.toJson(jbxxBean),
+//                new ResponseCallback() {
+//                    @Override
+//                    public void onDataResponse(String dataJsonString) {
+//                        ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+//                        EventBus.getDefault().post(returnValueEvent);
+//                    }
+//                });
     }
 
     @Override
@@ -229,7 +236,7 @@ public class JdJbxxPage extends BasePage implements BasePage.IDataEdit{
         // 计划生育户
         jhsyh.setText(DictionaryUtil.getValueName(pkhjbxxBean.getJhsyh()));
         // 贫困户状态
-        pkhzt.setText(DictionaryUtil.getValueName("PKHZT",pkhjbxxBean.getPkhzt()));
+        pkhzt.setText(DictionaryUtil.getValueName("PKZT",pkhjbxxBean.getPkhzt()));
         sbbz.setText(DictionaryUtil.getValueName("PKBZ",pkhjbxxBean.getPksbbz()));
         tpnf.setText(pkhjbxxBean.getTpnf());
         pkhsx.setText(DictionaryUtil.getValueName("PKHSX",pkhjbxxBean.getPkhsx()));

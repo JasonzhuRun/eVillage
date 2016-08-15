@@ -104,7 +104,7 @@ public class JdCyhPage extends BasePage  implements BasePage.IDataEdit{
         for (int i = 0;i < lxValues.length;i++) {
             lxValues[i] = DictionaryUtil.getValueName("CYZZLX",String.valueOf(i + 1));
         }
-        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_cyhqk_cylx),
+        DialogManager.showSingleChoiceDialog(mContext,mContext.getString(R.string.pkh_cyhqk_cyzzlx),
                 lxValues,
                 new DialogManager.IOnDialogFinished() {
                     @Override

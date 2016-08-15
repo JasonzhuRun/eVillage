@@ -38,7 +38,7 @@ public class PkhjtcyViewHolder extends BaseViewHolder {
         this.mPkhjtcyBean = pkhjtcyBean;
         xm.setText(pkhjtcyBean.getXm());
         String gxCode = pkhjtcyBean.getYhzgx();
-        if (TextUtils.isEmpty(gxCode)) gxCode = "21";
+        if (TextUtils.isEmpty(gxCode)) gxCode = "0";
         gx.setText(DictionaryUtil.getValueName("YHZGX",gxCode));
     }
 

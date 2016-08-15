@@ -146,8 +146,8 @@ public class JdShtjPage extends BasePage implements BasePage.IDataEdit{
     // 燃料类型
     @OnClick(R.id.shtj_zyrl_layout)
     public void onRllxClick() {
-        final String[] lxValues = new String[10];
-        boolean[] lxSelected = new boolean[10];
+        final String[] lxValues = new String[11];
+        boolean[] lxSelected = new boolean[11];
         String[] rllxCodes = StringUtil.splitCode(localData.getZyrllx());
         for (String code:rllxCodes) {
             lxSelected[Integer.valueOf(code) - 1] = true;
@@ -257,8 +257,8 @@ public class JdShtjPage extends BasePage implements BasePage.IDataEdit{
     // 耐用消费品
     @OnClick(R.id.shtj_nyxfp_layout)
     public void onNyxfpClick() {
-        final String[] nypValues = new String[13];
-        boolean[] nypSelected = new boolean[13];
+        final String[] nypValues = new String[14];
+        boolean[] nypSelected = new boolean[14];
         String[] nypCodes = StringUtil.splitCode(localData.getNyxfpqk());
         for (String code:nypCodes) {
             nypSelected[Integer.valueOf(code) - 1] = true;

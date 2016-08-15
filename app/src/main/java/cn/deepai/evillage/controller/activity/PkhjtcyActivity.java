@@ -143,7 +143,7 @@ public class PkhjtcyActivity extends BaseActivity {
 
     @OnClick(R.id.jtcy_yhzgx_layout)
     public void onGxClick() {
-        final String[] values = new String[21];
+        final String[] values = new String[26];
         for (int i = 0;i < values.length;i++) {
             values[i] =  DictionaryUtil.getValueName("YHZGX",String.valueOf(i+1));
         }
@@ -223,7 +223,7 @@ public class PkhjtcyActivity extends BaseActivity {
 
     @OnClick(R.id.jtcy_jkqk_layout)
     public void onJkqkClick() {
-        final String[] values = new String[5];
+        final String[] values = new String[47];
         for (int i = 0;i < values.length;i++) {
             values[i] =  DictionaryUtil.getValueName("JKQK",String.valueOf(i+1));
         }
@@ -245,7 +245,7 @@ public class PkhjtcyActivity extends BaseActivity {
 
     @OnClick(R.id.jtcy_ldnlzk_layout)
     public void onLdlzkClick() {
-        final String[] values = new String[3];
+        final String[] values = new String[4];
         for (int i = 0;i < values.length;i++) {
             values[i] =  DictionaryUtil.getValueName("LDLZK",String.valueOf(i+1));
         }

@@ -106,6 +106,7 @@
     <string name="pkh_jbxx_jzdz">居住地址</string>
     <string name="pkh_jbxx_sbbz_gjbz">国家标准</string>
     <string name="pkh_jbxx_sbbz_sdbz">省定标准</string>
+    <string name="pkh_jbxx_no_change">基本信息不允许在客户端编辑</string>
     <!--家庭成员-->
     <string name="pkh_jtcy_none">成员信息有误，请求失败</string>
     <string name="pkh_jtcy_xm">姓名</string>
