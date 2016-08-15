@@ -15,6 +15,15 @@ public class PkhjtqkzpBean {
     private String jlr;
     private String bz;
     private String zt;
+    private String wjlx;
+
+    public String getWjlx() {
+        return wjlx;
+    }
+
+    public void setWjlx(String wjlx) {
+        this.wjlx = wjlx;
+    }
 
     public String getTpnr() {
         return tpnr;

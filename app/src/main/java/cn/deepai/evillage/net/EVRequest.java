@@ -8,6 +8,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.concurrent.TimeUnit;
 
 import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
@@ -32,7 +34,11 @@ public class EVRequest {
 //    private static final String URL = "http://10.108.6.45:8080/zyfp-web/inter/";
     private static final String URL = "http://124.65.186.26:8973/zyfp-web/inter/";
 
-    private static OkHttpClient client = new OkHttpClient();
+    private static OkHttpClient client = new OkHttpClient()
+            .newBuilder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build();
 
     public static void request(Action action, String jsonHeader, String jsonData, final ResponseCallback callback) {
         action.setArgs(jsonData);

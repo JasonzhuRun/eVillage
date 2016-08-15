@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -88,6 +89,17 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         for (final PkhjtqkzpBean bean:localData) {
             if (!TextUtils.isEmpty(bean.getHid())) {
                 bean.setTpnr(encodePhoto(bean.getTpdz()));
+                String[] args = bean.getTpdz().split(File.separator);
+                if (args.length > 0) {
+                    String tpmc = args[args.length - 1];
+                    bean.setTpmc(tpmc);
+                    String[] postfix = tpmc.split("\\.");
+                    if (postfix.length > 0) {
+                        bean.setWjlx(postfix[postfix.length - 1]);
+                    } else {
+                        bean.setWjlx("png");
+                    }
+                }
                 ((PkhxqActivity)mContext).tryToShowProcessDialog();
                 EVRequest.request(Action.ACTION_ADD_PKHJTQKZP, gson.toJson(header), gson.toJson(bean),
                         new ResponseCallback() {
