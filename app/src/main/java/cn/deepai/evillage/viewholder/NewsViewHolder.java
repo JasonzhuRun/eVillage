@@ -15,6 +15,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
+import cn.deepai.evillage.controller.activity.NewsDetailActivity;
 import cn.deepai.evillage.controller.activity.PkhjtcyActivity;
 import cn.deepai.evillage.model.bean.NewsBean;
 
@@ -52,10 +53,10 @@ public class NewsViewHolder extends BaseViewHolder {
     @Override
     public void onClick(View v) {
         super.onClick(v);
-//        mNewsBean.getId();
-//        Intent intent = new Intent(mContext, PkhjtcyActivity.class);
-//        intent.putExtra("news",mNewsBean);
-//        mContext.startActivity(intent);
-//        ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+        mNewsBean.getId();
+        Intent intent = new Intent(mContext, NewsDetailActivity.class);
+        intent.putExtra("news",mNewsBean);
+        mContext.startActivity(intent);
+        ((Activity)mContext).overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }
 }

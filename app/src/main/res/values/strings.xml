@@ -250,6 +250,7 @@
 
     <!--我的页面-->
     <string name="mine_clean_success">清除缓存成功</string>
+    <string name="news_detail">资讯详情</string>
     <string name="mine_clean">清除缓存</string>
     <string name="mine_about">关于</string>
     <string name="mine_logout">注销</string>

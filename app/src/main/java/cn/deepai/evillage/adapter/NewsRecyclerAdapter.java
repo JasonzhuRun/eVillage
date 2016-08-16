@@ -16,11 +16,12 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter {
 
     private List<NewsBean> mNewsBean = new ArrayList<>();
 
-    public void notifyResult(boolean isFirstPage, List<NewsBean> newsBeen) {
+    public void notifyResult(boolean isFirstPage, List<NewsBean> newsBean) {
         if (isFirstPage) {
             mNewsBean.clear();
         }
-        mNewsBean.addAll(newsBeen);
+        mNewsBean.addAll(newsBean);
+        notifyDataSetChanged();
     }
 
     @Override
