@@ -39,6 +39,21 @@
             android:maxLines="1"/>
     </RelativeLayout>
     <TextView
+        android:id="@+id/mine_set"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="@string/mine_set"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/mine_textsize"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/pkhxq_left_gap"
+        android:layout_marginRight="@dimen/pkhxq_right_gap"
+        android:background="@color/background_cutoff"/>
+    <TextView
         android:id="@+id/mine_clean"
         android:layout_width="match_parent"
         android:layout_height="48dp"

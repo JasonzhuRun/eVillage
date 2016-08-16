@@ -1,8 +1,11 @@
 package cn.deepai.evillage.controller.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -91,6 +94,36 @@ public class LoginActivity extends BaseActivity{
             });
         }
 
+        View serverSetView = findViewById(R.id.login_server_set);
+        if(serverSetView != null) {
+            serverSetView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LayoutInflater inflater = LayoutInflater.from(LoginActivity.this);
+                    View view = inflater.inflate(R.layout.item_address, null);
+                    final EditText ipView = (EditText)view.findViewById(R.id.address_ip);
+                    final EditText portView = (EditText)view.findViewById(R.id.address_port);
+                    new AlertDialog.Builder(LoginActivity.this)
+                            .setTitle(LoginActivity.this.getString(R.string.mine_set))
+                            .setView(view)
+                            .setPositiveButton(LoginActivity.this.getString(R.string.insure), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    String ip = ipView.getText().toString();
+                                    String port = portView.getText().toString();
+                                    SettingManager.getInstance().setServerAddress(ip,port);
+                                }
+                            })
+                            .setNegativeButton(LoginActivity.this.getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).show();
+                }
+            });
+        }
     }
 
     private void tryToEnter() {

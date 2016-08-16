@@ -9,9 +9,11 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.Blob;
 import java.util.concurrent.TimeUnit;
 
 import cn.deepai.evillage.manager.CacheManager;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.RspCode;
@@ -29,10 +31,14 @@ import okhttp3.Response;
 public class EVRequest {
 
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
-//    private static final String URL = "http://192.168.101.18:8080/zyfp-web/inter/";
-//    private static final String URL = "http://192.168.212.35:8888/zyfp-web/inter/";
-//    private static final String URL = "http://10.108.6.45:8080/zyfp-web/inter/";
-    private static final String URL = "http://124.65.186.26:8973/zyfp-web/inter/";
+////    private static final String URL = "http://192.168.101.18:8080/zyfp-web/inter/";
+////    private static String URL = "http://10.6.128.111:8888/zyfp-web/inter/";
+////    private static final String URL = "http://10.108.6.45:8080/zyfp-web/inter/";
+//    private static String URL = "http://124.65.186.26:8973/zyfp-web/inter/";
+//
+//    static {
+//        URL = "http://" + SettingManager.getInstance().getServerAddress() + "/zyfp-web/inter/";
+//    }
 
     private static OkHttpClient client = new OkHttpClient()
             .newBuilder()
@@ -62,7 +68,7 @@ public class EVRequest {
         RequestBody requestBody = RequestBody.create(MEDIA_TYPE, jsonString);
 
         final Request request = new Request.Builder()
-                .url(URL + action.getName())
+                .url("http://" + SettingManager.getInstance().getServerAddress() + "/zyfp-web/inter/" + action.getName())
                 .post(requestBody)
                 .build();
 

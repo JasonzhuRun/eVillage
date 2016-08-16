@@ -252,8 +252,11 @@
     <string name="mine_clean_success">清除缓存成功</string>
     <string name="news_detail">资讯详情</string>
     <string name="mine_clean">清除缓存</string>
+    <string name="mine_set">服务器设置</string>
     <string name="mine_about">关于</string>
     <string name="mine_logout">注销</string>
     <string name="mine_logout_success">您已经成功注销！</string>
+    <string name="mine_ip">服务器地址(ip)</string>
+    <string name="mine_port">端口(port)</string>
 
 </resources>

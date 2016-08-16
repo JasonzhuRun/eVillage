@@ -20,6 +20,11 @@ public final class SettingManager {
 
 	private static final String CURRENT_USER = "current_user";
 
+	private static final String SERVER_ADDRESS = "server_address";
+
+	private static final String IP = "124.65.186.26";
+	private static final String PORT = "8973";
+
     /**
 	 * the second part:  
 	 * each user has unique pref for app information. named SETTING_NAME + CURRENT_USER
@@ -90,6 +95,21 @@ public final class SettingManager {
 
         return mCommPref.getString(CURRENT_USER, "");
     }
+
+
+	public String getServerAddress() {
+		if (mCommPref == null) {
+			return IP + ":" + PORT;
+		}
+		return mCommPref.getString(SERVER_ADDRESS, IP + ":" + PORT);
+	}
+
+	public void setServerAddress(String ip,String port) {
+		SharedPreferences.Editor edit = mCommPref.edit();
+		edit.putString(SERVER_ADDRESS, ip+":"+port);
+		edit.apply();
+	}
+
 	////////////////////////////user info: nick is key///////////////////////////////////////////
 	
 	/**

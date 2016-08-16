@@ -3,8 +3,6 @@ package cn.deepai.evillage.viewholder;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.NewsDetailActivity;
-import cn.deepai.evillage.controller.activity.PkhjtcyActivity;
 import cn.deepai.evillage.model.bean.NewsBean;
 
 /**
@@ -46,7 +43,7 @@ public class NewsViewHolder extends BaseViewHolder {
         this.mNewsBean = newsBean;
         ImageLoader.getInstance().displayImage(newsBean.getBz(),photo, EVApplication.getDisplayImageOptions());
         title.setText(newsBean.getTitle());
-        content.setText(newsBean.getPolicy());
+        content.setText(newsBean.getPolicy1());
         time.setText(newsBean.getPolicyDate());
     }
 

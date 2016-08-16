@@ -1,12 +1,15 @@
 package cn.deepai.evillage.controller.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.File;
@@ -20,6 +23,7 @@ import cn.deepai.evillage.controller.activity.LoginActivity;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.utils.FileUtil;
+import cn.deepai.evillage.utils.PhoneInfoUtil;
 import cn.deepai.evillage.utils.ToastUtil;
 
 public class MineFragment extends BaseFragment {
@@ -43,6 +47,32 @@ public class MineFragment extends BaseFragment {
         }
     }
 
+    @OnClick(R.id.mine_set)
+    public void onSetClick() {
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View view = inflater.inflate(R.layout.item_address, null);
+        final EditText ipView = (EditText)view.findViewById(R.id.address_ip);
+        final EditText portView = (EditText)view.findViewById(R.id.address_port);
+        new AlertDialog.Builder(getContext())
+                .setTitle(getContext().getString(R.string.mine_set))
+                .setView(view)
+                .setPositiveButton(getContext().getString(R.string.insure), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        String ip = ipView.getText().toString();
+                        String port = portView.getText().toString();
+                        SettingManager.getInstance().setServerAddress(ip,port);
+                    }
+                })
+                .setNegativeButton(getContext().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+    }
+
     @OnClick(R.id.mine_about)
     public void onAboutClick() {
         DialogManager.showTextDialog(getContext(),getString(R.string.mine_about),getString(R.string.app_about));
@@ -57,6 +87,7 @@ public class MineFragment extends BaseFragment {
         ToastUtil.shortToast(getResources().getString(R.string.mine_logout_success));
         Intent intent = new Intent(getContext(),LoginActivity.class);
         startActivity(intent);
+        getActivity().finish();
     }
 
     @Override

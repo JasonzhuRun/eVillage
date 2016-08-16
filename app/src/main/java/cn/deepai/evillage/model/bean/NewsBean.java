@@ -14,17 +14,18 @@ public class NewsBean implements Serializable{
     private String attachement;
     private String keyword;
     private String policyDate;
-    private String policy;
+    private String policy1;
     private String origin;
     private String bz;
 
-    public String getPolicy() {
-        return policy;
+    public String getPolicy1() {
+        return policy1;
     }
 
-    public void setPolicy(String policy) {
-        this.policy = policy;
+    public void setPolicy1(String policy1) {
+        this.policy1 = policy1;
     }
+
     public String getId() {
         return id;
     }

@@ -7,12 +7,9 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.io.UnsupportedEncodingException;
-
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.NewsBean;
-import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 
 /**
  * @author GaoYixuan
@@ -53,12 +50,12 @@ public class NewsDetailActivity extends BaseActivity {
         if (content != null) {
 //            String policy;
 //            try {
-//                policy =  new String(mNewsBean.getPolicy().getBytes((long)1, (int)mNewsBean.getPolicy().length()));
+//                policy =  new String(mNewsBean.getPolicy1().getBytes((long)1, (int)mNewsBean.getPolicy1().length()));
 //            } catch (UnsupportedEncodingException e) {
 //                policy = mNewsBean.getPolicyDate();
 //                e.printStackTrace();
 //            }
-            content.setText(mNewsBean.getPolicy());
+            content.setText(mNewsBean.getPolicy1());
         }
         if (photo != null) {
             ImageLoader.getInstance().displayImage(mNewsBean.getBz(),photo, EVApplication.getDisplayImageOptions());

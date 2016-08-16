@@ -138,7 +138,6 @@ public class DialogManager {
                 }).show();
     }
 
-
     public static void showTextDialog(final Context context, String title, String content) {
         new AlertDialog.Builder(context)
                 .setTitle(title)
