@@ -22,8 +22,8 @@ public final class SettingManager {
 
 	private static final String SERVER_ADDRESS = "server_address";
 
-	private static final String IP = "124.65.186.26";
-	private static final String PORT = "8973";
+	private static final String IP = "192.168.101.18";
+	private static final String PORT = "8080";
 
     /**
 	 * the second part:  
@@ -32,10 +32,10 @@ public final class SettingManager {
 	private static final String TOKEN = "token";
 	private static final String USER_ID = "user_id";
 	private static final String STAFF_ID = "staff_id";
-	// 当前编辑的贫困户ID
-	private static final String HID = "hid";
-	// 当前编辑的贫困户信息的统计年度（目前只有建档年度）
-	private static final String TJND = "tjnd";
+//	// 当前编辑的贫困户ID
+//	private static final String HID = "hid";
+//	// 当前编辑的贫困户信息的统计年度（目前只有建档年度）
+//	private static final String TJND = "tjnd";
 
 	private Context mContext;
 	private SharedPreferences mCommPref;
