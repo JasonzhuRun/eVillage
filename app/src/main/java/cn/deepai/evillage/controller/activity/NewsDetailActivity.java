@@ -40,7 +40,7 @@ public class NewsDetailActivity extends BaseActivity {
         TextView  title = (TextView)findViewById(R.id.news_title);
         TextView content = (TextView)findViewById(R.id.news_content);
         TextView time = (TextView)findViewById(R.id.news_time);
-        ImageView photo = (ImageView)findViewById(R.id.news_photo);
+//        ImageView photo = (ImageView)findViewById(R.id.news_photo);
         if (title != null) {
             title.setText(mNewsBean.getTitle());
         }
@@ -57,9 +57,9 @@ public class NewsDetailActivity extends BaseActivity {
 //            }
             content.setText(mNewsBean.getPolicy1());
         }
-        if (photo != null) {
-            ImageLoader.getInstance().displayImage(mNewsBean.getBz(),photo, EVApplication.getDisplayImageOptions());
-        }
+//        if (photo != null) {
+//            ImageLoader.getInstance().displayImage(mNewsBean.getBz(),photo, EVApplication.getDisplayImageOptions());
+//        }
         // title
         TextView heading = (TextView)findViewById(R.id.title_text);
         if (null != heading) {

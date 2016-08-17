@@ -4,23 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <ImageView
-        android:id="@+id/item_news_photo"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-        android:scaleType="centerCrop"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:contentDescription="@string/app_name" />
+    <!--<ImageView-->
+        <!--android:id="@+id/item_news_photo"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="75dp"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:contentDescription="@string/app_name" />-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toRightOf="@id/item_news_photo"
-        android:layout_alignTop="@id/item_news_photo"
-        android:layout_alignBottom="@id/item_news_photo"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginRight="20dp">
         <TextView
             android:id="@+id/item_news_title"
