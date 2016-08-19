@@ -109,9 +109,7 @@ public class TzFragment extends BaseFragment {
     @SuppressWarnings("all")
     public void onEventMainThread(TzxgjgEvent event) {
         if (event.returnValue == 1) {
-            List<TzjbxxBean> jbxxList = new ArrayList<TzjbxxBean>();
-            jbxxList.add(event.tzjbxxBean);
-            mTzRecyclerAdapter.notifyResult(false,jbxxList);
+            loadData();
         } else {
 
         }
