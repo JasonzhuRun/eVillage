@@ -72,6 +72,7 @@ public class Action {
     public static final Action ACTION_GET_TZJHLSLIST = new Action("termPkhGztz!getPkhGztzJhlsList.action",Type.downstream);
     public static final Action ACTION_ADD_TZZFQK = new Action("termPkhGztz!addPkhGztzZfqk.action",Type.upstream);
     public static final Action ACTION_UPDATE_TZZFQK = new Action("termPkhGztz!updatePkhGztzZfqk.action",Type.upstream);
+    public static final Action ACTION_GET_TZXMXX = new Action("termPkhGztz!selectXmxxByhid.action",Type.downstream);
 
     // 资讯
     public static final Action ACTION_GET_NEWS_LIST = new Action("termLogin!getZxList.action",Type.downstream);
