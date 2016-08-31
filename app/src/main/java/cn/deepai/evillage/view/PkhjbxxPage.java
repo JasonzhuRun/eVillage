@@ -107,7 +107,7 @@ public class PkhjbxxPage extends BasePage {
         // 身份证
         hzsfz.setText(pkhjbxxBean.getHzsfz());
         // 开户行
-        hkhyx.setText(pkhjbxxBean.getHkhyx());
+        hkhyx.setText(DictionaryUtil.getValueName("KHH",pkhjbxxBean.getHkhyx()));
         // 银行账号
         yxzh.setText(pkhjbxxBean.getYxzh());
         // 计划生育户

@@ -12,7 +12,7 @@ public class PkhcyhqkBean {
     private String cyzzlx;
     private String cyzsy;
     private String cjfphzzjzz;
-    private String trhzzzje;
+    private String trhzzjje;
     private String cynyhzzz;
     private String ltqyddsy;
     private String jlsj;
@@ -75,12 +75,12 @@ public class PkhcyhqkBean {
         this.cjfphzzjzz = cjfphzzjzz;
     }
 
-    public String getTrhzzzje() {
-        return trhzzzje;
+    public String getTrhzzjje() {
+        return trhzzjje;
     }
 
-    public void setTrhzzzje(String trhzzzje) {
-        this.trhzzzje = trhzzzje;
+    public void setTrhzzjje(String trhzzjje) {
+        this.trhzzjje = trhzzjje;
     }
 
     public String getCynyhzzz() {

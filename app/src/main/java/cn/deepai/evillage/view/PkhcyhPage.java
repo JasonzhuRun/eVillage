@@ -89,7 +89,7 @@ public class PkhcyhPage extends BasePage {
         cyzzlx.setText(DictionaryUtil.getValueName("CYZZLX",pkhcyhqkBean.getCyzzlx()));
         cyzsy.setText(pkhcyhqkBean.getCyzsy());
         cjfphzzjzz.setText(DictionaryUtil.getValueName(pkhcyhqkBean.getCjfphzzjzz()));
-        trhzzzje.setText(pkhcyhqkBean.getTrhzzzje());
+        trhzzzje.setText(pkhcyhqkBean.getTrhzzjje());
         cynyhzzz.setText(DictionaryUtil.getValueName(pkhcyhqkBean.getCynyhzzz()));
         ltqyddsy.setText(pkhcyhqkBean.getLtqyddsy());
         mHasData = true;

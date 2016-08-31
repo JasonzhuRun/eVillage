@@ -150,7 +150,7 @@ public class JdCyhPage extends BasePage  implements BasePage.IDataEdit{
     public void saveData() {
 
         localData.setCyzsy(cyzsy.getText().toString());
-        localData.setTrhzzzje(trhzzzje.getText().toString());
+        localData.setTrhzzjje(trhzzzje.getText().toString());
         localData.setLtqyddsy(ltqyddsy.getText().toString());
 
         final PkhcyhqkBean cyhqkBean = localData;
@@ -209,7 +209,7 @@ public class JdCyhPage extends BasePage  implements BasePage.IDataEdit{
         cyzzlx.setText(DictionaryUtil.getValueName("CYZZLX",pkhcyhqkBean.getCyzzlx()));
         cyzsy.setText(pkhcyhqkBean.getCyzsy());
         cjfphzzjzz.setText(DictionaryUtil.getValueName(pkhcyhqkBean.getCjfphzzjzz()));
-        trhzzzje.setText(pkhcyhqkBean.getTrhzzzje());
+        trhzzzje.setText(pkhcyhqkBean.getTrhzzjje());
         cynyhzzz.setText(DictionaryUtil.getValueName(pkhcyhqkBean.getCynyhzzz()));
         ltqyddsy.setText(pkhcyhqkBean.getLtqyddsy());
         mHasData = true;
