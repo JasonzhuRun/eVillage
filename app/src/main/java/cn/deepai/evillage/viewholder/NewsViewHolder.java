@@ -24,7 +24,7 @@ public class NewsViewHolder extends BaseViewHolder {
     private Context mContext;
 
     private NewsBean mNewsBean;
-//    public ImageView photo;
+    public ImageView photo;
     public TextView title;
     public TextView content;
     public TextView time;
@@ -32,7 +32,7 @@ public class NewsViewHolder extends BaseViewHolder {
     public NewsViewHolder(ViewGroup parent) {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_news,parent,false));
-//        photo = (ImageView)itemView.findViewById(R.id.item_news_photo);
+        photo = (ImageView)itemView.findViewById(R.id.item_news_photo);
         title = (TextView)itemView.findViewById(R.id.item_news_title);
         content = (TextView)itemView.findViewById(R.id.item_news_content);
         time = (TextView)itemView.findViewById(R.id.item_news_time);
@@ -41,7 +41,7 @@ public class NewsViewHolder extends BaseViewHolder {
 
     public void onBindData(NewsBean newsBean) {
         this.mNewsBean = newsBean;
-//        ImageLoader.getInstance().displayImage(newsBean.getBz(),photo, EVApplication.getDisplayImageOptions());
+        ImageLoader.getInstance().displayImage(newsBean.getBz(),photo, EVApplication.getDisplayImageOptions());
         title.setText(newsBean.getTitle());
         content.setText(newsBean.getPolicy1());
         time.setText(newsBean.getPolicyDate());
