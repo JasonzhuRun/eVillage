@@ -22,6 +22,9 @@
             android:paddingBottom="5dp"
             android:paddingLeft="50dp"
             android:textSize="14sp"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:nextFocusForward="@+id/login_password"
             android:hint="@string/login_username"/>
 
         <EditText

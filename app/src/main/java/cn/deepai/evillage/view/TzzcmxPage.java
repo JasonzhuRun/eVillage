@@ -18,9 +18,12 @@ import java.util.List;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzzcmxRecyclerAdapter;
 import cn.deepai.evillage.manager.DialogManager;
+import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.BaseBean;
 import cn.deepai.evillage.model.bean.RequestHeaderBean;
 import cn.deepai.evillage.model.bean.TzsrmxBean;
+import cn.deepai.evillage.model.bean.TzxmxxBean;
+import cn.deepai.evillage.model.bean.TzxmxxList;
 import cn.deepai.evillage.model.bean.TzzcmxBean;
 import cn.deepai.evillage.model.bean.TzzcmxList;
 import cn.deepai.evillage.model.event.PagexjItemEvent;
@@ -38,6 +41,7 @@ import de.greenrobot.event.EventBus;
  */
 public class TzzcmxPage extends BasePage implements BasePage.IDataEdit{
 
+    public List<TzxmxxBean> mTzxmxxList;
     private String tzId;
     private String tznd;
     private List<TzzcmxBean> mTzzcmxList;
@@ -83,10 +87,62 @@ public class TzzcmxPage extends BasePage implements BasePage.IDataEdit{
         }
     }
 
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(TzxmxxList event) {
+        if (isSelected()) {
+            mTzxmxxList = event.list;
+            String[] xmmcList = new String[mTzxmxxList.size()];
+            for (int i = 0;i < mTzxmxxList.size();i++) {
+                xmmcList[i] = mTzxmxxList.get(i).getXmmc();
+            }
+            DialogManager.showSingleChoiceDialog(mContext, mContext.getString(R.string.tz_xmmc),
+                    xmmcList,
+                    new DialogManager.IOnDialogFinished() {
+                        @Override
+                        public void returnData(String data) {
+//                            final TzjtcyBean bean = new TzjtcyBean();
+//                            bean.beanState = BaseBean.NEW;
+//                            bean.setXm(data);
+//                            final Gson gson = new Gson();
+//                            RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addTzjtcy);
+//                            EVRequest.request(Action.ACTION_ADD_JTCYJBXX, gson.toJson(header), gson.toJson(bean),
+//                                    new ResponseCallback() {
+//                                        @Override
+//                                        public void onDataResponse(String dataJsonString) {
+//                                            ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString,ReturnValueEvent.class);
+//                                            if (returnValueEvent.returnValue == ReturnValueEvent.SUCCESS) {
+//                                                EventBus.getDefault().post(bean);
+//                                            }
+//                                        }
+//                                    });
+                        }
+                    });
+        }
+    }
+
     @SuppressWarnings("all")
     public void onEventMainThread(PagexjItemEvent event) {
         if (isSelected()) {
-            ToastUtil.shortToast("项目管理功能正在开发中...");
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("hid", SettingManager.getCurrentPkh().getHid());
+            } catch (JSONException e) {
+                LogUtil.e(EVRequest.class, "Illegal json format:" + e.toString());
+                return;
+            }
+
+            RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getTzxmxx);
+
+            final Gson gson = new Gson();
+            EVRequest.request(Action.ACTION_GET_TZXMXX, gson.toJson(header), jsonObject.toString(),
+                    new ResponseCallback() {
+                        @Override
+                        public void onDataResponse(String dataJsonString) {
+                            TzxmxxList tzxmxxList = gson.fromJson(dataJsonString,TzxmxxList.class);
+                            EventBus.getDefault().post(tzxmxxList);
+                        }
+                    });
         }
     }
 

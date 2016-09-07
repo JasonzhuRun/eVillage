@@ -68,6 +68,7 @@
     <string name="req_code_updateTzsrmx">zyfp03011</string>
     <string name="req_code_updateTzzcmx">zyfp03012</string>
     <string name="req_code_updateTzzfxx">zyfp03013</string>
+    <string name="req_code_getTzxmxx">zyfp03014</string>
 
     <string name="req_code_getZxList">zyfp04001</string>
     <!--一级页面-->
@@ -238,6 +239,8 @@
     <string name="tz_zcmx_dkyt">贷款用途</string>
     <string name="tz_zcmx_zcyf">支出月份</string>
     <string name="tz_zcmx_zcjey">支出金额(元)</string>
+
+    <string name="tz_xmmc">请选择项目名称</string>
 
     <string name="tz_zfqk_xmmc">措施名称</string>
     <string name="tz_zfqk_jhny">计划年月</string>

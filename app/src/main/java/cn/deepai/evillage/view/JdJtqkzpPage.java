@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.deepai.evillage.R;
@@ -77,6 +78,9 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         PkhjtqkzpBean bean = new PkhjtqkzpBean();
         bean.setTpdz(uri);
         bean.setHid(SettingManager.getCurrentJdPkh().getHid());
+        if(localData==null) {
+            localData = new ArrayList<>();
+        }
         localData.add(bean);
         mPkhjtqkzpRecyclerAdapter.notifyResult(false, bean);
         mHasData = true;
