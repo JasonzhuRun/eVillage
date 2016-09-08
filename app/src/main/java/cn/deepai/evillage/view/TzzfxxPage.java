@@ -109,7 +109,7 @@ public class TzzfxxPage extends BasePage implements BasePage.IDataEdit{
         if (isSelected()) {
             switch (event.viewId) {
                 case R.id.zfqk_zfsj:
-                    DialogManager.showEditTextDialog(mContext, mContext.getString(R.string.tz_zfqk_zfsj)
+                    DialogManager.showDateDialog(mContext, mContext.getString(R.string.tz_zfqk_zfsj)
                             ,new DialogManager.IOnDialogFinished() {
                                 @Override
                                 public void returnData(String data) {

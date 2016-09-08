@@ -170,7 +170,7 @@ public class TzszmxActivity extends BaseActivity {
     @OnClick(R.id.szmx_zcyf_layout)
     public void onZcyfClick() {
 
-        DialogManager.showDateDialog(mContext,mContext.getString(R.string.pkh_jtcy_ztbhsj),
+        DialogManager.showDateDialog(mContext,mContext.getString(R.string.tz_zcmx_zcyf),
                 new DialogManager.IOnDialogFinished() {
                     @Override
                     public void returnData(String data) {
