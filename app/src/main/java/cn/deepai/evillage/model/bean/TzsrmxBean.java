@@ -9,10 +9,10 @@ public class TzsrmxBean extends BaseBean{
     // 通过tzid找到收支列表
     private String tzid;
     // 数据字典
-    private String szxmid;
+    private String xmid;
     private String xmmc;
     private String xmgm;
-    private String clgj;
+    private String cglj;
     private String nsry;
     private String jlsj;
     private String jlr;
@@ -34,12 +34,12 @@ public class TzsrmxBean extends BaseBean{
         this.tzid = tzid;
     }
 
-    public String getSzxmid() {
-        return szxmid;
+    public String getXmid() {
+        return xmid;
     }
 
-    public void setSzxmid(String szxmid) {
-        this.szxmid = szxmid;
+    public void setXmid(String xmid) {
+        this.xmid = xmid;
     }
 
     public String getId() {
@@ -58,12 +58,12 @@ public class TzsrmxBean extends BaseBean{
         this.xmgm = xmgm;
     }
 
-    public String getClgj() {
-        return clgj;
+    public String getCglj() {
+        return cglj;
     }
 
-    public void setClgj(String clgj) {
-        this.clgj = clgj;
+    public void setCglj(String cglj) {
+        this.cglj = cglj;
     }
 
     public String getNsry() {

@@ -69,6 +69,8 @@
     <string name="req_code_updateTzzcmx">zyfp03012</string>
     <string name="req_code_updateTzzfxx">zyfp03013</string>
     <string name="req_code_getTzxmxx">zyfp03014</string>
+    <string name="req_code_addTzsrmx">zyfp03015</string>
+    <string name="req_code_addTzzcmx">zyfp03016</string>
 
     <string name="req_code_getZxList">zyfp04001</string>
     <!--一级页面-->
@@ -232,13 +234,15 @@
 
     <string name="tz_srmx_xmmc">项目名称</string>
     <string name="tz_srmx_xmgm">项目规模</string>
-    <string name="tz_srmx_clgj">数量</string>
+    <string name="tz_srmx_clgj">产量(公斤)</string>
     <string name="tz_srmx_nsry">年收入(元)</string>
 
     <string name="tz_zcmx_xmmc">项目名称</string>
     <string name="tz_zcmx_dkyt">贷款用途</string>
     <string name="tz_zcmx_zcyf">支出月份</string>
     <string name="tz_zcmx_zcjey">支出金额(元)</string>
+
+    <string name="tz_szmx_xmmc">项目名称</string>
 
     <string name="tz_xmmc">请选择项目名称</string>
 

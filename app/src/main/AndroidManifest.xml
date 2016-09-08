@@ -44,6 +44,9 @@
             android:name=".controller.activity.TzxqActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity
+            android:name=".controller.activity.TzszmxActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -10,7 +10,7 @@ public class TzzcmxBean extends BaseBean{
     // 通过tzid找到收支列表
     private String tzid;
     // 数据字典
-    private String szxmid;
+    private String xmid;
     private String xmmc;
     private String zcyf;
     private String dkyt;
@@ -43,12 +43,12 @@ public class TzzcmxBean extends BaseBean{
         this.tzid = tzid;
     }
 
-    public String getSzxmid() {
-        return szxmid;
+    public String getXmid() {
+        return xmid;
     }
 
-    public void setSzxmid(String szxmid) {
-        this.szxmid = szxmid;
+    public void setXmid(String xmid) {
+        this.xmid = xmid;
     }
 
     public String getZcyf() {

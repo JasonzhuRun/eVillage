@@ -8,7 +8,6 @@ import android.widget.EditText;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.model.bean.TzsrmxBean;
-import cn.deepai.evillage.model.event.TzjtcyClickEvent;
 import cn.deepai.evillage.model.event.TzsrmxClickEvent;
 import cn.deepai.evillage.utils.LogUtil;
 import de.greenrobot.event.EventBus;
@@ -43,9 +42,9 @@ public class TzsrmxViewHolder extends BaseViewHolder {
     public void onBindData(TzsrmxBean tzsrmxBean) {
         this.mTzsrmxBean = tzsrmxBean;
         xmmc.setText(tzsrmxBean.getXmmc());
-                xmgm.setText(tzsrmxBean.getXmgm());
-        clgjxsn.setText(tzsrmxBean.getClgj());
-                nsry.setText(tzsrmxBean.getNsry());
+        xmgm.setText(tzsrmxBean.getXmgm());
+        clgjxsn.setText(tzsrmxBean.getCglj());
+        nsry.setText(tzsrmxBean.getNsry());
 
     }
 
