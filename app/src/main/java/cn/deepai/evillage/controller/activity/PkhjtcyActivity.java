@@ -5,14 +5,17 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.w3c.dom.Text;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
@@ -60,6 +63,7 @@ public class PkhjtcyActivity extends BaseActivity {
     private EditText zdxx;
     private TextView cyzt;
     private TextView ztbhsj;
+    private ImageView zp;
 
     @Override
     public void onBackPressed() {
@@ -121,6 +125,11 @@ public class PkhjtcyActivity extends BaseActivity {
             ToastUtil.shortToast(getString(R.string.upload_failed));
         }
         tryToHideProcessDialog();
+    }
+
+    @OnClick(R.id.jtcy_zp_layout)
+    public void onZpClick() {
+
     }
 
     @OnClick(R.id.jtcy_xb_layout)
@@ -488,10 +497,15 @@ public class PkhjtcyActivity extends BaseActivity {
         zdxx.setText(pkhjtcyBean.getZdxx());
         cyzt.setText(DictionaryUtil.getValueName("CYZT",pkhjtcyBean.getCyzt()));
         ztbhsj.setText(pkhjtcyBean.getZtbhsj());
+        if (TextUtils.isEmpty(pkhjtcyBean.getZp())) {
+            zp.setImageResource(R.drawable.morentouxiang);
+        } else {
+            ImageLoader.getInstance().displayImage(pkhjtcyBean.getZp(), zp, EVApplication.getDisplayImageOptions());
+        }
     }
 
     private void initView() {
-
+        zp = (ImageView) findViewById(R.id.jtcy_zp);
         xm = (EditText) findViewById(R.id.jtcy_xm);
         xb = (TextView) findViewById(R.id.jtcy_xb);
         sfzhm = (EditText) findViewById(R.id.jtcy_sfzhm);

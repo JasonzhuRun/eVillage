@@ -31,6 +31,15 @@ public class PkhjtcyBean {
     private	String	jlsj;
     private	String	jlr;
     private	String	bz;
+    private	String	zp;
+
+    public String getZp() {
+        return zp;
+    }
+
+    public void setZp(String zp) {
+        this.zp = zp;
+    }
 
     public String getHid() {
         return hid;

@@ -113,6 +113,7 @@
     <!--家庭成员-->
     <string name="pkh_jtcy_none">成员信息有误，请求失败</string>
     <string name="pkh_jtcy_xm">姓名</string>
+    <string name="pkh_jtcy_zp">照片</string>
     <string name="pkh_jtcy_xb">性别</string>
     <string name="pkh_jtcy_sfzhm">身份证号</string>
     <string name="pkh_jtcy_yhzgx">与户主关系</string>

@@ -17,6 +17,37 @@
             android:focusable="true"
             android:focusableInTouchMode="true">
             <RelativeLayout
+                android:id="@+id/jtcy_zp_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/pkhxq_top_gap"
+                android:paddingBottom="@dimen/pkhxq_bottom_gap"
+                android:paddingLeft="@dimen/pkhxq_left_gap"
+                android:paddingRight="@dimen/pkhxq_right_gap">
+                <TextView
+                    android:minEms="6"
+                    android:id="@+id/jtcy_zp_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pkh_jtcy_zp"
+                    android:textSize="@dimen/pkhxq_title_textsize"/>
+                <ImageView
+                    android:id="@+id/jtcy_zp"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/jtcy_zp_title"
+                    android:layout_marginLeft="@dimen/pkhxq_text_gap"
+                    android:scaleType="fitStart"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/pkhxq_left_gap"
+                android:layout_marginRight="@dimen/pkhxq_right_gap"
+                android:background="@color/background_cutoff"/>
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/pkhxq_top_gap"

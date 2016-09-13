@@ -131,6 +131,7 @@ public class TzxqActivity extends BaseActivity {
         viewContainter.add(new TzsrmxPage(this,tzId,tznd));
         viewContainter.add(new TzzcmxPage(this,tzId,tznd));
         viewContainter.add(new TzzfxxPage(this,tzId,tznd));
+        viewContainter.add(new TzzfxxPage(this,tzId,tznd));
     }
 
     private void initTitle() {
