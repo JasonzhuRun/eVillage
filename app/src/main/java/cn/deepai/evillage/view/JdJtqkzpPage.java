@@ -50,7 +50,7 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
 
     public JdJtqkzpPage(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.page_recycerview, this);
+        LayoutInflater.from(context).inflate(R.layout.page_jdjtqkzp, this);
         initView();
     }
 
