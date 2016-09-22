@@ -73,6 +73,8 @@
     <string name="req_code_addTzzcmx">zyfp03016</string>
 
     <string name="req_code_getZxList">zyfp04001</string>
+
+    <string name="req_code_getMsgCount">zyfp05001</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
     <string name="tab_pkh">帮扶对象</string>
@@ -267,4 +269,6 @@
     <string name="mine_ip">服务器地址(ip)</string>
     <string name="mine_port">端口(port)</string>
 
+    <!--消息页面-->
+    <string name="msg_title">消息</string>
 </resources>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -13,9 +14,21 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.MsgList;
+import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.net.Action;
+import cn.deepai.evillage.net.EVRequest;
+import cn.deepai.evillage.net.ResponseCallback;
 import cn.deepai.evillage.utils.DictionaryUtil;
+import de.greenrobot.event.EventBus;
 
 /**
  * @author GaoYixuan
@@ -24,6 +37,8 @@ public class EVApplication extends Application {
 
     private static Application mContext;
 
+    private Timer mTimer;
+
     @Override
     public void onCreate() {
 
@@ -31,8 +46,13 @@ public class EVApplication extends Application {
         mContext = this;
         DictionaryUtil.init();
         initImageLoader();
-//        initCache();
-//        SettingManager.getInstance().setToken("asdfasdfasdf");
+        startMonitorMsg();
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        mTimer.cancel();
     }
 
     public static DisplayImageOptions getDisplayImageOptions() {
@@ -61,6 +81,7 @@ public class EVApplication extends Application {
                 .displayer(new FadeInBitmapDisplayer(100))// 淡入
                 .build();
     }
+
 
     public static Context getApplication() {
         return mContext;
@@ -120,5 +141,46 @@ public class EVApplication extends Application {
                 .build();
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);// 全局初始化此配置
+    }
+    /**
+     * 监听消息
+     */
+    private void startMonitorMsg() {
+
+        mTimer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                requestMsgCount();
+            }
+        };
+
+        mTimer.schedule(task, 2000, 8000);
+    }
+
+
+    private void requestMsgCount() {
+
+        String id = SettingManager.getInstance().getUserId();
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("userId", id);
+        }catch (JSONException e) {
+            return;
+        }
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getMsgCount);
+
+        final Gson gson = new Gson();
+        EVRequest.request(Action.ACTION_GET_MSG_COUNT, gson.toJson(header), jsonObject.toString(),
+                new ResponseCallback() {
+                    @Override
+                    public void onDataResponse(String dataJsonString) {
+                        MsgList msgList = gson.fromJson(dataJsonString, MsgList.class);
+                        if (msgList.jls > 0) {
+                            EventBus.getDefault().post(msgList);
+                        }
+                    }
+                });
     }
 }

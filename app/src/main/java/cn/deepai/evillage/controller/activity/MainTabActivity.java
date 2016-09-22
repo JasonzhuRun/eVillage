@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -26,8 +25,8 @@ import cn.deepai.evillage.controller.fragment.MineFragment;
 import cn.deepai.evillage.controller.fragment.NewsFragment;
 import cn.deepai.evillage.controller.fragment.PkhFragment;
 import cn.deepai.evillage.controller.fragment.TzFragment;
-import cn.deepai.evillage.manager.CacheManager;
 import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.MsgList;
 import cn.deepai.evillage.model.bean.PkhjbxxList;
 import cn.deepai.evillage.model.event.PkhSelectedEvent;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
@@ -42,6 +41,7 @@ public class MainTabActivity extends BaseActivity implements
     private DrawerLayout mDrawerLayout;
     private PkhRecyclerAdapter mPkhRecyclerAdapter;
     private TextView title;
+    private View msgRedPoint;
     @SuppressWarnings("all")
     public void onEventMainThread(ResponseHeaderEvent event) {
         switch (event.getRspCode()) {
@@ -67,6 +67,13 @@ public class MainTabActivity extends BaseActivity implements
         mDrawerLayout.closeDrawer(GravityCompat.START);
         ToastUtil.shortToast(getString(R.string.pkh_selected)+event.name);
         mPkhRecyclerAdapter.notifyDataSetChanged();
+    }
+    // 接受消息提示
+    @SuppressWarnings("all")
+    public void onEventMainThread(MsgList event) {
+        if (event.jls != 0&&msgRedPoint != null) {
+            msgRedPoint.setVisibility(View.VISIBLE);
+        }
     }
 
     @SuppressWarnings("all")
@@ -132,6 +139,21 @@ public class MainTabActivity extends BaseActivity implements
         if (title != null) {
             title.setText(getString(R.string.tab_pkh));
         }
+
+        View message = findViewById(R.id.normal_title_message);
+        msgRedPoint = findViewById(R.id.normal_title_point);
+
+        if (message!=null) {
+            message.setVisibility(View.VISIBLE);
+            message.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainTabActivity.this,MsgsActivity.class));
+                    msgRedPoint.setVisibility(View.INVISIBLE);
+                }
+            });
+        }
+
         RecyclerView drawerRecyclerView = (RecyclerView) findViewById(R.id.drawer_recyclerview);
         if (drawerRecyclerView != null){
             drawerRecyclerView.setLayoutManager(new LinearLayoutManager(this));

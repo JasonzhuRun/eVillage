@@ -27,6 +27,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import static cn.deepai.evillage.net.Action.ACTION_GET_MSG_COUNT;
+
 
 public class EVRequest {
 
@@ -75,6 +77,7 @@ public class EVRequest {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                if (isSilenceRequest(action)) return;
                 LogUtil.e(EVRequest.class,e.toString());
                 ResponseHeaderEvent headerEvent = new ResponseHeaderEvent();
                 headerEvent.setRspCode(RspCode.RSP_CODE_NO_CONNECTION);
@@ -106,7 +109,7 @@ public class EVRequest {
                 } finally {
                     Gson gson = new Gson();
                     ResponseHeaderEvent headerEvent = gson.fromJson(headString,ResponseHeaderEvent.class);
-                    if (headerEvent != null) {
+                    if (headerEvent != null&&!isSilenceRequest(action)) {
                         EventBus.getDefault().post(headerEvent);
                     }
                     if (!isEmptyBody(dataString)) {
@@ -120,6 +123,12 @@ public class EVRequest {
                 }
             }
         });
+    }
+    private static boolean isSilenceRequest(Action action) {
+
+        if (ACTION_GET_MSG_COUNT.getName().equals(action.getName())) return true;
+
+        return false;
     }
 
     private static boolean isEmptyBody(String data) {

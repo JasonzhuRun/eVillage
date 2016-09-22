@@ -77,6 +77,10 @@ public class Action {
     // 资讯
     public static final Action ACTION_GET_NEWS_LIST = new Action("termLogin!getZxList.action",Type.downstream);
     public static final Action ACTION_GET_NEWS_DETAIL = new Action("termLogin!getZxXq.action",Type.downstream);
+    // 消息
+    public static final Action ACTION_GET_MSG_COUNT = new Action("termPkhGztz!getBulletinCount.action",Type.downstream);
+    public static final Action ACTION_GET_MSG_LIST = new Action("termPkhGztz!getBulletinList.action",Type.downstream);
+    public static final Action ACTION_GET_MSG_DTAIL = new Action("termPkhGztz!getBulletinDetail.action ",Type.downstream);
 
     private String name;
     private Type type;
