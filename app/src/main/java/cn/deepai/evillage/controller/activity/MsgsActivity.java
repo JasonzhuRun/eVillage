@@ -1,12 +1,26 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import butterknife.ButterKnife;
 import cn.deepai.evillage.R;
-import cn.deepai.evillage.model.bean.PkhjtcyBean;
+import cn.deepai.evillage.adapter.MsgRecyclerAdapter;
+import cn.deepai.evillage.manager.SettingManager;
+import cn.deepai.evillage.model.bean.MsgList;
+import cn.deepai.evillage.model.bean.RequestHeaderBean;
+import cn.deepai.evillage.net.Action;
+import cn.deepai.evillage.net.EVRequest;
+import cn.deepai.evillage.net.ResponseCallback;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -14,9 +28,13 @@ import de.greenrobot.event.EventBus;
  */
 public class MsgsActivity extends BaseActivity {
 
-    @SuppressWarnings("all")
-    public void onEventMainThread(PkhjtcyBean event) {
+    private MsgRecyclerAdapter mMsgRecyclerAdapter;
 
+    // 接受消息提示
+    @SuppressWarnings("all")
+    public void onEventMainThread(MsgList event) {
+        tryToHideProcessDialog();
+        mMsgRecyclerAdapter.notifyResult(true,event.list);
     }
 
     @Override
@@ -24,12 +42,8 @@ public class MsgsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_msg);
         ButterKnife.bind(this);
-//        Intent intent = getIntent();
-//        if (null != intent) {
-//            tzId = intent.getStringExtra("tzId");
-//            tznd = intent.getStringExtra("tznd");
-//        }
         initView();
+        initData();
     }
 
     @Override
@@ -70,8 +84,35 @@ public class MsgsActivity extends BaseActivity {
 
     private void initView() {
         initTitle();
-
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_msgs);
+        if (recyclerView == null) return;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mMsgRecyclerAdapter = new MsgRecyclerAdapter();
+        recyclerView.setAdapter(mMsgRecyclerAdapter);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
+    private void initData() {
+        tryToShowProcessDialog();
+        String id = SettingManager.getInstance().getUserId();
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("userId", id);
+        }catch (JSONException e) {
+            return;
+        }
+        RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_getMsgList);
+
+        final Gson gson = new Gson();
+        EVRequest.request(Action.ACTION_GET_MSG_LIST, gson.toJson(header), jsonObject.toString(),
+                new ResponseCallback() {
+                    @Override
+                    public void onDataResponse(String dataJsonString) {
+                        MsgList msgList = gson.fromJson(dataJsonString, MsgList.class);
+                        EventBus.getDefault().post(msgList);
+                    }
+                });
+    }
 
 }

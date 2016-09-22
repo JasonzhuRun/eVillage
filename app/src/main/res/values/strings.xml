@@ -75,6 +75,7 @@
     <string name="req_code_getZxList">zyfp04001</string>
 
     <string name="req_code_getMsgCount">zyfp05001</string>
+    <string name="req_code_getMsgList">zyfp05002</string>
     <!--一级页面-->
     <string name="tab_news">资讯</string>
     <string name="tab_pkh">帮扶对象</string>
@@ -271,4 +272,5 @@
 
     <!--消息页面-->
     <string name="msg_title">消息</string>
+    <string name="msg_detail">消息详情</string>
 </resources>
