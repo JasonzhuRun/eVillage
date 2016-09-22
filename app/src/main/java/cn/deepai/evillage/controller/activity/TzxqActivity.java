@@ -1,6 +1,8 @@
 package cn.deepai.evillage.controller.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -12,7 +14,12 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,6 +30,10 @@ import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.RspCode;
+import cn.deepai.evillage.model.event.TakePhotoEvent;
+import cn.deepai.evillage.utils.EncryptionUtil;
+import cn.deepai.evillage.utils.FileUtil;
+import cn.deepai.evillage.utils.LogUtil;
 import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.BasePage;
 import cn.deepai.evillage.view.TzjbxxPage;
@@ -39,6 +50,8 @@ import static cn.deepai.evillage.model.event.ReturnValueEvent.SUCCESS;
  * 台账详情页
  */
 public class TzxqActivity extends BaseActivity {
+
+    private static String zplx;
 
     private int selectedIndex = 0;
     private ArrayList<BasePage> viewContainter = new ArrayList<>();
@@ -68,6 +81,13 @@ public class TzxqActivity extends BaseActivity {
             ToastUtil.shortToast(getString(R.string.upload_failed));
         }
         tryToHideProcessDialog();
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(TakePhotoEvent event) {
+        Intent getImageByCamera = new Intent("android.media.action.IMAGE_CAPTURE");
+        startActivityForResult(getImageByCamera, 1);
+        this.zplx = event.zplx;
     }
 
     @SuppressWarnings("all")
@@ -117,6 +137,32 @@ public class TzxqActivity extends BaseActivity {
         EventBus.getDefault().unregister(this);
         for (BasePage page:viewContainter) {
             page.unRegisteEventBus();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 0) {
+                //todo 获取相册中的照片
+            } else if (requestCode == 1 ) {
+                Uri uri = data.getData();
+                String addr = null;
+                if(uri == null){
+                    //use bundle to get data
+                    Bundle bundle = data.getExtras();
+                    if (bundle != null) {
+                        Bitmap photo = (Bitmap) bundle.get("data"); //get bitmap
+                        addr = saveBitmap(EncryptionUtil.getMD5(new Date().toString()),photo);
+                    }
+                }else{
+                    addr = uri.getPath();
+                }
+                BasePage page = viewContainter.get(selectedIndex);
+                if (page instanceof BasePage.IPhotoEdit) {
+                    ((BasePage.IPhotoEdit)page).addPhoto(addr,zplx);
+                }
+            }
         }
     }
 
@@ -236,5 +282,38 @@ public class TzxqActivity extends BaseActivity {
             viewContainter.get(selectedIndex).requestData();
         }
         mPager.setCurrentItem(selectedIndex);
+    }
+
+    private String saveBitmap(String picName,Bitmap bitmap){
+        File f = new File(FileUtil.getPicCacheDirPath()+ File.separator + picName + ".png");
+        try {
+            if (!f.createNewFile()) {
+                LogUtil.e(PkhxqActivity.class,"Can't creat pic file");
+            }
+        } catch (IOException e) {
+
+            LogUtil.e(PkhxqActivity.class,"Save Bitmap error:"+e.toString());
+        }
+        FileOutputStream fOut;
+        try {
+            fOut = new FileOutputStream(f);
+        } catch (FileNotFoundException e) {
+            LogUtil.e(PkhxqActivity.class,"Save Bitmap error:"+e.toString());
+            return null;
+        }
+
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+
+        try {
+            fOut.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            fOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return f.getPath();
     }
 }

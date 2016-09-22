@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
@@ -29,6 +30,7 @@ import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
+import cn.deepai.evillage.utils.DictionaryUtil;
 import cn.deepai.evillage.utils.EncryptionUtil;
 import de.greenrobot.event.EventBus;
 
@@ -40,7 +42,6 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
     private String tzId;
     private String tznd;
 
-    private List<String> mZplxCodeList;
     private List<PkhjtqkzpBean> localData;
     private PkhjtqkzpRecyclerAdapter mPkhjtqkzpRecyclerAdapter;
 
@@ -62,6 +63,7 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         tzId = id;
         tznd = nd;
         initView();
+        initData();
     }
 
     @Override
@@ -77,22 +79,28 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
     @SuppressWarnings("all")
     public void onEventMainThread(PkhjtqkzpList event) {
         if (isSelected()) {
-            localData = event.list;
-            mPkhjtqkzpRecyclerAdapter.notifyResult(true, event.list);
+            for (int i = 0;i < localData.size();i++) {
+                for (PkhjtqkzpBean pkhjtqkzpBean:event.list) {
+                    if (localData.get(i).getZplx().equals(pkhjtqkzpBean.getZplx())) {
+                        localData.set(i,pkhjtqkzpBean);
+                    }
+                }
+            }
+            mPkhjtqkzpRecyclerAdapter.notifyResult(true, localData);
             mHasData = true;
         }
     }
 
     @Override
     public void addPhoto(String uri,String zplx) {
-        PkhjtqkzpBean bean = new PkhjtqkzpBean();
-        bean.setTpdz(uri);
-        bean.setHid(SettingManager.getCurrentJdPkh().getHid());
-        if(localData==null) {
-            localData = new ArrayList<>();
+
+        for (PkhjtqkzpBean bean:localData) {
+            if (bean.getZplx().equals(zplx)) {
+                bean.setTpdz(uri);
+                bean.setHid(SettingManager.getCurrentJdPkh().getHid());
+            }
         }
-        localData.add(bean);
-//        mPkhjtqkzpRecyclerAdapter.notifyResult(false, bean);
+        mPkhjtqkzpRecyclerAdapter.notifyResult(true, localData);
         mHasData = true;
     }
 
@@ -138,9 +146,10 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
             return;
         }
         final Gson requestGson = new Gson();
+        // todo 是否增加接口
         EVRequest.request(Action.ACTION_GET_PKHJTQKZPLIST,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJtqkzpList)),
-                requestGson.toJson(new PkhRequestBean(true)),
+                requestGson.toJson(new PkhRequestBean(false)),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
@@ -162,6 +171,21 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mPkhjtqkzpRecyclerAdapter = new PkhjtqkzpRecyclerAdapter();
         recyclerView.setAdapter(mPkhjtqkzpRecyclerAdapter);
+    }
+
+    private void initData() {
+
+        final String jdlkStr = getContext().getString(R.string.tz_jtqkzp_tp);
+        Map<String,String> values = DictionaryUtil.getValueNames("ZPLX");
+        localData = new ArrayList<>();
+        for (int i = 8;i < values.size() + 1;i++) {
+            String valueName = values.get(String.valueOf(i));
+            if (!TextUtils.isEmpty(valueName)&&valueName.startsWith(jdlkStr)) {
+                PkhjtqkzpBean bean = new PkhjtqkzpBean();
+                bean.setZplx(String.valueOf(i));
+                localData.add(bean);
+            }
+        }
     }
 
     private String encodePhoto(String addr) {

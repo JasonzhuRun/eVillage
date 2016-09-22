@@ -198,7 +198,7 @@
     <string name="pkh_cyhqk_hzzj">投入互助资金金额(元)</string>
     <string name="pkh_cyhqk_hzzz">参与农业合作组织</string>
     <string name="pkh_cyhqk_ltqy">龙头企业带动收益(元)</string>
-    <!--参与产业化情况-->
+    <!--建档照片前缀-->
     <string name="pkh_jtqkzp_jdlk">建档立卡</string>
 
 
@@ -260,7 +260,8 @@
     <string name="tz_zfqk_lsqk">落实情况</string>
     <string name="tz_zfqk_bfcx">帮扶成效</string>
     <string name="tz_zfqk_sfzsy">是否增收(元)</string>
-
+    <!--台账照片前缀-->
+    <string name="tz_jtqkzp_tp">脱贫</string>
 
     <!--我的页面-->
     <string name="mine_clean_success">清除缓存成功</string>
