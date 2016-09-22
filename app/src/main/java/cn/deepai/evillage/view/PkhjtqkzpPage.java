@@ -83,7 +83,7 @@ public class PkhjtqkzpPage extends BasePage {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_page);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mPkhjtqkzpRecyclerAdapter = new PkhjtqkzpRecyclerAdapter(false);
+        mPkhjtqkzpRecyclerAdapter = new PkhjtqkzpRecyclerAdapter();
         recyclerView.setAdapter(mPkhjtqkzpRecyclerAdapter);
     }
 }

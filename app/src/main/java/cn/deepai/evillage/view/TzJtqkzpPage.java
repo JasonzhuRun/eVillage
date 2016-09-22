@@ -15,9 +15,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
@@ -31,31 +29,39 @@ import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.net.Action;
 import cn.deepai.evillage.net.EVRequest;
 import cn.deepai.evillage.net.ResponseCallback;
-import cn.deepai.evillage.utils.DictionaryUtil;
 import cn.deepai.evillage.utils.EncryptionUtil;
 import de.greenrobot.event.EventBus;
 
 /**
  * @author GaoYixuan
  */
-public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePage.IPhotoEdit{
+public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePage.IPhotoEdit{
 
+    private String tzId;
+    private String tznd;
+
+    private List<String> mZplxCodeList;
     private List<PkhjtqkzpBean> localData;
     private PkhjtqkzpRecyclerAdapter mPkhjtqkzpRecyclerAdapter;
 
-    public JdJtqkzpPage(Context context) {
-        this(context, null);
+    public TzjtqkzpPage(Context context) {
+        this(context, null,null,null);
     }
 
-    public JdJtqkzpPage(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+    public TzjtqkzpPage(Context context, String id, String nd) {
+        this(context, null,id,nd);
     }
 
-    public JdJtqkzpPage(Context context, AttributeSet attrs, int defStyle) {
+    public TzjtqkzpPage(Context context, AttributeSet attrs, String id, String nd) {
+        this(context, attrs, 0,id,nd);
+    }
+
+    public TzjtqkzpPage(Context context, AttributeSet attrs, int defStyle, String id, String nd) {
         super(context, attrs, defStyle);
         LayoutInflater.from(context).inflate(R.layout.page_recycerview, this);
+        tzId = id;
+        tznd = nd;
         initView();
-        initData();
     }
 
     @Override
@@ -71,29 +77,22 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
     @SuppressWarnings("all")
     public void onEventMainThread(PkhjtqkzpList event) {
         if (isSelected()) {
-            for (int i = 0;i < localData.size();i++) {
-                for (PkhjtqkzpBean pkhjtqkzpBean:event.list) {
-                    if (localData.get(i).getZplx().equals(pkhjtqkzpBean.getZplx())) {
-                        localData.set(i,pkhjtqkzpBean);
-                    }
-                }
-            }
-            mPkhjtqkzpRecyclerAdapter.notifyResult(true, localData);
+            localData = event.list;
+            mPkhjtqkzpRecyclerAdapter.notifyResult(true, event.list);
             mHasData = true;
         }
     }
 
     @Override
     public void addPhoto(String uri,String zplx) {
-
-        for (PkhjtqkzpBean bean:localData) {
-            if (bean.getZplx().equals(zplx)) {
-                bean.setTpdz(uri);
-                bean.setHid(SettingManager.getCurrentJdPkh().getHid());
-            }
+        PkhjtqkzpBean bean = new PkhjtqkzpBean();
+        bean.setTpdz(uri);
+        bean.setHid(SettingManager.getCurrentJdPkh().getHid());
+        if(localData==null) {
+            localData = new ArrayList<>();
         }
-
-        mPkhjtqkzpRecyclerAdapter.notifyResult(true, localData);
+        localData.add(bean);
+//        mPkhjtqkzpRecyclerAdapter.notifyResult(false, bean);
         mHasData = true;
     }
 
@@ -163,21 +162,6 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mPkhjtqkzpRecyclerAdapter = new PkhjtqkzpRecyclerAdapter();
         recyclerView.setAdapter(mPkhjtqkzpRecyclerAdapter);
-    }
-
-    private void initData() {
-
-        final String jdlkStr = getContext().getString(R.string.pkh_jtqkzp_jdlk);
-        Map<String,String> values = DictionaryUtil.getValueNames("ZPLX");
-        localData = new ArrayList<>();
-        for (int i = 8;i < values.size() + 1;i++) {
-            String valueName = values.get(String.valueOf(i));
-            if (!TextUtils.isEmpty(valueName)&&valueName.startsWith(jdlkStr)) {
-                PkhjtqkzpBean bean = new PkhjtqkzpBean();
-                bean.setZplx(String.valueOf(i));
-                localData.add(bean);
-            }
-        }
     }
 
     private String encodePhoto(String addr) {

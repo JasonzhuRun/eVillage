@@ -198,6 +198,9 @@
     <string name="pkh_cyhqk_hzzj">投入互助资金金额(元)</string>
     <string name="pkh_cyhqk_hzzz">参与农业合作组织</string>
     <string name="pkh_cyhqk_ltqy">龙头企业带动收益(元)</string>
+    <!--参与产业化情况-->
+    <string name="pkh_jtqkzp_jdlk">建档立卡</string>
+
 
     <!--台账页面-->
     <string name="tz_none_hid">请先选择要查看的贫困户</string>

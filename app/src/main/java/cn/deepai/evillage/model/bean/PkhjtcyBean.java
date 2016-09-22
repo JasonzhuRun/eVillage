@@ -31,14 +31,15 @@ public class PkhjtcyBean {
     private	String	jlsj;
     private	String	jlr;
     private	String	bz;
-    private	String	zp;
+    private	String	tpdz;
 
-    public String getZp() {
-        return zp;
+    public String getTpdz() {
+
+        return tpdz;
     }
 
-    public void setZp(String zp) {
-        this.zp = zp;
+    public void setTpdz(String tpdz) {
+        this.tpdz = tpdz;
     }
 
     public String getHid() {

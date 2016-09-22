@@ -31,6 +31,7 @@ import cn.deepai.evillage.model.bean.PkhjbxxBean;
 import cn.deepai.evillage.model.event.ResponseHeaderEvent;
 import cn.deepai.evillage.model.event.ReturnValueEvent;
 import cn.deepai.evillage.model.event.RspCode;
+import cn.deepai.evillage.model.event.TakePhotoEvent;
 import cn.deepai.evillage.utils.EncryptionUtil;
 import cn.deepai.evillage.utils.FileUtil;
 import cn.deepai.evillage.utils.LogUtil;
@@ -63,8 +64,10 @@ public class PkhxqActivity extends BaseActivity {
 
     private boolean mEditable = false;
     private static int selectedIndex = 0;
+    private static String zplx;
     private ArrayList<BasePage> viewContainter = new ArrayList<>();
     private ViewPager mPager;
+
     @OnClick(R.id.detail_back)
     public void onBackBtnClick(){
         this.onBackPressed();
@@ -87,6 +90,13 @@ public class PkhxqActivity extends BaseActivity {
             ToastUtil.shortToast(getString(R.string.upload_failed));
         }
         tryToHideProcessDialog();
+    }
+
+    @SuppressWarnings("all")
+    public void onEventMainThread(TakePhotoEvent event) {
+        Intent getImageByCamera = new Intent("android.media.action.IMAGE_CAPTURE");
+        startActivityForResult(getImageByCamera, 1);
+        this.zplx = event.zplx;
     }
 
     @SuppressWarnings("all")
@@ -175,7 +185,7 @@ public class PkhxqActivity extends BaseActivity {
                 }
                 BasePage page = viewContainter.get(selectedIndex);
                 if (page instanceof BasePage.IPhotoEdit) {
-                    ((BasePage.IPhotoEdit)page).addPhoto(addr);
+                    ((BasePage.IPhotoEdit)page).addPhoto(addr,zplx);
                 }
             }
         }

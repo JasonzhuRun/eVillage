@@ -50,6 +50,6 @@ public abstract class BasePage extends FrameLayout {
     }
 
     public interface IPhotoEdit {
-        void addPhoto(String uri);
+        void addPhoto(String uri,String zplx);
     }
 }

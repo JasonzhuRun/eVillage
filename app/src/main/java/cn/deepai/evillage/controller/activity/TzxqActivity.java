@@ -27,6 +27,7 @@ import cn.deepai.evillage.utils.ToastUtil;
 import cn.deepai.evillage.view.BasePage;
 import cn.deepai.evillage.view.TzjbxxPage;
 import cn.deepai.evillage.view.TzjtcyPage;
+import cn.deepai.evillage.view.TzjtqkzpPage;
 import cn.deepai.evillage.view.TzsrmxPage;
 import cn.deepai.evillage.view.TzzcmxPage;
 import cn.deepai.evillage.view.TzzfxxPage;
@@ -131,7 +132,7 @@ public class TzxqActivity extends BaseActivity {
         viewContainter.add(new TzsrmxPage(this,tzId,tznd));
         viewContainter.add(new TzzcmxPage(this,tzId,tznd));
         viewContainter.add(new TzzfxxPage(this,tzId,tznd));
-        viewContainter.add(new TzzfxxPage(this,tzId,tznd));
+        viewContainter.add(new TzjtqkzpPage(this,tzId,tznd));
     }
 
     private void initTitle() {

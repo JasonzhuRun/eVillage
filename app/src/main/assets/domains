@@ -1819,107 +1819,107 @@
         "domainValue": [
            {
                "valueCode": "1",
-               "valueName ": "建档立卡"
+               "valueName": "建档立卡"
            },
            {
                "valueCode": "2",
-               "valueName ": "走访成效"
+               "valueName": "走访成效"
            },
            {
                "valueCode": "3",
-               "valueName ": "脱贫成效"
+               "valueName": "脱贫成效"
            },
            {
                "valueCode": "4",
-               "valueName ": "户主"
+               "valueName": "户主"
            },
            {
                "valueCode": "5",
-               "valueName ": "贫困户家庭成员"
+               "valueName": "贫困户家庭成员"
            },
            {
                "valueCode": "6",
-               "valueName ": "随迁户家庭成员"
+               "valueName": "随迁户家庭成员"
            },
            {
                "valueCode": "7",
-               "valueName ": "帮扶人"
+               "valueName": "帮扶人"
            },
            {
                "valueCode": "8",
-               "valueName ": "建档立卡住房"
+               "valueName": "建档立卡住房"
            },
            {
                "valueCode": "9",
-               "valueName ": "建档立卡客厅"
+               "valueName": "建档立卡客厅"
            },
            {
                "valueCode": "10",
-               "valueName ": "建档立卡厨房"
+               "valueName": "建档立卡厨房"
            },
            {
                "valueCode": "11",
-               "valueName ": "建档立卡卧室"
+               "valueName": "建档立卡卧室"
            },
            {
                "valueCode": "12",
-               "valueName ": "建档立卡卫生间"
+               "valueName": "建档立卡卫生间"
            },
            {
                "valueCode": "13",
-               "valueName ": "脱贫住房"
+               "valueName": "脱贫住房"
            },
            {
                "valueCode": "14",
-               "valueName ": "脱贫客厅"
+               "valueName": "脱贫客厅"
            },
            {
                "valueCode": "15",
-               "valueName ": "脱贫厨房"
+               "valueName": "脱贫厨房"
            },
            {
                "valueCode": "16",
-               "valueName ": "脱贫卧室"
+               "valueName": "脱贫卧室"
            },
            {
                "valueCode": "17",
-               "valueName ": "脱贫卫生间"
+               "valueName": "脱贫卫生间"
            },
            {
                "valueCode": "18",
-               "valueName ": "移民搬迁协议"
+               "valueName": "移民搬迁协议"
            },
            {
                "valueCode": "19",
-               "valueName ": "移民搬迁转学证明"
+               "valueName": "移民搬迁转学证明"
            },
            {
                "valueCode": "20",
-               "valueName ": "学校照片"
+               "valueName": "学校照片"
            },
            {
                "valueCode": "21",
-               "valueName ": "移民搬迁就业"
+               "valueName": "移民搬迁就业"
            },
            {
                "valueCode": "22",
-               "valueName ": "随迁户户主"
+               "valueName": "随迁户户主"
            },
            {
                "valueCode": "23",
-               "valueName ": "随迁户移民搬迁协议"
+               "valueName": "随迁户移民搬迁协议"
            },
            {
                "valueCode": "24",
-               "valueName ": ""
+               "valueName": ""
            },
            {
                "valueCode": "25",
-               "valueName ": ""
+               "valueName": ""
            },
            {
                "valueCode": "26",
-               "valueName ": ""
+               "valueName": ""
            }
        ]
     },

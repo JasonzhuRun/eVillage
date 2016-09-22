@@ -497,10 +497,10 @@ public class PkhjtcyActivity extends BaseActivity {
         zdxx.setText(pkhjtcyBean.getZdxx());
         cyzt.setText(DictionaryUtil.getValueName("CYZT",pkhjtcyBean.getCyzt()));
         ztbhsj.setText(pkhjtcyBean.getZtbhsj());
-        if (TextUtils.isEmpty(pkhjtcyBean.getZp())) {
+        if (TextUtils.isEmpty(pkhjtcyBean.getTpdz())) {
             zp.setImageResource(R.drawable.morentouxiang);
         } else {
-            ImageLoader.getInstance().displayImage(pkhjtcyBean.getZp(), zp, EVApplication.getDisplayImageOptions());
+            ImageLoader.getInstance().displayImage(pkhjtcyBean.getTpdz(), zp, EVApplication.getDisplayImageOptions());
         }
     }
 

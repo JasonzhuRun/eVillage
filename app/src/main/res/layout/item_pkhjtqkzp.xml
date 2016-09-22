@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center"
-    android:padding="2dp">
+    android:padding="2dp"
+    android:background="@color/white">
     <ImageView
         android:id="@+id/item_jtqkzp_zp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scaleType="fitStart"
         android:adjustViewBounds="true"
         android:contentDescription="@string/app_name"/>
+    <TextView
+        android:id="@+id/item_jtqkzp_lx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_jtqkzp_zp"
+        android:gravity="center"
+        android:textColor="@color/text_gray"/>
 </RelativeLayout>

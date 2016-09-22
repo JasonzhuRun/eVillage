@@ -59,6 +59,10 @@ public class DictionaryUtil {
         return valueCode;
     }
 
+    public static Map<String,String> getValueNames(String domain) {
+        return dictinary.get(domain);
+    }
+
     public static String getValueName(String valueCode) {
         if (null == valueCode) return null;
         switch (valueCode) {
