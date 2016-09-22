@@ -38,19 +38,19 @@ public class TzzfqkRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TzzfqkViewHolder) {
-            ((TzzfqkViewHolder) holder).onBindData(mTzzfqkBeans.get(position));
+            ((TzzfqkViewHolder) holder).onBindData(mTzzfqkBeans.get(position - 1));
         }
     }
 
     @Override
     public int getItemCount() {
-//        int count = mTzzfqkBeans == null?0: mTzzfqkBeans.size();
-        return mTzzfqkBeans == null?0: mTzzfqkBeans.size();
+        int count = mTzzfqkBeans == null?0: mTzzfqkBeans.size();
+        return count + 1;
     }
 
     @Override
     public int getItemViewType(int position) {
-//        if (position == 0) return ItemType.ADD_MORE;
+        if (position == 0) return ItemType.ADD_MORE;
         return ItemType.NORMAL;
     }
 

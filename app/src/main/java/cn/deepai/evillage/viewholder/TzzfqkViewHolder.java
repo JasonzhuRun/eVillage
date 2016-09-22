@@ -20,9 +20,9 @@ public class TzzfqkViewHolder extends BaseViewHolder {
 
     private Context mContext;
     private TzzfqkBean mTzzfqkBean;
-    private EditText xmmc;
-    private EditText jhny;
-    private EditText jhnr;
+//    private EditText xmmc;
+//    private EditText jhny;
+//    private EditText jhnr;
     private EditText zfsj;
     private EditText lsqk;
     private EditText bfcx;
@@ -33,9 +33,9 @@ public class TzzfqkViewHolder extends BaseViewHolder {
         super(LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.item_tzzfqk, parent, false));
         mContext = parent.getContext();
-        xmmc = (EditText) itemView.findViewById(R.id.zfqk_xmmc);
-        jhny = (EditText) itemView.findViewById(R.id.zfqk_jhny);
-        jhnr = (EditText) itemView.findViewById(R.id.zfqk_jhnr);
+//        xmmc = (EditText) itemView.findViewById(R.id.zfqk_xmmc);
+//        jhny = (EditText) itemView.findViewById(R.id.zfqk_jhny);
+//        jhnr = (EditText) itemView.findViewById(R.id.zfqk_jhnr);
         zfsj = (EditText) itemView.findViewById(R.id.zfqk_zfsj);
         zfsj.setOnClickListener(this);
         lsqk = (EditText) itemView.findViewById(R.id.zfqk_lsqk);
@@ -48,9 +48,9 @@ public class TzzfqkViewHolder extends BaseViewHolder {
 
     public void onBindData(TzzfqkBean tzzfqkBean) {
         this.mTzzfqkBean = tzzfqkBean;
-        xmmc.setText(tzzfqkBean.getXmmc());
-        jhny.setText(tzzfqkBean.getJhny());
-        jhnr.setText(tzzfqkBean.getJhnr());
+//        xmmc.setText(tzzfqkBean.getXmmc());
+//        jhny.setText(tzzfqkBean.getJhny());
+//        jhnr.setText(tzzfqkBean.getJhnr());
         zfsj.setText(tzzfqkBean.getZfsj());
         lsqk.setText(tzzfqkBean.getLsqk());
         bfcx.setText(tzzfqkBean.getBfcx());

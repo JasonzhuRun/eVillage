@@ -71,6 +71,7 @@
     <string name="req_code_getTzxmxx">zyfp03014</string>
     <string name="req_code_addTzsrmx">zyfp03015</string>
     <string name="req_code_addTzzcmx">zyfp03016</string>
+    <string name="req_code_addTzzfqk">zyfp03017</string>
 
     <string name="req_code_getZxList">zyfp04001</string>
 
@@ -254,6 +255,7 @@
     <string name="tz_xmmc">请选择项目名称</string>
 
     <string name="tz_zfqk_xmmc">措施名称</string>
+    <string name="tz_zfqk">走访情况</string>
     <string name="tz_zfqk_jhny">计划年月</string>
     <string name="tz_zfqk_jhnr">计划内容</string>
     <string name="tz_zfqk_zfsj">走访时间</string>

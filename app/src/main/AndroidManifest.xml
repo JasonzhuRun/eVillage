@@ -48,6 +48,9 @@
             android:name=".controller.activity.TzszmxActivity"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".controller.activity.TzzfqkActivity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".controller.activity.MsgsActivity"
             android:screenOrientation="portrait"/>
         <activity

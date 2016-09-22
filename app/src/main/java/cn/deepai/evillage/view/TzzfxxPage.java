@@ -1,6 +1,7 @@
 package cn.deepai.evillage.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,8 @@ import java.util.List;
 
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.TzzfqkRecyclerAdapter;
+import cn.deepai.evillage.controller.activity.TzszmxActivity;
+import cn.deepai.evillage.controller.activity.TzzfqkActivity;
 import cn.deepai.evillage.manager.DialogManager;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.BaseBean;
@@ -93,11 +96,11 @@ public class TzzfxxPage extends BasePage implements BasePage.IDataEdit{
     @SuppressWarnings("all")
     public void onEventMainThread(PagexjItemEvent event) {
         if (isSelected()) {
-            List<TzzfqkBean> itemList = new ArrayList<>();
-            itemList.add(new TzzfqkBean());
-            mTzzfqkRecyclerAdapter.notifyResult(false, itemList);
-            mRecyclerView.scrollToPosition(mTzzfqkRecyclerAdapter.getItemCount() - 1);
-            mHasData = true;
+            Intent intent = new Intent(mContext, TzzfqkActivity.class);
+            intent.putExtra("type","zc");
+            intent.putExtra("tzid",tzId);
+            mContext.startActivity(intent);
+            mHasData = false;
         }
     }
 
