@@ -25,7 +25,9 @@ public class TzRecyclerAdapter extends RecyclerView.Adapter {
         if (isFirstPage) {
             mTzjbxxList.clear();
         }
-        mTzjbxxList.addAll(tzjbxxList);
+        if (tzjbxxList != null) {
+            mTzjbxxList.addAll(tzjbxxList);
+        }
         notifyDataSetChanged();
     }
 

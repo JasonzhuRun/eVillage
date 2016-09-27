@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import cn.deepai.evillage.EVApplication;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.controller.activity.NewsDetailActivity;

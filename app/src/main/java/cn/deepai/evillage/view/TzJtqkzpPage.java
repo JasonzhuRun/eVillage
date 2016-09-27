@@ -21,6 +21,7 @@ import java.util.Map;
 import cn.deepai.evillage.R;
 import cn.deepai.evillage.adapter.PkhjtqkzpRecyclerAdapter;
 import cn.deepai.evillage.controller.activity.PkhxqActivity;
+import cn.deepai.evillage.controller.activity.TzxqActivity;
 import cn.deepai.evillage.manager.SettingManager;
 import cn.deepai.evillage.model.bean.PkhRequestBean;
 import cn.deepai.evillage.model.bean.PkhjtqkzpBean;
@@ -97,7 +98,7 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         for (PkhjtqkzpBean bean:localData) {
             if (bean.getZplx().equals(zplx)) {
                 bean.setTpdz(uri);
-                bean.setHid(SettingManager.getCurrentJdPkh().getHid());
+                bean.setHid(SettingManager.getCurrentPkh().getHid());
             }
         }
         mPkhjtqkzpRecyclerAdapter.notifyResult(true, localData);
@@ -122,7 +123,7 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
                         bean.setWjlx("png");
                     }
                 }
-                ((PkhxqActivity)mContext).tryToShowProcessDialog();
+                ((TzxqActivity)mContext).tryToShowProcessDialog();
                 EVRequest.request(Action.ACTION_ADD_PKHJTQKZP, gson.toJson(header), gson.toJson(bean),
                         new ResponseCallback() {
                             @Override
@@ -186,6 +187,8 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
                 localData.add(bean);
             }
         }
+        mPkhjtqkzpRecyclerAdapter.notifyResult(true, localData);
+        mHasData = true;
     }
 
     private String encodePhoto(String addr) {

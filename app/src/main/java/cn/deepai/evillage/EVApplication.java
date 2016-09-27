@@ -155,7 +155,7 @@ public class EVApplication extends Application {
             }
         };
 
-//        mTimer.schedule(task, 2000, 20*1000);
+//        mTimer.schedule(task, 2000, 10*1000);
     }
 
 

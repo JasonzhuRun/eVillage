@@ -128,6 +128,7 @@ public class TzFragment extends BaseFragment {
 
     private void loadData() {
         tryToShowProcessDialog();
+        mTzRecyclerAdapter.notifyResult(true, null);
         String staffId = SettingManager.getInstance().getStaffId();
         String hid = SettingManager.getCurrentPkh().getHid();
         if (TextUtils.isEmpty(hid)) {
