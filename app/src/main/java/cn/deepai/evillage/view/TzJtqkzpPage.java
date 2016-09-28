@@ -98,6 +98,7 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         for (PkhjtqkzpBean bean:localData) {
             if (bean.getZplx().equals(zplx)) {
                 bean.setTpdz(uri);
+                bean.setTjnd(tznd);
                 bean.setHid(SettingManager.getCurrentPkh().getHid());
             }
         }

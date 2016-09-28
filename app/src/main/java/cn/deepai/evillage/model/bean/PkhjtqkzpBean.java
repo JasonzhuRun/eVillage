@@ -11,11 +11,20 @@ public class PkhjtqkzpBean {
     private String tpmc;
     private String tpdz;
     private String zpnr;
+    private String tjnd;
     private String jlsj;
     private String jlr;
     private String bz;
     private String zt;
     private String wjlx;
+
+    public String getTjnd() {
+        return tjnd;
+    }
+
+    public void setTjnd(String tjnd) {
+        this.tjnd = tjnd;
+    }
 
     public String getWjlx() {
         return wjlx;

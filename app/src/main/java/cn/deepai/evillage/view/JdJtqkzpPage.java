@@ -88,6 +88,7 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         for (PkhjtqkzpBean bean:localData) {
             if (bean.getZplx().equals(zplx)) {
                 bean.setTpdz(uri);
+                bean.setTjnd(SettingManager.getCurrentJdPkh().getJdnf());
                 bean.setHid(SettingManager.getCurrentJdPkh().getHid());
             }
         }
@@ -123,6 +124,7 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
                                 if (returnValueEvent.returnValue == 1)  {
                                     bean.setHid(null);
                                     bean.setZpnr(null);
+                                    mHasData = false;
                                 }
                                 EventBus.getDefault().post(returnValueEvent);
                             }
