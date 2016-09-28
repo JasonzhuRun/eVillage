@@ -15,7 +15,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -103,7 +102,7 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addPkhJtqkzp);
         for (final PkhjtqkzpBean bean:localData) {
             if (!TextUtils.isEmpty(bean.getHid())) {
-                bean.setTpnr(encodePhoto(bean.getTpdz()));
+                bean.setZpnr(encodePhoto(bean.getTpdz()));
                 String[] args = bean.getTpdz().split(File.separator);
                 if (args.length > 0) {
                     String tpmc = args[args.length - 1];
@@ -123,7 +122,7 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
                                 ReturnValueEvent returnValueEvent = gson.fromJson(dataJsonString, ReturnValueEvent.class);
                                 if (returnValueEvent.returnValue == 1)  {
                                     bean.setHid(null);
-                                    bean.setTpnr(null);
+                                    bean.setZpnr(null);
                                 }
                                 EventBus.getDefault().post(returnValueEvent);
                             }

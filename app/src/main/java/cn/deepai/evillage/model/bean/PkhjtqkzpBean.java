@@ -10,7 +10,7 @@ public class PkhjtqkzpBean {
     private String zplx;
     private String tpmc;
     private String tpdz;
-    private String tpnr;
+    private String zpnr;
     private String jlsj;
     private String jlr;
     private String bz;
@@ -25,12 +25,12 @@ public class PkhjtqkzpBean {
         this.wjlx = wjlx;
     }
 
-    public String getTpnr() {
-        return tpnr;
+    public String getZpnr() {
+        return zpnr;
     }
 
-    public void setTpnr(String tpnr) {
-        this.tpnr = tpnr;
+    public void setZpnr(String zpnr) {
+        this.zpnr = zpnr;
     }
 
     public String getId() {
