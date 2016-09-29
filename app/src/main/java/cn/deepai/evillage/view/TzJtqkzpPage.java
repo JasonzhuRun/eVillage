@@ -84,6 +84,7 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
                 for (PkhjtqkzpBean pkhjtqkzpBean:event.list) {
                     if (localData.get(i).getZplx().equals(pkhjtqkzpBean.getZplx())) {
                         localData.set(i,pkhjtqkzpBean);
+                        localData.get(i).setHid(null);
                     }
                 }
             }
@@ -112,6 +113,7 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
         RequestHeaderBean header = new RequestHeaderBean(R.string.req_code_addPkhJtqkzp);
         for (final PkhjtqkzpBean bean:localData) {
             if (!TextUtils.isEmpty(bean.getHid())) {
+                bean.setTjnd(tznd);
                 bean.setZpnr(encodePhoto(bean.getTpdz()));
                 String[] args = bean.getTpdz().split(File.separator);
                 if (args.length > 0) {
@@ -133,6 +135,7 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
                                 if (returnValueEvent.returnValue == 1)  {
                                     bean.setHid(null);
                                     bean.setZpnr(null);
+                                    mHasData = false;
                                 }
                                 EventBus.getDefault().post(returnValueEvent);
                             }
@@ -148,7 +151,6 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
             return;
         }
         final Gson requestGson = new Gson();
-        // todo 是否增加接口
         EVRequest.request(Action.ACTION_GET_PKHJTQKZPLIST,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJtqkzpList)),
                 requestGson.toJson(new PkhRequestBean(false)),
@@ -189,7 +191,6 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
             }
         }
         mPkhjtqkzpRecyclerAdapter.notifyResult(true, localData);
-        mHasData = true;
     }
 
     private String encodePhoto(String addr) {

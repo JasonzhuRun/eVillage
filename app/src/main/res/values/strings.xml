@@ -25,6 +25,9 @@
     <string name="delete">删除了</string>
     <string name="caches">缓存</string>
     <string name="no_caches">再使劲儿点也没缓存啦</string>
+    <string name="update_titile">应用更新提示</string>
+    <string name="update_ensure">更新</string>
+    <string name="update_cancel">暂不更新</string>
     <!--reqCode-->
     <string name="req_code_login">zyfp01001</string>
     <string name="req_code_getPkhJbxxList">zyfp01002</string>

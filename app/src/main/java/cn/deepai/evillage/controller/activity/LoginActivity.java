@@ -34,6 +34,19 @@ public class LoginActivity extends BaseActivity{
         SettingManager.getInstance().setToken(event.getTokenId());
         SettingManager.getInstance().setUserId(event.getUserId());
         SettingManager.getInstance().setStaffId(event.getStaffId());
+//        if (event.getIsUpdate() == 1) {
+//            new AlertDialog.Builder(LoginActivity.this)
+//                    .setTitle(getString(R.string.update_titile))
+//                    .setMessage(event.getUpdateContent())
+//                    .setPositiveButton(LoginActivity.this.getString(R.string.insure), new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    }).show();
+//
+//            if (event.getIsMustUpdate() == 1) return;
+//        }
         tryToEnter();
     }
 
@@ -142,7 +155,7 @@ public class LoginActivity extends BaseActivity{
 
         String strName = username.getText().toString();
         String strPasswd = password.getText().toString();
-        strPasswd = "12ab!@";
+//        strPasswd = "12ab!@";
         if (TextUtils.isEmpty(strName)) {
             ToastUtil.shortToast(getString(R.string.username_empyt));
             tryToHideProcessDialog();
