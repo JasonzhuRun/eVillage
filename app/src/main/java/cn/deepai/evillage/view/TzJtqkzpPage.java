@@ -151,9 +151,11 @@ public class TzjtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
             return;
         }
         final Gson requestGson = new Gson();
+        PkhRequestBean pkhRequestBean = new PkhRequestBean(false);
+        pkhRequestBean.tjnd = tznd;
         EVRequest.request(Action.ACTION_GET_PKHJTQKZPLIST,
                 requestGson.toJson(new RequestHeaderBean(R.string.req_code_getPkhJtqkzpList)),
-                requestGson.toJson(new PkhRequestBean(false)),
+                requestGson.toJson(pkhRequestBean),
                 new ResponseCallback() {
                     @Override
                     public void onDataResponse(String dataJsonString) {
