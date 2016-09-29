@@ -202,7 +202,7 @@ public class TzzfxxPage extends BasePage implements BasePage.IDataEdit{
         try {
             String hid = SettingManager.getCurrentPkh().getHid();
             jsonObject.put("hid",hid);
-
+            jsonObject.put("tzid",tzId);
             jsonObject.put("tznd", tznd);
         } catch (JSONException e) {
             LogUtil.e(EVRequest.class, "Illegal json format:" + e.toString());

@@ -22,7 +22,7 @@ public final class SettingManager {
 
 	private static final String SERVER_ADDRESS = "server_address";
 
-	private static final String IP = "192.168.101.18";
+	private static final String IP = "120.25.147.74";
 	private static final String PORT = "8080";
 
     /**

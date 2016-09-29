@@ -180,7 +180,6 @@ public class JdJtqkzpPage extends BasePage implements BasePage.IDataEdit,BasePag
             }
         }
         mPkhjtqkzpRecyclerAdapter.notifyResult(true, localData);
-        mHasData = true;
     }
 
     private String encodePhoto(String addr) {
